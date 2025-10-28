@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ella to Nuwara Eliya — Explore Sri Lanka • RidexHub</title>
+  <meta name="description" content="A scenic motorbike route from Ella to Nuwara Eliya — travel tips, stops, and safety notes." />
+  <meta property="og:title" content="Ella to Nuwara Eliya — RidexHub" />
+  <meta property="og:image" content="/assets/ella-feature.jpg" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #f8fafc }
+    .prose img { border-radius: 12px; }
+  </style>
+</head>
+<body class="font-body text-gray-800">
+
+  <!-- same minimal header (keep consistent with index) -->
+  <header class="fixed inset-x-0 top-0 z-40 bg-white/80 backdrop-blur-md border-b border-white/30">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/index.html" class="flex items-center gap-3">
+        <svg class="w-8 h-8 rounded p-1 border" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#0f766e" stroke-width="1.5"/></svg>
+        <div><div class="font-display font-bold">RidexHub</div><div class="text-xs text-gray-500">Explore Sri Lanka</div></div>
+      </a>
+      <a href="/blog.html" class="hidden md:inline-block text-sm px-3 py-2 rounded-xl border">Back to Explore</a>
+      <button id="mobileBack" class="md:hidden">☰</button>
+    </div>
+  </header>
+
+  <main class="pt-20">
+    <article class="max-w-3xl mx-auto px-4 py-12">
+      <header class="space-y-4">
+        <img src="/assets/ella-feature.jpg" alt="Ella to Nuwara Eliya" class="w-full h-72 object-cover rounded-2xl shadow-soft" loading="lazy">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="font-display text-3xl font-extrabold">Ella to Nuwara Eliya — Scenic Tea Route by Motorcycle</h1>
+            <div class="text-sm text-gray-500 mt-1">By RidexHub • Sep 10, 2025 • 10 min read</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <!-- share buttons placeholders -->
+            <a class="px-3 py-2 border rounded-md text-sm" href="#">Share</a>
+          </div>
+        </div>
+      </header>
+
+      <div class="mt-6 prose max-w-none text-gray-700">
+        <p>Start early for misty tea-estate views and cool temperatures. This route climbs through winding passes and offers multiple viewpoints and waterfall stops.</p>
+
+        <h2>Why ride this route</h2>
+        <p>The road between Ella and Nuwara Eliya showcases Sri Lanka's hill country — winding tarmac, tea gardens, and charming towns. It's ideal for experienced riders and those comfortable with elevation changes.</p>
+
+        <h3>Suggested itinerary</h3>
+        <ol>
+          <li>Ella — Little Adam’s Peak: quick morning stretch</li>
+          <li>Ravana Falls — scenic stop and breakfast</li>
+          <li>Tea factory visit near Nuwara Eliya</li>
+        </ol>
+
+        <h3>Safety notes</h3>
+        <p>Check brakes and tyre pressure for mountain rides. Carry rain protection and be mindful of sudden fog in the mornings.</p>
+
+        <h3>Local tips</h3>
+        <p>Stop for tea and eat at local kiosks — great way to meet locals and try fresh hoppers.</p>
+      </div>
+
+      <div class="mt-8 flex gap-3 items-center">
+        <a href="/blog.html" class="px-4 py-3 rounded-xl border">← Back to Explore</a>
+        <a href="/index.html#fleet" class="px-4 py-3 rounded-xl bg-teal-700 text-white">Book this bike</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="max-w-6xl mx-auto px-4 py-8 text-gray-500 text-sm">
+    <div class="border-t pt-4">© 2025 RidexHub • Built for travellers</div>
+  </footer>
+
+  <script>
+    // small enhancements: sticky "Back to Explore" on scroll (desktop)
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', ()=> {
+      if (window.scrollY > 20) header.classList.add('shadow-md');
+      else header.classList.remove('shadow-md');
+    });
+  </script>
+
+</body>
+</html>

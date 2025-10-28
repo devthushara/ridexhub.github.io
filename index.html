@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RidexHub — Discover Sri Lanka on Two Wheels</title>
+  <meta name="description" content="RidexHub — modern motorbike rentals for travelers in Sri Lanka. New bikes, delivery, 24/7 support, and local route tips." />
+  <meta property="og:title" content="RidexHub — Discover Sri Lanka on Two Wheels" />
+  <meta property="og:description" content="Rent modern motorbikes and explore Sri Lanka — your way." />
+  <meta property="og:image" content="/assets/og-ridexhub.jpg" />
+  <meta name="theme-color" content="#f97316">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind (CDN for prototype) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Small Tailwind config (colors & fonts) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fff9f6',
+              100: '#fff0e6',
+              300: '#f7c9a1',
+              500: '#f97316', /* terracotta/amber accent */
+              700: '#dc6b12'
+            },
+            tealish: {
+              500: '#0f766e'
+            },
+            charcoal: { DEFAULT: '#111827' }
+          },
+          fontFamily: {
+            display: ['Poppins','system-ui','-apple-system','Segoe UI','Roboto'],
+            body: ['Inter','system-ui','-apple-system','Segoe UI','Roboto']
+          },
+          boxShadow: {
+            soft: '0 8px 30px rgba(15, 23, 42, 0.06)'
+          },
+          borderRadius: {
+            xl: '14px'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* small custom utilities (keeps things tidy) */
+    .glass-hero { background: linear-gradient(180deg, rgba(255,255,255,0.0) 0%, rgba(15,118,110,0.03) 100%); }
+    .reveal { opacity: 0; transform: translateY(8px); transition: all .6s cubic-bezier(.2,.9,.3,1); }
+    .reveal.show { opacity: 1; transform: none; }
+    /* horizontal scroll snap for testimonials */
+    .snap-x { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+    .snap-child { scroll-snap-align: center; }
+  </style>
+</head>
+<body class="font-body bg-gray-50 text-gray-800 antialiased">
+
+  <!-- Sticky translucent header -->
+  <header id="siteHeader" class="fixed inset-x-0 top-0 z-50 bg-white/60 backdrop-blur-md border-b border-white/30">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-3">
+        <svg class="w-9 h-9 rounded-full p-1 border" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+          <circle cx="12" cy="12" r="10" stroke="#0f766e" stroke-width="1.5"/>
+        </svg>
+        <div>
+          <div class="font-display font-bold text-sm leading-none">RidexHub</div>
+          <div class="text-xs text-gray-500 -mt-0.5">Ride Sri Lanka</div>
+        </div>
+      </a>
+
+      <!-- nav desktop -->
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a class="hover:text-tealish-500 transition" href="#about">About</a>
+        <a class="hover:text-tealish-500 transition" href="#fleet">Fleet</a>
+        <a class="hover:text-tealish-500 transition" href="#explore">Explore</a>
+        <a class="hover:text-tealish-500 transition" href="#faq">FAQ</a>
+        <a class="hover:text-tealish-500 transition" href="#contact">Contact</a>
+        <a href="#book" class="ml-2 inline-flex items-center px-3 py-2 rounded-xl text-white bg-brand-500 shadow-soft hover:bg-brand-700 transition">Book a Ride</a>
+      </nav>
+
+      <!-- mobile menu button -->
+      <button id="mobileBtn" class="md:hidden p-2 rounded-md" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <!-- mobile drawer -->
+  <div id="mobileMenu" class="fixed inset-0 z-50 bg-white transform translate-x-full transition-transform md:hidden">
+    <div class="p-6">
+      <div class="flex items-center justify-between">
+        <div class="font-display font-bold">RidexHub</div>
+        <button id="mobileClose" aria-label="Close menu" class="text-xl">✕</button>
+      </div>
+      <nav class="mt-8 flex flex-col gap-4 text-lg">
+        <a href="#about" class="block">About</a>
+        <a href="#fleet" class="block">Fleet</a>
+        <a href="#explore" class="block">Explore</a>
+        <a href="#faq" class="block">FAQ</a>
+        <a href="#contact" class="block">Contact</a>
+        <a href="#book" class="mt-4 inline-block px-4 py-2 rounded-xl bg-brand-500 text-white">Book a Ride</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="pt-20">
+
+    <!-- HERO - asymmetrical grid -->
+    <section id="hero" class="relative overflow-hidden py-12 md:py-20">
+      <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+        <!-- text column -->
+        <div class="md:col-span-6 order-2 md:order-1">
+          <div class="reveal" style="transition-delay:80ms">
+            <p class="text-sm uppercase text-brand-300 font-semibold mb-3">Ride Sri Lanka</p>
+            <h1 class="font-display text-3xl md:text-5xl leading-tight text-charcoal font-extrabold">
+              Discover Sri Lanka on <span class="text-brand-500">Two Wheels</span>
+            </h1>
+            <p class="mt-4 text-gray-600 max-w-xl">Rent modern motorbikes and explore paradise — your way. Delivery, 24/7 support, local route guides, and flexible rental terms.</p>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#book" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-brand-500 text-white shadow-soft hover:scale-101 transform transition">Book a Ride</a>
+              <a href="#fleet" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition">View Fleet</a>
+            </div>
+
+            <dl class="mt-6 grid grid-cols-2 gap-4 text-sm text-gray-600">
+              <div><strong class="text-brand-500">500+</strong> happy riders</div>
+              <div><strong class="text-brand-500">24/7</strong> roadside assistance</div>
+            </dl>
+          </div>
+        </div>
+
+        <!-- big photo column -->
+        <div class="md:col-span-6 order-1 md:order-2">
+          <div class="relative rounded-2xl overflow-hidden shadow-soft reveal" style="transition-delay:140ms">
+            <img src="/assets/hero-bike.jpg" alt="Rider on scenic road" class="w-full h-72 md:h-[420px] object-cover -translate-y-2" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+            <!-- subtle caption -->
+            <div class="absolute left-6 bottom-6 bg-white/80 backdrop-blur-sm rounded-xl px-3 py-2 text-sm shadow">Delivery across south coast • Helmets included</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / MISSION with overlapping block -->
+    <section id="about" class="relative py-12 md:py-20">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          <div class="md:col-span-7">
+            <div class="bg-white rounded-2xl p-6 md:p-10 shadow-soft reveal">
+              <h2 class="text-2xl font-semibold font-display">We’re local riders helping travellers explore Sri Lanka</h2>
+              <p class="mt-4 text-gray-600">RidexHub combines local knowledge with modern, well-maintained bikes. We recommend routes, provide helmets & luggage boxes, and support your journey with fast assistance — so you can focus on the ride.</p>
+
+              <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <div class="p-3 rounded-lg bg-gray-50 border text-sm text-gray-700">Free delivery/pickup</div>
+                <div class="p-3 rounded-lg bg-gray-50 border text-sm text-gray-700">Unlimited mileage</div>
+                <div class="p-3 rounded-lg bg-gray-50 border text-sm text-gray-700">24/7 support</div>
+                <div class="p-3 rounded-lg bg-gray-50 border text-sm text-gray-700">New models</div>
+                <div class="p-3 rounded-lg bg-gray-50 border text-sm text-gray-700">Local route maps</div>
+                <div class="p-3 rounded-lg bg-gray-50 border text-sm text-gray-700">Transparent pricing</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:col-span-5 relative">
+            <div class="rounded-2xl overflow-hidden translate-y-6 md:translate-y-0 shadow-soft reveal">
+              <img src="/assets/team.jpg" alt="RidexHub team" class="w-full h-64 object-cover" loading="lazy" />
+            </div>
+            <!-- decorative shape -->
+            <div class="hidden md:block absolute -left-10 -top-10 w-28 h-28 bg-brand-50 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US - mini icons grid with hover micro-animations -->
+    <section id="why" class="py-10">
+      <div class="max-w-6xl mx-auto px-4 reveal">
+        <h3 class="text-xl font-display font-semibold">Why choose RidexHub</h3>
+        <p class="text-gray-600 mt-2 max-w-2xl">Adventure-friendly rentals with local support and simple terms.</p>
+
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="p-4 rounded-xl bg-white border hover:shadow-md transition transform hover:-translate-y-1">
+            <div class="text-2xl">🛣️</div>
+            <h4 class="mt-2 font-semibold">Tried & tested routes</h4>
+            <p class="mt-1 text-sm text-gray-500">Local route tips for safe, scenic rides.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-white border hover:shadow-md transition transform hover:-translate-y-1">
+            <div class="text-2xl">🛡️</div>
+            <h4 class="mt-2 font-semibold">Safety first</h4>
+            <p class="mt-1 text-sm text-gray-500">Helmets & maintenance checks included.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-white border hover:shadow-md transition transform hover:-translate-y-1">
+            <div class="text-2xl">📦</div>
+            <h4 class="mt-2 font-semibold">Flexible pickup</h4>
+            <p class="mt-1 text-sm text-gray-500">Delivery across major tourist towns.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLEET - masonry-esque cards -->
+    <section id="fleet" class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl font-display font-semibold">Our Fleet</h2>
+          <p class="text-sm text-gray-500">City scooters to touring bikes — pick what fits your trip.</p>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- card -->
+          <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
+            <img src="/assets/bike1.jpg" alt="Yamaha FZ-S" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="p-4">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="font-semibold">Yamaha FZ-S 150cc</h3>
+                  <p class="text-xs text-gray-500">Manual • Helmet & Luggage</p>
+                </div>
+                <div class="text-right font-semibold">Rs. 6,500/day</div>
+              </div>
+              <div class="mt-4 flex gap-3">
+                <button class="open-bike px-4 py-2 rounded-xl border hover:bg-brand-50" data-bike='{"id":"fzs","name":"Yamaha FZ-S 150cc","price":"Rs. 6500/day","img":"/assets/bike1.jpg"}'>Details</button>
+                <a class="px-4 py-2 rounded-xl bg-tealish-500 text-white" href="https://wa.me/94707615516?text=Hi%20RidexHub%20I%20want%20to%20book%20the%20Yamaha%20FZ-S" target="_blank">Book WhatsApp</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
+            <img src="/assets/bike2.jpg" alt="Honda Activa" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="p-4">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="font-semibold">Honda Activa 125cc</h3>
+                  <p class="text-xs text-gray-500">Automatic • Easy ride</p>
+                </div>
+                <div class="text-right font-semibold">Rs. 4,200/day</div>
+              </div>
+              <div class="mt-4 flex gap-3">
+                <button class="open-bike px-4 py-2 rounded-xl border">Details</button>
+                <a class="px-4 py-2 rounded-xl bg-tealish-500 text-white" href="https://wa.me/94707615516?text=Hi%20RidexHub%20I%20want%20to%20book%20the%20Honda%20Activa" target="_blank">Book WhatsApp</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
+            <img src="/assets/bike3.jpg" alt="Bajaj Pulsar" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="p-4">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="font-semibold">Bajaj Pulsar 180cc</h3>
+                  <p class="text-xs text-gray-500">Manual • Touring friendly</p>
+                </div>
+                <div class="text-right font-semibold">Rs. 7,500/day</div>
+              </div>
+              <div class="mt-4 flex gap-3">
+                <button class="open-bike px-4 py-2 rounded-xl border">Details</button>
+                <a class="px-4 py-2 rounded-xl bg-tealish-500 text-white" href="https://wa.me/94707615516?text=Hi%20RidexHub%20I%20want%20to%20book%20the%20Bajaj%20Pulsar" target="_blank">Book WhatsApp</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal for bike details -->
+    <div id="bikeModal" class="fixed inset-0 z-60 hidden items-center justify-center p-6">
+      <div class="absolute inset-0 bg-black/50" data-close></div>
+      <div class="relative max-w-3xl w-full bg-white rounded-2xl shadow-soft overflow-hidden">
+        <div class="p-4 flex items-start justify-between">
+          <div>
+            <h3 id="modalBikeTitle" class="text-xl font-semibold"></h3>
+            <div id="modalBikePrice" class="text-sm text-gray-500 mt-1"></div>
+          </div>
+          <button data-close class="text-xl">✕</button>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4 p-4">
+          <img id="modalBikeImg" src="" alt="" class="w-full h-64 object-cover rounded-lg">
+          <div>
+            <p class="text-sm text-gray-600">Specs:</p>
+            <ul id="modalBikeSpecs" class="mt-3 text-sm text-gray-600 space-y-2"></ul>
+
+            <div class="mt-4">
+              <label class="text-xs text-gray-500">Rental dates</label>
+              <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <input id="modalStart" type="date" class="px-3 py-2 rounded-lg border">
+                <input id="modalEnd" type="date" class="px-3 py-2 rounded-lg border">
+              </div>
+            </div>
+
+            <div class="mt-4 flex gap-3">
+              <a id="modalWA" href="#" class="px-4 py-2 rounded-xl bg-tealish-500 text-white">Book on WhatsApp</a>
+              <a href="tel:+94707615516" class="px-4 py-2 rounded-xl border">Call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIALS - horizontal scroll -->
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-4">
+        <h3 class="text-xl font-display font-semibold">What riders say</h3>
+        <div class="mt-6 overflow-x-auto snap-x flex gap-4 py-4">
+          <blockquote class="min-w-[80%] sm:min-w-[40%] md:min-w-[30%] bg-gradient-to-br from-brand-50 to-white/60 rounded-2xl p-6 snap-child">
+            <p class="text-gray-700">“Amazing bikes and quick delivery. We rode along the south coast — unforgettable.”</p>
+            <footer class="mt-4 text-sm text-gray-600">— Anna, Germany</footer>
+          </blockquote>
+
+          <blockquote class="min-w-[80%] sm:min-w-[40%] md:min-w-[30%] bg-gradient-to-br from-brand-50 to-white/60 rounded-2xl p-6 snap-child">
+            <p class="text-gray-700">“Helpful route tips and great helmets included. Highly recommend.”</p>
+            <footer class="mt-4 text-sm text-gray-600">— Marco, Italy</footer>
+          </blockquote>
+
+          <blockquote class="min-w-[80%] sm:min-w-[40%] md:min-w-[30%] bg-gradient-to-br from-brand-50 to-white/60 rounded-2xl p-6 snap-child">
+            <p class="text-gray-700">“Reliable & stress-free. Saved our trip when our bus plans changed.”</p>
+            <footer class="mt-4 text-sm text-gray-600">— Emily, UK</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instagram feed placeholder -->
+    <section class="py-12 bg-white">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-display font-semibold">From Instagram</h3>
+          <a href="#" class="text-sm text-tealish-500">View on Instagram</a>
+        </div>
+
+        <div class="mt-4 grid grid-cols-3 sm:grid-cols-6 gap-2">
+          <!-- placeholders for realtime integration -->
+          <div class="h-28 bg-gray-100 rounded-lg"></div>
+          <div class="h-28 bg-gray-100 rounded-lg"></div>
+          <div class="h-28 bg-gray-100 rounded-lg"></div>
+          <div class="h-28 bg-gray-100 rounded-lg"></div>
+          <div class="h-28 bg-gray-100 rounded-lg"></div>
+          <div class="h-28 bg-gray-100 rounded-lg"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPLORE / BLOG SNIPPETS -->
+    <section id="explore" class="py-12">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl font-display font-semibold">Explore Sri Lanka</h2>
+          <a href="/blog.html" class="text-sm text-tealish-500">See all articles</a>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="rounded-2xl overflow-hidden shadow-soft group">
+            <div class="relative">
+              <img src="/assets/ella.jpg" alt="Ella to Nuwara Eliya" class="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+              <span class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-xs shadow">150 km • 3 hr</span>
+            </div>
+            <div class="p-4 bg-white">
+              <h3 class="font-semibold">Ella to Nuwara Eliya</h3>
+              <p class="mt-2 text-sm text-gray-500">A mountain tea route with waterfalls and viewpoints.</p>
+              <div class="mt-3 flex items-center justify-between">
+                <a href="/blog/ella-nuwara.html" class="text-tealish-500 text-sm">Read more →</a>
+                <div class="text-xs text-gray-400">10 min read</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="rounded-2xl overflow-hidden shadow-soft group">
+            <div class="relative">
+              <img src="/assets/mirissa.jpg" alt="Mirissa" class="w-full h-44 object-cover" loading="lazy">
+              <span class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-xs shadow">Coastal</span>
+            </div>
+            <div class="p-4 bg-white">
+              <h3 class="font-semibold">Top 5 coastal rides from Mirissa</h3>
+              <p class="mt-2 text-sm text-gray-500">Beach stops, surf breaks and seafood.</p>
+              <div class="mt-3 flex items-center justify-between">
+                <a href="/blog/mirissa-coastal.html" class="text-tealish-500 text-sm">Read more →</a>
+                <div class="text-xs text-gray-400">7 min read</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="rounded-2xl overflow-hidden shadow-soft group">
+            <div class="relative">
+              <img src="/assets/kandy.jpg" alt="Kandy roads" class="w-full h-44 object-cover" loading="lazy">
+              <span class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-xs shadow">Mountain</span>
+            </div>
+            <div class="p-4 bg-white">
+              <h3 class="font-semibold">Hidden mountain roads in Kandy</h3>
+              <p class="mt-2 text-sm text-gray-500">Curvy passes, tea stops and lookout points.</p>
+              <div class="mt-3 flex items-center justify-between">
+                <a href="/blog/kandy-hidden.html" class="text-tealish-500 text-sm">Read more →</a>
+                <div class="text-xs text-gray-400">8 min read</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-12 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4">
+        <h3 class="text-xl font-display font-semibold">Frequently asked questions</h3>
+        <div class="mt-6 space-y-3">
+          <details class="bg-white p-4 rounded-lg shadow">
+            <summary class="font-semibold cursor-pointer">What license do I need?</summary>
+            <p class="mt-2 text-sm text-gray-600">A valid motorcycle license or an International Driving Permit (IDP) for bikes.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow">
+            <summary class="font-semibold cursor-pointer">Are helmets included?</summary>
+            <p class="mt-2 text-sm text-gray-600">Yes — helmets and a basic tool kit are included with every rental.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow">
+            <summary class="font-semibold cursor-pointer">Do you deliver?</summary>
+            <p class="mt-2 text-sm text-gray-600">Yes — we deliver to major tourist towns and pickup points. Delivery fees depend on distance.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & MAP -->
+    <section id="contact" class="py-12">
+      <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-2xl font-display font-semibold">Contact & Booking</h3>
+          <p class="mt-2 text-gray-600">No 1, Paramulla road, Matara • Daily 9 AM – 8 PM</p>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a href="tel:+94707615516" class="px-4 py-3 rounded-xl border inline-flex items-center gap-2">📞 Call</a>
+            <a href="https://wa.me/94707615516" class="px-4 py-3 rounded-xl bg-brand-500 text-white inline-flex items-center gap-2">💬 WhatsApp</a>
+            <a href="https://goo.gl/maps/placeholder" target="_blank" class="px-4 py-3 rounded-xl border inline-flex items-center gap-2">📍 Directions</a>
+          </div>
+
+          <form id="inlineContact" class="mt-6 space-y-3">
+            <input name="name" placeholder="Your name" class="w-full px-4 py-3 rounded-lg border" required />
+            <input name="email" placeholder="Email" type="email" class="w-full px-4 py-3 rounded-lg border" required />
+            <textarea name="message" rows="4" placeholder="How can we help?" class="w-full px-4 py-3 rounded-lg border"></textarea>
+            <div class="flex gap-3">
+              <button type="submit" class="px-4 py-3 rounded-xl bg-tealish-500 text-white">Send Message</button>
+              <a href="#book" class="px-4 py-3 rounded-xl border">Book Now</a>
+            </div>
+          </form>
+        </div>
+
+        <div>
+          <div class="h-80 rounded-2xl overflow-hidden bg-gray-100 flex items-center justify-center text-gray-400">Google Maps placeholder — add embed here</div>
+          <p class="mt-4 text-xs text-gray-500">International Driving Permit recommended for touring bikes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="bg-charcoal text-gray-200 mt-12">
+      <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <div class="font-display font-bold text-white">RidexHub</div>
+          <p class="mt-3 text-sm">Modern motorbike rentals for travellers visiting Sri Lanka.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold">Quick links</h4>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a href="#fleet" class="hover:text-white">Fleet</a></li>
+            <li><a href="#explore" class="hover:text-white">Explore</a></li>
+            <li><a href="#faq" class="hover:text-white">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold">Contact</h4>
+          <div class="mt-2 text-sm">+94 0707615516</div>
+          <div class="mt-4 flex gap-3">
+            <a aria-label="Instagram" href="#" class="text-gray-300">IG</a>
+            <a aria-label="Facebook" href="#" class="text-gray-300">FB</a>
+            <a aria-label="YouTube" href="#" class="text-gray-300">YT</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center text-xs text-gray-400 py-4 border-t border-white/10">© 2025 RidexHub • International Driving Permit may be required • Built for travellers</div>
+    </footer>
+
+  </main>
+
+  <!-- Floating WhatsApp button (always visible) -->
+  <a id="whatsBtn" href="https://wa.me/94707615516" target="_blank" class="fixed right-4 bottom-4 z-50 inline-flex items-center gap-3 px-4 py-3 rounded-full bg-brand-500 text-white shadow-lg hover:scale-105 transition">
+    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M..." fill="currentColor"/></svg>
+    <span class="hidden sm:inline">Chat</span>
+  </a>
+
+  <!-- Sticky book quicklink (small) -->
+  <a href="#book" class="fixed left-4 bottom-6 z-40 px-3 py-2 rounded-full bg-tealish-500 text-white shadow-lg hidden md:inline-flex items-center gap-2">Book</a>
+
+  <!-- Minimal JS for interactions -->
+  <script>
+    // mobile menu
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+    mobileBtn.addEventListener('click', ()=> mobileMenu.style.transform = 'translateX(0)');
+    mobileClose.addEventListener('click', ()=> mobileMenu.style.transform = 'translateX(100%)');
+
+    // reveal on intersection
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: .08 });
+    revealEls.forEach(el => io.observe(el));
+
+    // open bike modal
+    const modal = document.getElementById('bikeModal');
+    const modalTitle = document.getElementById('modalBikeTitle');
+    const modalPrice = document.getElementById('modalBikePrice');
+    const modalImg = document.getElementById('modalBikeImg');
+    const modalSpecs = document.getElementById('modalBikeSpecs');
+    const modalWA = document.getElementById('modalWA');
+
+    document.querySelectorAll('.open-bike').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const data = JSON.parse(btn.getAttribute('data-bike'));
+        modalTitle.textContent = data.name;
+        modalPrice.textContent = data.price || '';
+        modalImg.src = data.img || '/assets/bike1.jpg';
+        modalSpecs.innerHTML = '<li>Helmet included</li><li>Free roadside support</li><li>Fuel not included</li>';
+        modalWA.href = `https://wa.me/94707615516?text=Hi%20RidexHub%20I%20want%20to%20book%20the%20${encodeURIComponent(data.name)}`;
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';
+      });
+    });
+
+    // close modal
+    document.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', ()=>{ modal.classList.add('hidden'); modal.style.display='none'; }));
+
+    // contact form placeholder
+    document.getElementById('inlineContact').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      alert('Thanks — message sent (placeholder). We will contact you via email.');
+      e.target.reset();
+    });
+
+    // keyboard escape to close modal and mobile menu
+    document.addEventListener('keydown', (e)=> {
+      if (e.key === 'Escape') {
+        modal.classList.add('hidden'); mobileMenu.style.transform = 'translateX(100%)';
+      }
+    });
+
+    // smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (ev)=>{
+        const href = a.getAttribute('href');
+        if (href.length > 1) {
+          ev.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
