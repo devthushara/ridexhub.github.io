@@ -516,7 +516,7 @@
 
           <details class="bg-white p-4 rounded-lg shadow">
             <summary class="font-semibold cursor-pointer">What emergency numbers should I know in Sri Lanka?</summary>
-            <p class="mt-2 text-sm text-gray-600">Rental Company Helpline: [Insert company number]<br>Police Emergency: 119<br>Ambulance: 1990<br>Fire &amp; Rescue: 110<br>Tourist Police (Colombo): +94 11 2421052</p>
+            <p class="mt-2 text-sm text-gray-600">Rental Company Helpline: +94 70 761 5516<br>Police Emergency: 119<br>Ambulance: 1990<br>Fire &amp; Rescue: 110<br>Tourist Police (Colombo): +94 11 2421052</p>
           </details>
 
           <details class="bg-white p-4 rounded-lg shadow">
@@ -861,6 +861,20 @@
         toggle.style.display = 'none';
       }
       update();
+    })();
+
+    // Ensure only one FAQ <details> is open at a time
+    (function(){
+      const faqList = document.getElementById('faqList');
+      if (!faqList) return;
+      faqList.addEventListener('toggle', (e) => {
+        // If a details was just opened, close other open details
+        const open = e.target;
+        if (!open.open) return; // we only care when an item opens
+        Array.from(faqList.querySelectorAll('details')).forEach(d => {
+          if (d !== open && d.open) d.open = false;
+        });
+      }, true);
     })();
   </script>
 </body>
