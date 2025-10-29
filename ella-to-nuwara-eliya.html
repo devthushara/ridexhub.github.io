@@ -10,6 +10,32 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- Tailwind config copy from index for site colors & fonts -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fff9f6',
+              100: '#fff0e6',
+              300: '#f7c9a1',
+              500: '#f97316',
+              700: '#dc6b12'
+            },
+            tealish: { 500: '#0f766e' },
+            charcoal: { DEFAULT: '#111827' }
+          },
+          fontFamily: {
+            display: ['Poppins','system-ui','-apple-system','Segoe UI','Roboto'],
+            body: ['Inter','system-ui','-apple-system','Segoe UI','Roboto']
+          },
+          boxShadow: { soft: '0 8px 30px rgba(15, 23, 42, 0.06)' },
+          borderRadius: { xl: '14px' }
+        }
+      }
+    }
+  </script>
   <style>
     body { background: #f8fafc }
   .prose img { border-radius: 12px; }
