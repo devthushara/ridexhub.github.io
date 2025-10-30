@@ -139,13 +139,31 @@
           </div>
         </div>
 
-        <!-- big photo column -->
+        <!-- big photo column (advertising carousel) -->
         <div class="md:col-span-6 order-1 md:order-2">
           <div class="relative rounded-2xl overflow-hidden shadow-soft reveal" style="transition-delay:140ms">
-            <img src="https://picsum.photos/seed/hero-bike/1200/700" alt="Rider on scenic road" class="w-full h-72 md:h-[420px] object-cover -translate-y-2" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-            <!-- subtle caption -->
-            <div class="absolute left-6 bottom-6 bg-white/80 backdrop-blur-sm rounded-xl px-3 py-2 text-sm shadow">Delivery across south coast • Helmets included</div>
+            <!-- Carousel container -->
+            <div id="heroCarousel" class="relative w-full h-72 md:h-[420px]">
+              <img src="https://picsum.photos/seed/hero-bike/1200/700" alt="Rider on scenic road" class="carousel-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" loading="lazy">
+              <img src="https://picsum.photos/seed/hero-bike-2/1200/700" alt="Rider by the coast" class="carousel-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" loading="lazy">
+              <img src="https://picsum.photos/seed/hero-bike-3/1200/700" alt="Rider in the hills" class="carousel-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" loading="lazy">
+
+              <!-- subtle caption -->
+              <!-- <div id="heroCaption" class="absolute left-6 bottom-6 bg-white/80 backdrop-blur-sm rounded-xl px-3 py-2 text-sm shadow">Delivery across south coast • Helmets included</div> -->
+
+              <!-- optional controls (hidden on small screens) -->
+              <div class="absolute right-4 top-4 flex gap-2 opacity-80">
+                <button id="prevSlide" aria-label="Previous" class="hidden md:inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/70 hover:bg-white text-sm">‹</button>
+                <button id="nextSlide" aria-label="Next" class="hidden md:inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/70 hover:bg-white text-sm">›</button>
+              </div>
+
+              <!-- indicators -->
+              <div id="heroIndicators" class="absolute left-1/2 transform -translate-x-1/2 bottom-4 flex gap-2">
+                <button class="indicator w-2 h-2 rounded-full bg-white/60" data-index="0" aria-label="Slide 1"></button>
+                <button class="indicator w-2 h-2 rounded-full bg-white/40" data-index="1" aria-label="Slide 2"></button>
+                <button class="indicator w-2 h-2 rounded-full bg-white/40" data-index="2" aria-label="Slide 3"></button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -381,13 +399,25 @@
           <h3 class="text-xl font-display font-semibold">From Instagram</h3>
           <a href="#" class="text-sm text-tealish-500">View on Instagram</a>
         </div>
-        <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-          <img src="https://picsum.photos/seed/coast1/800/800" alt="Coastal ride" class="h-44 sm:h-56 md:h-40 w-full object-cover rounded-lg" loading="lazy">
-          <img src="https://picsum.photos/seed/road1/800/800" alt="Scenic road" class="h-44 sm:h-56 md:h-40 w-full object-cover rounded-lg" loading="lazy">
-          <img src="https://picsum.photos/seed/mountain1/800/800" alt="Mountain roads" class="h-44 sm:h-56 md:h-40 w-full object-cover rounded-lg" loading="lazy">
-          <img src="https://picsum.photos/seed/helmet1/800/800" alt="Rider helmet" class="h-44 sm:h-56 md:h-40 w-full object-cover rounded-lg" loading="lazy">
-          <img src="https://picsum.photos/seed/sunset1/800/800" alt="Sunset ride" class="h-44 sm:h-56 md:h-40 w-full object-cover rounded-lg" loading="lazy">
-          <img src="https://picsum.photos/seed/beach1/800/800" alt="Beach stop" class="h-44 sm:h-56 md:h-40 w-full object-cover rounded-lg" loading="lazy">
+        <div class="mt-6 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+          <div class="aspect-[3/4] w-full overflow-hidden rounded-lg">
+            <img src="https://picsum.photos/seed/coast1/800/1200" alt="Coastal ride" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="aspect-[3/4] w-full overflow-hidden rounded-lg">
+            <img src="https://picsum.photos/seed/road1/800/1200" alt="Scenic road" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="aspect-[3/4] w-full overflow-hidden rounded-lg">
+            <img src="https://picsum.photos/seed/mountain1/800/1200" alt="Mountain roads" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="aspect-[3/4] w-full overflow-hidden rounded-lg">
+            <img src="https://picsum.photos/seed/helmet1/800/1200" alt="Rider helmet" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="aspect-[3/4] w-full overflow-hidden rounded-lg">
+            <img src="https://picsum.photos/seed/sunset1/800/1200" alt="Sunset ride" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="aspect-[3/4] w-full overflow-hidden rounded-lg">
+            <img src="https://picsum.photos/seed/beach1/800/1200" alt="Beach stop" class="w-full h-full object-cover" loading="lazy">
+          </div>
         </div>
       </div>
     </section>
@@ -397,7 +427,7 @@
       <div class="max-w-7xl mx-auto px-4">
         <div class="flex items-center justify-between">
           <h2 class="text-2xl font-display font-semibold">Explore Sri Lanka</h2>
-          <a href="/blog.html" class="text-sm text-tealish-500">See all articles</a>
+          <!-- <a href="/blog.html" class="text-sm text-tealish-500">See all articles</a> -->
         </div>
 
         <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -461,7 +491,7 @@
 
           <details class="bg-white p-4 rounded-lg shadow">
             <summary class="font-semibold cursor-pointer">What documents do I need to rent a scooter or car in Sri Lanka?</summary>
-            <p class="mt-2 text-sm text-gray-600">To rent a scooter or motorbike, you need a valid drivers license issued in Sri Lanka, or an International Driving Permit (IDP) if you are a foreign visitor. Local citizens can use their national license for vehicles with appropriate endorsements for bikes or cars. Foreign nationals require both their home country license and an IDP endorsed for Sri Lanka, typically available at the automobile association counter or at the airport on arrival. A copy of your passport or national ID is required for verification.</p>
+            <p class="mt-2 text-sm text-gray-600">To rent a scooter or motorbike, you need a valid driver's license issued in Sri Lanka, or an International Driving Permit (IDP) if you are a foreign visitor. Local citizens can use their national license for vehicles with appropriate endorsements for bikes or cars. Foreign nationals require both their home country license and an IDP endorsed for Sri Lanka, typically available at the automobile association counter or at the airport on arrival. A copy of your passport or national ID is required for verification.</p>
           </details>
 
           <details class="bg-white p-4 rounded-lg shadow">
@@ -501,17 +531,17 @@
 
           <details class="bg-white p-4 rounded-lg shadow">
             <summary class="font-semibold cursor-pointer">Are there mileage limits?</summary>
-            <p class="mt-2 text-sm text-gray-600">Most rentals in Sri Lanka come with a daily mileage cap (usually 100150 km per day). Unlimited mileage options may be available at an extra cost; excess mileage incurs additional charges.</p>
+            <p class="mt-2 text-sm text-gray-600">Most rentals in Sri Lanka come with a daily mileage cap (usually 100-150 km per day). Unlimited mileage options may be available at an extra cost; excess mileage incurs additional charges.</p>
           </details>
 
           <details class="bg-white p-4 rounded-lg shadow">
             <summary class="font-semibold cursor-pointer">What happens if my vehicle breaks down?</summary>
-            <p class="mt-2 text-sm text-gray-600">Call our 24/7 helpline. We provide roadside assistance and, if repairs cannot be made quickly, well arrange for a replacement vehicle whenever possible.</p>
+            <p class="mt-2 text-sm text-gray-600">Call our 24/7 helpline. We provide roadside assistance and, if repairs cannot be made quickly, we'll arrange for a replacement vehicle whenever possible.</p>
           </details>
 
           <details class="bg-white p-4 rounded-lg shadow">
             <summary class="font-semibold cursor-pointer">What do I do in case of accident?</summary>
-            <p class="mt-2 text-sm text-gray-600">Contact us immediately using our emergency hotline. You must also notify the local police for an accident reportthis is required for any insurance claims. Follow local traffic laws, drive responsibly, and always wear your helmet.</p>
+            <p class="mt-2 text-sm text-gray-600">Contact us immediately using our emergency hotline. You must also notify the local police for an accident report - this is required for any insurance claims. Follow local traffic laws, drive responsibly, and always wear your helmet.</p>
           </details>
 
           <details class="bg-white p-4 rounded-lg shadow">
@@ -521,7 +551,7 @@
 
           <details class="bg-white p-4 rounded-lg shadow">
             <summary class="font-semibold cursor-pointer">Are bookings refundable? Can I transfer my booking?</summary>
-            <p class="mt-2 text-sm text-gray-600">Bookings are typically non-refundable. If you need to transfer your booking to a friend or family member, contact us in advance and well assist where possible, subject to approval.</p>
+            <p class="mt-2 text-sm text-gray-600">Bookings are typically non-refundable. If you need to transfer your booking to a friend or family member, contact us in advance and we'll assist where possible, subject to approval.</p>
           </details>
 
           <details class="bg-white p-4 rounded-lg shadow">
@@ -746,7 +776,7 @@
 
   <!-- Minimal JS for interactions -->
   <script>
-        // mobile menu
+    // mobile menu
     const mobileBtn = document.getElementById('mobileBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileClose = document.getElementById('mobileClose');
@@ -875,6 +905,48 @@
           if (d !== open && d.open) d.open = false;
         });
       }, true);
+    })();
+
+    // Hero carousel: 3 slides, 3s interval, pause on hover
+    (function(){
+      const slides = Array.from(document.querySelectorAll('#heroCarousel .carousel-slide'));
+      const indicators = Array.from(document.querySelectorAll('#heroIndicators .indicator'));
+      const nextBtn = document.getElementById('nextSlide');
+      const prevBtn = document.getElementById('prevSlide');
+      let current = 0;
+      let timer = null;
+      const interval = 3000;
+
+      function show(index){
+        slides.forEach((s,i)=>{
+          s.style.opacity = (i===index)?'1':'0';
+        });
+        indicators.forEach((b,i)=> b.classList.toggle('bg-white/60', i===index));
+        current = index;
+      }
+
+      function next(){ show((current+1) % slides.length); }
+      function prev(){ show((current-1+slides.length) % slides.length); }
+
+      function start(){ timer = setInterval(next, interval); }
+      function stop(){ if (timer) { clearInterval(timer); timer = null; } }
+
+      // wire buttons
+      if (nextBtn) nextBtn.addEventListener('click', ()=>{ next(); stop(); start(); });
+      if (prevBtn) prevBtn.addEventListener('click', ()=>{ prev(); stop(); start(); });
+
+      // indicators
+      indicators.forEach(btn=> btn.addEventListener('click', (e)=>{ const i = Number(btn.dataset.index); show(i); stop(); start(); }));
+
+      // pause on hover
+      const carousel = document.getElementById('heroCarousel');
+      if (carousel) {
+        carousel.addEventListener('mouseenter', stop);
+        carousel.addEventListener('mouseleave', start);
+      }
+
+      // initialize
+      if (slides.length) { show(0); start(); }
     })();
   </script>
 </body>
