@@ -64,6 +64,8 @@
     /* horizontal scroll snap for testimonials */
     .snap-x { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
     .snap-child { scroll-snap-align: center; }
+  /* allow custom horizontal swipe handling while preserving vertical scroll */
+  #heroCarousel { touch-action: pan-y; }
   </style>
 </head>
 <body class="font-body bg-gray-50 text-gray-800 antialiased">
@@ -975,37 +977,44 @@
 
       // pause on pointer enter / touchstart and resume on pointer leave / touchend
       const carousel = document.getElementById('heroCarousel');
-      if (carousel) {
+  if (carousel) {
         carousel.addEventListener('pointerenter', stop);
         carousel.addEventListener('pointerleave', start);
 
         // touch / swipe support
-        let startX = 0;
+        let startX = null;
         let deltaX = 0;
         const threshold = 40; // px to qualify as swipe
 
         carousel.addEventListener('pointerdown', (e) => {
-          // treat as start of interaction
+          // if pointerdown started on a control button, don't treat as swipe start
+          const control = e.target.closest && e.target.closest('button');
+          if (control && (control === prevBtn || control === nextBtn)) {
+            // let the button's own click handler handle it; do not capture pointer
+            return;
+          }
+
+          // treat as start of interaction for swipe
           stop();
           startX = e.clientX;
           deltaX = 0;
-          // capture pointer to continue receiving events
-          if (carousel.setPointerCapture) carousel.setPointerCapture(e.pointerId);
+          // capture pointer to continue receiving events (if supported)
+          try { if (carousel.setPointerCapture) carousel.setPointerCapture(e.pointerId); } catch(err) {}
         });
 
         carousel.addEventListener('pointermove', (e) => {
-          if (typeof startX !== 'number') return;
+          if (startX === null) return;
           deltaX = e.clientX - startX;
         });
 
         function endInteraction(e){
           // release capture if any
-          try { if (e && e.pointerId && carousel.releasePointerCapture) carousel.releasePointerCapture(e.pointerId); } catch(e){}
-          if (Math.abs(deltaX) > threshold) {
+          try { if (e && e.pointerId && carousel.releasePointerCapture) carousel.releasePointerCapture(e.pointerId); } catch(err){}
+          if (startX !== null && Math.abs(deltaX) > threshold) {
             if (deltaX > 0) { prev(); } else { next(); }
           }
           // reset
-          startX = 0; deltaX = 0;
+          startX = null; deltaX = 0;
           // restart autoplay after short delay to avoid immediate advance
           setTimeout(start, 300);
         }
@@ -1014,6 +1023,8 @@
         carousel.addEventListener('pointercancel', endInteraction);
         carousel.addEventListener('pointerout', endInteraction);
         carousel.addEventListener('pointerleave', endInteraction);
+
+  // no delegated click handling; rely on direct button listeners above
       }
 
       // initialize
