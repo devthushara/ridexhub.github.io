@@ -152,16 +152,18 @@
               <!-- <div id="heroCaption" class="absolute left-6 bottom-6 bg-white/80 backdrop-blur-sm rounded-xl px-3 py-2 text-sm shadow">Delivery across south coast • Helmets included</div> -->
 
               <!-- optional controls (hidden on small screens) -->
-              <div class="absolute right-4 top-4 flex gap-2 opacity-80">
-                <button id="prevSlide" aria-label="Previous" class="hidden md:inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/70 hover:bg-white text-sm">‹</button>
-                <button id="nextSlide" aria-label="Next" class="hidden md:inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/70 hover:bg-white text-sm">›</button>
+              <div class="absolute right-4 top-4 flex gap-2 opacity-90">
+                <!-- Make controls visible on mobile as well for better touch accessibility -->
+                <button id="prevSlide" aria-label="Previous" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/80 hover:bg-white text-sm">‹</button>
+                <button id="nextSlide" aria-label="Next" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/80 hover:bg-white text-sm">›</button>
               </div>
 
               <!-- indicators -->
-              <div id="heroIndicators" class="absolute left-1/2 transform -translate-x-1/2 bottom-4 flex gap-2">
-                <button class="indicator w-2 h-2 rounded-full bg-white/60" data-index="0" aria-label="Slide 1"></button>
-                <button class="indicator w-2 h-2 rounded-full bg-white/40" data-index="1" aria-label="Slide 2"></button>
-                <button class="indicator w-2 h-2 rounded-full bg-white/40" data-index="2" aria-label="Slide 3"></button>
+              <div id="heroIndicators" class="absolute left-1/2 transform -translate-x-1/2 bottom-4 flex gap-3">
+                <!-- Larger indicators for touch targets; use button semantics -->
+                <button class="indicator w-3 h-3 rounded-full bg-white/60" data-index="0" aria-label="Slide 1"></button>
+                <button class="indicator w-3 h-3 rounded-full bg-white/40" data-index="1" aria-label="Slide 2"></button>
+                <button class="indicator w-3 h-3 rounded-full bg-white/40" data-index="2" aria-label="Slide 3"></button>
               </div>
             </div>
           </div>
@@ -907,7 +909,7 @@
       }, true);
     })();
 
-    // Hero carousel: 3 slides, 3s interval, pause on hover
+    // Hero carousel: 3 slides, 3s interval, pause on hover/touch, swipe support for mobile
     (function(){
       const slides = Array.from(document.querySelectorAll('#heroCarousel .carousel-slide'));
       const indicators = Array.from(document.querySelectorAll('#heroIndicators .indicator'));
@@ -917,32 +919,75 @@
       let timer = null;
       const interval = 3000;
 
+      function updateIndicators(index){
+        indicators.forEach((b,i)=>{
+          b.classList.toggle('bg-white/60', i===index);
+          b.classList.toggle('bg-white/40', i!==index);
+        });
+      }
+
       function show(index){
         slides.forEach((s,i)=>{
           s.style.opacity = (i===index)?'1':'0';
         });
-        indicators.forEach((b,i)=> b.classList.toggle('bg-white/60', i===index));
+        updateIndicators(index);
         current = index;
       }
 
       function next(){ show((current+1) % slides.length); }
       function prev(){ show((current-1+slides.length) % slides.length); }
 
-      function start(){ timer = setInterval(next, interval); }
+      function start(){ if (!timer) timer = setInterval(next, interval); }
       function stop(){ if (timer) { clearInterval(timer); timer = null; } }
 
-      // wire buttons
+      // wire buttons (always visible on mobile now)
       if (nextBtn) nextBtn.addEventListener('click', ()=>{ next(); stop(); start(); });
       if (prevBtn) prevBtn.addEventListener('click', ()=>{ prev(); stop(); start(); });
 
-      // indicators
+      // indicators - larger hit areas
       indicators.forEach(btn=> btn.addEventListener('click', (e)=>{ const i = Number(btn.dataset.index); show(i); stop(); start(); }));
 
-      // pause on hover
+      // pause on pointer enter / touchstart and resume on pointer leave / touchend
       const carousel = document.getElementById('heroCarousel');
       if (carousel) {
-        carousel.addEventListener('mouseenter', stop);
-        carousel.addEventListener('mouseleave', start);
+        carousel.addEventListener('pointerenter', stop);
+        carousel.addEventListener('pointerleave', start);
+
+        // touch / swipe support
+        let startX = 0;
+        let deltaX = 0;
+        const threshold = 40; // px to qualify as swipe
+
+        carousel.addEventListener('pointerdown', (e) => {
+          // treat as start of interaction
+          stop();
+          startX = e.clientX;
+          deltaX = 0;
+          // capture pointer to continue receiving events
+          if (carousel.setPointerCapture) carousel.setPointerCapture(e.pointerId);
+        });
+
+        carousel.addEventListener('pointermove', (e) => {
+          if (typeof startX !== 'number') return;
+          deltaX = e.clientX - startX;
+        });
+
+        function endInteraction(e){
+          // release capture if any
+          try { if (e && e.pointerId && carousel.releasePointerCapture) carousel.releasePointerCapture(e.pointerId); } catch(e){}
+          if (Math.abs(deltaX) > threshold) {
+            if (deltaX > 0) { prev(); } else { next(); }
+          }
+          // reset
+          startX = 0; deltaX = 0;
+          // restart autoplay after short delay to avoid immediate advance
+          setTimeout(start, 300);
+        }
+
+        carousel.addEventListener('pointerup', endInteraction);
+        carousel.addEventListener('pointercancel', endInteraction);
+        carousel.addEventListener('pointerout', endInteraction);
+        carousel.addEventListener('pointerleave', endInteraction);
       }
 
       // initialize
