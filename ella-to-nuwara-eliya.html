@@ -79,23 +79,7 @@
     </div>
   </header>
 
-  <!-- mobile drawer -->
-  <div id="mobileMenu" class="fixed inset-0 z-50 bg-white transform translate-x-full transition-transform md:hidden">
-    <div class="p-6">
-      <div class="flex items-center justify-between">
-        <div class="font-display font-bold">RidexHub</div>
-        <button id="mobileClose" aria-label="Close menu" class="text-xl">✕</button>
-      </div>
-      <nav id="mobileNav" class="mt-8 flex flex-col gap-4 text-lg">
-        <a href="index.html#about" class="block mobile-link">About</a>
-        <a href="index.html#fleet" class="block mobile-link">Fleet</a>
-        <a href="index.html#explore" class="block mobile-link">Explore</a>
-        <a href="index.html#faq" class="block mobile-link">FAQ</a>
-        <a href="index.html#contact" class="block mobile-link">Contact</a>
-        <a href="index.html#book" class="mt-4 inline-block px-4 py-2 rounded-xl bg-brand-500 text-white mobile-link">Book a Ride</a>
-      </nav>
-    </div>
-  </div>
+  <!-- mobile drawer placeholder (moved to bottom for parity) -->
 
   <main class="pt-20">
     <article class="max-w-3xl mx-auto px-4 py-12">
@@ -289,12 +273,80 @@
       else header.classList.remove('shadow-md');
     });
   </script>
+  <!-- mobile menu & backdrop (copied from index.html for parity) -->
+  <div id="mobileBackdrop" style="z-index:99999;" class="fixed inset-0 bg-black/30 opacity-0 pointer-events-none transition-opacity md:hidden"></div>
 
-      <!-- Floating WhatsApp button (site-wide) -->
-      <a id="whatsBtn" aria-label="WhatsApp chat" href="https://wa.me/94707615516" target="_blank" class="fixed right-4 bottom-4 z-50 inline-flex items-center gap-3 px-4 py-3 rounded-full bg-brand-500 text-white shadow-lg hover:scale-105 transition">
-        <i class="ri-whatsapp-fill w-6 h-6" aria-hidden="true"></i>
-        <span class="hidden sm:inline">Chat</span>
-      </a>
+  <aside id="mobileMenu" style="z-index:100000;" class="fixed top-0 right-0 h-full w-0 max-w-xs bg-white/60 backdrop-blur-sm shadow-lg transform translate-x-full transition-all md:hidden" aria-hidden="true">
+    <div class="p-6 h-full flex flex-col">
+      <div class="flex items-center justify-between">
+        <div class="font-display font-bold">RidexHub</div>
+        <button id="mobileClose" aria-label="Close menu" class="text-xl">✕</button>
+      </div>
+      <nav id="mobileNav" class="mt-8 flex flex-col gap-4 text-lg">
+        <a href="#about" class="block mobile-link">About</a>
+        <a href="#fleet" class="block mobile-link">Fleet</a>
+        <a href="#explore" class="block mobile-link">Explore</a>
+        <a href="#faq" class="block mobile-link">FAQ</a>
+        <a href="#contact" class="block mobile-link">Contact</a>
+        <a href="#book" class="mt-4 inline-block px-4 py-2 rounded-xl bg-brand-500 text-white mobile-link">Book a Ride</a>
+      </nav>
+      <div class="mt-auto text-sm text-gray-500">© 2025 RidexHub</div>
+    </div>
+  </aside>
 
-    </body>
-    </html>
+  <a id="whatsBtn" aria-label="WhatsApp chat" href="https://wa.me/94707615516" target="_blank" class="fixed right-4 bottom-4 z-50 inline-flex items-center gap-3 px-4 py-3 rounded-full bg-brand-500 text-white shadow-lg hover:scale-105 transition">
+    <i class="ri-whatsapp-fill w-6 h-6" aria-hidden="true"></i>
+    <span class="hidden sm:inline">Chat</span>
+  </a>
+
+  <!-- Minimal JS for interactions (mobile menu wiring copied from index) -->
+  <script>
+    // mobile menu
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    const mobileBackdrop = document.getElementById('mobileBackdrop');
+    const mobilePanel = document.getElementById('mobileMenu');
+
+    function openMobile() {
+      // show backdrop
+  mobileBackdrop.classList.remove('opacity-0');
+  mobileBackdrop.classList.add('opacity-100');
+  mobileBackdrop.classList.remove('pointer-events-none');
+      // slide in panel
+      mobilePanel.style.width = '280px';
+      mobilePanel.style.transform = 'translateX(0)';
+      mobilePanel.setAttribute('aria-hidden','false');
+      // prevent body scroll
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobile() {
+  mobileBackdrop.classList.remove('opacity-100');
+  mobileBackdrop.classList.add('opacity-0');
+  mobileBackdrop.classList.add('pointer-events-none');
+      mobilePanel.style.transform = 'translateX(100%)';
+      mobilePanel.style.width = '0';
+      mobilePanel.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+
+    mobileBtn.addEventListener('click', openMobile);
+    mobileClose.addEventListener('click', closeMobile);
+    mobileBackdrop.addEventListener('click', closeMobile);
+
+    // close mobile menu when any nav link is clicked (improves mobile UX)
+    mobileLinks.forEach(el => el.addEventListener('click', () => { closeMobile(); }));
+
+    // reveal on intersection
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: .08 });
+    revealEls.forEach(el => io.observe(el));
+  </script>
+
+  </body>
+  </html>

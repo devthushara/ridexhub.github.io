@@ -52,7 +52,7 @@
 </head>
 <body class="font-body text-gray-800">
 
-  <!-- Sticky translucent header (unified with index) -->
+  <!-- Sticky translucent header -->
   <header id="siteHeader" class="fixed inset-x-0 top-0 z-50 bg-white/60 backdrop-blur-md border-b border-white/30 shadow-md">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
     <a href="index.html#hero" class="flex items-center gap-3" aria-label="rideXhub home">
@@ -71,7 +71,7 @@
         <a class="hover:text-tealish-500 transition" href="index.html#explore">Explore</a>
         <a class="hover:text-tealish-500 transition" href="index.html#faq">FAQ</a>
         <a class="hover:text-tealish-500 transition" href="index.html#contact">Contact</a>
-        <a href="#book" class="ml-2 inline-flex items-center px-3 py-2 rounded-xl text-white bg-brand-500 shadow-soft hover:bg-brand-700 transition">Book a Ride</a>
+        <a href="index.html#book" class="ml-2 inline-flex items-center px-3 py-2 rounded-xl text-white bg-brand-500 shadow-soft hover:bg-brand-700 transition">Book a Ride</a>
       </nav>
 
       <!-- mobile menu button -->
@@ -79,26 +79,7 @@
     </div>
   </header>
 
-  <!-- mobile drawer (unified) -->
-  <div id="mobileMenu" class="fixed inset-0 z-50 bg-white transform translate-x-full transition-transform md:hidden">
-    <div class="p-6">
-      <div class="flex items-center justify-between">
-        <a href="/index.html" class="font-display font-bold flex items-center gap-3">
-          <img src="/favicon.svg" alt="RidexHub" class="w-8 h-8 rounded-full p-1 border bg-white" />
-          <span>RidexHub</span>
-        </a>
-        <button id="mobileClose" aria-label="Close menu" class="text-xl">✕</button>
-      </div>
-      <nav id="mobileNav" class="mt-8 flex flex-col gap-4 text-lg">
-        <a href="index.html#about" class="block mobile-link">About</a>
-        <a href="index.html#fleet" class="block mobile-link">Fleet</a>
-        <a href="index.html#explore" class="block mobile-link">Explore</a>
-        <a href="index.html#faq" class="block mobile-link">FAQ</a>
-        <a href="index.html#contact" class="block mobile-link">Contact</a>
-        <a href="index.html#book" class="mt-4 inline-block px-4 py-2 rounded-xl bg-brand-500 text-white mobile-link">Book a Ride</a>
-      </nav>
-    </div>
-  </div>
+  <!-- mobile drawer placeholder (moved to bottom for parity) -->
 
   <main class="pt-20">
     <article class="max-w-3xl mx-auto px-4 py-12">
@@ -281,9 +262,66 @@
       else header.classList.remove('shadow-md');
     });
   </script>
+  <!-- mobile backdrop for articles -->
+  <div id="mobileBackdrop" style="z-index:99999;" class="fixed inset-0 bg-black/30 opacity-0 pointer-events-none transition-opacity md:hidden"></div>
 
-</body>
-</html>
+  <!-- mobile menu (right-side panel) -->
+  <aside id="mobileMenu" style="z-index:100000;" class="fixed top-0 right-0 h-full w-0 max-w-xs bg-white/60 backdrop-blur-sm shadow-lg transform translate-x-full transition-all md:hidden" aria-hidden="true">
+    <div class="p-6 h-full flex flex-col">
+      <div class="flex items-center justify-between">
+        <div class="font-display font-bold">RidexHub</div>
+        <button id="mobileClose" aria-label="Close menu" class="text-xl">✕</button>
+      </div>
+      <nav id="mobileNav" class="mt-8 flex flex-col gap-4 text-lg">
+        <a href="#about" class="block mobile-link">About</a>
+        <a href="#fleet" class="block mobile-link">Fleet</a>
+        <a href="#explore" class="block mobile-link">Explore</a>
+        <a href="#faq" class="block mobile-link">FAQ</a>
+        <a href="#contact" class="block mobile-link">Contact</a>
+        <a href="#book" class="mt-4 inline-block px-4 py-2 rounded-xl bg-brand-500 text-white mobile-link">Book a Ride</a>
+      </nav>
+      <div class="mt-auto text-sm text-gray-500">© 2025 RidexHub</div>
+    </div>
+  </aside>
+
+  <script>
+    // Mobile menu wiring for article pages (match behavior on index.html)
+    (function(){
+      const mobileBtn = document.getElementById('mobileBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileClose = document.getElementById('mobileClose');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+      const mobileBackdrop = document.getElementById('mobileBackdrop');
+
+      function lockBody(){ document.documentElement.style.overflow='hidden'; document.body.style.overflow='hidden'; }
+      function unlockBody(){ document.documentElement.style.overflow=''; document.body.style.overflow=''; }
+
+      function openMobile(){
+        mobileBackdrop.classList.remove('opacity-0'); mobileBackdrop.classList.add('opacity-100'); mobileBackdrop.classList.remove('pointer-events-none');
+        // ensure panel has width so inner buttons are visible (280px matches index behaviour)
+        mobileMenu.style.width = '280px';
+        mobileMenu.style.transform = 'translateX(0)';
+        mobileMenu.setAttribute('aria-hidden','false');
+        lockBody();
+      }
+      function closeMobile(){
+        mobileBackdrop.classList.remove('opacity-100'); mobileBackdrop.classList.add('opacity-0'); mobileBackdrop.classList.add('pointer-events-none');
+        // hide panel and reset width to collapse
+        mobileMenu.style.transform = 'translateX(100%)';
+        mobileMenu.style.width = '0';
+        mobileMenu.setAttribute('aria-hidden','true');
+        unlockBody();
+      }
+
+      if (mobileBtn) mobileBtn.addEventListener('click', openMobile);
+      if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+      if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobile);
+      mobileLinks.forEach(el=> el.addEventListener('click', ()=> closeMobile()));
+      // close on Escape
+      document.addEventListener('keydown', (e)=>{ if (e.key==='Escape') closeMobile(); });
+    })();
+  </script>
+
   <!-- Floating WhatsApp button (site-wide) -->
   <a id="whatsBtn" aria-label="WhatsApp chat" href="https://wa.me/94707615516" target="_blank" class="fixed right-4 bottom-4 z-50 inline-flex items-center gap-3 px-4 py-3 rounded-full bg-brand-500 text-white shadow-lg hover:scale-105 transition">
     <i class="ri-whatsapp-fill w-6 h-6" aria-hidden="true"></i>

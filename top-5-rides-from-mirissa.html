@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Top 5 Rides from Mirissa — RidexHub</title>
-  <meta name="description" content="Top 5 motorbike rides from Mirissa — coastal routes, tips, and quick Google Map links." />
+  <title>Top 5 Rides from Mirissa — Coastal & Inland Motorbike Routes</title>
+  <meta name="description" content="Top 5 motorbike rides from Mirissa — coastal routes, tips, and map pins." />
   <meta property="og:title" content="Top 5 Rides from Mirissa — RidexHub" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop&crop=entropy&ixlib=rb-4.0.3&s=9a7f5a6c3d4b2e1f6a7b8c9d0e1f2a3b" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop&crop=entropy&ixlib=rb-4.0.3&s=ea5d2d8a0a2b7e6f7f8d6b6c1f8e9a2b" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
@@ -79,31 +79,13 @@
     </div>
   </header>
 
-  <!-- mobile drawer (unified) -->
-  <div id="mobileMenu" class="fixed inset-0 z-50 bg-white transform translate-x-full transition-transform md:hidden">
-    <div class="p-6">
-      <div class="flex items-center justify-between">
-        <a href="/index.html" class="font-display font-bold flex items-center gap-3">
-          <img src="/favicon.svg" alt="RidexHub" class="w-8 h-8 rounded-full p-1 border bg-white" />
-          <span>RidexHub</span>
-        </a>
-        <button id="mobileClose" aria-label="Close menu" class="text-xl">✕</button>
-      </div>
-      <nav id="mobileNav" class="mt-8 flex flex-col gap-4 text-lg">
-        <a href="index.html#about" class="block mobile-link">About</a>
-        <a href="index.html#fleet" class="block mobile-link">Fleet</a>
-        <a href="index.html#explore" class="block mobile-link">Explore</a>
-        <a href="index.html#faq" class="block mobile-link">FAQ</a>
-        <a href="index.html#contact" class="block mobile-link">Contact</a>
-        <a href="index.html#book" class="mt-4 inline-block px-4 py-2 rounded-xl bg-brand-500 text-white mobile-link">Book a Ride</a>
-      </nav>
-    </div>
-  </div>
+  <!-- mobile drawer placeholder (moved to bottom) -->
 
   <main class="pt-20">
     <article class="max-w-3xl mx-auto px-4 py-12">
       <header class="space-y-4">
-  <img src="img/travel/daniel-klein-Qx8_d5dGhrs-unsplash.jpg" alt="Mirissa coastline" class="w-full h-72 object-cover rounded-2xl shadow-soft" loading="lazy">
+      <!-- hero image: use lazy decoding, low fetch priority, and explicit size to reduce memory on mobile -->
+      <img src="img/travel/daniel-klein-Qx8_d5dGhrs-unsplash.jpg" alt="Mirissa coastline" class="w-full max-h-72 object-cover rounded-2xl shadow-soft" loading="lazy" decoding="async" fetchpriority="low" width="1200" height="500" />
         <div class="flex items-center justify-between">
           <div>
             <h1 class="font-display text-3xl font-extrabold">Top 5 Rides from Mirissa — Coastal & Inland Motorbike Routes</h1>
@@ -279,13 +261,80 @@
       else header.classList.remove('shadow-md');
     });
   </script>
+  <!-- mobile menu & backdrop (copied from index.html for parity) -->
+  <div id="mobileBackdrop" style="z-index:99999;" class="fixed inset-0 bg-black/30 opacity-0 pointer-events-none transition-opacity md:hidden"></div>
 
-</body>
-</html>
-  <!-- Floating WhatsApp button (site-wide) -->
+  <aside id="mobileMenu" style="z-index:100000;" class="fixed top-0 right-0 h-full w-0 max-w-xs bg-white/60 backdrop-blur-sm shadow-lg transform translate-x-full transition-all md:hidden" aria-hidden="true">
+    <div class="p-6 h-full flex flex-col">
+      <div class="flex items-center justify-between">
+        <div class="font-display font-bold">RidexHub</div>
+        <button id="mobileClose" aria-label="Close menu" class="text-xl">✕</button>
+      </div>
+      <nav id="mobileNav" class="mt-8 flex flex-col gap-4 text-lg">
+        <a href="#about" class="block mobile-link">About</a>
+        <a href="#fleet" class="block mobile-link">Fleet</a>
+        <a href="#explore" class="block mobile-link">Explore</a>
+        <a href="#faq" class="block mobile-link">FAQ</a>
+        <a href="#contact" class="block mobile-link">Contact</a>
+        <a href="#book" class="mt-4 inline-block px-4 py-2 rounded-xl bg-brand-500 text-white mobile-link">Book a Ride</a>
+      </nav>
+      <div class="mt-auto text-sm text-gray-500">© 2025 RidexHub</div>
+    </div>
+  </aside>
+
   <a id="whatsBtn" aria-label="WhatsApp chat" href="https://wa.me/94707615516" target="_blank" class="fixed right-4 bottom-4 z-50 inline-flex items-center gap-3 px-4 py-3 rounded-full bg-brand-500 text-white shadow-lg hover:scale-105 transition">
     <i class="ri-whatsapp-fill w-6 h-6" aria-hidden="true"></i>
     <span class="hidden sm:inline">Chat</span>
   </a>
 
+  <!-- Minimal JS for interactions (mobile menu wiring copied from index) -->
+  <script>
+    // mobile menu
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    const mobileBackdrop = document.getElementById('mobileBackdrop');
+    const mobilePanel = document.getElementById('mobileMenu');
+
+    function openMobile() {
+      // show backdrop
+  mobileBackdrop.classList.remove('opacity-0');
+  mobileBackdrop.classList.add('opacity-100');
+  mobileBackdrop.classList.remove('pointer-events-none');
+      // slide in panel
+      mobilePanel.style.width = '280px';
+      mobilePanel.style.transform = 'translateX(0)';
+      mobilePanel.setAttribute('aria-hidden','false');
+      // prevent body scroll
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobile() {
+  mobileBackdrop.classList.remove('opacity-100');
+  mobileBackdrop.classList.add('opacity-0');
+  mobileBackdrop.classList.add('pointer-events-none');
+      mobilePanel.style.transform = 'translateX(100%)';
+      mobilePanel.style.width = '0';
+      mobilePanel.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+
+    mobileBtn.addEventListener('click', openMobile);
+    mobileClose.addEventListener('click', closeMobile);
+    mobileBackdrop.addEventListener('click', closeMobile);
+
+    // close mobile menu when any nav link is clicked (improves mobile UX)
+    mobileLinks.forEach(el => el.addEventListener('click', () => { closeMobile(); }));
+
+    // reveal on intersection
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: .08 });
+    revealEls.forEach(el => io.observe(el));
+  </script>
+
+</body>
 </html>
