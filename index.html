@@ -7,7 +7,7 @@
   <meta name="description" content="Discover Sri Lanka from the scenic shores of Madiha with RIDE X HUB — modern scooters, motorcycles and electric bikes. Affordable rates, free safety gear, driver options and easy booking via WhatsApp, call, email or form." />
   <meta property="og:title" content="RIDE X HUB — Discover Sri Lanka from Madiha" />
   <meta property="og:description" content="Founded by local riders, RIDE X HUB offers a modern fleet for adventure, leisure and eco-friendly travel. Book via WhatsApp, call, email or our website." />
-  <meta property="og:image" content="https://picsum.photos/seed/og-ridexhub/1200/630" />
+  <meta property="og:image" content="favicon/favicon-16x16.png" />
   <meta name="theme-color" content="#f97316">
 
   <!-- Fonts -->
@@ -988,7 +988,7 @@
         modalPrice.innerHTML = `<div class="text-lg md:text-2xl font-extrabold text-gray-900">${data.price || ''}</div>` + (data.deposit ? `<div class="text-sm font-semibold text-gray-500 mt-1">Deposit: ${data.deposit}</div>` : '');
 
         // build modal slides from data.imgs or single data.img
-        const imgs = (Array.isArray(data.imgs) && data.imgs.length) ? data.imgs : [data.img || 'https://picsum.photos/seed/bike1/800/600'];
+        const imgs = (Array.isArray(data.imgs) && data.imgs.length) ? data.imgs : [data.img || 'logo.png'];
         if (modalSlidesWrap) {
           modalSlidesWrap.innerHTML = imgs.map(src => `<img src="${src}" class="modal-slide absolute inset-0 w-full h-full object-cover rounded-lg transition-opacity duration-200" />`).join('');
           // prefer to show the same image index as the fleet card if available
