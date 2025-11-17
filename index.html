@@ -103,6 +103,9 @@
   }
   /* modal slider styling */
   #modalSlider { position: relative; }
+  /* Electric vehicle highlight color */
+  .text-ev-blue { color: #0ea5e9; }
+  .bg-ev-blue { background-color: #0ea5e9; }
   .modal-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: opacity .25s ease-in-out; }
   .modal-prev, .modal-next { z-index: 60; }
   /* ensure contact panel doesn't cover map controls on small screens
@@ -329,13 +332,14 @@
           <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
             <div class="relative h-56 overflow-hidden bg-gray-100">
               <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/yadea.jpg" alt="Yadea VoltGuard EV Motor Scooter" loading="lazy">
+              <span class="absolute top-3 right-3 z-30 inline-block bg-ev-blue text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">EV</span>
               <button class="fleet-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Previous photo">‹</button>
               <button class="fleet-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Next photo">›</button>
             </div>
             <div class="p-4">
               <div class="flex items-start justify-between">
                 <div>
-                  <h3 class="font-semibold">Yadea VoltGuard EV Motor Scooter</h3>
+                  <h3 class="font-semibold"><span class="text-ev-blue">Yadea VoltGuard EV Motor Scooter</span></h3>
                   <p class="text-xs text-gray-500">Electric • Longer range rides</p>
                 </div>
                 <div class="text-right font-semibold">USD 15/day</div>
@@ -350,6 +354,8 @@
           <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
             <div class="relative h-56 overflow-hidden bg-gray-100">
               <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/xiaomi.jpg" alt="Xiaomi Electric Scooter Pro" loading="lazy">
+              <span class="absolute top-3 right-3 z-30 inline-block bg-ev-blue text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">EV</span>
+              <span class="absolute top-3 left-3 z-30 inline-block bg-tealish-500 text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">No driving license required</span>
               <!-- removed second Xiaomi image -->
               <button class="fleet-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Previous photo">‹</button>
               <button class="fleet-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Next photo">›</button>
@@ -357,14 +363,57 @@
             <div class="p-4">
               <div class="flex items-start justify-between">
                 <div>
-                  <h3 class="font-semibold">Xiaomi Electric Scooter Pro</h3>
+                  <h3 class="font-semibold"><span class="text-ev-blue">Xiaomi Electric Scooter Pro</span></h3>
                   <p class="text-xs text-gray-500">Foldable • Lightweight urban travel</p>
                 </div>
-                <div class="text-right font-semibold">USD 8/day</div>
+                <div class="text-right font-semibold text-tealish-500">USD 8/day</div>
               </div>
               <div class="mt-4 flex gap-3">
                 <button class="open-bike px-4 py-2 rounded-xl border" data-bike='{"id":"xiaomi-pro","name":"Xiaomi Electric Scooter Pro","price":"USD 8/day","deposit":"USD 150","img":"img/bike/xiaomi.webp","imgs":["img/bike/xiaomi.webp"],"specs":["Motor Power: 300W nominal, 600W max","Battery: 474 Wh, lithium-ion","Range: 20-25 km per charge","Max Speed: Approx. 25 km/h","Weight: Approx. 14.2 kg","Features: Foldable design, pneumatic 8.5 inch tires, front KERS and rear disc brakes, front and rear lights, aircraft-grade aluminum frame","Suitable for: Lightweight, short-distance urban travel, easy portability"]}'>Details</button>
                 <a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-tealish-500 text-white" href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20to%20book%20the%20Xiaomi%20Electric%20Scooter%20Pro" target="_blank" rel="noopener noreferrer"><i class="ri-whatsapp-fill w-4 h-4 flex-shrink-0 align-middle" style="color:#25D366" aria-hidden="true"></i><span>Book WhatsApp</span></a>
+              </div>
+            </div>
+          </article>
+          
+          <!-- SUZUKI CHOINORI (new) -->
+          <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
+            <div class="relative h-56 overflow-hidden bg-gray-100">
+              <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/choi.jpg" alt="Suzuki Choinori Motor Scooter" loading="lazy">
+              <span class="absolute top-3 left-3 z-30 inline-block bg-tealish-500 text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">No driving license required</span>
+              <button class="fleet-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Previous photo">‹</button>
+              <button class="fleet-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Next photo">›</button>
+            </div>
+            <div class="p-4">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="font-semibold">Suzuki Choinori Motor Scooter</h3>
+                  <p class="text-xs text-gray-500">Lightweight 49cc • Ultra-efficient city scooter</p>
+                </div>
+                <div class="text-right font-semibold text-tealish-500">USD 12/day</div>
+              </div>
+              <div class="mt-4 flex gap-3">
+                <button class="open-bike px-4 py-2 rounded-xl border hover:bg-brand-50" data-bike='{"id":"suzuki-choinori","name":"Suzuki Choinori Motor Scooter","price":"USD 12/day","deposit":"USD 150","img":"img/bike/choi.jpg","imgs":["img/bike/choi.jpg"],"specs":["Engine: 49 cc, air-cooled, 4-stroke, OHV single-cylinder","Power: 2.0 PS (1.5 kW) @ 5500 rpm","Torque: 2.9 Nm @ 3500 rpm","Fuel Type: Unleaded petrol","Transmission: Automatic CVT (V-belt, stepless)","Fuel Capacity: 3 liters","Mileage: Approx. 76 km per liter (test value at 30 km/h)","Weight: 39-46 kg (dry)","Dimensions: 1500 mm (length) x 620 mm (width) x 975-1015 mm (height)","Seat Height: Around 700 mm","Brakes: Front and rear mechanical leading trailing drum brakes","Suspension: Front telescopic fork; no rear suspension","Tires: 80/90-10 (front and rear)","Starting System: Electric and kick starter","Max Range (full tank): ~225 km (estimate)","Suitable For: Solo rider, city commuting, lightweight easy handling","Recommended Use: Urban sightseeing, short rides, students and shoppers"]}'>Details</button>
+                <a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-tealish-500 text-white" href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20to%20book%20the%20Suzuki%20Choinori" target="_blank" rel="noopener noreferrer"><i class="ri-whatsapp-fill w-4 h-4 flex-shrink-0 align-middle" style="color:#25D366" aria-hidden="true"></i><span>Book WhatsApp</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PLACEHOLDER: Can't find your bike? -->
+          <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
+            <div class="relative h-56 overflow-hidden bg-gray-100 flex items-center justify-center">
+              <img src="img/bike/question.png" alt="Can't find your bike" class="w-full h-56 object-cover" loading="lazy">
+            </div>
+            <div class="p-4">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="font-semibold">Can't find your bike?</h3>
+                  <p class="text-xs text-gray-500">Tell us what you're looking for and we'll try to source it.</p>
+                </div>
+                <div class="text-right font-semibold">Custom request</div>
+              </div>
+              <div class="mt-4 flex gap-3">
+                <a class="px-4 py-2 rounded-xl border hover:bg-brand-50 inline-flex items-center gap-2" href="mailto:info@ridexhub.lk?subject=Help%20finding%20a%20bike&body=Hi%20RIDE%20X%20HUB%2C%0A%0AI%20could%20not%20find%20the%20bike%20I'm%20looking%20for.%20Please%20help%20me%20find%20one.%20Here%20are%20the%20details%3A%0A-Model%20or%20type%3A%0A-Pickup%20date%3A%0A-Return%20date%3A%0A-Location%3A%0A%0AThanks!" rel="noopener noreferrer"><i class="ri-mail-line w-4 h-4"></i><span>Request by email</span></a>
+                <a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-tealish-500 text-white" href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20need%20help%20finding%20a%20bike" target="_blank" rel="noopener noreferrer"><i class="ri-whatsapp-fill w-4 h-4 flex-shrink-0 align-middle" style="color:#25D366" aria-hidden="true"></i><span>Chat on WhatsApp</span></a>
               </div>
             </div>
           </article>
