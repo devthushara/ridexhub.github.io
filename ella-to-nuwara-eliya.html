@@ -10,6 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- favicons (use exported files from favicon/ folder) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
   <!-- Tailwind config copy from index for site colors & fonts -->
   <script>
     tailwind.config = {
@@ -58,8 +63,8 @@
   <header id="siteHeader" class="fixed inset-x-0 top-0 z-50 bg-white/60 backdrop-blur-md border-b border-white/30 shadow-md">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
     <a href="index.html#hero" class="flex items-center gap-3" aria-label="rideXhub home">
-        <!-- logo image: use single source-of-truth favicon.svg -->
-        <img src="favicon.svg" alt="RidexHub logo" class="w-9 h-9 p-1 rounded-full border bg-white" />
+  <!-- logo image: use PNG exported in favicon/ folder -->
+  <img src="favicon/favicon-32x32.png" alt="RidexHub logo" class="w-9 h-9 p-1 rounded-full border bg-white" />
         <div>
       <div class="font-display font-bold text-sm leading-none">rideXhub</div>
           <div class="text-xs text-gray-500 -mt-0.5">Ride Sri Lanka</div>
@@ -85,11 +90,15 @@
 
   <main class="pt-20">
     <article class="max-w-3xl mx-auto px-4 py-12">
-      <header class="space-y-4">
+      <header class="relative space-y-4">
+        <!-- decorative logo behind header title -->
+        <div class="decorative-article-logo-header absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+          <img src="logo.png" alt="" style="width:75%; max-width:720px; height:auto; opacity:0.4; transform:translateY(80%);" />
+        </div>
   <img src="img/travel/tharindu-madhusanka-ctiCt1_M8dY-unsplash.webp" alt="Ella to Nuwara Eliya tea estates" class="w-full h-72 object-cover rounded-2xl shadow-soft" loading="lazy">
         <div class="flex items-center justify-between">
           <div>
-            <h1 class="font-display text-3xl font-extrabold">Ella to Nuwara Eliya — Scenic Tea Route by Motorcycle</h1>
+            <h1 class="font-display text-3xl font-extrabold relative z-10">Ella to Nuwara Eliya — Scenic Tea Route by Motorcycle</h1>
             <div class="text-sm text-gray-500 mt-1">By RidexHub • Sep 10, 2025 • 10 min read</div>
           </div>
           <div class="flex items-center gap-3">
@@ -99,7 +108,11 @@
         </div>
       </header>
 
-      <div class="mt-6 prose max-w-none text-gray-700">
+      <div class="relative mt-6">
+        <div class="decorative-article-logo absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+          <img src="logo.png" alt="" style="width:80%; max-width:680px; height:auto; opacity:0.4; transform:translateY(80%);" />
+        </div>
+        <div class="prose max-w-none text-gray-700 relative z-10">
         <!-- Table of contents -->
         <nav class="mb-4 text-sm">
           <strong>On this page:</strong>
@@ -182,9 +195,10 @@
   <p>Every twist on the road from Ella to Nuwara Eliya feels like a discovery—plunging waterfalls, emerald tea valleys, and encounters with friendly villagers or fellow bikers sharing their favorite stops. Push through the mist as you ascend, challenge yourself on dramatic bends, and take a break with the freshest tea on earth, all while making memories in Sri Lanka’s wildest mountain heartland (see <a href="https://www.rofi.lk/blog/a-journey-through-sri-lanka-by-motorcycle-ultimate-routes-for-adventurous-travelers/" target="_blank" rel="noopener noreferrer">ROFI</a>, <a href="https://www.terraxplor.com/post/sri-lanka-ella-nuwara-eliya" target="_blank" rel="noopener noreferrer">TerraXplor</a>, and <a href="https://rideonsrilanka.com/the-ultimate-guide-to-travel-in-sri-lanka-by-motorcycle/" target="_blank" rel="noopener noreferrer">RideOnSriLanka</a>).</p>
 
   <p>Whether you’re a solo explorer or riding with friends, this route offers a bucket-list adventure. Mark your Google Map, prep your gear, and get ready to write your own bike story among the clouds! Make this journey and you’ll redefine what freedom feels like—one winding hill at a time.</p>
-      </div>
+  </div>
+  </div>
 
-      <div class="mt-8 flex gap-3 items-center">
+  <div class="mt-8 flex gap-3 items-center">
   <a href="index.html#explore" class="px-4 py-3 rounded-xl border">← Back to Explore</a>
   <a href="https://wa.me/94707615516?text=Hi%20RideXhub%20I%20want%20to%20book%20this%20bike" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl bg-teal-700 text-white inline-flex items-center gap-2"><i class="ri-whatsapp-fill w-4 h-4 flex-shrink-0 align-middle" style="color:#25D366" aria-hidden="true"></i><span>Book this bike</span></a>
       </div>

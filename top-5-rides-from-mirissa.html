@@ -10,6 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- favicons (use exported files from favicon/ folder) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
   <!-- Tailwind config copy from index for site colors & fonts -->
   <script>
     tailwind.config = {
@@ -58,8 +63,8 @@
   <header id="siteHeader" class="fixed inset-x-0 top-0 z-50 bg-white/60 backdrop-blur-md border-b border-white/30 shadow-md">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
     <a href="index.html#hero" class="flex items-center gap-3" aria-label="rideXhub home">
-        <!-- logo image: use single source-of-truth favicon.svg -->
-        <img src="favicon.svg" alt="RidexHub logo" class="w-9 h-9 p-1 rounded-full border bg-white" />
+  <!-- logo image: use PNG exported in favicon/ folder -->
+  <img src="favicon/favicon-32x32.png" alt="RidexHub logo" class="w-9 h-9 p-1 rounded-full border bg-white" />
         <div>
       <div class="font-display font-bold text-sm leading-none">rideXhub</div>
           <div class="text-xs text-gray-500 -mt-0.5">Ride Sri Lanka</div>
@@ -99,7 +104,11 @@
         </div>
       </header>
 
-      <nav class="mt-6 prose max-w-none text-gray-700" aria-label="Table of contents">
+      <div class="relative mt-6">
+        <div class="decorative-article-logo absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+          <img src="logo.png" alt="" style="width:80%; max-width:680px; height:auto; opacity:0.4; transform:translateY(28%);" />
+        </div>
+        <nav class="prose max-w-none text-gray-700 relative z-10" aria-label="Table of contents">
         <h2>Contents</h2>
         <ul>
           <li><a href="#weligama">1. Mirissa to Weligama</a></li>
@@ -111,8 +120,13 @@
           <li><a href="#quick-ref">Quick Reference Map Links</a></li>
         </ul>
       </nav>
+      </div>
 
-      <div class="mt-6 prose max-w-none text-gray-700">
+      <div class="relative mt-6">
+        <div class="decorative-article-logo absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+          <img src="logo.png" alt="" style="width:80%; max-width:680px; height:auto; opacity:0.4; transform:translateY(28%);" />
+        </div>
+        <div class="prose max-w-none text-gray-700 relative z-10">
         <p>Riding a motorbike from Mirissa unlocks a world of coastal charm and inland adventure, where golden beaches meet lush greenery, and every route offers a fresh dose of thrill and discovery. Whether you're after sun-kissed waves, secret coves, or winding country roads, here are the top 5 rides from Mirissa that will satiate your wanderlust and fuel your adventurous spirit.</p>
 
         <h3 id="weligama">1. Mirissa to Weligama: Coastal Bliss and Stilt Fishermen</h3>
@@ -170,7 +184,8 @@
         </div>
 
         <p class="text-sm text-gray-500 mt-4">Get ready to ride, explore, and fall in love with Sri Lanka’s stunning south coast, one coastal mile at a time!</p>
-      </div>
+  </div>
+  </div>
 
       <div class="mt-8 flex gap-3 items-center">
   <a href="index.html#explore" class="px-4 py-3 rounded-xl border">← Back to Explore</a>

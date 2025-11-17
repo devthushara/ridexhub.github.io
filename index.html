@@ -17,8 +17,12 @@
   <!-- Remix Icon (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
-  <!-- Favicon (scalable SVG) -->
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <!-- Favicons and app icons -->
+  <link rel="icon" href="favicon/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" href="favicon/favicon-16x16.png" sizes="16x16" />
+  <link rel="shortcut icon" href="favicon/favicon.ico" />
+  <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="favicon/site.webmanifest" />
 
   <!-- Tailwind (CDN for prototype) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -101,6 +105,16 @@
   #modalSlider { position: relative; }
   .modal-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: opacity .25s ease-in-out; }
   .modal-prev, .modal-next { z-index: 60; }
+  /* ensure contact panel doesn't cover map controls on small screens
+     move it to bottom center on mobile, keep top-right on md+ */
+  .contact-panel { position: absolute; z-index: 60; }
+  /* make embedded map taller on small screens so Google Maps top controls
+     (directions/search) have more visible space and aren't overlapped */
+  .map-wrap { height: 560px; }
+  @media (max-width: 640px) {
+    .contact-panel { top: auto !important; bottom: 20px !important; left: 50% !important; transform: translateX(-50%) !important; width: calc(100% - 36px) !important; max-width: 420px; }
+    .map-wrap { height: 78vh !important; min-height: 520px; }
+  }
   </style>
 </head>
 <body class="font-body bg-gray-50 text-gray-800 antialiased">
@@ -109,8 +123,8 @@
   <header id="siteHeader" class="fixed inset-x-0 top-0 z-50 bg-white/60 backdrop-blur-md border-b border-white/30 shadow-md">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
     <a href="#hero" class="flex items-center gap-3" aria-label="rideXhub home">
-        <!-- logo image: use single source-of-truth favicon.svg -->
-        <img src="favicon.svg" alt="RidexHub logo" class="w-9 h-9 p-1 rounded-full border bg-white" />
+  <!-- logo image: use PNG exported in favicon/ folder -->
+  <img src="favicon/favicon-32x32.png" alt="RidexHub logo" class="w-9 h-9 p-1 rounded-full border bg-white" />
         <div>
       <div class="font-display font-bold text-sm leading-none">rideXhub</div>
           <div class="text-xs text-gray-500 -mt-0.5">Ride Sri Lanka</div>
@@ -140,8 +154,11 @@
     <section id="hero" class="relative overflow-hidden py-12 md:py-20">
       <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
         <!-- text column -->
-        <div class="md:col-span-6 order-2 md:order-1">
-          <div class="reveal" style="transition-delay:80ms">
+        <div class="md:col-span-6 order-2 md:order-1 relative">
+          <div class="decorative-logo-left absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+            <img src="logo.png" alt="" style="max-width: min(92%,560px); width:85%; height:auto; opacity:.4; transform:translateY(-3%);" />
+          </div>
+          <div class="reveal relative z-10" style="transition-delay:80ms">
             <p class="text-sm uppercase text-brand-300 font-semibold mb-3">Ride Sri Lanka</p>
             <h1 class="font-display text-3xl md:text-5xl leading-tight text-charcoal font-extrabold">
               Discover Sri Lanka on <span class="text-brand-500">Two Wheels</span>
@@ -684,7 +701,7 @@
 
     <!-- CONTACT & MAP (embedded map with overlay form) -->
     <section id="contact" class="relative py-0">
-      <div class="w-full h-[560px] relative">
+      <div class="map-wrap w-full h-[560px] relative">
         <!-- full-bleed map iframe -->
         <iframe
           src="https://www.google.com/maps?q=6.429,80.046&z=15&output=embed"
@@ -695,7 +712,7 @@
 
   <!-- translucent contact form panel overlay -->
   <!-- On small screens center the panel; on md+ keep it top-right -->
-  <div class="absolute right-6 top-6 max-w-md w-full bg-white/80 backdrop-blur-md rounded-2xl p-6 shadow-lg mx-6 sm:mx-0 sm:left-auto sm:right-6 sm:top-6 left-1/2 transform -translate-x-1/2 md:translate-x-0 md:left-auto md:right-6 md:top-6">
+  <div class="contact-panel absolute top-6 left-1/2 transform -translate-x-1/2 md:left-auto md:translate-x-0 md:right-6 md:top-6 bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-lg" style="width:calc(100% - 32px); max-width:420px;">
           <h3 class="text-2xl font-display font-semibold">Contact & Booking</h3>
           <p class="mt-1 text-sm text-gray-700">No 1, Paramulla road, Matara • Daily 9 AM – 8 PM</p>
 

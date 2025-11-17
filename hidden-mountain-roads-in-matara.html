@@ -10,6 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- favicons (use exported files from favicon/ folder) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
   <!-- Tailwind config copy from index for site colors & fonts -->
   <script>
     tailwind.config = {
@@ -58,8 +63,8 @@
   <header id="siteHeader" class="fixed inset-x-0 top-0 z-50 bg-white/60 backdrop-blur-md border-b border-white/30 shadow-md">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
     <a href="index.html#hero" class="flex items-center gap-3" aria-label="rideXhub home">
-        <!-- logo image: use single source-of-truth favicon.svg -->
-        <img src="favicon.svg" alt="RidexHub logo" class="w-9 h-9 p-1 rounded-full border bg-white" />
+  <!-- logo image: use PNG exported in favicon/ folder -->
+  <img src="favicon/favicon-32x32.png" alt="RidexHub logo" class="w-9 h-9 p-1 rounded-full border bg-white" />
         <div>
       <div class="font-display font-bold text-sm leading-none">rideXhub</div>
           <div class="text-xs text-gray-500 -mt-0.5">Ride Sri Lanka</div>
@@ -98,7 +103,11 @@
         </div>
       </header>
 
-      <nav class="mt-6 prose max-w-none text-gray-700" aria-label="Table of contents">
+      <div class="relative mt-6">
+        <div class="decorative-article-logo absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+          <img src="logo.png" alt="" style="width:80%; max-width:680px; height:auto; opacity:0.4; transform:translateY(28%);" />
+        </div>
+        <nav class="prose max-w-none text-gray-700 relative z-10" aria-label="Table of contents">
         <h2>Contents</h2>
         <ul>
           <li><a href="#pahanthudawa">1. Pahanthudawa Road</a></li>
@@ -110,8 +119,13 @@
           <li><a href="#quick-ref">Quick Reference Map Links</a></li>
         </ul>
       </nav>
+      </div>
 
-      <div class="mt-6 prose max-w-none text-gray-700">
+      <div class="relative mt-6">
+        <div class="decorative-article-logo absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+          <img src="logo.png" alt="" style="width:80%; max-width:680px; height:auto; opacity:0.4; transform:translateY(28%);" />
+        </div>
+        <div class="prose max-w-none text-gray-700 relative z-10">
         <p>Hidden mountain roads around Matara hold the key to some of Sri Lanka’s most thrilling and lesser-known rides for adventurous souls who crave winding roads, lush greenery, and a touch of the unexpected. Nestled near the southern coast yet reaching high into serene hills and forests, these routes offer a perfect blend of natural beauty and cultural intrigue away from the tourist crowds. Here’s a guide to five such hidden mountain roads near Matara that promise an unforgettable motorbike adventure.</p>
 
         <h3 id="pahanthudawa">1. Pahanthudawa Road: Through Rolling Hills and Ancient Temples</h3>
@@ -171,7 +185,8 @@
         </div>
 
         <p class="text-sm text-gray-500 mt-4">Explore carefully and enjoy the quiet, winding roads that reveal the heart of Matara’s countryside.</p>
-      </div>
+  </div>
+  </div>
 
       <div class="mt-8 flex gap-3 items-center">
   <a href="index.html#explore" class="px-4 py-3 rounded-xl border">← Back to Explore</a>
