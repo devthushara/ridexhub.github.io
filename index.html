@@ -173,9 +173,10 @@
                <a href="#fleet" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition">View Fleet</a>
              </div>
 
-             <dl class="mt-6 grid grid-cols-2 gap-4 text-sm text-gray-600">
+             <dl class="mt-6 grid grid-cols-3 gap-4 text-sm text-gray-600">
                <div><strong class="text-brand-500">500+</strong> happy riders</div>
                <div><strong class="text-brand-500">24/7</strong> roadside assistance</div>
+               <div><strong class="text-brand-500">Crypto</strong> Payments Accepted</div>
              </dl>
            </div>
          </div>
@@ -270,28 +271,58 @@
   <h3 class="text-xl font-display font-semibold">Why choose RIDE X HUB</h3>
         <p class="text-gray-600 mt-2 max-w-2xl">Adventure-friendly rentals with local support and simple terms.</p>
 
-          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <div class="p-4 rounded-xl bg-white border hover:shadow-md transition transform hover:-translate-y-1 text-center">
-            <div class="mx-auto text-brand-500 flex items-center justify-center">
-              <i class="ri-road-map-fill w-6 h-6 fill-current"></i>
+          <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Existing strengths -->
+            <div class="p-4 rounded-xl bg-white border hover:shadow-md transition transform hover:-translate-y-1 text-center">
+              <div class="mx-auto text-brand-500 flex items-center justify-center">
+                <i class="ri-road-map-fill w-6 h-6 fill-current"></i>
+              </div>
+              <h4 class="mt-2 font-semibold">Tried &amp; tested routes</h4>
+              <p class="mt-1 text-sm text-gray-500">Local route tips for safe, scenic rides.</p>
             </div>
-            <h4 class="mt-2 font-semibold">Tried &amp; tested routes</h4>
-            <p class="mt-1 text-sm text-gray-500">Local route tips for safe, scenic rides.</p>
-          </div>
-          <div class="p-4 rounded-xl bg-white border hover:shadow-md transition transform hover:-translate-y-1 text-center">
-            <div class="mx-auto text-brand-500 flex items-center justify-center">
-              <i class="ri-shield-check-fill w-6 h-6 fill-current"></i>
+
+            <div class="p-4 rounded-xl bg-white border hover:shadow-md transition transform hover:-translate-y-1 text-center">
+              <div class="mx-auto text-brand-500 flex items-center justify-center">
+                <i class="ri-shield-check-fill w-6 h-6 fill-current"></i>
+              </div>
+              <h4 class="mt-2 font-semibold">Safety first</h4>
+              <p class="mt-1 text-sm text-gray-500">Helmets &amp; maintenance checks included.</p>
             </div>
-            <h4 class="mt-2 font-semibold">Safety first</h4>
-            <p class="mt-1 text-sm text-gray-500">Helmets &amp; maintenance checks included.</p>
-          </div>
-          <div class="p-4 rounded-xl bg-white border hover:shadow-md transition transform hover:-translate-y-1 text-center">
-            <div class="mx-auto text-brand-500 flex items-center justify-center">
-              <i class="ri-briefcase-4-fill w-6 h-6 fill-current"></i>
+
+            <div class="p-4 rounded-xl bg-white border hover:shadow-md transition transform hover:-translate-y-1 text-center">
+              <div class="mx-auto text-brand-500 flex items-center justify-center">
+                <i class="ri-briefcase-4-fill w-6 h-6 fill-current"></i>
+              </div>
+              <h4 class="mt-2 font-semibold">Flexible pickup</h4>
+              <p class="mt-1 text-sm text-gray-500">Delivery across major tourist towns.</p>
             </div>
-            <h4 class="mt-2 font-semibold">Flexible pickup</h4>
-            <p class="mt-1 text-sm text-gray-500">Delivery across major tourist towns.</p>
-          </div>
+
+            <!-- New creative tile: Transparent pricing -->
+            <div class="p-4 rounded-xl bg-white border hover:shadow-md transition transform hover:-translate-y-1 text-center">
+              <div class="mx-auto text-brand-500 flex items-center justify-center">
+                <i class="ri-file-list-3-line w-6 h-6 fill-current"></i>
+              </div>
+              <h4 class="mt-2 font-semibold">Transparent pricing</h4>
+              <p class="mt-1 text-sm text-gray-500">No hidden fees — what you see is what you pay. All extras and deposits are explained at booking.</p>
+            </div>
+
+             <div class="p-4 rounded-xl bg-white border hover:shadow-md transition transform hover:-translate-y-1 text-center">
+              <div class="mx-auto text-brand-500 flex items-center justify-center">
+                <i class="ri-wallet-3-fill w-6 h-6 fill-current"></i>
+              </div>
+              <h4 class="mt-2 font-semibold">Payments &amp; currencies</h4>
+              <p class="mt-1 text-sm text-gray-500">We accept Card, Cash, Crypto. Supported currencies: <strong>LKR, USD, USDT</strong>. If you'd like an invoice in a specific currency, mention it when you book.</p>
+           
+            </div>
+
+            <!-- New creative tile: Eco-friendly options -->
+            <div class="p-4 rounded-xl bg-white border hover:shadow-md transition transform hover:-translate-y-1 text-center">
+              <div class="mx-auto text-brand-500 flex items-center justify-center">
+                <i class="ri-battery-charge-fill w-6 h-6 fill-current"></i>
+              </div>
+              <h4 class="mt-2 font-semibold">EV &amp; eco-friendly options</h4>
+              <p class="mt-1 text-sm text-gray-500">Choose electric scooters for quieter, greener rides and lower running costs.</p>
+            </div>
         </div>
       </div>
     </section>
@@ -301,7 +332,16 @@
       <div class="max-w-7xl mx-auto px-4">
         <div class="flex items-center justify-between">
           <h2 class="text-2xl font-display font-semibold">Our Fleet</h2>
-          <p class="text-sm text-gray-500">City scooters to touring bikes — pick what fits your trip.</p>
+          <div class="text-sm text-gray-500 text-right space-y-1">
+            <div class="flex items-center gap-2 justify-end">
+              <i class="ri-shield-check-fill w-4 h-4 text-tealish-500" aria-hidden="true"></i>
+              <span class="leading-tight">Helmets — included free with every rental (driver + passenger when applicable)</span>
+            </div>
+            <div class="flex items-center gap-2 justify-end">
+              <i class="ri-phone-line w-4 h-4 text-tealish-500" aria-hidden="true"></i>
+              <span class="leading-tight">Mobile phone holder &amp; lock — included free with the bike</span>
+            </div>
+          </div>
         </div>
 
         <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -311,6 +351,7 @@
             <div class="relative h-56 overflow-hidden bg-gray-100">
               <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/dio1.avif" alt="Honda Dio Motor Scooter" loading="lazy">
               <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-0 absolute inset-0" src="img/bike/dio2.avif" alt="Honda Dio Motor Scooter - 2" loading="lazy">
+                <span class="absolute bottom-3 right-3 z-30 inline-block bg-brand-500 text-white text-sm font-semibold px-3 py-1 rounded-full shadow-sm">Surf mount +USD 2</span>
               <button class="fleet-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Previous photo">‹</button>
               <button class="fleet-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Next photo">›</button>
             </div>
@@ -320,7 +361,7 @@
                   <h3 class="font-semibold">Honda Dio Motor Scooter</h3>
                   <p class="text-xs text-gray-500">Automatic CVT • Smooth city ride</p>
                 </div>
-                <div class="text-right font-semibold">USD 6/day</div>
+                <div class="text-right font-semibold">USD 8/day</div>
               </div>
               <div class="mt-4 flex gap-3">
                 <button class="open-bike px-4 py-2 rounded-xl border hover:bg-brand-50" data-bike='{"id":"honda-dio","name":"Honda Dio Motor Scooter","price":"USD 10/day","deposit":"USD 150","img":"img/bike/dio1.avif","imgs":["img/bike/dio1.avif","img/bike/dio2.avif"],"specs":["Engine: 109.51 cc air-cooled, 4-stroke, SI engine","Power: 7.95 PS @ 8000 rpm","Torque: 9.03 Nm @ 5500 rpm","Fuel Type: Petrol","Fuel Capacity: 5.3 liters","Mileage: Approx. 50 km per liter","Transmission: Automatic CVT","Features: Digital instrument console with tripmeter, digital speedometer, digital odometer, LED tail light, USB charging port, service due indicator, Combi brake system, underseat storage","Suitable for: Smooth city ride, 1 rider"]}'>Details</button>
@@ -332,7 +373,8 @@
           <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
             <div class="relative h-56 overflow-hidden bg-gray-100">
               <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/yadea.jpg" alt="Yadea VoltGuard EV Motor Scooter" loading="lazy">
-              <span class="absolute top-3 right-3 z-30 inline-block bg-ev-blue text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">EV</span>
+              <span class="absolute top-3 right-3 z-30 inline-block bg-ev-blue text-white text-sm font-semibold px-3 py-1 rounded-full shadow-sm">EV</span>
+              <span class="absolute bottom-3 right-3 z-30 inline-block bg-brand-500 text-white text-sm font-semibold px-3 py-1 rounded-full shadow-sm">Surf mount +USD 2</span>
               <button class="fleet-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Previous photo">‹</button>
               <button class="fleet-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Next photo">›</button>
             </div>
@@ -342,7 +384,7 @@
                   <h3 class="font-semibold"><span class="text-ev-blue">Yadea VoltGuard EV Motor Scooter</span></h3>
                   <p class="text-xs text-gray-500">Electric • Longer range rides</p>
                 </div>
-                <div class="text-right font-semibold text-ev-blue">USD 8/day</div>
+                <div class="text-right font-semibold text-ev-blue">USD 12/day</div>
               </div>
               <div class="mt-4 flex gap-3">
                 <button class="open-bike px-4 py-2 rounded-xl border" data-bike='{"id":"yadea-voltguard","name":"Yadea VoltGuard EV Motor Scooter","price":"USD 15/day","deposit":"USD 150","img":"img/bike/yadea.jpg","imgs":["img/bike/yadea.jpg"],"specs":["Motor Power: 1200W hub motor, belt drive","Battery: Lithium-ion 72V, 27 Ah capacity","Range: 100 to 150 km per full charge","Top Speed: Approx. 80 km/h","Features: Hydraulic shock absorption front and rear, LED dashboard/headlight, disc brakes front, drum brakes rear, radial tubeless tires, electric start","Seat Height: Approx. 700 mm","Suitable for: Longer range electric rides, urban and semi-urban commutes, 2 riders"]}'>Details</button>
@@ -354,8 +396,8 @@
           <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
             <div class="relative h-56 overflow-hidden bg-gray-100">
               <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/xiaomi.jpg" alt="Xiaomi Electric Scooter Pro" loading="lazy">
-              <span class="absolute top-3 right-3 z-30 inline-block bg-ev-blue text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">EV</span>
-              <span class="absolute top-3 left-3 z-30 inline-block bg-tealish-500 text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">No driving license required</span>
+              <span class="absolute top-3 right-3 z-30 inline-block bg-ev-blue text-white text-sm font-semibold px-3 py-1 rounded-full shadow-sm">EV</span>
+              <span class="absolute top-3 left-3 z-30 inline-block bg-tealish-500 text-white text-sm font-semibold px-3 py-1 rounded-full shadow-sm">No driving license required</span>
               <!-- removed second Xiaomi image -->
               <button class="fleet-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Previous photo">‹</button>
               <button class="fleet-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Next photo">›</button>
@@ -366,7 +408,7 @@
                   <h3 class="font-semibold"><span class="text-ev-blue">Xiaomi Electric Scooter Pro</span></h3>
                   <p class="text-xs text-gray-500">Foldable • Lightweight urban travel</p>
                 </div>
-                <div class="text-right font-semibold text-ev-blue">USD 4/day</div>
+                <div class="text-right font-semibold text-ev-blue">USD 5/day</div>
               </div>
               <div class="mt-4 flex gap-3">
                 <button class="open-bike px-4 py-2 rounded-xl border" data-bike='{"id":"xiaomi-pro","name":"Xiaomi Electric Scooter Pro","price":"USD 8/day","deposit":"USD 150","img":"img/bike/xiaomi.webp","imgs":["img/bike/xiaomi.webp"],"specs":["Motor Power: 300W nominal, 600W max","Battery: 474 Wh, lithium-ion","Range: 20-25 km per charge","Max Speed: Approx. 25 km/h","Weight: Approx. 14.2 kg","Features: Foldable design, pneumatic 8.5 inch tires, front KERS and rear disc brakes, front and rear lights, aircraft-grade aluminum frame","Suitable for: Lightweight, short-distance urban travel, easy portability"]}'>Details</button>
@@ -379,7 +421,7 @@
           <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
             <div class="relative h-56 overflow-hidden bg-gray-100">
               <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/choi.jpg" alt="Suzuki Choinori Motor Scooter" loading="lazy">
-              <span class="absolute top-3 left-3 z-30 inline-block bg-tealish-500 text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">No driving license required</span>
+              <span class="absolute top-3 left-3 z-30 inline-block bg-tealish-500 text-white text-sm font-semibold px-3 py-1 rounded-full shadow-sm">No driving license required</span>
               <button class="fleet-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Previous photo">‹</button>
               <button class="fleet-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Next photo">›</button>
             </div>
@@ -389,7 +431,7 @@
                   <h3 class="font-semibold">Suzuki Choinori Motor Scooter</h3>
                   <p class="text-xs text-gray-500">Lightweight 49cc • Ultra-efficient city scooter</p>
                 </div>
-                <div class="text-right font-semibold">USD 7/day</div>
+                <div class="text-right font-semibold">USD 8/day</div>
               </div>
               <div class="mt-4 flex gap-3">
                 <button class="open-bike px-4 py-2 rounded-xl border hover:bg-brand-50" data-bike='{"id":"suzuki-choinori","name":"Suzuki Choinori Motor Scooter","price":"USD 12/day","deposit":"USD 150","img":"img/bike/choi.jpg","imgs":["img/bike/choi.jpg"],"specs":["lightweight 49cc motor scooter designed for urban short trips","4-stroke, air-cooled, single-cylinder engine with 2.0 PS power","Automatic CVT transmission, easy to ride and park","Remarkable fuel efficiency: approx. 76 km/liter","Weight: only 39 kg (dry), very easy to handle","Compact dimensions for tight city navigation","Perfect for solo riders, students, and quick city errands"]}'>Details</button>
@@ -409,7 +451,6 @@
                   <h3 class="font-semibold">Can't find your bike?</h3>
                   <p class="text-xs text-gray-500">Tell us what you're looking for and we'll try to source it.</p>
                 </div>
-                <div class="text-right font-semibold">Custom request</div>
               </div>
               <div class="mt-4 flex gap-3">
                 <a class="px-4 py-2 rounded-xl border hover:bg-brand-50 inline-flex items-center gap-2" href="mailto:hello@ridexhub.com?subject=Help%20finding%20a%20bike&body=Hi%20RIDE%20X%20HUB%2C%0A%0AI%20could%20not%20find%20the%20bike%20I'm%20looking%20for.%20Please%20help%20me%20find%20one.%20Here%20are%20the%20details%3A%0A-Model%20or%20type%3A%0A-Pickup%20date%3A%0A-Return%20date%3A%0A-Location%3A%0A%0AThanks!" rel="noopener noreferrer"><i class="ri-mail-line w-4 h-4"></i><span>Email us</span></a>
@@ -438,7 +479,7 @@
           <button data-close class="text-2xl p-2 rounded-full hover:bg-gray-100" aria-label="Close booking details">✕</button>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-4 p-4">
+      <div class="grid md:grid-cols-2 gap-4 p-4">
           <div id="modalSlider" class="relative w-full h-64 rounded-lg overflow-hidden bg-gray-100">
             <!-- ensure modal controls sit above fleet controls (which are z-20) -->
             <button class="modal-prev absolute left-2 top-1/2 -translate-y-1/2 z-[111000] bg-white/90 p-2 rounded-full shadow" aria-label="Previous image">‹</button>
@@ -450,6 +491,9 @@
           <div>
             <p class="text-sm text-gray-600">Specs:</p>
             <ul id="modalBikeSpecs" class="mt-3 text-sm text-gray-600 space-y-2"></ul>
+
+            <p class="text-sm text-gray-600 mt-4">Included:</p>
+            <ul id="modalBikeIncluded" class="mt-2 text-sm text-gray-600 space-y-2"></ul>
 
             <!-- Rental dates removed per request -->
 
@@ -780,6 +824,8 @@
             </a>
           </div>
 
+          
+
           <form id="inlineContact" class="mt-4 space-y-3 bg-transparent">
             <input name="name" placeholder="Your name" class="w-full px-3 py-2 rounded-lg border bg-white/60" required />
             <input name="email" placeholder="Email" type="email" class="w-full px-3 py-2 rounded-lg border bg-white/60" required />
@@ -843,6 +889,8 @@
             <div class="mt-2">Email: <a href="mailto:hello@ridexhub.com" class="text-tealish-500 hover:underline">hello@ridexhub.com</a></div>
             <div class="mt-2">Phone: <a href="tel:+94707615516" class="text-tealish-500">+94 70 761 5516</a></div>
           </div>
+
+          
 
           <div class="mt-4 flex gap-3">
             <a aria-label="Instagram" href="#" class="text-gray-300 inline-flex items-center" target="_blank">
@@ -953,6 +1001,7 @@
     const modalTitle = document.getElementById('modalBikeTitle');
     const modalPrice = document.getElementById('modalBikePrice');
     const modalSpecs = document.getElementById('modalBikeSpecs');
+  const modalIncluded = document.getElementById('modalBikeIncluded');
     const modalWA = document.getElementById('modalWA');
     const modalSlider = document.getElementById('modalSlider');
     const modalSlidesWrap = modalSlider ? modalSlider.querySelector('.modal-slides') : null;
@@ -1004,6 +1053,21 @@
           modalSpecs.innerHTML = data.specs.map(s => `<li>${s}</li>`).join('');
         } else {
           modalSpecs.innerHTML = '<li>Helmet included</li><li>Free roadside support</li><li>Fuel not included</li>';
+        }
+
+        // populate included / accessory information (standard & conditional)
+        if (modalIncluded) {
+          const included = [
+            'Helmet(s): 1 or 2 free (driver & passenger when applicable)',
+            'Mobile phone holder and lock included free with the bike',
+            'Free roadside support'
+          ];
+          // optional surfboard mount availability
+          const surfAvailable = ['yadea-voltguard','honda-dio'];
+          if (data.id && surfAvailable.includes(data.id)) {
+            included.push('Optional: Surfboard mount — USD 2 (available for this model)');
+          }
+          modalIncluded.innerHTML = included.map(i => `<li>${i}</li>`).join('');
         }
   modalWA.href = `https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20to%20book%20the%20${encodeURIComponent(data.name)}`;
         // show modal (mobile-first drawer behaviour)
