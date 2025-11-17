@@ -1,13 +1,13 @@
-# 🏍️ RidexHub.com — Discover Sri Lanka on Two Wheels
+# 🏍️ RIDE X HUB — Discover Sri Lanka on Two Wheels
 
-**RidexHub** is a modern, minimalist, and responsive web experience designed for adventurous travelers who want to explore Sri Lanka by motorbike.  
-Built with **Tailwind CSS** and a focus on **clean UX, timeless design, and mobile-first performance**, this project showcases RidexHub’s identity as a trusted bike rental brand for tourists.
+**RIDE X HUB** is a modern, minimalist, and responsive web experience designed for adventurous travelers who want to explore Sri Lanka by motorbike.  
+Built with **Tailwind CSS** and a focus on **clean UX, timeless design, and mobile-first performance**, this project showcases RIDE X HUB’s identity as a trusted bike rental brand for tourists.
 
 ---
 
 ## 🌏 Overview
 
-RidexHub.com is a **single-page website** with an accompanying **blog template** for travel stories and trip guides.  
+This repository powers the **RIDE X HUB** single-page website with an accompanying **blog template** for travel stories and trip guides.  
 It blends **adventure tourism** with **functional simplicity**, offering users a seamless way to browse bikes, read travel guides, and book directly via WhatsApp.
 
 **Key Goals**
@@ -19,7 +19,7 @@ It blends **adventure tourism** with **functional simplicity**, offering users a
 
 ## 🖌️ Design Philosophy
 
-RidexHub’s design is **timeless and tropical-modern** — inspired by the landscapes of Sri Lanka.  
+RIDE X HUB’s design is **timeless and tropical-modern** — inspired by the landscapes of Sri Lanka.  
 It uses natural colors, balanced whitespace, and smooth transitions to create a premium travel brand identity.
 
 | Element | Description |
