@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Point crawlers to the sitemap for faster discovery
+Sitemap: https://ridexhub.com/sitemap.xml
