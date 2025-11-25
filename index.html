@@ -364,17 +364,36 @@
     <!-- FLEET - masonry-esque cards -->
     <section id="fleet" class="py-12 bg-white">
       <div class="max-w-7xl mx-auto px-4">
-        <div class="flex items-center justify-between">
-          <h2 class="text-2xl font-display font-semibold">Our Fleet</h2>
-          <div class="text-sm text-gray-500 text-right space-y-1">
-            <div class="flex items-center gap-2 justify-end">
-              <i class="ri-shield-check-fill w-4 h-4 text-tealish-500" aria-hidden="true"></i>
-              <span class="leading-tight">Free Helmets</span>
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex items-start sm:items-center gap-3">
+            <h2 class="text-2xl font-display font-semibold">Our Fleet</h2>
+            <a
+              href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%2C%20I%20can%E2%80%99t%20find%20the%20ride%20I%E2%80%99m%20looking%20for.%20Can%20you%20help%20me%20find%20one%3F%20Here%20are%20my%20details%3A%20%E2%80%94%20Preferred%20vehicle%20type%2C%20pickup%20date%2C%20return%20date%2C%20and%20location."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hidden sm:inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm hover:border-tealish-500 hover:text-tealish-600 hover:shadow-md transition">
+              <i class="ri-search-eye-line text-sm"></i>
+              <span>Can’t find your ride?</span>
+            </a>
+          </div>
+          <div class="flex flex-col items-start sm:items-end gap-2 sm:gap-1">
+            <div class="text-sm text-gray-500 text-left sm:text-right space-y-1">
+              <div class="flex items-center gap-2 justify-end">
+                <i class="ri-shield-check-fill w-4 h-4 text-tealish-500" aria-hidden="true"></i>
+                <span class="leading-tight">Free Helmets</span>
+              </div>
+              <div class="flex items-center gap-2 justify-end">
+                <i class="ri-phone-line w-4 h-4 text-tealish-500" aria-hidden="true"></i>
+                <span class="leading-tight">Free Mobile phone holder</span>
+              </div>
             </div>
-            <div class="flex items-center gap-2 justify-end">
-              <i class="ri-phone-line w-4 h-4 text-tealish-500" aria-hidden="true"></i>
-              <span class="leading-tight">Free Mobile phone holder</span>
-            </div>
+            <!-- Mobile version of "Can't find your ride" CTA -->
+            <a
+              href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20need%20help%20finding%20a%20ride"
+              class="sm:hidden mt-2 inline-flex items-center gap-2 rounded-full bg-tealish-500 px-3 py-1.5 text-xs font-medium text-white shadow-sm hover:shadow-md hover:bg-tealish-600 transition">
+              <i class="ri-whatsapp-fill text-sm" style="color:#25D366" aria-hidden="true"></i>
+              <span>Can’t find your ride?</span>
+            </a>
           </div>
         </div>
 
@@ -474,24 +493,52 @@
             </div>
           </article>
 
-          <!-- PLACEHOLDER: Can't find your bike? -->
+          <!-- SUZUKI WAGONR (car) -->
           <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
-            <div class="relative h-56 overflow-hidden bg-gray-100 flex items-center justify-center">
-              <img src="img/bike/question.png" alt="Can't find your bike" class="w-full h-56 object-cover" loading="lazy">
+            <div class="relative h-56 overflow-hidden bg-gray-100">
+              <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/wagonr.jpg" alt="Suzuki WagonR" loading="lazy">
+              <button class="fleet-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Previous photo">‹</button>
+              <button class="fleet-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Next photo">›</button>
             </div>
             <div class="p-4">
               <div class="flex items-start justify-between">
                 <div>
-                  <h3 class="font-semibold">Can't find your bike?</h3>
-                  <p class="text-xs text-gray-500">Tell us what you're looking for and we'll try to source it.</p>
+                  <h3 class="font-semibold">Suzuki WagonR</h3>
+                  <p class="text-xs text-gray-500">Spacious 5-seater hatchback • Automatic</p>
                 </div>
+                <div class="text-right font-semibold">USD 40/day</div>
               </div>
               <div class="mt-4 flex gap-3">
-                <a class="px-4 py-2 rounded-xl border hover:bg-brand-50 inline-flex items-center gap-2" href="mailto:hello@ridexhub.com?subject=Help%20finding%20a%20bike&body=Hi%20RIDE%20X%20HUB%2C%0A%0AI%20could%20not%20find%20the%20bike%20I'm%20looking%20for.%20Please%20help%20me%20find%20one.%20Here%20are%20the%20details%3A%0A-Model%20or%20type%3A%0A-Pickup%20date%3A%0A-Return%20date%3A%0A-Location%3A%0A%0AThanks!" rel="noopener noreferrer"><i class="ri-mail-line w-4 h-4"></i><span>Email us</span></a>
-                <a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-tealish-500 text-white" href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20need%20help%20finding%20a%20bike" target="_blank" rel="noopener noreferrer"><i class="ri-whatsapp-fill w-4 h-4 flex-shrink-0 align-middle" style="color:#25D366" aria-hidden="true"></i><span>Chat with us</span></a>
+                <button class="open-bike px-4 py-2 rounded-xl border hover:bg-brand-50" data-bike='{"id":"suzuki-wagonr","name":"Suzuki WagonR","price":"USD 40/day (100 km/day)","deposit":"USD 150","img":"img/bike/wagonr.jpg","imgs":["img/bike/wagonr.jpg"],"specs":["Spacious 5-seater hatchback with 1.2L petrol engine, automatic transmission","Fuel efficiency approx. 24 km/l, 341L boot space","Safety features include 6 airbags, ABS, EBD, and rear parking sensors","Comfortable interiors with AC, power steering, and touchscreen display","Rental price: USD 40 per day, daily limit 100 km (extra mileage charges apply)","Deposit: USD 150","Ideal for small groups or families seeking economical city travel"]}'>Details</button>
+                <a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-tealish-500 text-white" href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20to%20book%20the%20Suzuki%20WagonR" target="_blank" rel="noopener noreferrer"><i class="ri-whatsapp-fill w-4 h-4 flex-shrink-0 align-middle" style="color:#25D366" aria-hidden="true"></i><span>Book WhatsApp</span></a>
               </div>
             </div>
           </article>
+
+          <!-- TOYOTA PRIUS (car) -->
+          <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
+            <div class="relative h-56 overflow-hidden bg-gray-100">
+              <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/prius.jpg" alt="Toyota Prius" loading="lazy">
+              <span class="absolute top-3 right-3 z-30 inline-block bg-ev-blue text-white text-sm font-semibold px-3 py-1 rounded-full shadow-sm">Hybrid</span>
+              <button class="fleet-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Previous photo">‹</button>
+              <button class="fleet-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex" aria-label="Next photo">›</button>
+            </div>
+            <div class="p-4">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="font-semibold"><span class="text-ev-blue">Toyota Prius</span></h3>
+                  <p class="text-xs text-gray-500">Hybrid sedan • Ultra fuel-efficient</p>
+                </div>
+                <div class="text-right font-semibold text-ev-blue">USD 55/day</div>
+              </div>
+              <div class="mt-4 flex gap-3">
+                <button class="open-bike px-4 py-2 rounded-xl border hover:bg-brand-50" data-bike='{"id":"toyota-prius","name":"Toyota Prius","price":"USD 55/day (100 km/day)","deposit":"USD 150","img":"img/bike/prius.jpg","imgs":["img/bike/prius.jpg"],"specs":["Hybrid sedan with fuel-efficient 1.8L engine and electric motor combo","Mileage about 25-30 km/l depending on usage","Advanced safety suite: multiple airbags, ABS, stability control","Spacious cabin with modern infotainment and comfort features","Rental price: USD 55 per day, daily limit 100 km (extra mileage charges apply)","Deposit: USD 150","Perfect for eco-conscious riders looking for a comfortable ride"]}'>Details</button>
+                <a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-tealish-500 text-white" href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20to%20book%20the%20Toyota%20Prius" target="_blank" rel="noopener noreferrer"><i class="ri-whatsapp-fill w-4 h-4 flex-shrink-0 align-middle" style="color:#25D366" aria-hidden="true"></i><span>Book WhatsApp</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- placeholder card removed; sleek CTA moved next to heading -->
         </div>
       </div>
     </section>
@@ -1092,8 +1139,8 @@
         // populate included / accessory information (standard & conditional)
         if (modalIncluded) {
           const included = [
-            'Helmet(s): 1 or 2 free (driver & passenger when applicable)',
-            'Mobile phone holder and lock included free with the bike',
+            'For bikes, Helmet(s): 1 or 2 free (driver & passenger when applicable)',
+            'Mobile phone holder free of charge',
             'Free roadside support'
           ];
           // optional surfboard mount availability
