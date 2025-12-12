@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIDE X HUB - Rental Agreement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 500: '#f97316', 700: '#c2410c' },
+                        tealish: { 500: '#0f766e' },
+                        charcoal: '#111827'
+                    },
+                    fontFamily: {
+                        display: ['Poppins', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-print-color-adjust: exact; }
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+        
+        /* Input Styling */
+        input, select, textarea {
+            background: transparent;
+            border-bottom: 1px dashed #9ca3af;
+            width: 100%;
+            padding: 2px 0;
+            outline: none;
+            color: #1f2937;
+            font-weight: 500;
+            transition: border-color 0.2s;
+        }
+        input:focus, select:focus, textarea:focus { border-bottom: 2px solid #f97316; }
+        
+        /* Remove arrows from number inputs */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+        /* Print Specifics */
+        @media print {
+            @page { margin: 0.5cm; size: A4; }
+            body { margin: 0; padding: 0; background: white; }
+            .no-print { display: none !important; }
+            .print-container { box-shadow: none; padding: 0; max-width: 100%; border: none; }
+            input, select, textarea { border-bottom: none !important; font-weight: 600; resize: none; }
+            /* Hide placeholders on print, show values */
+            input::placeholder, textarea::placeholder { color: transparent; }
+            .bg-brand-500 { background-color: #f97316 !important; }
+            .bg-brand-50 { background-color: #fff7ed !important; } 
+            .text-tealish-500 { color: #0f766e !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 py-8 text-gray-800 text-sm leading-tight">
+
+    <div class="max-w-[210mm] mx-auto mb-6 flex justify-between items-center no-print px-4">
+        <h2 class="text-xl font-bold text-charcoal">Rental Agreement <span class="text-gray-400 text-sm font-normal">(Final)</span></h2>
+        <div class="flex gap-3">
+            <button onclick="window.location.reload()" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 font-medium transition">Reset Form</button>
+            <button onclick="window.print()" class="px-6 py-2 bg-brand-500 text-white rounded-lg shadow hover:bg-brand-700 font-bold flex items-center gap-2 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
+                Print Agreement
+            </button>
+        </div>
+    </div>
+
+    <div class="max-w-[210mm] min-h-[297mm] mx-auto bg-white shadow-xl p-8 md:p-12 print-container relative">
+        
+        <header class="flex justify-between items-center border-b-2 border-brand-500 pb-4 mb-6">
+            <div class="w-2/3 flex items-center gap-4">
+                <img src="logo.png" alt="RIDE X HUB" class="h-16 w-auto object-contain" onerror="this.style.display='none'; document.getElementById('text-logo').style.display='block';">
+                <div id="text-logo" class="hidden">
+                    <h2 class="text-2xl font-display font-black text-brand-500 tracking-tighter leading-none">RIDE X<br><span class="text-charcoal">HUB</span></h2>
+                </div>
+                
+                <div class="border-l pl-4 border-gray-300">
+                    <h1 class="text-2xl font-display font-bold text-charcoal tracking-tight">VEHICLE RENTAL AGREEMENT</h1>
+                    <div class="flex items-center mt-1 text-sm text-gray-500">
+                        <span class="mr-1">Ref No:</span>
+                        <span class="font-bold text-charcoal mr-1">RXH-</span>
+                        <input type="text" class="font-bold text-charcoal" style="width: 60px;" placeholder="001">
+                    </div>
+                </div>
+            </div>
+            <div class="w-1/3 text-right text-xs text-gray-600">
+                <p class="font-bold text-brand-500 text-sm">RIDE X HUB</p>
+                <p>No 4, Paramulla Road, Matara</p>
+                <p>Southern Province, Sri Lanka</p>
+                <p class="mt-1 font-bold">+94 70 761 5516</p>
+                <p>hello@ridexhub.com</p>
+            </div>
+        </header>
+
+        <section class="mb-6">
+            <p class="mb-4">
+                This Agreement is made on <input type="date" id="contractDate" class="w-32 inline-block font-bold text-brand-500">, between <strong>RIDE X HUB</strong> (The Owner) and:
+            </p>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <h3 class="text-tealish-500 font-bold uppercase text-xs mb-3 border-b border-gray-200 pb-1 flex items-center gap-2">
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        Renter Information
+                    </h3>
+                    <div class="grid grid-cols-1 gap-2">
+                        <div>
+                            <label class="text-[10px] text-gray-500 uppercase font-bold">Full Name <span class="text-red-500">*</span></label>
+                            <input type="text" placeholder="[ENTER RENTER NAME]" required>
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="w-1/2">
+                                <label class="text-[10px] text-gray-500 uppercase font-bold">Passport / NIC <span class="text-red-500">*</span></label>
+                                <input type="text" placeholder="[ID NUMBER]" required>
+                            </div>
+                            <div class="w-1/2">
+                                <label class="text-[10px] text-gray-500 uppercase font-bold">License No. <span class="text-red-500">*</span></label>
+                                <input type="text" placeholder="[LICENSE NUMBER]" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-gray-500 uppercase font-bold">Country of Origin</label>
+                            <input type="text" placeholder="[COUNTRY]">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-gray-500 uppercase font-bold">WhatsApp / Phone <span class="text-red-500">*</span></label>
+                            <input type="text" placeholder="+94 ...">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-gray-500 uppercase font-bold">Accommodation</label>
+                            <input type="text" placeholder="[HOTEL NAME / ADDRESS]">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <h3 class="text-tealish-500 font-bold uppercase text-xs mb-3 border-b border-gray-200 pb-1 flex items-center gap-2">
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+                        Vehicle Information
+                    </h3>
+                    <div class="grid grid-cols-1 gap-2">
+                        <div class="flex gap-2">
+                            <div class="w-2/3">
+                                <label class="text-[10px] text-gray-500 uppercase font-bold">Registration No. <span class="text-red-500">*</span></label>
+                                <input type="text" placeholder="WP BEO-XXXX" class="font-bold text-lg text-charcoal">
+                            </div>
+                            <div class="w-1/3">
+                                <label class="text-[10px] text-gray-500 uppercase font-bold">Type</label>
+                                <select class="w-full">
+                                    <option>Scooter</option>
+                                    <option>Motorcycle</option>
+                                    <option>Car</option>
+                                    <option>EV Scooter</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-gray-500 uppercase font-bold">Make & Model</label>
+                            <input type="text" placeholder="e.g. Honda Dio">
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="w-1/2">
+                                <label class="text-[10px] text-gray-500 uppercase font-bold">Start Mileage <span class="text-red-500">*</span></label>
+                                <div class="flex items-center">
+                                    <input type="number" placeholder="00000">
+                                    <span class="text-xs text-gray-400 ml-1">km</span>
+                                </div>
+                            </div>
+                            <div class="w-1/2">
+                                <label class="text-[10px] text-gray-500 uppercase font-bold">Fuel Level</label>
+                                <input type="text" value="Full" placeholder="e.g. Full / Half">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-gray-500 uppercase font-bold">Existing Damages</label>
+                            <input type="text" placeholder="[NONE / LIST SCRATCHES]" class="text-red-600">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-6">
+            <h3 class="text-charcoal font-bold uppercase text-sm mb-2 border-b-2 border-gray-200 inline-block">Rental Term & Costs</h3>
+            
+            <div class="bg-brand-50 p-4 rounded-xl border border-brand-100">
+                <div class="grid grid-cols-12 gap-4 items-end mb-4">
+                    <div class="col-span-3">
+                        <label class="text-[10px] font-bold text-gray-500 uppercase">Pickup Date/Time <span class="text-red-500">*</span></label>
+                        <input type="datetime-local" id="pickupDate" onchange="calculate()">
+                    </div>
+                    <div class="col-span-3">
+                        <label class="text-[10px] font-bold text-gray-500 uppercase">Return Date/Time <span class="text-red-500">*</span></label>
+                        <input type="datetime-local" id="returnDate" onchange="calculate()">
+                    </div>
+                    <div class="col-span-2">
+                        <label class="text-[10px] font-bold text-gray-500 uppercase">Duration</label>
+                        <input type="text" id="totalDays" readonly class="font-bold text-brand-700 bg-transparent border-none" placeholder="-">
+                    </div>
+                    <div class="col-span-2">
+                        <label class="text-[10px] font-bold text-gray-500 uppercase">Rate (Daily) <span class="text-red-500">*</span></label>
+                        <div class="flex items-center border-b border-dashed border-gray-400 focus-within:border-brand-500">
+                            <span class="text-gray-500 mr-1 text-xs">LKR/USD</span>
+                            <input type="number" id="dailyRate" oninput="calculate()" class="font-bold text-right !border-none" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="col-span-2 bg-white rounded-lg p-2 border border-brand-200 shadow-sm">
+                        <label class="text-[10px] font-bold text-brand-500 uppercase block text-center">Total Rent</label>
+                        <input type="text" id="totalRent" readonly class="font-black text-lg text-center w-full !border-none bg-transparent" placeholder="0.00">
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-6 pt-2 border-t border-brand-200/50">
+                    <div>
+                        <label class="text-[10px] font-bold text-gray-500 uppercase">Refundable Security Deposit <span class="text-red-500">*</span></label>
+                        <input type="text" placeholder="[ENTER AMOUNT]" class="font-bold">
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-bold text-gray-500 uppercase">Payment Method</label>
+                        <input type="text" value="Cash" placeholder="Cash / Card / Transfer">
+                    </div>
+                    <div class="row-span-2">
+                         <label class="text-[10px] font-bold text-gray-500 uppercase">Accessories Included</label>
+                         <textarea class="w-full text-xs mt-1 leading-relaxed" rows="3">Helmets (2), Phone Holder</textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-4">
+            <h3 class="text-charcoal font-bold uppercase text-xs mb-2">Terms & Conditions of Usage</h3>
+            <div class="text-[9px] text-gray-600 grid grid-cols-2 gap-x-8 gap-y-1 text-justify leading-snug">
+                <p>1. <strong>License:</strong> The Renter must possess a valid Sri Lankan driving license or a valid International Driving Permit (IDP). Copy of ID provided.</p>
+                <p>2. <strong>Fuel Policy:</strong> Vehicle provided with logged fuel level. Return with same level. Shortage charged at market rate + service fee.</p>
+                <p>3. <strong>Mileage Limit:</strong> 100km free per day (accumulative). Excess mileage charged at LKR <input type="number" value="50" class="w-8 inline text-center border-b border-gray-300 text-[9px] font-bold"> per km.</p>
+                <p>4. <strong>Insurance:</strong> Third-party insurance included. VOID if driving under influence, reckless driving, or violation of traffic laws.</p>
+                <p>5. <strong>Fines:</strong> Renter is liable for all traffic fines/parking tickets during the rental period.</p>
+                <p>6. <strong>Usage:</strong> No off-road driving (unless specified), no beach driving, no subleasing. Use within Sri Lanka only.</p>
+                <p>7. <strong>Accidents:</strong> Report immediately to +94 70 761 5516. Police report mandatory for insurance claims.</p>
+                <p>8. <strong>Return:</strong> Late returns >1 hour charged as full day unless agreed prior.</p>
+            </div>
+        </section>
+
+        <footer class="mt-auto pt-1 border-t-2 border-gray-200">
+            <p class="text-[10px] text-gray-500 mb-4 italic text-center">I have read and accepted the terms and conditions stated above.</p>
+            
+            <div class="flex justify-between items-end px-8">
+                <div class="text-center w-1/3">
+                    <div class="h-10 border-b border-gray-400 mb-2"></div>
+                    <p class="font-bold text-charcoal text-xs uppercase">Renter Signature</p>
+                </div>
+                
+                <div class="text-center w-1/3">
+                    <div class="h-10 border-b border-gray-400 mb-2 relative flex items-end justify-center">
+                        <div class="absolute bottom-2 opacity-20 text-brand-500 font-display font-black text-xs border-2 border-brand-500 rounded-full p-2 rotate-[-12deg] pointer-events-none whitespace-nowrap">
+                            RIDE X HUB
+                            <br>AUTHORIZED
+                        </div>
+                    </div>
+                    <p class="font-bold text-charcoal text-xs uppercase">Authorized Signature</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4 text-[9px] text-gray-400 font-mono">
+                GENERATED BY RIDE X HUB SYSTEM | www.ridexhub.com
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // Initialize date to today
+        document.getElementById('contractDate').valueAsDate = new Date();
+
+        function calculate() {
+            const startInput = document.getElementById('pickupDate').value;
+            const endInput = document.getElementById('returnDate').value;
+            const rate = parseFloat(document.getElementById('dailyRate').value) || 0;
+            
+            if (startInput && endInput) {
+                const start = new Date(startInput);
+                const end = new Date(endInput);
+                
+                const diffTime = end - start;
+                
+                if (diffTime > 0) {
+                    // Convert to days (min 1 day)
+                    const diffDays = Math.max(1, Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
+                    
+                    document.getElementById('totalDays').value = diffDays + (diffDays === 1 ? " Day" : " Days");
+                    
+                    const total = diffDays * rate;
+                    document.getElementById('totalRent').value = total.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 2});
+                } else {
+                    document.getElementById('totalDays').value = "Check Dates";
+                    document.getElementById('totalRent').value = "";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
