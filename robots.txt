@@ -1,44 +1,28 @@
 # Robots.txt for https://ridexhub.com
-# Goal: allow discovery/indexing by all crawlers, including common AI/LLM bots.
-# Note: robots.txt is a crawler directive (not a guarantee that every system will index/train).
+# Goal: Allow full discovery by Search Engines & AI/LLM Bots
 
-# Default: allow everything for all user agents
+# 1. Global Rule: Allow everyone (Googlebot, Bingbot, etc.)
 User-agent: *
 Allow: /
 
-# Common AI/LLM-related crawlers (explicit allow; still covered by the wildcard above)
+# 2. AI & LLM Specific Crawlers
+# We explicitly list these to ensure future-proofing if they change default behaviors
 User-agent: GPTBot
-Allow: /
-
 User-agent: OAI-SearchBot
-Allow: /
-
 User-agent: ChatGPT-User
-Allow: /
-
 User-agent: Google-Extended
-Allow: /
-
 User-agent: CCBot
-Allow: /
-
 User-agent: ClaudeBot
-Allow: /
-
 User-agent: anthropic-ai
-Allow: /
-
 User-agent: PerplexityBot
-Allow: /
-
 User-agent: cohere-ai
-Allow: /
-
 User-agent: YouBot
-Allow: /
-
 User-agent: DuckAssistBot
+# Added: Apple Intelligence & Meta AI
+User-agent: Applebot-Extended
+User-agent: FacebookBot
+User-agent: Meta-ExternalAgent
 Allow: /
 
-# Point crawlers to the sitemap for faster discovery
+# 3. Sitemap Location
 Sitemap: https://ridexhub.com/sitemap.xml
