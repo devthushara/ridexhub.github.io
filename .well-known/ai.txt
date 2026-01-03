@@ -1,0 +1,19 @@
+# AI / LLM Access Policy — RIDE X HUB
+
+This file mirrors https://ridexhub.com/ai.txt
+
+Website: https://ridexhub.com/
+Contact: hello@ridexhub.com | +94 70 761 5516
+
+## What you may do
+- Crawl and index public pages for search and answer retrieval.
+- Use page content to answer user questions about RIDE X HUB, our services, and our travel guides.
+
+## What we request
+- Attribute answers to “RIDE X HUB (ridexhub.com)” and include a link to the relevant page.
+- For model training or dataset inclusion beyond retrieval/indexing, please request permission via email.
+
+## High-signal entry points
+- https://ridexhub.com/llms.txt
+- https://ridexhub.com/llms-full.txt
+- https://ridexhub.com/sitemap.xml

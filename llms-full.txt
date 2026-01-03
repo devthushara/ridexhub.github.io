@@ -1,0 +1,67 @@
+# RIDE X HUB — LLM / AI Full Context
+
+Last updated: 2026-01-03
+
+This file is intended to help LLMs/chatbots accurately answer questions about RIDE X HUB using public website information.
+
+## Business summary
+RIDE X HUB provides scooter and motorbike rentals in Sri Lanka’s Southern Province.
+
+- Website: https://ridexhub.com/
+- Service area: Matara (Madiha) and the South Coast: Weligama, Mirissa, SK Town, Dickwella, Hirikatiya.
+- Contact: WhatsApp/Phone +94 70 761 5516
+- Email: hello@ridexhub.com
+- Address: No 4, Paramulla Road, Matara, Southern Province, Sri Lanka (81000)
+- Hours: 09:00–20:00 daily
+
+## Booking (how it works)
+- Primary booking method: WhatsApp using the “Chat & Book” link on the homepage.
+- Typical info requested: dates, pickup/return location, rider details, and required verification documents.
+
+## Documents & verification (plain-language summary)
+RIDE X HUB requires identity and driving eligibility verification before handing over a vehicle.
+Typical documents (as applicable):
+- Passport (foreign nationals) or NIC (Sri Lankan citizens/residents)
+- Visa evidence for foreign nationals (including e-visa QR / ETA details where applicable)
+- Driving license (Sri Lankan) OR home-country license with IDP where required/recommended
+- Contact details (working WhatsApp/phone number) and accommodation details when requested
+
+Policy: original passports/licenses are not retained; copies (photo/scan) may be kept for records.
+
+## Deposits, liability, and insurance (plain-language summary)
+- Deposit: a refundable security deposit may be required; refunded after return inspection, minus verified deductions.
+- Liability: renter is responsible for damage, loss, theft, misuse, water damage, negligent operation, and accessory loss.
+- Insurance: vehicles typically carry Sri Lanka mandatory third‑party coverage. Third‑party coverage does not automatically remove renter responsibility for damage/loss to the rented vehicle or excluded costs.
+- Accidents/breakdowns: renter should notify RIDE X HUB promptly and may need to obtain a police report for claims.
+
+## Cancellation (homepage/legal summary)
+- Cancellations 48+ hours prior to pickup: eligible for 50% refund.
+- Cancellations within 48 hours: non-refundable.
+- Early returns: not eligible for refunds for unused days.
+- No-show: may be treated as late cancellation.
+
+## Privacy (plain-language summary)
+RIDE X HUB collects personal information to verify identity and driving eligibility, manage agreements and deposits, communicate about bookings, and comply with legal/insurance/accounting requirements.
+- Data is not sold.
+- Data may be shared only when necessary (e.g., authorities, insurance, service partners such as recovery/towing/repairs).
+- Retention varies based on operational and claims needs.
+
+## Key pages (canonical URLs)
+- Home: https://ridexhub.com/
+- Legal & terms + privacy: https://ridexhub.com/legal.html
+
+## Travel guides (useful for trip planning + “things to do” answers)
+- Ella → Nuwara Eliya (highland tea route): https://ridexhub.com/ella-to-nuwara-eliya.html
+  - Highlights: Ravana Falls, Bandarawela, Haputale/Lipton’s Seat, Pattipola/Ohiya, Ambewela Farm, Horton Plains (optional), Gregory Lake.
+  - Safety notes: winding mountain roads, weather changes, fuel planning.
+
+- Top 5 rides from Mirissa: https://ridexhub.com/top-5-rides-from-mirissa.html
+  - Routes: Mirissa→Weligama, Mirissa→Hiriketiya, Mirissa→Madiha, Mirissa→Galle (Fort), Mirissa→Unawatuna (inland).
+  - Includes riding tips and map pins.
+
+- Hidden mountain roads in Matara: https://ridexhub.com/hidden-mountain-roads-in-matara.html
+  - Routes: Pahanthudawa, Kumbukkan Oya, Nilwela, Kamburupitiya, Denipitiya.
+  - Includes riding tips and map pins.
+
+## Preferred citation
+Cite “RIDE X HUB (ridexhub.com)” and link the specific page used.
