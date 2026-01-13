@@ -1,6 +1,6 @@
 # RIDE X HUB — LLM / AI Index
 
-RIDE X HUB is a scooter & motorbike rental service based in Matara (Madiha area), serving Sri Lanka’s South Coast (Weligama, Mirissa, SK Town, Dickwella, Hirikatiya).
+RIDE X HUB is a scooter & motorbike rental service AND private tour operator based in Matara (Madiha area), serving Sri Lanka's South Coast and offering island-wide private chauffeur tours.
 
 Website: https://ridexhub.com/
 Primary booking channel: WhatsApp (+94 70 761 5516)
@@ -9,9 +9,19 @@ Address: No 4, Paramulla Road, Matara, Southern Province, Sri Lanka (81000)
 Hours: 09:00–20:00 daily
 
 ## What we do
-- Scooter and motorbike rentals for travelers and locals on Sri Lanka’s South Coast
+- Scooter and motorbike rentals for travelers and locals on Sri Lanka's South Coast
+- **NEW: Private chauffeur tours with custom itineraries across Sri Lanka**
+- Professional drivers with 20+ years experience
+- Modern fleet: SUVs, sedans with AC, WiFi, full insurance
+- All-inclusive tour packages (vehicle, fuel, driver accommodation, tolls)
 - Delivery options (see homepage for current offers)
 - Helmets and basic accessories (varies by rental)
+
+## Popular Tour Packages
+- South Coast Explorer (3-5 days): Galle, Mirissa, Yala - from $280
+- Hill Country Adventure (4-6 days): Ella, Nuwara Eliya, tea plantations - from $350
+- Cultural Triangle (5-7 days): Sigiriya, Dambulla, ancient cities - from $420
+- Custom itineraries available upon request
 
 ## Quick answers (high-signal)
 - How to book: Use WhatsApp from the homepage “Chat & Book” button.

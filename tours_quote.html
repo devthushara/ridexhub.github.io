@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RideXHub - Professional Quote Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50: '#fff9f6', 100: '#fff0e6', 500: '#f97316', 700: '#c2410c' },
+                        tealish: { 500: '#0f766e', 50: '#f0fdfa' },
+                        charcoal: '#111827'
+                    },
+                    fontFamily: {
+                        display: ['Poppins', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4, .font-display { font-family: 'Poppins', sans-serif; }
+        
+        /* --- PRINT OPTIMIZATION FOR SINGLE PAGE --- */
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
+            /* Hide UI Elements */
+            .no-print { display: none !important; }
+            
+            /* Layout Reset */
+            main { width: 100% !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; height: auto !important; background: white !important; }
+            
+            /* The Paper */
+            #quotePaper { 
+                width: 100% !important; 
+                max-width: 100% !important; 
+                box-shadow: none !important; 
+                margin: 0 !important; 
+                border: none !important; 
+                padding: 8mm 10mm !important;
+                min-height: auto !important;
+                height: auto !important;
+                display: block !important;
+                font-size: 9px !important;
+            }
+
+            /* Content Compression for Single Page Fit */
+            header { 
+                padding-bottom: 0.5rem !important; 
+                margin-bottom: 0.75rem !important; 
+                grid-template-columns: 1fr 1fr !important; 
+            }
+            header img { height: 36px !important; }
+            header h1 { font-size: 24px !important; margin-bottom: 0.25rem !important; }
+            
+            .vehicle-section { margin-bottom: 0.75rem !important; }
+            .vehicle-img { height: 100px !important; }
+            
+            .itinerary-section { margin-bottom: 0.75rem !important; }
+            .timeline-item { padding-bottom: 0.75rem !important; }
+            
+            section.mb-6 { margin-bottom: 0.75rem !important; }
+            section p, section div { font-size: 8px !important; line-height: 1.3 !important; }
+            
+            /* Pricing Section Compression */
+            .bg-charcoal .grid { grid-template-columns: 1fr 1fr !important; }
+            .bg-charcoal .grid > div { padding: 1rem !important; }
+            .bg-charcoal h2, .bg-charcoal .text-4xl { font-size: 24px !important; }
+            .bg-charcoal .text-xl { font-size: 14px !important; }
+            .bg-charcoal ul { margin-top: 0.5rem !important; }
+            .bg-charcoal li { margin-bottom: 0.25rem !important; }
+            
+            footer { padding-top: 0.75rem !important; margin-top: 0.75rem !important; }
+            footer .grid { gap: 1rem !important; margin-bottom: 0.5rem !important; } 
+            
+            /* Force Colors - Apply to parent and children */
+            .bg-charcoal { background-color: #111827 !important; color: white !important; }
+            .bg-charcoal .text-white { color: white !important; }
+            .bg-charcoal .text-gray-400 { color: #9ca3af !important; }
+            .bg-charcoal .text-gray-300 { color: #d1d5db !important; }
+            .bg-gray-800 { background-color: #1f2937 !important; color: #d1d5db !important; }
+            .bg-brand-500 { background-color: #f97316 !important; }
+            .bg-tealish-50 { background-color: #f0fdfa !important; }
+            .text-brand-500 { color: #f97316 !important; }
+            .text-tealish-500 { color: #0f766e !important; }
+            .text-green-400 { color: #4ade80 !important; }
+            .text-gray-500 { color: #6b7280 !important; }
+            .line-through { text-decoration: line-through !important; }
+            .border-gray-700 { border-color: #374151 !important; }
+            .text-charcoal { color: #111827 !important; }
+            
+            /* Pricing Section - Force display and colors */
+            section.mb-6.bg-charcoal { 
+                display: block !important; 
+                visibility: visible !important;
+                opacity: 1 !important;
+                page-break-inside: avoid !important;
+            }
+            
+            /* Clean Inputs */
+            input, textarea { border: none !important; background: transparent !important; resize: none; padding: 0 !important; }
+            #dispRef { border: none !important; padding: 0 !important; }
+        }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-gray-100 h-screen flex flex-col md:flex-row overflow-hidden text-charcoal">
+
+    <aside class="no-print w-full md:w-[420px] flex-shrink-0 bg-white md:border-r border-gray-200 h-screen md:h-full overflow-y-auto flex flex-col z-20 shadow-xl">
+        <div class="p-4 bg-charcoal text-white sticky top-0 z-10 flex justify-between items-center shadow-md">
+            <div>
+                <h2 class="font-bold font-display text-lg">Quote Editor <span class="text-brand-500 text-xs ml-1">PRO</span></h2>
+            </div>
+            <button onclick="window.print()" class="bg-brand-500 hover:bg-brand-700 text-white px-3 py-2 rounded-lg text-sm font-bold transition flex items-center gap-2 shadow-lg">
+                <i class="ri-printer-line"></i> Print PDF
+            </button>
+        </div>
+
+        <div class="p-5 space-y-6 pb-24">
+            
+            <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-1 h-full bg-brand-500"></div>
+                <h3 class="text-xs font-bold text-gray-700 uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <i class="ri-calculator-line text-brand-500"></i> Internal Costing (Per Day)
+                </h3>
+                
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2 mb-2 bg-white p-2 rounded border border-gray-200">
+                        <label class="text-[10px] font-bold text-gray-500 uppercase whitespace-nowrap">Trip Duration (Days)</label>
+                        <input type="number" id="calcDays" value="6" oninput="calculatePrice()" class="calc-input w-full text-sm font-bold text-center text-brand-600 outline-none">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase">Vehicle (Per Day)</label>
+                            <input type="number" id="calcVehicleDaily" oninput="calculatePrice()" class="calc-input w-full text-sm border border-gray-300 rounded px-2 py-1.5 outline-none focus:border-brand-500" placeholder="0">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase">Driver Salary (Day)</label>
+                            <input type="number" id="calcSalaryDaily" oninput="calculatePrice()" class="calc-input w-full text-sm border border-gray-300 rounded px-2 py-1.5 outline-none focus:border-brand-500" placeholder="0">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase">Driver Batta (Day)</label>
+                            <input type="number" id="calcBattaDaily" oninput="calculatePrice()" class="calc-input w-full text-sm border border-gray-300 rounded px-2 py-1.5 outline-none focus:border-brand-500" placeholder="0">
+                        </div>
+                        <div class="bg-gray-100/50 p-1 rounded">
+                             <label class="block text-[10px] font-bold text-gray-400 uppercase text-center mb-1">--- Lump Sums ---</label>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase">Total Fuel Est.</label>
+                            <input type="number" id="calcFuelTotal" oninput="calculatePrice()" class="calc-input w-full text-sm border border-gray-300 rounded px-2 py-1.5 outline-none focus:border-brand-500" placeholder="0">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase">Total Tolls</label>
+                            <input type="number" id="calcTollsTotal" oninput="calculatePrice()" class="calc-input w-full text-sm border border-gray-300 rounded px-2 py-1.5 outline-none focus:border-brand-500" placeholder="0">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-bold text-brand-500 uppercase">Total Profit Markup</label>
+                        <input type="number" id="calcMarkupTotal" oninput="calculatePrice()" class="calc-input w-full text-sm border border-brand-300 bg-brand-50 font-bold text-brand-700 rounded px-2 py-1.5 outline-none focus:border-brand-500" placeholder="0">
+                    </div>
+                </div>
+                
+                <div class="mt-3 pt-3 border-t border-gray-200 flex justify-between items-end">
+                    <div class="text-[10px] text-gray-400">Calculated Cost + Margin</div>
+                    <div class="text-lg font-black text-charcoal" id="calcTotalDisplay">LKR 0</div>
+                </div>
+            </div>
+
+            <div>
+                <div class="flex justify-between items-center mb-1">
+                    <label class="text-xs font-bold text-gray-500 uppercase">Guest Details</label>
+                    <button onclick="generateRef()" class="text-[10px] text-brand-500 hover:underline flex items-center gap-1"><i class="ri-refresh-line"></i> New Ref</button>
+                </div>
+                <div class="grid grid-cols-2 gap-2 mb-2">
+                    <input type="text" id="inputRef" class="w-full font-mono text-xs font-bold text-charcoal bg-white border border-gray-300 rounded px-2 py-2 outline-none" oninput="updateElement('dispRef', this.value)">
+                    <input type="date" id="inputDate" class="w-full text-xs bg-white border border-gray-300 rounded px-2 py-2 outline-none">
+                </div>
+                <input type="text" id="inputClientName" value="Mr. Anderson" class="w-full text-sm border border-gray-300 rounded px-3 py-2 outline-none focus:border-brand-500 mb-3">
+            </div>
+
+            <div>
+                <h3 class="text-xs font-bold text-tealish-500 uppercase tracking-wider mb-2 border-b border-gray-200 pb-1">Vehicle & Driver</h3>
+                <input type="text" id="inputVehicle" value="2023 Toyota Raize (AWD SUV)" class="w-full text-sm border border-gray-300 rounded px-3 py-2 outline-none mb-2" placeholder="Vehicle Name">
+                <input type="text" id="inputVehicleImg" value="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Toyota_Raize_%28A200%29_IMG_3850.jpg/1200px-Toyota_Raize_%28A200%29_IMG_3850.jpg" class="w-full text-xs border border-gray-300 rounded px-3 py-2 outline-none mb-2 text-gray-500" placeholder="Image URL">
+                <textarea id="inputDriver" rows="2" class="w-full text-sm border border-gray-300 rounded px-3 py-2 outline-none" placeholder="Driver Bio">Senior Executive Driver (30 years exp, English-speaking).</textarea>
+            </div>
+
+            <div class="bg-brand-50 p-3 rounded-lg border border-brand-100">
+                <h3 class="text-xs font-bold text-brand-700 uppercase tracking-wider mb-2">Final Client Price</h3>
+                <p class="text-[10px] text-gray-500 mb-2">Auto-calculated, but you can edit manually.</p>
+                
+                <div class="mb-3">
+                    <label class="block text-[10px] font-bold text-gray-500 uppercase mb-1">Discount (Optional)</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="number" id="inputDiscountPercent" value="0" oninput="applyDiscount()" class="w-full text-sm border border-gray-300 rounded px-2 py-1.5 text-center" placeholder="%" min="0" max="100">
+                        <input type="number" id="inputDiscountAmount" value="0" oninput="applyDiscountAmount()" class="w-full text-sm border border-gray-300 rounded px-2 py-1.5 text-center" placeholder="Amount" min="0">
+                    </div>
+                    <div class="flex gap-1 text-[9px] text-gray-400 mt-1">
+                        <span>% or Amount</span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-2 mb-2">
+                    <input type="text" id="inputCurr1" value="LKR" class="w-full text-sm border border-gray-300 rounded px-2 py-1.5 font-bold text-center">
+                    <input type="text" id="inputAmt1" value="185,000" class="w-full text-sm font-black text-brand-600 border border-gray-300 rounded px-2 py-1.5 text-right bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-2 mb-2">
+                    <input type="text" id="inputCurr2" value="SGD" class="w-full text-sm border border-gray-300 rounded px-2 py-1.5 text-center" placeholder="Sec. Currency">
+                    <input type="text" id="inputAmt2" value="880" class="w-full text-sm border border-gray-300 rounded px-2 py-1.5 text-right" placeholder="Approx Amt">
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                <div class="flex items-center justify-between mb-2">
+                     <h3 class="text-xs font-bold text-gray-700 uppercase">Special Notes</h3>
+                     <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="toggleNotes" class="sr-only peer" onchange="toggleSpecialNotes()">
+                        <div class="relative w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-500"></div>
+                     </label>
+                </div>
+                <textarea id="inputSpecialNotes" rows="3" class="w-full text-xs border border-gray-300 rounded px-2 py-2 outline-none hidden" placeholder="Enter special requirements here (e.g. Baby seat required, Late checkout)...">Guest requested baby seat (provided free of charge).</textarea>
+            </div>
+
+            <div>
+                 <h3 class="text-xs font-bold text-tealish-500 uppercase tracking-wider mb-2 border-b border-gray-200 pb-1 mt-4">Exclusions</h3>
+                 <textarea id="inputExclusions" rows="3" class="w-full text-xs border border-gray-300 rounded px-2 py-2 outline-none">- Safari Jeep fees & Whale watching tickets.
+- Guest entrance tickets.
+- Personal expenses.</textarea>
+
+                <div class="flex justify-between items-center mb-2 border-b border-gray-200 pb-1 mt-4">
+                    <h3 class="text-xs font-bold text-tealish-500 uppercase tracking-wider">Itinerary</h3>
+                    <button onclick="addItineraryItem()" class="text-xs font-bold text-brand-500 hover:text-brand-700">+ Add Day</button>
+                </div>
+                <div id="itineraryList" class="space-y-3">
+                    </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="w-full flex-grow bg-gray-200 h-full overflow-y-auto p-4 md:p-8 flex justify-center items-start">
+        
+        <div id="quotePaper" class="bg-white shadow-2xl w-full md:w-[210mm] min-h-[297mm] relative p-6 md:p-10 box-border mx-auto transition-all duration-300">
+            
+            <header class="grid grid-cols-1 md:grid-cols-2 items-center border-b-2 border-brand-500 pb-4 mb-4 gap-4">
+                <div class="flex items-center gap-3">
+                    <img src="logo.png" alt="RIDE X HUB logo" class="h-12 md:h-16 w-auto" />
+                    <div>
+                        <div class="font-display font-bold text-xl leading-none text-charcoal">RIDE X HUB</div>
+                        <div class="text-[10px] font-medium text-gray-500 -mt-0.5">Private Journeys</div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <h1 class="text-4xl font-display font-black text-gray-100 uppercase tracking-tighter leading-none mb-1">Quotation</h1>
+                    <div class="flex flex-col items-end gap-1">
+                        <div class="flex items-center justify-end gap-2 text-sm text-charcoal font-medium w-full">
+                            <span class="text-gray-400 text-xs uppercase font-bold">Ref No:</span>
+                            <input type="text" id="dispRef" class="font-mono bg-transparent border-none outline-none w-28 text-sm text-right" value="RH-TO-XXXX" />
+                        </div>
+                        <div class="flex items-center justify-end gap-2 text-sm text-charcoal font-medium w-full">
+                            <span class="text-gray-400 text-xs uppercase font-bold">Date:</span>
+                            <span id="dispDate">Jan 20, 2026</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="mb-6">
+                <h2 class="text-2xl font-display font-bold text-charcoal mb-2">Ayubowan, <span id="dispClientName" class="text-brand-500">Guest</span>!</h2>
+                <p class="text-gray-600 text-sm leading-relaxed max-w-2xl">
+                    Thanks for reaching out! We've put together this quote based on your travel plans. Everything's sorted—vehicle, driver, and all the essentials for a smooth ride. Looking forward to having you on board!
+                </p>
+            </section>
+
+            <section class="vehicle-section mb-6">
+                <div class="grid grid-cols-12 gap-4 bg-gray-50 rounded-xl overflow-hidden border border-gray-100 shadow-sm">
+                    <div class="col-span-5 relative h-40 bg-gray-200 vehicle-img">
+                        <img id="dispVehicleImg" src="" alt="Vehicle" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute top-0 left-0 bg-brand-500 text-white text-[10px] font-bold uppercase px-3 py-1 rounded-br-lg shadow-sm">Reserved Fleet</div>
+                    </div>
+                    <div class="col-span-7 p-4 flex flex-col justify-center">
+                        <h3 class="text-lg font-display font-bold text-charcoal" id="dispVehicle">Vehicle Name</h3>
+                        <div class="mt-2 grid grid-cols-2 gap-y-1 gap-x-2">
+                            <div class="flex items-center gap-2 text-[10px] text-gray-600 font-medium"><i class="ri-suitcase-3-fill text-tealish-500"></i> Spacious Luggage</div>
+                            <div class="flex items-center gap-2 text-[10px] text-gray-600 font-medium"><i class="ri-windy-fill text-tealish-500"></i> Fully AC / Climate Control</div>
+                            <div class="flex items-center gap-2 text-[10px] text-gray-600 font-medium"><i class="ri-shield-star-fill text-tealish-500"></i> Full Passenger Insurance</div>
+                            <div class="flex items-center gap-2 text-[10px] text-gray-600 font-medium"><i class="ri-wifi-fill text-tealish-500"></i> WiFi Onboard</div>
+                        </div>
+                        <div class="mt-3 pt-3 border-t border-gray-200 flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-tealish-50 flex items-center justify-center text-tealish-500 flex-shrink-0"><i class="ri-user-star-line text-sm"></i></div>
+                            <div>
+                                <div class="text-[10px] font-bold text-gray-400 uppercase">Designated Chauffeur</div>
+                                <div class="text-xs font-semibold text-charcoal leading-tight mt-0.5" id="dispDriver">Driver Info</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="itinerary-section mb-6">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="w-1 h-5 bg-brand-500 rounded-full"></span>
+                    <h3 class="text-sm font-display font-bold text-charcoal uppercase tracking-wide">Confirmed Itinerary</h3>
+                </div>
+                <div class="border-l-2 border-brand-100 ml-3.5 space-y-0 relative" id="dispItinerary"></div>
+            </section>
+
+            <section id="dispSpecialNotesSection" class="mb-4 hidden">
+                 <div class="bg-amber-50 border-l-4 border-amber-400 p-3 rounded">
+                    <h4 class="text-[10px] font-bold text-amber-600 uppercase mb-1">Special Notes</h4>
+                    <p id="dispSpecialNotes" class="text-xs text-gray-700 italic">No notes.</p>
+                 </div>
+            </section>
+
+            <section class="mb-6 bg-charcoal rounded-xl overflow-hidden text-white shadow-md print:bg-charcoal print:text-white">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-6 border-r border-gray-700 flex flex-col justify-center">
+                        <span class="text-gray-400 text-[10px] font-bold uppercase tracking-wider mb-1">Total Package Price</span>
+                        
+                        <!-- Original Price (if discount exists) -->
+                        <div id="originalPriceSection" class="hidden mb-1">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-sm font-display text-gray-500 line-through" id="dispOriginalPrice">0</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Discount Info -->
+                        <div id="discountInfoSection" class="hidden mb-1">
+                            <div class="text-xs text-green-400 font-bold flex items-center gap-1">
+                                <i class="ri-price-tag-3-fill"></i>
+                                <span id="dispDiscountInfo">Discount Applied</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Final Price -->
+                        <div class="flex items-baseline gap-2 mb-1">
+                            <span class="text-xl font-display font-bold text-brand-500" id="dispCurr1">LKR</span>
+                            <span class="text-4xl font-display font-bold text-white tracking-tight" id="dispAmt1">0</span>
+                        </div>
+                        <div class="text-xs text-gray-400 font-medium">
+                            approx. <span id="dispCurr2">USD</span> <span id="dispAmt2">0</span>
+                        </div>
+                        <div class="mt-2 inline-flex items-center gap-2 bg-tealish-500/20 border border-tealish-500/30 px-3 py-1 rounded-full text-[10px] font-bold text-tealish-500 print:text-tealish-500">
+                            <i class="ri-check-double-line"></i> All-Inclusive
+                        </div>
+                    </div>
+                    <div class="p-6 bg-gray-800 print:bg-gray-800">
+                        <span class="text-gray-400 text-[10px] font-bold uppercase tracking-wider block mb-3">Package Includes</span>
+                        <ul class="space-y-2 text-xs text-gray-300">
+                            <li class="flex items-start gap-2"><i class="ri-checkbox-circle-fill text-tealish-500 mt-0.5"></i> <span>Private Vehicle & Fuel</span></li>
+                            <li class="flex items-start gap-2"><i class="ri-checkbox-circle-fill text-tealish-500 mt-0.5"></i> <span>Driver Salary, Meals & Accommodation</span></li>
+                            <li class="flex items-start gap-2"><i class="ri-checkbox-circle-fill text-tealish-500 mt-0.5"></i> <span>Highway Tolls & Parking Fees</span></li>
+                            <li class="flex items-start gap-2"><i class="ri-checkbox-circle-fill text-tealish-500 mt-0.5"></i> <span><strong class="text-white"><span id="dispMileage">750</span> KM</strong> Mileage Allowance</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="border-t border-gray-200 pt-4">
+                <div class="grid grid-cols-2 gap-8 mb-4">
+                    <div>
+                        <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Excess Mileage</h4>
+                        <p class="text-[10px] text-gray-600 leading-relaxed">
+                            Planned route fits within <span id="dispMileageSmall">750</span> KM. Excess charged at <span class="font-bold text-charcoal bg-brand-50 px-1 rounded border border-brand-100" id="dispExcess">LKR 150</span>/km.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold text-red-400 uppercase tracking-wider mb-1">Exclusions</h4>
+                        <div class="text-[10px] text-gray-600 leading-relaxed whitespace-pre-wrap" id="dispExclusions"></div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-end text-[10px] text-gray-400 font-medium">
+                    <div>
+                        <strong class="text-charcoal block text-xs mb-0.5">RideXHub Private Journeys</strong>
+                        No 4, Paramulla Road, Matara, Sri Lanka<br>+94 70 761 5516 &bull; hello@ridexhub.com
+                    </div>
+                    <div class="text-right"><span>Generated via RideXHub System</span><br><span>www.ridexhub.com</span></div>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        // Default Data
+        let quoteData = {
+            itinerary: [
+                { date: "Jan 20", activity: "Pickup CMB Airport ➡️ Transfer to Mirissa", stay: "Lilypad Lofts, Mirissa" },
+                { date: "Jan 21", activity: "Mirissa Whale Watching + Optional Galle Fort visit", stay: "Lilypad Lofts, Mirissa" },
+                { date: "Jan 22", activity: "Mirissa ➡️ Transfer to Weerawila", stay: "DoubleTree Hilton, Weerawila" },
+                { date: "Jan 23", activity: "Yala Safari (Morning) ➡️ Transfer to Colombo", stay: "Amari, Colombo" },
+                { date: "Jan 24", activity: "Colombo City usage (Shopping/Sightseeing)", stay: "Amari, Colombo" },
+                { date: "Jan 25", activity: "Colombo ➡️ Drop off CMB Airport (Morning)", stay: "End of Tour" }
+            ]
+        };
+
+        // --- MATH FUNCTION (PER DAY) ---
+        function calculatePrice() {
+            const days = parseFloat(document.getElementById('calcDays').value) || 0;
+            
+            // Daily Rates
+            const vehicleDaily = parseFloat(document.getElementById('calcVehicleDaily').value) || 0;
+            const salaryDaily = parseFloat(document.getElementById('calcSalaryDaily').value) || 0;
+            const battaDaily = parseFloat(document.getElementById('calcBattaDaily').value) || 0;
+            
+            // Lump Sums
+            const fuelTotal = parseFloat(document.getElementById('calcFuelTotal').value) || 0;
+            const tollsTotal = parseFloat(document.getElementById('calcTollsTotal').value) || 0;
+            const markupTotal = parseFloat(document.getElementById('calcMarkupTotal').value) || 0;
+
+            // Logic: (Daily Rates * Days) + Lump Sums
+            const total = ((vehicleDaily + salaryDaily + battaDaily) * days) + fuelTotal + tollsTotal + markupTotal;
+            const formattedTotal = total.toLocaleString('en-US');
+
+            // Update Internal Display
+            document.getElementById('calcTotalDisplay').textContent = "LKR " + formattedTotal;
+
+            // Update Client Price Input (but don't force it if user manually edited it recently? 
+            // For simplicity, we overwrite it when calc parameters change)
+            const amtInput = document.getElementById('inputAmt1');
+            amtInput.value = formattedTotal;
+            
+            updateElement('dispAmt1', formattedTotal);
+            
+            // Apply discount if any
+            applyDiscount();
+        }
+        
+        // --- DISCOUNT FUNCTIONS ---
+        function applyDiscount() {
+            const discountPercent = parseFloat(document.getElementById('inputDiscountPercent').value) || 0;
+            const originalPrice = parseFloat(document.getElementById('inputAmt1').value.replace(/,/g, '')) || 0;
+            
+            if (discountPercent > 0) {
+                // Clear amount field when using percent
+                document.getElementById('inputDiscountAmount').value = 0;
+                
+                const discountAmount = (originalPrice * discountPercent) / 100;
+                const finalPrice = originalPrice - discountAmount;
+                
+                updatePriceDisplay(originalPrice, finalPrice, discountPercent, discountAmount, true);
+            } else {
+                // No discount, hide discount sections
+                document.getElementById('originalPriceSection').classList.add('hidden');
+                document.getElementById('discountInfoSection').classList.add('hidden');
+            }
+        }
+        
+        function applyDiscountAmount() {
+            const discountAmount = parseFloat(document.getElementById('inputDiscountAmount').value) || 0;
+            const originalPrice = parseFloat(document.getElementById('inputAmt1').value.replace(/,/g, '')) || 0;
+            
+            if (discountAmount > 0) {
+                // Clear percent field when using amount
+                document.getElementById('inputDiscountPercent').value = 0;
+                
+                const finalPrice = originalPrice - discountAmount;
+                const discountPercent = (discountAmount / originalPrice) * 100;
+                
+                updatePriceDisplay(originalPrice, finalPrice, discountPercent, discountAmount, false);
+            } else {
+                // No discount, hide discount sections
+                document.getElementById('originalPriceSection').classList.add('hidden');
+                document.getElementById('discountInfoSection').classList.add('hidden');
+            }
+        }
+        
+        function updatePriceDisplay(originalPrice, finalPrice, discountPercent, discountAmount, isPercent) {
+            const currency = document.getElementById('inputCurr1').value;
+            
+            // Show original price (strikethrough)
+            document.getElementById('originalPriceSection').classList.remove('hidden');
+            document.getElementById('dispOriginalPrice').textContent = `${currency} ${originalPrice.toLocaleString('en-US')}`;
+            
+            // Show discount info
+            document.getElementById('discountInfoSection').classList.remove('hidden');
+            if (isPercent) {
+                document.getElementById('dispDiscountInfo').textContent = `-${discountPercent.toFixed(0)}% (${currency} ${discountAmount.toLocaleString('en-US')})`;
+            } else {
+                document.getElementById('dispDiscountInfo').textContent = `-${currency} ${discountAmount.toLocaleString('en-US')} (${discountPercent.toFixed(0)}%)`;
+            }
+            
+            // Update final price
+            updateElement('dispAmt1', finalPrice.toLocaleString('en-US'));
+        }
+
+        // --- UTILITIES ---
+        function generateRef() {
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const ref = `RH-TO-${randomNum}`;
+            document.getElementById('inputRef').value = ref;
+            updateElement('dispRef', ref);
+        }
+
+        function updateElement(id, value, isImage) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            if (isImage) el.src = value;
+            else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.value = value;
+            else el.textContent = value;
+        }
+
+        function toggleSpecialNotes() {
+            const isChecked = document.getElementById('toggleNotes').checked;
+            const inputArea = document.getElementById('inputSpecialNotes');
+            const dispSection = document.getElementById('dispSpecialNotesSection');
+            
+            if (isChecked) {
+                inputArea.classList.remove('hidden');
+                dispSection.classList.remove('hidden');
+            } else {
+                inputArea.classList.add('hidden');
+                dispSection.classList.add('hidden');
+            }
+        }
+
+        function updateState(e) {
+            const map = {
+                'inputDate': 'dispDate', 'inputClientName': 'dispClientName',
+                'inputVehicle': 'dispVehicle', 'inputVehicleImg': 'dispVehicleImg', 'inputDriver': 'dispDriver',
+                'inputCurr1': 'dispCurr1', 'inputAmt1': 'dispAmt1', 'inputCurr2': 'dispCurr2', 'inputAmt2': 'dispAmt2',
+                'inputMileage': ['dispMileage', 'dispMileageSmall'], 'inputExcess': 'dispExcess',
+                'inputExclusions': 'dispExclusions', 'inputSpecialNotes': 'dispSpecialNotes'
+            };
+            const id = e.target.id;
+            if (map[id]) {
+                const target = map[id];
+                const val = e.target.value;
+                if (Array.isArray(target)) target.forEach(t => updateElement(t, val, id === 'inputVehicleImg'));
+                else updateElement(target, val, id === 'inputVehicleImg');
+            }
+        }
+
+        // --- ITINERARY LOGIC ---
+        function renderItinerary() {
+            const container = document.getElementById('dispItinerary');
+            const editorList = document.getElementById('itineraryList');
+            container.innerHTML = '';
+            editorList.innerHTML = '';
+
+            quoteData.itinerary.forEach((item, index) => {
+                // Preview (Compact Timeline)
+                container.insertAdjacentHTML('beforeend', `
+                    <div class="relative pl-6 pb-6 last:pb-0 group timeline-item">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-500 border-4 border-white shadow-sm z-10 group-last:bg-charcoal"></div>
+                        <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
+                            <span class="font-display font-bold text-xs text-brand-700 min-w-[70px] uppercase tracking-wide pt-0.5">${item.date}</span>
+                            <div class="flex-grow">
+                                <span class="text-xs text-charcoal font-bold leading-relaxed block">${item.activity}</span>
+                                <div class="mt-0.5 flex items-center gap-1 text-[10px] text-gray-500">
+                                    <i class="ri-hotel-bed-fill text-tealish-500"></i> <span class="font-medium">${item.stay}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+                // Editor
+                editorList.insertAdjacentHTML('beforeend', `
+                    <div class="bg-gray-50 p-2 rounded-md border border-gray-200 text-xs shadow-sm gap-2">
+                        <div class="flex justify-between mb-2">
+                            <input type="text" value="${item.date}" onchange="updateItinerary(${index}, 'date', this.value)" class="w-20 border border-gray-300 p-1 rounded font-bold" placeholder="Date">
+                            <button onclick="removeItinerary(${index})" class="text-red-500 hover:text-red-700"><i class="ri-delete-bin-line"></i></button>
+                        </div>
+                        <textarea onchange="updateItinerary(${index}, 'activity', this.value)" rows="2" class="w-full border border-gray-300 p-1 rounded mb-2" placeholder="Activity">${item.activity}</textarea>
+                        <input type="text" value="${item.stay}" onchange="updateItinerary(${index}, 'stay', this.value)" class="w-full border border-gray-300 p-1 rounded text-tealish-500 font-medium" placeholder="Overnight Stay">
+                    </div>
+                `);
+            });
+        }
+
+        function addItineraryItem() { quoteData.itinerary.push({ date: "Jan XX", activity: "Activity...", stay: "Hotel" }); renderItinerary(); }
+        function removeItinerary(index) { quoteData.itinerary.splice(index, 1); renderItinerary(); }
+        function updateItinerary(index, field, value) { quoteData.itinerary[index][field] = value; renderItinerary(); }
+
+        // --- INIT ---
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('inputDate').valueAsDate = new Date();
+            generateRef();
+            renderItinerary();
+            
+            // Initial render
+            const inputs = ['inputExclusions', 'inputClientName', 'inputDriver', 'inputMileage', 'inputExcess', 'inputVehicle', 'inputSpecialNotes'];
+            inputs.forEach(id => {
+                const el = document.getElementById(id);
+                if(el) updateElement(id.replace('input', 'disp'), el.value);
+            });
+
+            // Set Calculator Defaults (Approximating your 185,000 target for 6 days)
+            // (14k Vehicle + 5k Salary + 4k Batta) * 6 Days = 138k
+            // Fuel 30k + Tolls 5k + Margin 12k = 185k Total
+            document.getElementById('calcVehicleDaily').value = 14000;
+            document.getElementById('calcSalaryDaily').value = 5000;
+            document.getElementById('calcBattaDaily').value = 4000;
+            
+            document.getElementById('calcFuelTotal').value = 30000;
+            document.getElementById('calcTollsTotal').value = 5000;
+            document.getElementById('calcMarkupTotal').value = 12000;
+            
+            // Listeners
+            document.querySelectorAll('input, textarea').forEach(el => {
+                if(!el.classList.contains('calc-input')) el.addEventListener('input', updateState);
+            });
+        });
+    </script>
+</body>
+</html>

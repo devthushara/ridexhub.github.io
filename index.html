@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>RIDE X HUB — Scooter & Bike Rental Sri Lanka (Matara, Mirissa, Hirikatiya)</title>
-  <meta name="description" content="Trusted scooter and motorbike rental in Madiha, serving Weligama, Mirissa, SK Town, Dickwella & Hirikatiya. Affordable rates, free delivery options, and EV bikes available. Book instantly via WhatsApp." />
+  <title>RIDE X HUB — Scooter Rental & Private Tours Sri Lanka (Matara, Mirissa, Hirikatiya)</title>
+  <meta name="description" content="Trusted scooter rental & private chauffeur tours in Madiha, serving Weligama, Mirissa, SK Town, Dickwella & Hirikatiya. Custom itineraries, luxury vehicles, and experienced drivers. Book instantly via WhatsApp." />
   <meta property="og:title" content="RIDE X HUB — Scooter Rental Matara & South Coast" />
-  <meta property="og:description" content="Explore the South Coast (Weligama to Hirikatiya) with RIDE X HUB. Modern fleet, 24/7 support, and trusted by local hotels. Chat & book now." />
+  <meta property="og:description" content="Explore the South Coast with RIDE X HUB. Scooter rentals & private chauffeur tours. Custom itineraries, modern fleet, 24/7 support. Chat & book now." />
   <meta property="og:image" content="favicon/favicon-32x32.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -16,7 +16,7 @@
   <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Context" />
   <link rel="alternate" type="text/plain" href="/ai.txt" title="AI Policy" />
   <meta name="robots" content="index, follow" />
-  <meta name="keywords" content="scooter rental Matara, motorbike hire Mirissa, scooter rental Hirikatiya, SK town surf scooter, rent bike Weligama, Dickwella scooter hire, RIDE X HUB" />
+  <meta name="keywords" content="scooter rental Matara, motorbike hire Mirissa, private tours Sri Lanka, chauffeur service south coast, custom itinerary tours, private driver Sri Lanka, scooter rental Hirikatiya, SK town surf scooter, rent bike Weligama, Dickwella scooter hire, RIDE X HUB" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ridexhub.com/" />
   <meta property="og:site_name" content="RIDE X HUB" />
@@ -37,7 +37,7 @@
     "@context": "https://schema.org",
     "@type": "MotorcycleRental",
     "name": "RIDE X HUB",
-    "image": "https://ridexhub.com/logo.png",
+    "image": "https://ridexhub.com/logo.webp",
     "@id": "https://ridexhub.com",
     "url": "https://ridexhub.com",
     "telephone": "+94 70 761 5516",
@@ -103,6 +103,39 @@
         }
       }
     ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristInformationCenter",
+    "name": "RIDE X HUB Private Tours",
+    "description": "Custom private chauffeur tours across Sri Lanka with experienced drivers and luxury vehicles",
+    "url": "https://ridexhub.com/#tours",
+    "telephone": "+94 70 761 5516",
+    "priceRange": "$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "No 4, Paramulla Road",
+      "addressLocality": "Matara",
+      "postalCode": "81000",
+      "addressCountry": "LK"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Private Tour Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "TouristTrip",
+            "name": "Custom Private Tour",
+            "description": "Tailored itineraries with private vehicle and experienced chauffeur"
+          }
+        }
+      ]
+    }
   }
   </script>
 
@@ -412,6 +445,30 @@
     .contact-panel { top: auto !important; bottom: 20px !important; left: 50% !important; transform: translateX(-50%) !important; width: calc(100% - 36px) !important; max-width: 420px; }
     .map-wrap { height: 78vh !important; min-height: 520px; }
   }
+  /* Tour Package & Testimonial Carousel Slides */
+  .tour-testimonial-slide,
+  .south-coast-slide,
+  .hill-country-slide,
+  .cultural-triangle-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+  }
+  .tour-testimonial-slide.active,
+  .south-coast-slide.active,
+  .hill-country-slide.active,
+  .cultural-triangle-slide.active {
+    opacity: 1;
+  }
+  .tour-testimonial-carousel,
+  .south-coast-carousel,
+  .hill-country-carousel,
+  .cultural-triangle-carousel {
+    position: relative;
+  }
   </style>
 </head>
 <body class="font-body bg-gray-50 text-gray-800 antialiased">
@@ -429,6 +486,7 @@
       <nav class="hidden md:flex items-center gap-6 text-sm">
         <a class="hover:text-tealish-500 transition" href="#about">About</a>
         <a class="hover:text-tealish-500 transition" href="#fleet">Fleet</a>
+        <a class="hover:text-tealish-500 transition" href="#tours">Private Tours</a>
         <a class="hover:text-tealish-500 transition" href="#explore">Explore</a>
         <a class="hover:text-tealish-500 transition" href="#faq">FAQ</a>
         <a class="hover:text-tealish-500 transition" href="#contact">Contact</a>
@@ -448,7 +506,7 @@
       <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
         <div class="md:col-span-6 order-2 md:order-1 relative">
           <div class="decorative-logo-left absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
-            <img src="logo.png" alt="" style="max-width: min(92%,560px); width:85%; height:auto; opacity:.4; transform:translateY(-3%);" />
+            <img src="logo.webp" alt="" style="max-width: min(92%,560px); width:85%; height:auto; opacity:.4; transform:translateY(-3%);" />
           </div>
           <div class="reveal relative z-10" style="transition-delay:80ms">
             <div class="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full bg-tealish-500/10 border border-tealish-500/20 text-tealish-500 text-xs font-semibold animate-pulse">
@@ -672,7 +730,7 @@
 
           <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
             <div class="relative h-56 overflow-hidden bg-gray-100">
-              <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/yadea.jpg" alt="Yadea Electric Scooter Rental" loading="lazy">
+              <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/yadea.webp" alt="Yadea Electric Scooter Rental" loading="lazy">
               <span class="absolute top-3 right-3 z-30 inline-block bg-ev-blue text-white text-sm font-semibold px-3 py-1 rounded-full shadow-sm">EV</span>
               <span class="absolute bottom-3 right-3 z-30 inline-block bg-brand-500 text-white text-sm font-semibold px-3 py-1 rounded-full shadow-sm">Surf mount +USD 2</span>
               <button class="fleet-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex">‹</button>
@@ -687,7 +745,7 @@
                 <div class="text-right font-semibold text-ev-blue">USD 12/day</div>
               </div>
               <div class="mt-4 flex gap-3">
-                <button class="open-bike px-4 py-2 rounded-xl border" data-bike='{"id":"yadea-voltguard","name":"Yadea VoltGuard EV Motor Scooter","price":"USD 15/day","deposit":"USD 150","img":"img/bike/yadea.jpg","imgs":["img/bike/yadea.jpg"],"specs":["Motor Power: 1200W hub motor, belt drive","Battery: Lithium-ion 72V, 27 Ah capacity","Range: 100 to 150 km per full charge","Top Speed: Approx. 80 km/h","Features: Hydraulic shock absorption front and rear, LED dashboard/headlight, disc brakes front, drum brakes rear, radial tubeless tires, electric start","Seat Height: Approx. 700 mm","Suitable for: Longer range electric rides, urban and semi-urban commutes, 2 riders"]}'>Details</button>
+                <button class="open-bike px-4 py-2 rounded-xl border" data-bike='{"id":"yadea-voltguard","name":"Yadea VoltGuard EV Motor Scooter","price":"USD 15/day","deposit":"USD 150","img":"img/bike/yadea.webp","imgs":["img/bike/yadea.webp"],"specs":["Motor Power: 1200W hub motor, belt drive","Battery: Lithium-ion 72V, 27 Ah capacity","Range: 100 to 150 km per full charge","Top Speed: Approx. 80 km/h","Features: Hydraulic shock absorption front and rear, LED dashboard/headlight, disc brakes front, drum brakes rear, radial tubeless tires, electric start","Seat Height: Approx. 700 mm","Suitable for: Longer range electric rides, urban and semi-urban commutes, 2 riders"]}'>Details</button>
                 <a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-tealish-500 text-white" href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20to%20book%20the%20Yadea%20EV" target="_blank" rel="noopener noreferrer"><i class="ri-whatsapp-fill w-4 h-4 flex-shrink-0 align-middle" style="color:#25D366"></i><span>Chat to Book</span></a>
               </div>
             </div>
@@ -695,7 +753,7 @@
 
           <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
             <div class="relative h-56 overflow-hidden bg-gray-100">
-              <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/xiaomi.jpg" alt="Xiaomi Electric Scooter" loading="lazy">
+              <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/xiaomi.webp" alt="Xiaomi Electric Scooter" loading="lazy">
               <span class="absolute top-3 right-3 z-30 inline-block bg-ev-blue text-white text-sm font-semibold px-3 py-1 rounded-full shadow-sm">EV</span>
               <span class="absolute top-3 left-3 z-30 inline-block bg-tealish-500 text-white text-sm font-semibold px-3 py-1 rounded-full shadow-sm">No License Needed</span>
               <button class="fleet-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex">‹</button>
@@ -718,7 +776,7 @@
           
            <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
             <div class="relative h-56 overflow-hidden bg-gray-100">
-              <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/choi.jpg" alt="Suzuki Choinori" loading="lazy">
+              <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/choi.webp" alt="Suzuki Choinori" loading="lazy">
               <span class="absolute top-3 left-3 z-30 inline-block bg-tealish-500 text-white text-sm font-semibold px-3 py-1 rounded-full shadow-sm">No License Needed</span>
               <button class="fleet-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex">‹</button>
               <button class="fleet-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex">›</button>
@@ -732,7 +790,7 @@
                 <div class="text-right font-semibold">USD 8/day</div>
               </div>
               <div class="mt-4 flex gap-3">
-                <button class="open-bike px-4 py-2 rounded-xl border hover:bg-brand-50" data-bike='{"id":"suzuki-choinori","name":"Suzuki Choinori Motor Scooter","price":"USD 12/day","deposit":"USD 150","img":"img/bike/choi.jpg","imgs":["img/bike/choi.jpg"],"specs":["lightweight 49cc motor scooter designed for urban short trips","4-stroke, air-cooled, single-cylinder engine with 2.0 PS power","Automatic CVT transmission, easy to ride and park","Remarkable fuel efficiency: approx. 76 km/liter","Weight: only 39 kg (dry), very easy to handle","Compact dimensions for tight city navigation","Perfect for solo riders, students, and quick city errands"]}'>Details</button>
+                <button class="open-bike px-4 py-2 rounded-xl border hover:bg-brand-50" data-bike='{"id":"suzuki-choinori","name":"Suzuki Choinori Motor Scooter","price":"USD 12/day","deposit":"USD 150","img":"img/bike/choi.webp","imgs":["img/bike/choi.webp"],"specs":["lightweight 49cc motor scooter designed for urban short trips","4-stroke, air-cooled, single-cylinder engine with 2.0 PS power","Automatic CVT transmission, easy to ride and park","Remarkable fuel efficiency: approx. 76 km/liter","Weight: only 39 kg (dry), very easy to handle","Compact dimensions for tight city navigation","Perfect for solo riders, students, and quick city errands"]}'>Details</button>
                 <a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-tealish-500 text-white" href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20to%20book%20the%20Suzuki%20Choinori" target="_blank" rel="noopener noreferrer"><i class="ri-whatsapp-fill w-4 h-4 flex-shrink-0 align-middle" style="color:#25D366"></i><span>Chat to Book</span></a>
               </div>
             </div>
@@ -740,7 +798,7 @@
 
           <article class="group relative bg-gray-50 rounded-2xl overflow-hidden shadow-soft">
             <div class="relative h-56 overflow-hidden bg-gray-100">
-              <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/wagonr.jpg" alt="Suzuki WagonR Rental" loading="lazy">
+              <img class="fleet-slide w-full h-56 object-cover transition-opacity duration-300 opacity-100" src="img/bike/wagonr.webp" alt="Suzuki WagonR Rental" loading="lazy">
               <button class="fleet-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex">‹</button>
               <button class="fleet-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-sm hidden md:inline-flex">›</button>
             </div>
@@ -753,7 +811,7 @@
                 <div class="text-right font-semibold">USD 40/day</div>
               </div>
               <div class="mt-4 flex gap-3">
-                <button class="open-bike px-4 py-2 rounded-xl border hover:bg-brand-50" data-bike='{"id":"suzuki-wagonr","name":"Suzuki WagonR","price":"USD 40/day (100 km/day)","deposit":"USD 150","img":"img/bike/wagonr.jpg","imgs":["img/bike/wagonr.jpg"],"specs":["Spacious 5-seater hatchback with 1.2L petrol engine, automatic transmission","Fuel efficiency approx. 24 km/l, 341L boot space","Safety features include 6 airbags, ABS, EBD, and rear parking sensors","Comfortable interiors with AC, power steering, and touchscreen display","Rental price: USD 40 per day, daily limit 100 km (extra mileage charges apply)","Deposit: USD 150","Ideal for small groups or families seeking economical city travel"]}'>Details</button>
+                <button class="open-bike px-4 py-2 rounded-xl border hover:bg-brand-50" data-bike='{"id":"suzuki-wagonr","name":"Suzuki WagonR","price":"USD 40/day (100 km/day)","deposit":"USD 150","img":"img/bike/wagonr.webp","imgs":["img/bike/wagonr.webp"],"specs":["Spacious 5-seater hatchback with 1.2L petrol engine, automatic transmission","Fuel efficiency approx. 24 km/l, 341L boot space","Safety features include 6 airbags, ABS, EBD, and rear parking sensors","Comfortable interiors with AC, power steering, and touchscreen display","Rental price: USD 40 per day, daily limit 100 km (extra mileage charges apply)","Deposit: USD 150","Ideal for small groups or families seeking economical city travel"]}'>Details</button>
                 <a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-tealish-500 text-white" href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20to%20book%20the%20WagonR" target="_blank" rel="noopener noreferrer"><i class="ri-whatsapp-fill w-4 h-4 flex-shrink-0 align-middle" style="color:#25D366"></i><span>Chat to Book</span></a>
               </div>
             </div>
@@ -780,6 +838,288 @@
               </div>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tours" class="py-16 bg-gradient-to-br from-brand-50 via-white to-tealish-50 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-brand-100 rounded-full opacity-20 blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-tealish-50 rounded-full opacity-30 blur-3xl"></div>
+      
+      <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center max-w-3xl mx-auto reveal">
+          <div class="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-white border border-brand-200 shadow-sm">
+            <i class="ri-steering-2-fill text-brand-500"></i>
+            <span class="text-sm font-semibold text-brand-700 uppercase tracking-wide">New Service</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-charcoal mb-4">RIDE X HUB <span class="text-brand-500">Private Tours</span></h2>
+          <p class="text-gray-600 text-lg leading-relaxed">
+            Experience Sri Lanka your way. Custom itineraries, luxury vehicles, and experienced chauffeurs ready to show you the island's hidden gems.
+          </p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center reveal" style="transition-delay:100ms">
+          <div class="order-2 md:order-1">
+            <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+              <h3 class="text-2xl font-display font-bold text-charcoal mb-4">Why Choose Our Private Tours?</h3>
+              <div class="space-y-4">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center flex-shrink-0">
+                    <i class="ri-map-pin-user-fill text-brand-500 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-charcoal mb-1">Custom Itineraries</h4>
+                    <p class="text-sm text-gray-600">Design your perfect journey. Whether it's coastal drives, cultural sites, or wildlife safaris—we adapt to your plans.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-tealish-50 flex items-center justify-center flex-shrink-0">
+                    <i class="ri-user-star-fill text-tealish-500 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-charcoal mb-1">Expert Chauffeurs</h4>
+                    <p class="text-sm text-gray-600">Professional drivers with 20+ years experience, fluent in English, and deep local knowledge.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center flex-shrink-0">
+                    <i class="ri-car-fill text-brand-500 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-charcoal mb-1">Premium Fleet</h4>
+                    <p class="text-sm text-gray-600">Modern SUVs and sedans with AC, WiFi, full insurance, and spacious luggage capacity.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-tealish-50 flex items-center justify-center flex-shrink-0">
+                    <i class="ri-shield-check-fill text-tealish-500 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-charcoal mb-1">All-Inclusive Pricing</h4>
+                    <p class="text-sm text-gray-600">Transparent quotes covering vehicle, fuel, driver accommodation, tolls—no hidden fees.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="order-1 md:order-2">
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl tour-testimonial-carousel h-[400px]">
+              <div class="tour-testimonial-slide active">
+                <img src="img/cus1.webp" alt="Jessie, Preston and Jason from Singapore" class="w-full h-full object-cover" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 text-white z-10">
+                  <div class="flex items-center gap-2 mb-2">
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <span class="text-sm font-semibold ml-2">5.0 Rating</span>
+                  </div>
+                  <p class="text-sm italic">“Absolutely brilliant experience! Our driver was incredibly patient and showed us hidden gems we would've never found on our own. The vehicle was spotless and comfortable. Worth every dollar!”</p>
+                  <p class="text-xs mt-2 opacity-90">— Jessie, Preston & Jason, Singapore</p>
+                </div>
+              </div>
+              <div class="tour-testimonial-slide">
+                <img src="img/cus2.webp" alt="Tiffany and Fernando" class="w-full h-full object-cover" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 text-white z-10">
+                  <div class="flex items-center gap-2 mb-2">
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <i class="ri-star-fill text-yellow-400"></i>
+                    <span class="text-sm font-semibold ml-2">5.0 Rating</span>
+                  </div>
+                  <p class="text-sm italic">“Perfect from start to finish! The booking process was smooth, communication was excellent, and our driver made us feel like VIPs. Highly recommend for couples wanting a romantic, stress-free Sri Lankan adventure.”</p>
+                  <p class="text-xs mt-2 opacity-90">— Tiffany & Fernando, France</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16 reveal" style="transition-delay:200ms">
+          <h3 class="text-2xl font-display font-bold text-charcoal text-center mb-8">Popular Tour Packages</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div class="relative h-48 overflow-hidden south-coast-carousel">
+                <div class="south-coast-slide active">
+                  <img src="img/south.webp" alt="South Coast Sri Lanka" class="w-full h-48 object-cover" loading="lazy" />
+                </div>
+                <div class="south-coast-slide">
+                  <img src="img/mirissa.webp" alt="Mirissa Beach" class="w-full h-48 object-cover" loading="lazy" />
+                </div>
+                <div class="absolute top-4 right-4 bg-white text-brand-700 text-xs font-bold px-3 py-1 rounded-full shadow z-10">POPULAR</div>
+                <div class="absolute bottom-4 left-4 text-white z-10">
+                  <h4 class="text-xl font-display font-bold drop-shadow-lg">South Coast Explorer</h4>
+                  <p class="text-sm opacity-90 drop-shadow">3-5 Days</p>
+                </div>
+                <button class="south-coast-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-1 rounded-full shadow">
+                  <i class="ri-arrow-left-s-line text-lg text-charcoal"></i>
+                </button>
+                <button class="south-coast-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-1 rounded-full shadow">
+                  <i class="ri-arrow-right-s-line text-lg text-charcoal"></i>
+                </button>
+              </div>
+              <div class="p-6">
+                <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                  <li class="flex items-center gap-2"><i class="ri-check-line text-tealish-500"></i> Galle Fort & Dutch Heritage</li>
+                  <li class="flex items-center gap-2"><i class="ri-check-line text-tealish-500"></i> Mirissa Whale Watching</li>
+                  <li class="flex items-center gap-2"><i class="ri-check-line text-tealish-500"></i> Yala National Park Safari</li>
+                  <li class="flex items-center gap-2"><i class="ri-check-line text-tealish-500"></i> Coastal Beaches & Surfing</li>
+                </ul>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-xs text-gray-500">Starting from</p>
+                    <p class="text-2xl font-bold text-brand-500">$280<span class="text-sm text-gray-500">/trip</span></p>
+                  </div>
+                  <a href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20a%20quote%20for%20the%20South%20Coast%20Explorer%20tour" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-brand-500 text-white text-sm font-semibold hover:bg-brand-700 transition">Get Quote</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div class="relative h-48 overflow-hidden hill-country-carousel">
+                <div class="hill-country-slide active">
+                  <img src="img/central-tea.webp" alt="Tea Plantations" class="w-full h-48 object-cover" loading="lazy" />
+                </div>
+                <div class="hill-country-slide">
+                  <img src="img/central.webp" alt="Hill Country" class="w-full h-48 object-cover" loading="lazy" />
+                </div>
+                <div class="absolute bottom-4 left-4 text-white z-10">
+                  <h4 class="text-xl font-display font-bold drop-shadow-lg">Hill Country Adventure</h4>
+                  <p class="text-sm opacity-90 drop-shadow">4-6 Days</p>
+                </div>
+                <button class="hill-country-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-1 rounded-full shadow">
+                  <i class="ri-arrow-left-s-line text-lg text-charcoal"></i>
+                </button>
+                <button class="hill-country-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-1 rounded-full shadow">
+                  <i class="ri-arrow-right-s-line text-lg text-charcoal"></i>
+                </button>
+              </div>
+              <div class="p-6">
+                <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                  <li class="flex items-center gap-2"><i class="ri-check-line text-tealish-500"></i> Ella & Nine Arch Bridge</li>
+                  <li class="flex items-center gap-2"><i class="ri-check-line text-tealish-500"></i> Nuwara Eliya Tea Plantations</li>
+                  <li class="flex items-center gap-2"><i class="ri-check-line text-tealish-500"></i> Horton Plains & World's End</li>
+                  <li class="flex items-center gap-2"><i class="ri-check-line text-tealish-500"></i> Train Journey Experience</li>
+                </ul>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-xs text-gray-500">Starting from</p>
+                    <p class="text-2xl font-bold text-brand-500">$350<span class="text-sm text-gray-500">/trip</span></p>
+                  </div>
+                  <a href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20a%20quote%20for%20the%20Hill%20Country%20Adventure%20tour" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-tealish-500 text-white text-sm font-semibold hover:bg-tealish-700 transition">Get Quote</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div class="relative h-48 overflow-hidden cultural-triangle-carousel">
+                <div class="cultural-triangle-slide active">
+                  <img src="img/temple.webp" alt="Ancient Temple" class="w-full h-48 object-cover" loading="lazy" />
+                </div>
+                <div class="cultural-triangle-slide">
+                  <img src="img/north.webp" alt="Cultural Triangle" class="w-full h-48 object-cover" loading="lazy" />
+                </div>
+                <div class="absolute bottom-4 left-4 text-white z-10">
+                  <h4 class="text-xl font-display font-bold drop-shadow-lg">Cultural Triangle</h4>
+                  <p class="text-sm opacity-90 drop-shadow">5-7 Days</p>
+                </div>
+                <button class="cultural-triangle-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-1 rounded-full shadow">
+                  <i class="ri-arrow-left-s-line text-lg text-charcoal"></i>
+                </button>
+                <button class="cultural-triangle-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-1 rounded-full shadow">
+                  <i class="ri-arrow-right-s-line text-lg text-charcoal"></i>
+                </button>
+              </div>
+              <div class="p-6">
+                <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                  <li class="flex items-center gap-2"><i class="ri-check-line text-tealish-500"></i> Sigiriya Rock Fortress</li>
+                  <li class="flex items-center gap-2"><i class="ri-check-line text-tealish-500"></i> Dambulla Cave Temples</li>
+                  <li class="flex items-center gap-2"><i class="ri-check-line text-tealish-500"></i> Anuradhapura Ancient City</li>
+                  <li class="flex items-center gap-2"><i class="ri-check-line text-tealish-500"></i> Polonnaruwa Ruins</li>
+                </ul>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-xs text-gray-500">Starting from</p>
+                    <p class="text-2xl font-bold text-brand-500">$420<span class="text-sm text-gray-500">/trip</span></p>
+                  </div>
+                  <a href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20a%20quote%20for%20the%20Cultural%20Triangle%20tour" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-amber-500 text-white text-sm font-semibold hover:bg-amber-700 transition">Get Quote</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16 bg-white rounded-2xl p-8 md:p-12 shadow-xl border border-gray-100 reveal" style="transition-delay:300ms">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 class="text-2xl font-display font-bold text-charcoal mb-4">How It Works</h3>
+              <div class="space-y-4">
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold flex-shrink-0">1</div>
+                  <div>
+                    <h4 class="font-semibold text-charcoal">Share Your Plans</h4>
+                    <p class="text-sm text-gray-600">Tell us your destinations, travel dates, and preferences via WhatsApp or our quote tool.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold flex-shrink-0">2</div>
+                  <div>
+                    <h4 class="font-semibold text-charcoal">Get Custom Quote</h4>
+                    <p class="text-sm text-gray-600">Receive a transparent, all-inclusive quote with detailed itinerary and pricing breakdown.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold flex-shrink-0">3</div>
+                  <div>
+                    <h4 class="font-semibold text-charcoal">Confirm & Travel</h4>
+                    <p class="text-sm text-gray-600">Book your tour, and we'll handle everything—vehicle, driver, route planning, and support.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center md:text-left">
+              <div class="inline-block bg-gradient-to-br from-brand-50 to-tealish-50 rounded-2xl p-8 border-2 border-brand-200">
+                <i class="ri-file-list-3-fill text-brand-500 text-5xl mb-4"></i>
+                <h4 class="text-xl font-bold text-charcoal mb-2">Ready to Plan Your Tour?</h4>
+                <p class="text-sm text-gray-600 mb-6">Let's plan your itinerary itinerary.</p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+
+                  <a href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20to%20book%20a%20private%20tour" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl border-2 border-brand-500 text-brand-500 font-semibold hover:bg-brand-50 transition inline-flex items-center justify-center gap-2">
+                    <i class="ri-whatsapp-fill" style="color:#25D366"></i>
+                    <span>Chat with Us</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center reveal" style="transition-delay:400ms">
+          <div class="inline-flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="ri-shield-check-fill text-tealish-500 text-xl"></i>
+              <span>Fully Insured</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="ri-money-dollar-circle-fill text-tealish-500 text-xl"></i>
+              <span>Crypto Accepted</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="ri-time-fill text-tealish-500 text-xl"></i>
+              <span>24/7 Support</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="ri-global-fill text-tealish-500 text-xl"></i>
+              <span>Multi-Currency</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1123,7 +1463,7 @@
         <!-- About -->
         <div>
           <div class="font-display font-bold text-white">RIDE X HUB</div>
-          <p class="mt-3 text-sm text-gray-300">Discover Sri Lanka from Madiha with RIDE X HUB — modern scooters, motorcycles and electric bikes. Affordable rates, free safety gear, and flexible booking options.</p>
+          <p class="mt-3 text-sm text-gray-300">Discover Sri Lanka with RIDE X HUB — modern scooters, electric bikes, and private chauffeur tours. From daily rentals to custom itineraries with professional drivers. Affordable rates and transparent pricing.</p>
           <div class="mt-4 text-sm text-gray-400">Hours: Daily 9:00 — 20:00</div>
           <div class="mt-4 text-sm">
             <a href="mailto:hello@ridexhub.com" class="text-tealish-500 hover:underline">hello@ridexhub.com</a>
@@ -1131,7 +1471,18 @@
           </div>
         </div>
 
-        <!-- Quick links -->
+        <!-- Services -->
+        <div>
+          <h4 class="font-semibold text-white">Our Services</h4>
+          <ul class="mt-3 space-y-2 text-sm text-gray-300">
+            <li><a href="#fleet" class="hover:text-tealish-500 transition">Scooter & Bike Rentals</a></li>
+            <li><a href="#fleet" class="hover:text-tealish-500 transition">Electric Vehicles (EV)</a></li>
+            <li><a href="#tours" class="hover:text-tealish-500 transition">Private Tours & Chauffeur</a></li>
+            <li><a href="#explore" class="hover:text-tealish-500 transition">Travel Guides & Tips</a></li>
+          </ul>
+        </div>
+
+        <!-- Locations -->
         <div>
           <h4 class="font-semibold text-white">Locations Served</h4>
           <ul class="mt-3 space-y-2 text-sm text-gray-300">
@@ -1140,6 +1491,7 @@
             <li>Weligama Bay</li>
             <li>SK Town</li>
             <li>Dickwella & Hirikatiya</li>
+            <li class="pt-2 text-xs text-gray-400">+ Island-wide tours available</li>
           </ul>
         </div>
 
@@ -1205,6 +1557,7 @@
       <nav class="mt-8 flex flex-col gap-4 text-lg">
         <a href="#about" class="mobile-link">About</a>
         <a href="#fleet" class="mobile-link">Fleet</a>
+        <a href="#tours" class="mobile-link">Private Tours</a>
         <a href="#faq" class="mobile-link">FAQ</a>
         <a href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20to%20book%20a%20ride" class="mt-4 inline-block px-4 py-2 rounded-xl bg-brand-500 text-white mobile-link">
           <i class="ri-whatsapp-fill"></i> Chat & Book
@@ -1308,6 +1661,77 @@
         toggle.style.display = 'none';
       }
       update();
+    })();
+
+    // Tour Package & Testimonial Carousels
+    (function(){
+      // Testimonial Carousel with Auto-rotation
+      const testimonialSlides = document.querySelectorAll('.tour-testimonial-slide');
+      let testimonialIdx = 0;
+      const showTestimonial = (n) => {
+        testimonialSlides.forEach((s, i) => {
+          s.classList.toggle('active', i === n);
+          s.style.opacity = (i === n) ? '1' : '0';
+        });
+        testimonialIdx = n;
+      };
+      // Auto-rotate every 5 seconds
+      if (testimonialSlides.length > 1) {
+        setInterval(() => {
+          showTestimonial((testimonialIdx + 1) % testimonialSlides.length);
+        }, 5000);
+      }
+      
+      // South Coast Carousel
+      const southSlides = document.querySelectorAll('.south-coast-slide');
+      let southIdx = 0;
+      const showSouth = (n) => {
+        southSlides.forEach((s, i) => {
+          s.classList.toggle('active', i === n);
+          s.style.opacity = (i === n) ? '1' : '0';
+        });
+        southIdx = n;
+      };
+      document.querySelector('.south-coast-prev')?.addEventListener('click', () => {
+        showSouth((southIdx - 1 + southSlides.length) % southSlides.length);
+      });
+      document.querySelector('.south-coast-next')?.addEventListener('click', () => {
+        showSouth((southIdx + 1) % southSlides.length);
+      });
+      
+      // Hill Country Carousel
+      const hillSlides = document.querySelectorAll('.hill-country-slide');
+      let hillIdx = 0;
+      const showHill = (n) => {
+        hillSlides.forEach((s, i) => {
+          s.classList.toggle('active', i === n);
+          s.style.opacity = (i === n) ? '1' : '0';
+        });
+        hillIdx = n;
+      };
+      document.querySelector('.hill-country-prev')?.addEventListener('click', () => {
+        showHill((hillIdx - 1 + hillSlides.length) % hillSlides.length);
+      });
+      document.querySelector('.hill-country-next')?.addEventListener('click', () => {
+        showHill((hillIdx + 1) % hillSlides.length);
+      });
+      
+      // Cultural Triangle Carousel
+      const culturalSlides = document.querySelectorAll('.cultural-triangle-slide');
+      let culturalIdx = 0;
+      const showCultural = (n) => {
+        culturalSlides.forEach((s, i) => {
+          s.classList.toggle('active', i === n);
+          s.style.opacity = (i === n) ? '1' : '0';
+        });
+        culturalIdx = n;
+      };
+      document.querySelector('.cultural-triangle-prev')?.addEventListener('click', () => {
+        showCultural((culturalIdx - 1 + culturalSlides.length) % culturalSlides.length);
+      });
+      document.querySelector('.cultural-triangle-next')?.addEventListener('click', () => {
+        showCultural((culturalIdx + 1) % culturalSlides.length);
+      });
     })();
   </script>
 </body>
