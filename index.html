@@ -469,6 +469,21 @@
   .cultural-triangle-carousel {
     position: relative;
   }
+  /* FAQ Filter Buttons */
+  .faq-filter-btn {
+    background: white;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+  }
+  .faq-filter-btn:hover {
+    background: #f9fafb;
+    border-color: #f97316;
+  }
+  .faq-filter-btn.active {
+    background: #f97316;
+    color: white;
+    border-color: #f97316;
+  }
   </style>
 </head>
 <body class="font-body bg-gray-50 text-gray-800 antialiased">
@@ -1282,151 +1297,267 @@
 
     <section id="faq" class="py-12 bg-gray-50">
       <div class="max-w-4xl mx-auto px-4">
-        <h3 class="text-xl font-display font-semibold">Frequently asked questions</h3>
+        <h3 class="text-xl font-display font-semibold mb-2">Frequently Asked Questions</h3>
+        <p class="text-sm text-gray-600 mb-6">Find answers to common questions about our scooter rentals and private tours</p>
+        
+        <!-- Search Box -->
+        <div class="mb-6 relative">
+          <input 
+            type="text" 
+            id="faqSearch" 
+            placeholder="Search questions... (e.g., 'private tour', 'insurance', 'driver')" 
+            class="w-full px-4 py-3 pl-12 rounded-xl border border-gray-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm"
+          />
+          <i class="ri-search-line absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
+          <button id="clearSearch" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 hidden">
+            <i class="ri-close-circle-fill text-xl"></i>
+          </button>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap gap-2 mb-6">
+          <button class="faq-filter-btn active px-4 py-2 rounded-lg text-sm font-semibold transition" data-filter="all">
+            All Questions
+          </button>
+          <button class="faq-filter-btn px-4 py-2 rounded-lg text-sm font-semibold transition" data-filter="rentals">
+            Vehicle Rentals
+          </button>
+          <button class="faq-filter-btn px-4 py-2 rounded-lg text-sm font-semibold transition" data-filter="tours">
+            Private Tours
+          </button>
+          <button class="faq-filter-btn px-4 py-2 rounded-lg text-sm font-semibold transition" data-filter="srilanka">
+            Sri Lanka Travel
+          </button>
+        </div>
+
+        <div id="faqResults" class="text-sm text-gray-500 mb-4 hidden"></div>
+
         <div class="mt-6 space-y-3" id="faqList">
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">What are the age requirements for renting a vehicle?</summary>
             <p class="mt-2 text-sm text-gray-600">You must be at least 18 years old to rent a bike, and 21 years old to rent a car in Sri Lanka. These requirements align with local regulations.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">What documents do I need to rent a scooter or car in Sri Lanka?</summary>
             <p class="mt-2 text-sm text-gray-600">To rent a scooter or motorbike, you need a valid driver's license issued in Sri Lanka, or an International Driving Permit (IDP) if you are a foreign visitor. Local citizens can use their national license for vehicles with appropriate endorsements for bikes or cars. Foreign nationals require both their home country license and an IDP endorsed for Sri Lanka, typically available at the automobile association counter or at the airport on arrival. A copy of your passport or national ID is required for verification.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Do you require a security deposit?</summary>
             <p class="mt-2 text-sm text-gray-600">Yes, a refundable security deposit is usually required for all rentals in Sri Lanka, payable at pick up and refunded after the vehicle is returned in good condition. The amount depends on the type of vehicle.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">What insurance coverage do you provide?</summary>
             <p class="mt-2 text-sm text-gray-600">All vehicles include basic third-party insurance as per Sri Lankan law. Optional comprehensive insurance covering accidental damage and theft may be available for an additional fee. Insurance is void in cases of reckless driving, driving under the influence, or violating traffic regulations. In case of an accident, you must inform the company immediately and file a police report for claims processing. For major damages, we will arrange a replacement vehicle where possible.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Are there any hidden charges or fees?</summary>
             <p class="mt-2 text-sm text-gray-600">No, we value transparency. All charges, including rental cost, taxes, basic insurance, and standard accessories, are clearly listed in your rental agreement.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">How are the scooters and cars maintained?</summary>
             <p class="mt-2 text-sm text-gray-600">All vehicles undergo regular maintenance checks before and after each rental. Vehicles are provided clean, fully serviced, and in good working order to ensure your safety.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">How do I return the vehicle?</summary>
             <p class="mt-2 text-sm text-gray-600">On the scheduled drop-off date, meet our staff at the designated location for an inspection. If everything is in order, your deposit will be refunded.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">How can I pay for the rental?</summary>
             <p class="mt-2 text-sm text-gray-600">You can pay using cash, major credit/debit cards, or direct bank transfer. Payment of the rental fee and deposit must be completed prior to receiving the vehicle.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Are helmets provided for scooter rentals?</summary>
             <p class="mt-2 text-sm text-gray-600">Yes, DOT-approved helmets for the driver and passenger are provided free of charge. All helmets are sanitized after each use.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Are there mileage limits?</summary>
             <p class="mt-2 text-sm text-gray-600">Most rentals in Sri Lanka come with a daily mileage cap (usually 100-150 km per day). Unlimited mileage options may be available at an extra cost; excess mileage incurs additional charges.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">What happens if my vehicle breaks down?</summary>
             <p class="mt-2 text-sm text-gray-600">Call our 24/7 helpline. We provide roadside assistance and, if repairs cannot be made quickly, we'll arrange for a replacement vehicle whenever possible.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">What do I do in case of accident?</summary>
             <p class="mt-2 text-sm text-gray-600">Contact us immediately using our emergency hotline. You must also notify the local police for an accident report - this is required for any insurance claims. Follow local traffic laws, drive responsibly, and always wear your helmet.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="srilanka">
             <summary class="font-semibold cursor-pointer">What emergency numbers should I know in Sri Lanka?</summary>
             <p class="mt-2 text-sm text-gray-600">Rental Company Helpline: +94 70 761 5516<br>Police Emergency: 119<br>Ambulance: 1990<br>Fire & Rescue: 110<br>Tourist Police (Colombo): +94 11 2421052</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Are bookings refundable? Can I transfer my booking?</summary>
             <p class="mt-2 text-sm text-gray-600">Bookings are typically non-refundable. If you need to transfer your booking to a friend or family member, contact us in advance and we'll assist where possible, subject to approval.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Can I extend my rental period?</summary>
             <p class="mt-2 text-sm text-gray-600">Yes, extensions are possible subject to vehicle availability. Contact us as early as possible to confirm and adjust your contract.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Can I drive the vehicle outside the city or to other regions?</summary>
             <p class="mt-2 text-sm text-gray-600">Vehicles may be used throughout Sri Lanka, but must stay within the country. If you plan to visit remote areas or national parks, inform us in advance; additional fees or insurance may be required.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">How is fuel handled for rentals?</summary>
             <p class="mt-2 text-sm text-gray-600">Vehicles are supplied with a minimum quarter tank; return it with the same level as provided. If returned with less fuel, you will be charged for the difference.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Do you offer airport or hotel pickup and delivery services?</summary>
             <p class="mt-2 text-sm text-gray-600">Yes, we offer vehicle delivery and pickup at Bandaranaike International Airport, Colombo as well as at major hotels and guesthouses in most cities for a small additional fee. Please request this service when booking your rental.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Can I rent a vehicle without advance booking?</summary>
             <p class="mt-2 text-sm text-gray-600">Walk-in rentals are available based on current fleet availability, but advance booking is strongly recommended, especially during peak tourist seasons, to guarantee your preferred vehicle.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">What happens if I receive a traffic fine or parking ticket during my rental?</summary>
             <p class="mt-2 text-sm text-gray-600">Renters are responsible for all traffic violations, fines, or parking tickets incurred during the rental period. Please inform our office so we can assist with the payment process and any required documentation.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Are child seats or other extra accessories available?</summary>
             <p class="mt-2 text-sm text-gray-600">Yes, we offer child safety seats, GPS units, mobile phone holders, and other accessories on request for an extra charge. Please specify your needs when booking so we can prepare your vehicle accordingly.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Is roadside assistance included?</summary>
             <p class="mt-2 text-sm text-gray-600">Yes, all rentals include free roadside assistance for emergencies such as breakdowns, flat tires, or battery issues. We provide support 24/7, island-wide.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Can someone else drive the rented vehicle?</summary>
             <p class="mt-2 text-sm text-gray-600">Additional drivers are permitted for an extra fee, provided they present valid documentation and are listed on the rental contract. All drivers must meet the age and licensing requirements.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="srilanka">
             <summary class="font-semibold cursor-pointer">Are there vehicle restrictions for entering national parks or wildlife areas?</summary>
             <p class="mt-2 text-sm text-gray-600">Some national parks and protected areas have access restrictions for private vehicles. Please notify us if you plan to visit such locations; we can advise on required permits or options for guided tours.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">What is your fuel policy if I return the vehicle with more fuel than at pickup?</summary>
             <p class="mt-2 text-sm text-gray-600">No refunds are provided for excess fuel left in the vehicle upon return.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">What is the minimum and maximum rental period?</summary>
             <p class="mt-2 text-sm text-gray-600">The minimum rental period is typically 24 hours. Maximum rental duration is subject to fleet availability but long-term rentals (several weeks or months) are welcome and may attract special discounted rates.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Do you offer insurance coverage for personal belongings?</summary>
             <p class="mt-2 text-sm text-gray-600">No, insurance provided covers only the vehicle. We recommend keeping valuables with you; rental companies are not responsible for personal belongings left in vehicles.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Can I cancel or change my booking?</summary>
             <p class="mt-2 text-sm text-gray-600">Booking changes or cancellations are subject to our policy stated in the agreement. Please contact us as early as possible so we can assist; cancellation fees may apply.</p>
           </details>
 
-          <details class="bg-white p-4 rounded-lg shadow">
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
             <summary class="font-semibold cursor-pointer">Will I be charged for late returns?</summary>
             <p class="mt-2 text-sm text-gray-600">Yes, late returns incur hourly or daily charges as specified in your rental contract. We advise notifying us if you expect a delay.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow" data-category="rentals">
+            <summary class="font-semibold cursor-pointer">What insurance coverage do you provide?</summary>
+            <p class="mt-2 text-sm text-gray-600">We maintain comprehensive insurance from Sri Lanka Insurance Corporation covering passengers, vehicles, and third-party liabilities and properties. A copy of our insurance certificate is available upon request. This provides peace of mind for all rentals and tour services.</p>
+          </details>
+
+          <!-- Private Tours FAQs -->
+          <details class="bg-white p-4 rounded-lg shadow" data-category="tours">
+            <summary class="font-semibold cursor-pointer">What's included in a private tour package?</summary>
+            <p class="mt-2 text-sm text-gray-600">Our private tours include an experienced English-speaking driver, air-conditioned vehicle, fuel, parking fees, and driver's meals and accommodation. Hotel pickup and drop-off are included. Tour entrance fees, your meals, and accommodation are not included unless specified in the package.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow" data-category="tours">
+            <summary class="font-semibold cursor-pointer">How experienced are your tour drivers?</summary>
+            <p class="mt-2 text-sm text-gray-600">All our drivers are licensed professionals with years of experience navigating Sri Lankan roads. They are knowledgeable about local attractions, culture, and history, and speak English fluently to enhance your travel experience.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow" data-category="tours">
+            <summary class="font-semibold cursor-pointer">Can I customize my private tour itinerary?</summary>
+            <p class="mt-2 text-sm text-gray-600">Absolutely! We encourage you to customize your itinerary based on your interests. Contact us with your preferred destinations and timeline, and we'll create a personalized tour plan that suits your needs and budget.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow" data-category="tours">
+            <summary class="font-semibold cursor-pointer">What's your cancellation policy for private tours?</summary>
+            <p class="mt-2 text-sm text-gray-600">Cancellations made 7+ days before departure receive a full refund minus processing fees. Cancellations 3-6 days before incur a 50% charge. Less than 3 days notice results in no refund. Emergency situations are reviewed case-by-case.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow" data-category="tours">
+            <summary class="font-semibold cursor-pointer">Do I need travel insurance for tours in Sri Lanka?</summary>
+            <p class="mt-2 text-sm text-gray-600">While not mandatory, we strongly recommend comprehensive travel insurance covering medical emergencies, trip cancellations, and personal belongings. Sri Lanka is generally safe, but insurance provides peace of mind during your travels.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow" data-category="tours">
+            <summary class="font-semibold cursor-pointer">Are meals included in tour packages?</summary>
+            <p class="mt-2 text-sm text-gray-600">Driver meals are included, but your meals are your responsibility unless explicitly stated in your package. Your driver can recommend excellent local restaurants and eateries at various price points along your route.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow" data-category="tours">
+            <summary class="font-semibold cursor-pointer">How many passengers fit in your tour vehicles?</summary>
+            <p class="mt-2 text-sm text-gray-600">We have various vehicle options: sedans for 1-3 passengers, vans for 4-8 passengers, and minibuses for larger groups up to 14 people. All vehicles are air-conditioned and well-maintained for your comfort.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow" data-category="tours">
+            <summary class="font-semibold cursor-pointer">Can you arrange hotel bookings for my tour?</summary>
+            <p class="mt-2 text-sm text-gray-600">Yes! We can recommend and book accommodations ranging from budget guesthouses to luxury hotels along your tour route. Let us know your preferences and budget, and we'll handle the arrangements.</p>
+          </details>
+
+          <!-- Sri Lanka Travel FAQs -->
+          <details class="bg-white p-4 rounded-lg shadow" data-category="srilanka">
+            <summary class="font-semibold cursor-pointer">What's the best time to visit Sri Lanka?</summary>
+            <p class="mt-2 text-sm text-gray-600">Sri Lanka is a year-round destination! December to March is ideal for the west and south coasts. April to September suits the east coast. The hill country is pleasant year-round. Consider avoiding monsoon seasons in your preferred regions.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow" data-category="srilanka">
+            <summary class="font-semibold cursor-pointer">Do I need a visa to visit Sri Lanka?</summary>
+            <p class="mt-2 text-sm text-gray-600">Most nationalities need an Electronic Travel Authorization (ETA) obtainable online before arrival. The ETA costs $50 USD for tourists and is valid for 30 days. Some nationalities qualify for free or visa-on-arrival options.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow" data-category="srilanka">
+            <summary class="font-semibold cursor-pointer">What currency is used in Sri Lanka?</summary>
+            <p class="mt-2 text-sm text-gray-600">The Sri Lankan Rupee (LKR) is the official currency. ATMs are widely available in cities and towns. Credit cards are accepted at hotels and larger establishments, but carry cash for smaller vendors and rural areas.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow" data-category="srilanka">
+            <summary class="font-semibold cursor-pointer">Is Sri Lanka safe for tourists?</summary>
+            <p class="mt-2 text-sm text-gray-600">Yes, Sri Lanka is generally very safe for tourists. The local population is friendly and welcoming. Exercise normal precautions: avoid walking alone at night in unfamiliar areas, watch your belongings in crowded places, and follow local advice.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow" data-category="srilanka">
+            <summary class="font-semibold cursor-pointer">What are the must-see attractions in Sri Lanka?</summary>
+            <p class="mt-2 text-sm text-gray-600">Don't miss: Sigiriya Rock Fortress, ancient temples in Anuradhapura and Polonnaruwa, tea plantations in Nuwara Eliya, beaches in Mirissa and Arugam Bay, Yala National Park for wildlife, and the historic city of Galle Fort.</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow" data-category="srilanka">
+            <summary class="font-semibold cursor-pointer">What language is spoken in Sri Lanka?</summary>
+            <p class="mt-2 text-sm text-gray-600">Sinhala and Tamil are the official languages. English is widely spoken in tourist areas, hotels, and by educated locals, making communication easy for international visitors. Learning a few basic Sinhala phrases is appreciated!</p>
+          </details>
+
+          <details class="bg-white p-4 rounded-lg shadow" data-category="srilanka">
+            <summary class="font-semibold cursor-pointer">What's the weather like in Sri Lanka?</summary>
+            <p class="mt-2 text-sm text-gray-600">Sri Lanka has a tropical climate with temperatures ranging from 25-32°C (77-90°F) in coastal areas. Hill country is cooler at 15-20°C (59-68°F). The island has two monsoon seasons affecting different regions at different times.</p>
           </details>
         </div>
         <div class="mt-4">
@@ -1646,21 +1777,113 @@
       const faqList = document.getElementById('faqList');
       const items = faqList ? Array.from(faqList.querySelectorAll('details')) : [];
       const toggle = document.getElementById('faqToggle');
+      const searchInput = document.getElementById('faqSearch');
+      const clearBtn = document.getElementById('clearSearch');
+      const filterBtns = document.querySelectorAll('.faq-filter-btn');
+      const resultsEl = document.getElementById('faqResults');
       const visibleCount = 5;
-      function update() {
-        items.forEach((d, i) => d.style.display = (i < visibleCount || toggle.dataset.open === 'true') ? '' : 'none');
-        if (!toggle) return;
-        toggle.textContent = (toggle.dataset.open === 'true') ? 'Show less' : 'Show more';
+      let currentFilter = 'all';
+      let searchTerm = '';
+      
+      // Accordion behavior - close other details when one opens
+      items.forEach(detail => {
+        detail.addEventListener('toggle', () => {
+          if (detail.open) {
+            items.forEach(other => {
+              if (other !== detail && other.open) {
+                other.open = false;
+              }
+            });
+          }
+        });
+      });
+      
+      function filterAndSearch() {
+        let visibleItems = 0;
+        items.forEach(item => {
+          const category = item.getAttribute('data-category') || 'all';
+          const text = item.textContent.toLowerCase();
+          const matchesFilter = currentFilter === 'all' || category === currentFilter;
+          const matchesSearch = searchTerm === '' || text.includes(searchTerm.toLowerCase());
+          
+          if (matchesFilter && matchesSearch) {
+            item.style.display = '';
+            visibleItems++;
+          } else {
+            item.style.display = 'none';
+            item.open = false;
+          }
+        });
+        
+        // Update results message
+        if (searchTerm || currentFilter !== 'all') {
+          resultsEl.textContent = `Showing ${visibleItems} of ${items.length} questions`;
+          resultsEl.classList.remove('hidden');
+          if (toggle) toggle.style.display = 'none';
+        } else {
+          resultsEl.classList.add('hidden');
+          updateShowMore();
+        }
       }
-      if (items.length > visibleCount && toggle) {
+      
+      function updateShowMore() {
+        if (!toggle) return;
+        const visibleItems = items.filter(item => item.style.display !== 'none');
+        visibleItems.forEach((d, i) => {
+          d.style.display = (i < visibleCount || toggle.dataset.open === 'true') ? '' : 'none';
+        });
+        toggle.textContent = (toggle.dataset.open === 'true') ? 'Show less' : 'Show more';
+        if (visibleItems.length <= visibleCount) {
+          toggle.style.display = 'none';
+        } else {
+          toggle.style.display = '';
+        }
+      }
+      
+      // Search functionality
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchTerm = e.target.value;
+          if (searchTerm) {
+            clearBtn.classList.remove('hidden');
+          } else {
+            clearBtn.classList.add('hidden');
+          }
+          filterAndSearch();
+        });
+      }
+      
+      // Clear search
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          searchTerm = '';
+          clearBtn.classList.add('hidden');
+          filterAndSearch();
+        });
+      }
+      
+      // Filter buttons
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentFilter = btn.getAttribute('data-filter');
+          filterAndSearch();
+        });
+      });
+      
+      // Show more toggle
+      if (toggle) {
+        toggle.dataset.open = 'false';
         toggle.addEventListener('click', ()=>{
           toggle.dataset.open = (toggle.dataset.open === 'true') ? 'false' : 'true';
-          update();
+          updateShowMore();
         });
-      } else if (toggle) {
-        toggle.style.display = 'none';
       }
-      update();
+      
+      // Initialize
+      updateShowMore();
     })();
 
     // Tour Package & Testimonial Carousels

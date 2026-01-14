@@ -14,6 +14,19 @@
     h1, h2 { font-family: 'Poppins', system-ui, sans-serif; }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    .tab-btn.active {
+      border-bottom: 3px solid #f97316;
+      color: #f97316;
+      font-weight: 600;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased p-6 md:p-12">
 
@@ -29,15 +42,27 @@
     </div>
     
     <h1 class="text-3xl font-bold mb-2">Legal Information</h1>
-    <p class="text-gray-500 mb-8">Last Updated: December 2025</p>
+    <p class="text-gray-500 mb-8">Last Updated: January 2026</p>
 
-    <div class="border-b mb-8">
-      <h2 class="text-xl font-bold border-b-2 border-orange-500 inline-block py-2">Terms of Service</h2>
+    <!-- Tab Navigation -->
+    <div class="flex border-b mb-8 gap-1">
+      <button class="tab-btn active px-6 py-3 text-sm font-medium text-gray-600 transition-all hover:text-orange-500" data-tab="terms">
+        Terms of Service
+      </button>
+      <button class="tab-btn px-6 py-3 text-sm font-medium text-gray-600 transition-all hover:text-orange-500" data-tab="privacy">
+        Privacy Policy
+      </button>
     </div>
+
+    <!-- Terms of Service Tab Content -->
+    <div id="termsTab" class="tab-content active">
+      <div class="border-b mb-8">
+        <h2 class="text-xl font-bold border-b-2 border-orange-500 inline-block py-2">Terms of Service</h2>
+      </div>
 
     <div class="prose prose-orange max-w-none text-sm text-gray-600 space-y-4">
       <p class="text-gray-500">
-        This page provides a plain-language summary of our rental terms and privacy practices. It is intended for transparency and customer clarity, and applies to all rentals arranged with RIDE X HUB ("we", "us").
+        This page provides a plain-language summary of our rental and tour service terms and privacy practices. It is intended for transparency and customer clarity, and applies to all vehicle rentals and private tour services arranged with RIDE X HUB ("we", "us").
       </p>
 
       <h3 class="text-lg font-semibold text-gray-900">1. Eligibility & Responsible Use</h3>
@@ -97,19 +122,117 @@
     </div>
 
     <div class="border-b my-8">
+      <h2 class="text-xl font-bold border-b-2 border-orange-500 inline-block py-2">Private Tours: Additional Terms & Requirements</h2>
+    </div>
+
+    <div class="prose prose-orange max-w-none text-sm text-gray-600 space-y-4">
+      <p class="text-gray-500">
+        The following terms apply specifically to private chauffeur-driven tour services ("Private Tours"). These supplement the general terms above.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-900">1. Service Description & Driver Responsibility</h3>
+      <p><strong>What's included:</strong> Private Tours include a professionally licensed driver, a clean and well-maintained vehicle (SUV, sedan, or minivan as agreed), fuel for the agreed itinerary, driver accommodation where multi-day tours require overnight stays, and basic travel coordination.</p>
+      <p><strong>Driver standards:</strong> Our drivers are experienced, professionally licensed, English-speaking, and knowledgeable about Sri Lankan destinations, culture, and road safety. They are responsible for safe vehicle operation, route navigation, and assisting with reasonable travel logistics.</p>
+      <p><strong>What's NOT included:</strong> Unless explicitly stated in your quote, the tour price does not include your accommodation, meals, entrance fees to attractions, parking fees, optional activities (e.g., safari bookings, boat rides, train tickets), gratuities, or personal expenses.</p>
+
+      <h3 class="text-lg font-semibold text-gray-900">2. Mandatory Pre-Tour Information</h3>
+      <p>To provide safe and suitable tour services, we require the following information <strong>before confirmation</strong>:</p>
+      <ul class="list-disc pl-5">
+        <li><strong>Number of passengers:</strong> accurate headcount including children/infants.</li>
+        <li><strong>Accommodation details:</strong> pickup location (hotel name/address) and contact number.</li>
+        <li><strong>Itinerary preferences:</strong> destinations you wish to visit, duration (number of days), and any special requirements (mobility assistance, child seats, dietary restrictions for driver planning).</li>
+        <li><strong>Passenger passports/identification:</strong> names and passport numbers for all travelers (required for certain attractions and accommodations).</li>
+        <li><strong>Emergency contact:</strong> a local or international contact number in case of urgent communication needs.</li>
+        <li><strong>Health/medical considerations:</strong> any relevant medical conditions or accessibility needs that may affect the tour (e.g., mobility limitations, allergies, pregnancy).</li>
+      </ul>
+      <p class="text-gray-500">
+        <strong>Failure to provide accurate information may result in service delays, additional costs, or inability to access certain locations.</strong>
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-900">3. Booking, Payment & Confirmation</h3>
+      <p><strong>Quote validity:</strong> Tour quotes are valid for 7 days from issuance and are subject to availability. Prices may vary based on season, fuel costs, accommodation changes, or itinerary modifications.</p>
+      <p><strong>Deposit requirement:</strong> A non-refundable booking deposit (typically 30% of total tour cost) is required to secure your reservation. The remaining balance must be paid before or on the first day of the tour, as agreed.</p>
+      <p><strong>Payment methods:</strong> We accept cash (USD or LKR), bank transfer, and major credit/debit cards. Cryptocurrency payments may be arranged in advance.</p>
+      <p><strong>Confirmation:</strong> Your tour is confirmed only upon receipt of the deposit and completion of mandatory information requirements. A written confirmation (email/WhatsApp) will be provided with driver details, vehicle information, and pickup arrangements.</p>
+
+      <h3 class="text-lg font-semibold text-gray-900">4. Itinerary Flexibility & Changes</h3>
+      <p><strong>Customization:</strong> Private Tours are flexible and can be adjusted during the tour to accommodate reasonable requests (e.g., adding a stop, changing lunch locations). However, significant route changes that increase driving distance, add overnight stays, or require additional days may incur extra charges.</p>
+      <p><strong>Weather & road conditions:</strong> Itineraries may be modified for safety reasons due to weather, road closures, political unrest, natural disasters, or other unforeseen circumstances. We will work with you to find suitable alternatives where possible.</p>
+      <p><strong>Attraction closures:</strong> If a planned attraction is unexpectedly closed or inaccessible, we will suggest alternatives but cannot be held liable for third-party closures or entry restrictions.</p>
+
+      <h3 class="text-lg font-semibold text-gray-900">5. Cancellation & Refund Policy (Private Tours)</h3>
+      <p><strong>Customer cancellations:</strong></p>
+      <ul class="list-disc pl-5">
+        <li>Cancellations made <strong>14+ days before tour start:</strong> Full refund minus booking deposit (30%).</li>
+        <li>Cancellations made <strong>7-13 days before tour start:</strong> 50% refund of total tour cost.</li>
+        <li>Cancellations made <strong>less than 7 days before tour start:</strong> No refund.</li>
+        <li><strong>No-show:</strong> Full payment is forfeited.</li>
+      </ul>
+      <p><strong>Company cancellations:</strong> If we must cancel due to driver unavailability, vehicle issues, or force majeure, you will receive a full refund or the option to reschedule without penalty.</p>
+      <p><strong>Early tour termination:</strong> If you choose to end the tour early, no refund will be provided for unused days. If the tour is terminated due to customer misconduct, unsafe behavior, or violation of these terms, no refund will be issued.</p>
+
+      <h3 class="text-lg font-semibold text-gray-900">6. Passenger Conduct & Safety</h3>
+      <p>Passengers must:</p>
+      <ul class="list-disc pl-5">
+        <li>Treat the driver and vehicle with respect and courtesy.</li>
+        <li>Follow reasonable instructions from the driver regarding safety, vehicle capacity, and local customs.</li>
+        <li>Not request illegal activities, dangerous driving, or visits to prohibited/unsafe areas.</li>
+        <li>Not consume alcohol or drugs in the vehicle or engage in behavior that compromises safety.</li>
+        <li>Comply with all Sri Lankan laws, including customs regulations and prohibited item restrictions.</li>
+      </ul>
+      <p class="text-gray-500">
+        <strong>We reserve the right to terminate the tour immediately without refund if passengers engage in illegal, dangerous, or abusive behavior.</strong>
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-900">7. Liability & Insurance (Private Tours)</h3>
+      <p><strong>Vehicle insurance:</strong> All tour vehicles carry mandatory third-party insurance and passenger liability coverage as required by Sri Lankan law.</p>
+      <p><strong>What's covered:</strong> Insurance provides basic coverage for passenger injury claims arising from accidents during the tour (subject to policy terms and exclusions).</p>
+      <p><strong>What's NOT covered:</strong> Insurance does not cover personal belongings, lost luggage, trip cancellations, medical expenses beyond emergency treatment, or claims arising from passenger negligence, pre-existing conditions, or activities outside the tour scope.</p>
+      <p><strong>Passenger responsibility:</strong> Passengers are responsible for their own travel insurance, health insurance, trip cancellation insurance, and coverage for personal belongings. <strong>We strongly recommend comprehensive travel insurance for international visitors.</strong></p>
+      <p><strong>Limitation of liability:</strong> RIDE X HUB is not liable for indirect losses, consequential damages, or claims arising from third-party service failures (hotels, attractions, restaurants, transport operators), natural disasters, political events, or circumstances beyond our reasonable control.</p>
+
+      <h3 class="text-lg font-semibold text-gray-900">8. Personal Belongings & Valuables</h3>
+      <p>Passengers are responsible for their own belongings at all times. While drivers will assist with reasonable security precautions, <strong>we are not liable for lost, stolen, or damaged personal items, luggage, electronics, or valuables.</strong> Do not leave valuables unattended in the vehicle.</p>
+
+      <h3 class="text-lg font-semibold text-gray-900">9. Health, Medical & Accessibility Requirements</h3>
+      <p>Passengers with medical conditions, disabilities, or special accessibility needs must inform us at booking. We will make reasonable efforts to accommodate your needs, but some destinations may have limited accessibility (e.g., steep climbs, uneven terrain, remote locations).</p>
+      <p><strong>Medical emergencies:</strong> In case of medical emergency, the driver will assist in contacting local medical services and transporting you to the nearest hospital. Medical expenses are the passenger's responsibility.</p>
+      <p><strong>Pregnancy:</strong> Pregnant passengers should consult their doctor before booking long-distance tours. Please inform us of pregnancy at booking to ensure appropriate vehicle comfort and itinerary adjustments.</p>
+      <p><strong>Children:</strong> Child seats/booster seats are available upon request (must be specified at booking). Parents/guardians are responsible for child safety and behavior during the tour.</p>
+
+      <h3 class="text-lg font-semibold text-gray-900">10. Force Majeure & Unforeseen Circumstances</h3>
+      <p>Neither party shall be liable for failure to perform obligations due to circumstances beyond reasonable control, including but not limited to: natural disasters (floods, landslides, cyclones), pandemics, government-imposed travel restrictions, civil unrest, strikes, wars, terrorism, or road closures.</p>
+      <p>In such cases, we will work with you to reschedule, modify the itinerary, or issue a partial refund based on services not rendered, minus non-recoverable costs already incurred.</p>
+
+      <h3 class="text-lg font-semibold text-gray-900">11. Complaints & Dispute Resolution</h3>
+      <p>If you experience any issues during your tour, please notify the driver or contact our support team immediately so we can address the matter in real-time. Post-tour complaints should be submitted in writing within 7 days of tour completion with supporting details (photos, dates, descriptions).</p>
+      <p>We are committed to resolving disputes fairly and promptly. Where resolution cannot be reached, disputes are subject to the laws of Sri Lanka and the jurisdiction of competent Sri Lankan courts.</p>
+
+      <h3 class="text-lg font-semibold text-gray-900">12. Photography, Filming & Social Media</h3>
+      <p>Passengers may take photos and videos during the tour for personal use. If you plan to use images for commercial purposes, publication, or social media promotion involving our brand, drivers, or vehicles, please request permission in advance.</p>
+      <p>We may request permission to use tour photos (with passengers) for our marketing materials. Your consent is optional and can be declined without affecting your tour service.</p>
+    </div>
+    </div>
+    <!-- End Terms Tab Content -->
+
+    <!-- Privacy Policy Tab Content -->
+    <div id="privacyTab" class="tab-content">
+    <div class="border-b mb-8">
       <h2 class="text-xl font-bold border-b-2 border-orange-500 inline-block py-2">Privacy Policy</h2>
     </div>
 
     <div class="prose prose-orange max-w-none text-sm text-gray-600 space-y-4">
       <h3 class="text-lg font-semibold text-gray-900">1. What We Collect</h3>
-      <p>We collect personal information to verify identity, confirm driving eligibility, issue a rental agreement, communicate about your booking, and comply with applicable requirements for vehicle rentals in Sri Lanka.</p>
-      <p>Depending on the rental and customer profile, this may include:</p>
+      <p>We collect personal information to verify identity, confirm driving eligibility (for rentals), facilitate tour bookings, issue agreements, communicate about your booking, ensure passenger safety, and comply with applicable requirements for vehicle rentals and tour services in Sri Lanka.</p>
+      <p>Depending on the service type and customer profile, this may include:</p>
       <ul class="list-disc pl-5">
-        <li>Name, phone/WhatsApp number, and accommodation details.</li>
+        <li>Name, phone/WhatsApp number, email address, and accommodation details.</li>
         <li><strong>Passport or NIC</strong> details and a <strong>copy (photo/scan)</strong> for recordkeeping.</li>
         <li><strong>Visa / ETA evidence</strong> for foreign nationals, including <strong>electronic visa QR</strong> / confirmation details where applicable.</li>
-        <li><strong>Driving license details</strong>, including local Sri Lankan license and/or international driving license and IDP details where relevant, and a <strong>copy (photo/scan)</strong> for recordkeeping.</li>
-        <li>Rental transaction details (vehicle chosen, dates, deposit, payments, communications).</li>
+        <li><strong>Driving license details</strong> (for vehicle rentals), including local Sri Lankan license and/or international driving license and IDP details where relevant, and a <strong>copy (photo/scan)</strong> for recordkeeping.</li>
+        <li><strong>Travel details</strong> (for private tours): itinerary preferences, number of passengers, ages of children, special requirements (dietary, medical, accessibility needs), emergency contact information.</li>
+        <li>Transaction details (service chosen, dates, payments, deposit, communications).</li>
+        <li><strong>Health and medical information</strong> (for tours only): voluntarily disclosed information relevant to tour safety and service delivery (e.g., mobility limitations, allergies, pregnancy, medical conditions requiring accommodation).</li>
       </ul>
 
       <h3 class="text-lg font-semibold text-gray-900">2. Original Document Policy</h3>
@@ -117,32 +240,52 @@
 
       <h3 class="text-lg font-semibold text-gray-900">3. How We Use Your Data</h3>
       <ul class="list-disc pl-5">
-        <li>To verify identity and driving eligibility, prevent fraud, and protect our vehicles and customers.</li>
-        <li>To prepare and manage your rental agreement, deposit handling, and operational support.</li>
-        <li>To contact you about pickup/return, safety issues, changes, confirmations, and support.</li>
-        <li>To respond to incidents, claims, disputes, and legal requests.</li>
+        <li>To verify identity and driving eligibility (rentals), prevent fraud, and protect our vehicles and customers.</li>
+        <li>To prepare and manage your rental agreement or tour booking, deposit handling, and operational support.</li>
+        <li>To contact you about pickup/return, tour arrangements, driver assignments, safety issues, changes, confirmations, and support.</li>
+        <li>To ensure passenger safety and provide appropriate tour services based on disclosed health, accessibility, or special requirements.</li>
+        <li>To coordinate with hotels, attractions, and service providers as needed for tour logistics (with your consent).</li>
+        <li>To respond to incidents, claims, disputes, medical emergencies, and legal requests.</li>
+        <li>To improve our services, customer satisfaction, and operational efficiency.</li>
       </ul>
 
       <h3 class="text-lg font-semibold text-gray-900">4. Data Sharing</h3>
       <p>We do not sell your personal data. We may share limited information only when necessary for the purposes above, for example with:</p>
       <ul class="list-disc pl-5">
+        <li><strong>Tour drivers and operational staff</strong> (only information necessary to provide safe and personalized service, such as pickup location, passenger names, special requirements).</li>
+        <li><strong>Hotels and accommodation providers</strong> (when booking or coordinating tour logistics on your behalf, with your consent).</li>
+        <li><strong>Medical facilities</strong> (in case of medical emergency during a tour, relevant health information may be shared with emergency responders or hospitals).</li>
         <li><strong>Local authorities / law enforcement</strong> (only where required by law, or in connection with an incident, investigation, or formal request).</li>
         <li><strong>Insurance providers</strong> (only in the event of a claim or verification related to an incident).</li>
-        <li><strong>Service partners</strong> (e.g., recovery/towing, repairs) where necessary to assist you and/or recover the vehicle.</li>
+        <li><strong>Service partners</strong> (e.g., recovery/towing, repairs, payment processors) where necessary to assist you and/or provide services.</li>
       </ul>
 
       <h3 class="text-lg font-semibold text-gray-900">5. Data Retention</h3>
-      <p>We retain personal data (including document copies) only for as long as reasonably necessary to operate the rental, manage disputes/claims, and meet legal/insurance/accounting requirements. Retention periods may vary depending on the situation (for example, an accident or insurance claim may require longer retention).</p>
+      <p>We retain personal data (including document copies and tour booking information) only for as long as reasonably necessary to operate the rental or tour service, manage disputes/claims, fulfill legal obligations, and meet insurance/accounting/tax requirements. Retention periods may vary depending on the situation (for example, an accident, insurance claim, or legal matter may require longer retention).</p>
+      <p><strong>Health and medical information</strong> disclosed for tour services is retained only for the duration necessary to provide the service and handle any related claims, typically no longer than 12 months after tour completion unless required for ongoing claims or legal matters.</p>
 
       <h3 class="text-lg font-semibold text-gray-900">6. Security</h3>
       <p>We take reasonable steps to safeguard your information against unauthorized access, loss, or misuse. However, no method of storage or transmission is 100% secure.</p>
 
       <h3 class="text-lg font-semibold text-gray-900">7. WhatsApp Communication</h3>
-      <p>By using our “Chat & Book” feature or providing your number, you consent to receive booking confirmations, operational updates, and support messages via WhatsApp/phone. You can request to switch to another channel where feasible.</p>
+      <p>By using our "Chat & Book" feature or providing your number, you consent to receive booking confirmations, operational updates, tour coordination messages, and support messages via WhatsApp/phone. You can request to switch to another channel where feasible.</p>
 
-      <h3 class="text-lg font-semibold text-gray-900">8. Contact</h3>
-      <p>If you have questions about these terms or your data, contact us at <strong>hello@ridexhub.com</strong> or <strong>+94 70 761 5516</strong>.</p>
+      <h3 class="text-lg font-semibold text-gray-900">8. Your Rights</h3>
+      <p>You have the right to:</p>
+      <ul class="list-disc pl-5">
+        <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+        <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information.</li>
+        <li><strong>Deletion:</strong> Request deletion of your data where legally permissible (subject to retention requirements for legal, accounting, or insurance purposes).</li>
+        <li><strong>Objection:</strong> Object to processing of your data for certain purposes where applicable.</li>
+        <li><strong>Withdraw consent:</strong> Where processing is based on consent (e.g., marketing communications), you may withdraw consent at any time.</li>
+      </ul>
+      <p>To exercise these rights, contact us at <strong>hello@ridexhub.com</strong> or <strong>+94 70 761 5516</strong>. We will respond within a reasonable timeframe as required by applicable law.</p>
+
+      <h3 class="text-lg font-semibold text-gray-900">9. Contact</h3>
+      <p>If you have questions about these terms, your data, or our privacy practices, contact us at <strong>hello@ridexhub.com</strong> or <strong>+94 70 761 5516</strong>.</p>
     </div>
+    </div>
+    <!-- End Privacy Tab Content -->
 
     <div class="mt-12 pt-8 border-t text-center text-gray-400 text-xs">
       &copy; 2025 RIDE X HUB. All rights reserved. <br>
@@ -150,5 +293,32 @@
     </div>
 
   </div>
+
+  <script>
+    // Tab switching functionality
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetTab = button.getAttribute('data-tab');
+        
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding content
+        button.classList.add('active');
+        if (targetTab === 'terms') {
+          document.getElementById('termsTab').classList.add('active');
+        } else if (targetTab === 'privacy') {
+          document.getElementById('privacyTab').classList.add('active');
+        }
+        
+        // Scroll to top of content smoothly
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
 </body>
 </html>
