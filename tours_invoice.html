@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RideXHub - Tour Invoice Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50: '#fff9f6', 100: '#fff0e6', 500: '#f97316', 700: '#c2410c' },
+                        tealish: { 500: '#0f766e', 50: '#f0fdfa' },
+                        charcoal: '#111827'
+                    },
+                    fontFamily: {
+                        display: ['Poppins', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4, .font-display { font-family: 'Poppins', sans-serif; }
+
+        /* Mobile ergonomics */
+        @media (max-width: 767px) {
+            body { height: auto; overflow: auto; }
+        }
+
+        /* --- PRINT OPTIMIZATION FOR SINGLE PAGE --- */
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+            .no-print { display: none !important; }
+            main { width: 100% !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; height: auto !important; background: white !important; }
+
+            #invoicePaper {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                border: none !important;
+                padding: 8mm 10mm !important;
+                min-height: auto !important;
+                height: auto !important;
+                display: block !important;
+                font-size: 9px !important;
+            }
+
+            header {
+                padding-bottom: 0.5rem !important;
+                margin-bottom: 0.75rem !important;
+                grid-template-columns: 1fr 1fr !important;
+            }
+            header img { height: 36px !important; }
+            header h1 { font-size: 24px !important; margin-bottom: 0.25rem !important; }
+
+            section.mb-6 { margin-bottom: 0.75rem !important; }
+            section p, section div { font-size: 8px !important; line-height: 1.3 !important; }
+
+            /* Reduce vertical footprint */
+            .invoice-card-pad { padding: 0.85rem !important; }
+            .invoice-summary-pad { padding: 0.85rem !important; }
+            .vehicle-print-img { height: 88px !important; }
+
+            /* Itinerary: compact for print */
+            #dispItinerary { border-left: 0 !important; margin-left: 0 !important; }
+            .itinerary-item { padding-left: 0 !important; padding-bottom: 0.75rem !important; break-inside: avoid !important; }
+            .itinerary-dot { display: none !important; }
+            .itinerary-date { min-width: 56px !important; font-size: 8px !important; }
+            .itinerary-activity { font-size: 8px !important; }
+            .itinerary-stay { display: none !important; }
+
+            /* If itinerary is long, hidden items will show a note */
+            #printItineraryNote { display: block !important; }
+
+            /* Force desktop-like grids in print for consistency */
+            #invTopGrid { grid-template-columns: 1fr 1fr !important; }
+            #invAmountsGrid { grid-template-columns: 1fr 1fr !important; }
+
+            .summary-box { page-break-inside: avoid !important; }
+            footer { padding-top: 0.75rem !important; margin-top: 0.75rem !important; }
+
+            /* Force colors */
+            .bg-charcoal { background-color: #111827 !important; color: white !important; }
+            .bg-gray-800 { background-color: #1f2937 !important; color: #d1d5db !important; }
+            .bg-brand-500 { background-color: #f97316 !important; }
+            .bg-tealish-50 { background-color: #f0fdfa !important; }
+            .text-brand-500 { color: #f97316 !important; }
+            .text-tealish-500 { color: #0f766e !important; }
+            .text-gray-400 { color: #9ca3af !important; }
+            .text-gray-300 { color: #d1d5db !important; }
+            .border-gray-700 { border-color: #374151 !important; }
+
+            input, textarea, select { border: none !important; background: transparent !important; resize: none; padding: 0 !important; box-shadow: none !important; }
+            #dispInvoiceNo { border: none !important; padding: 0 !important; }
+
+            /* Charcoal Section Compression (match tours_quote.html behavior) */
+            .bg-charcoal .grid { grid-template-columns: 1fr 1fr !important; }
+            .bg-charcoal .grid > div { padding: 1rem !important; }
+            .bg-charcoal h2, .bg-charcoal .text-4xl { font-size: 24px !important; }
+            .bg-charcoal .text-xl { font-size: 14px !important; }
+            .bg-charcoal ul { margin-top: 0.5rem !important; }
+            .bg-charcoal li { margin-bottom: 0.25rem !important; }
+        }
+
+        /*
+          PRINT PREVIEW MODE (screen):
+          Apply the same layout rules used in @media print to the right-side panel,
+          so the PDF output matches what you see.
+        */
+        .print-preview #invoicePaper {
+            padding: 8mm 10mm !important;
+            font-size: 9px !important;
+        }
+
+        /* On-screen zoom (keeps PDF layout identical, just larger to view) */
+        @media screen {
+            .print-preview #invoicePaper {
+                width: 210mm !important;
+                max-width: 210mm !important;
+                box-shadow: none !important;
+                zoom: 1.22;
+            }
+            /* Fallback for browsers that don't support zoom well */
+            @supports not (zoom: 1) {
+                .print-preview #invoicePaper {
+                    width: 210mm !important;
+                    max-width: 210mm !important;
+                    box-shadow: none !important;
+                    transform: scale(1.22);
+                    transform-origin: top center;
+                }
+                .print-preview #previewPanel {
+                    padding-top: 2rem;
+                }
+            }
+        }
+        .print-preview #invoicePaper header {
+            padding-bottom: 0.5rem !important;
+            margin-bottom: 0.75rem !important;
+            grid-template-columns: 1fr 1fr !important;
+        }
+        .print-preview #invoicePaper header img { height: 36px !important; }
+        .print-preview #invoicePaper header h1 { font-size: 24px !important; margin-bottom: 0.25rem !important; }
+        .print-preview #invoicePaper section.mb-6 { margin-bottom: 0.75rem !important; }
+        .print-preview #invoicePaper section p,
+        .print-preview #invoicePaper section div { font-size: 8px !important; line-height: 1.3 !important; }
+        .print-preview #invoicePaper .invoice-card-pad { padding: 0.85rem !important; }
+        .print-preview #invoicePaper .invoice-summary-pad { padding: 0.85rem !important; }
+        .print-preview #invoicePaper .vehicle-print-img { height: 88px !important; }
+        .print-preview #invoicePaper #dispItinerary { border-left: 0 !important; margin-left: 0 !important; }
+        .print-preview #invoicePaper .itinerary-item { padding-left: 0 !important; padding-bottom: 0.75rem !important; }
+        .print-preview #invoicePaper .itinerary-dot { display: none !important; }
+        .print-preview #invoicePaper .itinerary-date { min-width: 56px !important; font-size: 8px !important; }
+        .print-preview #invoicePaper .itinerary-activity { font-size: 8px !important; }
+        .print-preview #invoicePaper .itinerary-stay { display: none !important; }
+        .print-preview #printItineraryNote { display: block !important; }
+
+        /* Match tours_quote.html charcoal compression in preview too */
+        .print-preview #invoicePaper .bg-charcoal .grid { grid-template-columns: 1fr 1fr !important; }
+        .print-preview #invoicePaper .bg-charcoal .grid > div { padding: 1rem !important; }
+        .print-preview #invoicePaper .bg-charcoal h2,
+        .print-preview #invoicePaper .bg-charcoal .text-4xl { font-size: 24px !important; }
+        .print-preview #invoicePaper .bg-charcoal .text-xl { font-size: 14px !important; }
+        .print-preview #invoicePaper .bg-charcoal ul { margin-top: 0.5rem !important; }
+        .print-preview #invoicePaper .bg-charcoal li { margin-bottom: 0.25rem !important; }
+
+        /* Force desktop-like grids in preview to match print */
+        .print-preview #invTopGrid { grid-template-columns: 1fr 1fr !important; }
+        .print-preview #invAmountsGrid { grid-template-columns: 1fr 1fr !important; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+    </style>
+</head>
+
+<body class="bg-gray-100 h-screen flex flex-col md:flex-row overflow-hidden text-charcoal print-preview">
+
+    <!-- Mobile View Switcher -->
+    <div class="no-print md:hidden fixed bottom-3 left-3 right-3 z-50">
+        <div class="bg-white/95 backdrop-blur border border-gray-200 shadow-xl rounded-2xl p-2 flex items-center gap-2">
+            <button id="btnShowEditor" type="button" onclick="setMobileView('editor')" class="flex-1 py-2 rounded-xl text-sm font-bold border border-gray-200">Editor</button>
+            <button id="btnShowPreview" type="button" onclick="setMobileView('preview')" class="flex-1 py-2 rounded-xl text-sm font-bold border border-gray-200">Preview</button>
+            <button type="button" onclick="window.print()" class="py-2 px-3 rounded-xl text-sm font-bold bg-brand-500 text-white">
+                <i class="ri-printer-line"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- EDITOR -->
+    <aside id="editorPanel" class="no-print w-full md:w-[420px] flex-shrink-0 bg-white md:border-r border-gray-200 h-screen md:h-full overflow-y-auto flex flex-col z-20 shadow-xl">
+        <div class="p-4 bg-charcoal text-white sticky top-0 z-10 flex justify-between items-center shadow-md">
+            <div>
+                <h2 class="font-bold font-display text-lg">Invoice Editor <span class="text-brand-500 text-xs ml-1">PRO</span></h2>
+                <div class="text-[10px] text-gray-300">Advance / Full Payment Confirmation</div>
+            </div>
+            <button onclick="window.print()" class="bg-brand-500 hover:bg-brand-700 text-white px-3 py-2 rounded-lg text-sm font-bold transition flex items-center gap-2 shadow-lg">
+                <i class="ri-printer-line"></i> Print PDF
+            </button>
+        </div>
+
+        <div class="p-5 space-y-6 pb-24">
+
+            <!-- Invoice Meta -->
+            <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-brand-500"></div>
+                <h3 class="text-xs font-bold text-gray-700 uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <i class="ri-file-list-3-line text-brand-500"></i> Invoice Details
+                </h3>
+
+                <div class="grid grid-cols-2 gap-2 mb-2">
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase">Invoice No</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="inputInvoiceNo" class="w-full font-mono text-xs font-bold text-charcoal bg-white border border-gray-300 rounded px-2 py-2 outline-none" placeholder="RH-INV-XXXX" />
+                            <button onclick="generateInvoiceNo()" class="px-2 rounded bg-white border border-gray-300 text-gray-600 hover:text-brand-500" title="New Invoice No">
+                                <i class="ri-refresh-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase">Invoice Date</label>
+                        <input type="date" id="inputInvoiceDate" class="w-full text-xs bg-white border border-gray-300 rounded px-2 py-2 outline-none" />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase">Tour Ref (Optional)</label>
+                        <input type="text" id="inputTourRef" class="w-full text-xs bg-white border border-gray-300 rounded px-2 py-2 outline-none" placeholder="RH-TO-1234" />
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase">Payment Type</label>
+                        <select id="inputPaymentType" class="w-full text-xs bg-white border border-gray-300 rounded px-2 py-2 outline-none">
+                            <option value="advance">Advance Payment</option>
+                            <option value="full">Full Payment</option>
+                            <option value="balance">Balance Payment</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guest -->
+            <div>
+                <h3 class="text-xs font-bold text-gray-500 uppercase">Guest Details</h3>
+                <div class="grid grid-cols-2 gap-2 mt-2">
+                    <input type="text" id="inputClientName" value="Mr. Anderson" class="w-full text-sm border border-gray-300 rounded px-3 py-2 outline-none focus:border-brand-500" placeholder="Guest Name" />
+                    <input type="text" id="inputClientPassport" value="" class="w-full text-sm border border-gray-300 rounded px-3 py-2 outline-none focus:border-brand-500" placeholder="Passport / ID (Optional)" />
+                </div>
+                <div class="grid grid-cols-2 gap-2 mt-2">
+                    <input type="email" id="inputClientEmail" value="" class="w-full text-sm border border-gray-300 rounded px-3 py-2 outline-none focus:border-brand-500" placeholder="Email (Optional)" />
+                    <input type="text" id="inputClientPhone" value="" class="w-full text-sm border border-gray-300 rounded px-3 py-2 outline-none focus:border-brand-500" placeholder="Phone (Optional)" />
+                </div>
+            </div>
+
+            <!-- Tour Summary -->
+            <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                <h3 class="text-xs font-bold text-tealish-500 uppercase tracking-wider mb-2 border-b border-gray-200 pb-1">Tour Summary</h3>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase">Tour Name</label>
+                        <input type="text" id="inputTourName" value="Sri Lanka Private Tour" class="w-full text-sm border border-gray-300 rounded px-3 py-2 outline-none" />
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase">Passengers</label>
+                        <input type="number" id="inputPax" value="2" min="1" class="w-full text-sm border border-gray-300 rounded px-3 py-2 outline-none" />
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 mt-2">
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase">Start Date</label>
+                        <input type="date" id="inputStartDate" class="w-full text-xs bg-white border border-gray-300 rounded px-2 py-2 outline-none" />
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase">End Date</label>
+                        <input type="date" id="inputEndDate" class="w-full text-xs bg-white border border-gray-300 rounded px-2 py-2 outline-none" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehicle & Driver -->
+            <div>
+                <h3 class="text-xs font-bold text-tealish-500 uppercase tracking-wider mb-2 border-b border-gray-200 pb-1">Vehicle & Driver</h3>
+                <input type="text" id="inputVehicle" value="2023 Toyota Raize (AWD SUV)" class="w-full text-sm border border-gray-300 rounded px-3 py-2 outline-none mb-2" placeholder="Vehicle Name" />
+                <input type="text" id="inputVehicleImg" value="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Toyota_Raize_%28A200%29_IMG_3850.jpg/1200px-Toyota_Raize_%28A200%29_IMG_3850.jpg" class="w-full text-xs border border-gray-300 rounded px-3 py-2 outline-none mb-2 text-gray-500" placeholder="Image URL" />
+                <textarea id="inputDriver" rows="2" class="w-full text-sm border border-gray-300 rounded px-3 py-2 outline-none" placeholder="Driver Bio">Senior Executive Driver (30 years exp, English-speaking).</textarea>
+            </div>
+
+            <!-- Pricing + Payment -->
+            <div class="bg-brand-50 p-4 rounded-xl border border-brand-100">
+                <h3 class="text-xs font-bold text-brand-700 uppercase tracking-wider mb-2">Invoice Amounts</h3>
+                <p class="text-[10px] text-gray-500 mb-3">Set the package price and payment received. Balance is auto-calculated.</p>
+
+                <!-- Discount (Optional) -->
+                <div class="mb-3">
+                    <label class="block text-[10px] font-bold text-gray-500 uppercase mb-1">Discount (Optional)</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="number" id="inputDiscountPercent" value="0" class="w-full text-sm border border-gray-300 rounded px-2 py-1.5 text-center" placeholder="%" min="0" max="100" />
+                        <input type="number" id="inputDiscountAmount" value="0" class="w-full text-sm border border-gray-300 rounded px-2 py-1.5 text-center" placeholder="Amount" min="0" />
+                    </div>
+                    <div class="flex gap-1 text-[9px] text-gray-400 mt-1">
+                        <span>% or Amount</span>
+                    </div>
+                </div>
+
+                <!-- Total -->
+                <div class="grid grid-cols-2 gap-2 mb-2">
+                    <input type="text" id="inputCurr1" value="LKR" class="w-full text-sm border border-gray-300 rounded px-2 py-1.5 font-bold text-center" />
+                    <input type="text" id="inputTotal" value="185,000" class="w-full text-sm font-black text-brand-600 border border-gray-300 rounded px-2 py-1.5 text-right bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" />
+                </div>
+                <div class="grid grid-cols-2 gap-2 mb-4">
+                    <input type="text" id="inputCurr2" value="SGD" class="w-full text-sm border border-gray-300 rounded px-2 py-1.5 text-center" placeholder="Sec. Currency" />
+                    <input type="text" id="inputTotal2" value="880" class="w-full text-sm border border-gray-300 rounded px-2 py-1.5 text-right" placeholder="Approx Amt" />
+                </div>
+
+                <!-- Payment Received -->
+                <div class="bg-white/60 border border-brand-100 rounded-lg p-3">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="text-[10px] font-bold text-gray-600 uppercase tracking-wider">Payment Received</h4>
+                        <span id="dispStatusPill" class="text-[10px] font-bold px-2 py-1 rounded-full bg-gray-200 text-gray-700">UNPAID</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 mb-2">
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase">Paid Amount</label>
+                            <input type="text" id="inputPaid" value="0" class="w-full text-sm border border-gray-300 rounded px-2 py-1.5 text-right bg-white outline-none" />
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase">Paid Date</label>
+                            <input type="date" id="inputPaidDate" class="w-full text-xs bg-white border border-gray-300 rounded px-2 py-2 outline-none" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 mb-2">
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase">Method</label>
+                            <select id="inputPayMethod" class="w-full text-xs bg-white border border-gray-300 rounded px-2 py-2 outline-none">
+                                <option value="Bank Transfer">Bank Transfer</option>
+                                <option value="Card">Card</option>
+                                <option value="Cash">Cash</option>
+                                <option value="PayPal">PayPal</option>
+                                <option value="Wise">Wise</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase">Reference (Optional)</label>
+                            <input type="text" id="inputPayRef" value="" class="w-full text-sm border border-gray-300 rounded px-2 py-1.5 bg-white outline-none" placeholder="TXN / Receipt No" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase">Payment Notes (Optional)</label>
+                        <textarea id="inputPayNotes" rows="2" class="w-full text-xs border border-gray-300 rounded px-2 py-2 outline-none" placeholder="e.g. 30% deposit received to confirm the booking."></textarea>
+                    </div>
+
+                    <div class="mt-3 pt-3 border-t border-gray-200 grid grid-cols-2 gap-2">
+                        <div class="text-[10px] text-gray-500">Balance Due</div>
+                        <div class="text-right text-lg font-black text-charcoal" id="calcBalance">LKR 0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Itinerary -->
+            <div>
+                <div class="flex justify-between items-center mb-2 border-b border-gray-200 pb-1">
+                    <h3 class="text-xs font-bold text-tealish-500 uppercase tracking-wider">Itinerary</h3>
+                    <button onclick="addItineraryItem()" class="text-xs font-bold text-brand-500 hover:text-brand-700">+ Add Day</button>
+                </div>
+                <div id="itineraryList" class="space-y-3"></div>
+            </div>
+
+            <!-- Exclusions -->
+            <div>
+                <h3 class="text-xs font-bold text-tealish-500 uppercase tracking-wider mb-2 border-b border-gray-200 pb-1">Exclusions</h3>
+                <textarea id="inputExclusions" rows="3" class="w-full text-xs border border-gray-300 rounded px-2 py-2 outline-none">- Safari Jeep fees & Whale watching tickets.
+- Guest entrance tickets.
+- Personal expenses.</textarea>
+            </div>
+
+            <!-- Additional Terms -->
+            <div class="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-xs font-bold text-gray-700 uppercase">Terms / Notes</h3>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="toggleTerms" class="sr-only peer" onchange="toggleTermsSection()">
+                        <div class="relative w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-500"></div>
+                    </label>
+                </div>
+                <textarea id="inputTerms" rows="3" class="w-full text-xs border border-gray-300 rounded px-2 py-2 outline-none hidden" placeholder="Add any extra payment / cancellation terms here...">Booking is confirmed upon receipt of the agreed payment. Any changes to itinerary may affect pricing.</textarea>
+            </div>
+
+        </div>
+    </aside>
+
+    <!-- PREVIEW -->
+    <main id="previewPanel" class="w-full flex-grow bg-gray-200 h-full overflow-y-auto p-4 md:p-8 flex justify-center items-start">
+        <div id="invoicePaper" class="bg-white shadow-2xl w-full md:w-[210mm] min-h-[297mm] relative p-6 md:p-10 box-border mx-auto transition-all duration-300">
+
+            <header class="grid grid-cols-1 md:grid-cols-2 items-center border-b-2 border-brand-500 pb-4 mb-4 gap-4">
+                <div class="flex items-center gap-3">
+                    <img src="logo.webp" alt="RIDE X HUB logo" class="h-12 md:h-16 w-auto" />
+                    <div>
+                        <div class="font-display font-bold text-xl leading-none text-charcoal">RIDE X HUB</div>
+                        <div class="text-[10px] font-medium text-gray-500 -mt-0.5">Private Journeys</div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <h1 class="text-4xl font-display font-black text-gray-100 uppercase tracking-tighter leading-none mb-1">Invoice</h1>
+                    <div class="grid gap-1 justify-items-end">
+                        <div class="grid grid-cols-[auto,1fr] items-center gap-2 text-sm text-charcoal font-medium w-full max-w-[280px]">
+                            <span class="text-gray-400 text-xs uppercase font-bold">Invoice No:</span>
+                            <input type="text" id="dispInvoiceNo" class="font-mono bg-transparent border-none outline-none w-full text-sm text-right" value="RH-INV-XXXX" />
+                        </div>
+                        <div class="grid grid-cols-[auto,1fr] items-center gap-2 text-sm text-charcoal font-medium w-full max-w-[280px]">
+                            <span class="text-gray-400 text-xs uppercase font-bold">Date:</span>
+                            <span id="dispInvoiceDate" class="text-right">Jan 14, 2026</span>
+                        </div>
+                        <div class="grid grid-cols-[auto,1fr] items-center gap-2 text-sm text-charcoal font-medium w-full max-w-[280px]" id="tourRefRow">
+                            <span class="text-gray-400 text-xs uppercase font-bold">Tour Ref:</span>
+                            <span id="dispTourRef" class="text-right">—</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="mb-6">
+                <div id="invTopGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 rounded-xl border border-gray-100 p-4 invoice-card-pad">
+                        <h2 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Billed To</h2>
+                        <div class="text-sm font-display font-bold text-charcoal" id="dispClientName">Guest</div>
+                        <div class="text-[10px] text-gray-600 mt-1" id="dispClientMeta"></div>
+                    </div>
+
+                    <div class="bg-charcoal rounded-xl overflow-hidden text-white shadow-md summary-box">
+                        <div class="p-4 border-b border-gray-700 flex items-center justify-between">
+                            <div>
+                                <div class="text-[10px] text-gray-300 font-bold uppercase tracking-wider">Payment Status</div>
+                                <div class="text-xl font-display font-black tracking-tight" id="dispStatus">UNPAID</div>
+                            </div>
+                            <div class="inline-flex items-center gap-2 bg-tealish-500/20 border border-tealish-500/30 px-3 py-1 rounded-full text-[10px] font-bold text-tealish-500" id="dispPaymentTypePill">
+                                <i class="ri-shield-check-line"></i> Advance Payment
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3">
+                            <div class="p-4 border-r border-gray-700">
+                                <div class="text-[10px] text-gray-400 font-bold uppercase">Total</div>
+                                <div class="text-sm font-black" id="dispTotalSmall">LKR 0</div>
+                            </div>
+                            <div class="p-4 border-r border-gray-700">
+                                <div class="text-[10px] text-gray-400 font-bold uppercase">Paid</div>
+                                <div class="text-sm font-black text-green-400" id="dispPaidSmall">LKR 0</div>
+                            </div>
+                            <div class="p-4">
+                                <div class="text-[10px] text-gray-400 font-bold uppercase">Balance</div>
+                                <div class="text-sm font-black text-brand-500" id="dispBalanceSmall">LKR 0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-6">
+                <div class="grid grid-cols-12 gap-4 bg-gray-50 rounded-xl overflow-hidden border border-gray-100 shadow-sm">
+                    <div class="col-span-5 relative h-40 bg-gray-200 vehicle-print-img">
+                        <img id="dispVehicleImg" src="" alt="Vehicle" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute top-0 left-0 bg-brand-500 text-white text-[10px] font-bold uppercase px-3 py-1 rounded-br-lg shadow-sm">Confirmed Fleet</div>
+                    </div>
+                    <div class="col-span-7 p-4 flex flex-col justify-center">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="text-lg font-display font-bold text-charcoal" id="dispTourName">Tour Name</h3>
+                                <div class="text-[10px] text-gray-500 font-medium mt-0.5">
+                                    <span class="inline-flex items-center gap-1"><i class="ri-group-line text-tealish-500"></i> <span id="dispPax">2</span> Pax</span>
+                                    <span class="mx-2 text-gray-300">•</span>
+                                    <span class="inline-flex items-center gap-1"><i class="ri-calendar-event-line text-tealish-500"></i> <span id="dispDates">—</span></span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-gray-400 font-bold uppercase">Vehicle</div>
+                                <div class="text-xs font-semibold text-charcoal" id="dispVehicle">Vehicle Name</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 pt-3 border-t border-gray-200 flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-tealish-50 flex items-center justify-center text-tealish-500 flex-shrink-0"><i class="ri-user-star-line text-sm"></i></div>
+                            <div>
+                                <div class="text-[10px] font-bold text-gray-400 uppercase">Designated Chauffeur</div>
+                                <div class="text-xs font-semibold text-charcoal leading-tight mt-0.5" id="dispDriver">Driver Info</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-6">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="w-1 h-5 bg-brand-500 rounded-full"></span>
+                    <h3 class="text-sm font-display font-bold text-charcoal uppercase tracking-wide">Itinerary Summary</h3>
+                </div>
+                <div class="border-l-2 border-brand-100 ml-3.5 space-y-0 relative" id="dispItinerary"></div>
+                <div id="printItineraryNote" class="hidden mt-2 text-[10px] text-gray-500">
+                    Itinerary shortened for 1-page invoice print.
+                </div>
+            </section>
+
+            <!-- Amounts -->
+            <section class="mb-6 bg-charcoal rounded-xl overflow-hidden text-white shadow-md summary-box">
+                <div id="invAmountsGrid" class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-6 border-r border-gray-700 invoice-summary-pad">
+                        <span class="text-gray-400 text-[10px] font-bold uppercase tracking-wider mb-2 block">Invoice Summary</span>
+
+                        <div id="discountRow" class="hidden mb-2">
+                            <div class="text-xs text-green-400 font-bold flex items-center gap-1">
+                                <i class="ri-price-tag-3-fill"></i>
+                                <span id="dispDiscountInfo">Discount Applied</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-xl font-display font-bold text-brand-500" id="dispCurr1">LKR</span>
+                            <span class="text-4xl font-display font-bold text-white tracking-tight" id="dispFinalTotal">0</span>
+                        </div>
+                        <div class="text-xs text-gray-400 font-medium">
+                            approx. <span id="dispCurr2">USD</span> <span id="dispFinalTotal2">0</span>
+                        </div>
+
+                        <div class="mt-4 grid grid-cols-2 gap-3">
+                            <div class="bg-gray-800 rounded-lg p-3 invoice-card-pad">
+                                <div class="text-[10px] text-gray-400 font-bold uppercase">Paid</div>
+                                <div class="text-sm font-black text-green-400" id="dispPaid">LKR 0</div>
+                                <div class="text-[10px] text-gray-400 mt-1">on <span id="dispPaidDate">—</span></div>
+                            </div>
+                            <div class="bg-gray-800 rounded-lg p-3 invoice-card-pad">
+                                <div class="text-[10px] text-gray-400 font-bold uppercase">Balance Due</div>
+                                <div class="text-sm font-black text-brand-500" id="dispBalance">LKR 0</div>
+                                <div class="text-[10px] text-gray-400 mt-1">Type: <span id="dispPaymentType">Advance Payment</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-gray-800 invoice-summary-pad">
+                        <span class="text-gray-400 text-[10px] font-bold uppercase tracking-wider block mb-3">Payment Details</span>
+                        <div class="space-y-2 text-xs text-gray-300">
+                            <div class="flex items-start gap-2"><i class="ri-bank-card-2-line text-tealish-500 mt-0.5"></i> <span><strong class="text-white">Method:</strong> <span id="dispPayMethod">Bank Transfer</span></span></div>
+                            <div class="flex items-start gap-2"><i class="ri-hashtag text-tealish-500 mt-0.5"></i> <span><strong class="text-white">Reference:</strong> <span id="dispPayRef">—</span></span></div>
+                            <div class="flex items-start gap-2"><i class="ri-sticky-note-line text-tealish-500 mt-0.5"></i> <span><strong class="text-white">Notes:</strong> <span id="dispPayNotes">—</span></span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-4">
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Exclusions</h4>
+                        <div class="text-[10px] text-gray-600 leading-relaxed whitespace-pre-wrap" id="dispExclusions"></div>
+                    </div>
+                    <div id="dispTermsSection" class="hidden">
+                        <h4 class="text-[10px] font-bold text-amber-600 uppercase tracking-wider mb-1">Terms / Notes</h4>
+                        <div class="bg-amber-50 border-l-4 border-amber-400 p-3 rounded">
+                            <p id="dispTerms" class="text-xs text-gray-700 italic">—</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="border-t border-gray-200 pt-4">
+                <div class="flex justify-between items-end text-[10px] text-gray-400 font-medium">
+                    <div>
+                        <strong class="text-charcoal block text-xs mb-0.5">RideXHub Private Journeys</strong>
+                        No 4, Paramulla Road, Matara, Sri Lanka<br>+94 70 761 5516 &bull; hello@ridexhub.com
+                    </div>
+                    <div class="text-right"><span>Generated via RideXHub System</span><br><span>www.ridexhub.com</span></div>
+                </div>
+            </footer>
+
+        </div>
+    </main>
+
+    <script>
+        // Default Data
+        let invoiceData = {
+            itinerary: [
+                { date: "Jan 20", activity: "Pickup CMB Airport ➡️ Transfer to Mirissa", stay: "Lilypad Lofts, Mirissa" },
+                { date: "Jan 21", activity: "Mirissa Whale Watching + Optional Galle Fort visit", stay: "Lilypad Lofts, Mirissa" },
+                { date: "Jan 22", activity: "Mirissa ➡️ Transfer to Weerawila", stay: "DoubleTree Hilton, Weerawila" },
+                { date: "Jan 23", activity: "Yala Safari (Morning) ➡️ Transfer to Colombo", stay: "Amari, Colombo" },
+                { date: "Jan 24", activity: "Colombo City usage (Shopping/Sightseeing)", stay: "Amari, Colombo" },
+                { date: "Jan 25", activity: "Colombo ➡️ Drop off CMB Airport (Morning)", stay: "End of Tour" }
+            ]
+        };
+
+        function toNumber(value) {
+            if (typeof value !== 'string') return Number(value) || 0;
+            const clean = value.replace(/,/g, '').trim();
+            const num = parseFloat(clean);
+            return Number.isFinite(num) ? num : 0;
+        }
+
+        function formatMoney(num) {
+            return (Number(num) || 0).toLocaleString('en-US');
+        }
+
+        function formatHumanDate(iso) {
+            if (!iso) return '—';
+            const d = new Date(iso);
+            if (Number.isNaN(d.getTime())) return '—';
+            return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' });
+        }
+
+        function generateInvoiceNo() {
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const inv = `RH-INV-${randomNum}`;
+            document.getElementById('inputInvoiceNo').value = inv;
+            updateElement('dispInvoiceNo', inv);
+        }
+
+        function updateElement(id, value, isImage) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            if (isImage) el.src = value;
+            else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') el.value = value;
+            else el.textContent = value;
+        }
+
+        function toggleTermsSection() {
+            const isChecked = document.getElementById('toggleTerms').checked;
+            const inputArea = document.getElementById('inputTerms');
+            const dispSection = document.getElementById('dispTermsSection');
+
+            if (isChecked) {
+                inputArea.classList.remove('hidden');
+                dispSection.classList.remove('hidden');
+            } else {
+                inputArea.classList.add('hidden');
+                dispSection.classList.add('hidden');
+            }
+        }
+
+        function updatePaymentTypeUI() {
+            const type = document.getElementById('inputPaymentType').value;
+            const map = {
+                advance: { label: 'Advance Payment', icon: 'ri-shield-check-line' },
+                full: { label: 'Full Payment', icon: 'ri-check-double-line' },
+                balance: { label: 'Balance Payment', icon: 'ri-wallet-3-line' }
+            };
+            const { label, icon } = map[type] || map.advance;
+
+            updateElement('dispPaymentType', label);
+            const pill = document.getElementById('dispPaymentTypePill');
+            pill.innerHTML = `<i class="${icon}"></i> ${label}`;
+            updateElement('dispPaymentType', label);
+        }
+
+        function applyDiscountFromInputs() {
+            const discountPercent = toNumber(document.getElementById('inputDiscountPercent').value);
+            const discountAmount = toNumber(document.getElementById('inputDiscountAmount').value);
+
+            const total = toNumber(document.getElementById('inputTotal').value);
+            const currency = document.getElementById('inputCurr1').value || 'LKR';
+
+            let finalTotal = total;
+            let usedDiscountAmount = 0;
+            let usedDiscountPercent = 0;
+
+            if (discountPercent > 0) {
+                document.getElementById('inputDiscountAmount').value = 0;
+                usedDiscountPercent = Math.min(100, discountPercent);
+                usedDiscountAmount = (total * usedDiscountPercent) / 100;
+                finalTotal = Math.max(0, total - usedDiscountAmount);
+            } else if (discountAmount > 0) {
+                document.getElementById('inputDiscountPercent').value = 0;
+                usedDiscountAmount = Math.min(total, discountAmount);
+                usedDiscountPercent = total > 0 ? (usedDiscountAmount / total) * 100 : 0;
+                finalTotal = Math.max(0, total - usedDiscountAmount);
+            }
+
+            const discountRow = document.getElementById('discountRow');
+            if (usedDiscountAmount > 0) {
+                discountRow.classList.remove('hidden');
+                updateElement('dispDiscountInfo', `-${usedDiscountPercent.toFixed(0)}% (${currency} ${formatMoney(usedDiscountAmount)})`);
+            } else {
+                discountRow.classList.add('hidden');
+            }
+
+            return { total, finalTotal, usedDiscountAmount, usedDiscountPercent };
+        }
+
+        function calculateInvoice() {
+            const currency = document.getElementById('inputCurr1').value || 'LKR';
+            const total2 = document.getElementById('inputTotal2').value || '0';
+            const curr2 = document.getElementById('inputCurr2').value || 'USD';
+
+            const { total, finalTotal } = applyDiscountFromInputs();
+
+            const paid = toNumber(document.getElementById('inputPaid').value);
+            const clampedPaid = Math.max(0, Math.min(finalTotal, paid));
+            if (paid !== clampedPaid) {
+                document.getElementById('inputPaid').value = formatMoney(clampedPaid);
+            }
+
+            const balance = Math.max(0, finalTotal - clampedPaid);
+
+            // Status
+            let status = 'UNPAID';
+            if (clampedPaid <= 0) status = 'UNPAID';
+            else if (balance <= 0) status = 'PAID';
+            else status = 'PARTIALLY PAID';
+
+            // Status pill (editor)
+            const pill = document.getElementById('dispStatusPill');
+            pill.className = 'text-[10px] font-bold px-2 py-1 rounded-full';
+            if (status === 'PAID') pill.classList.add('bg-green-100', 'text-green-700');
+            else if (status === 'PARTIALLY PAID') pill.classList.add('bg-amber-100', 'text-amber-700');
+            else pill.classList.add('bg-gray-200', 'text-gray-700');
+            pill.textContent = status;
+
+            updateElement('dispStatus', status);
+
+            // Preview totals
+            updateElement('dispCurr1', currency);
+            updateElement('dispFinalTotal', formatMoney(finalTotal));
+            updateElement('dispCurr2', curr2);
+            updateElement('dispFinalTotal2', total2);
+
+            updateElement('dispPaid', `${currency} ${formatMoney(clampedPaid)}`);
+            updateElement('dispBalance', `${currency} ${formatMoney(balance)}`);
+            updateElement('dispTotalSmall', `${currency} ${formatMoney(finalTotal)}`);
+            updateElement('dispPaidSmall', `${currency} ${formatMoney(clampedPaid)}`);
+            updateElement('dispBalanceSmall', `${currency} ${formatMoney(balance)}`);
+
+            // Editor balance
+            updateElement('calcBalance', `${currency} ${formatMoney(balance)}`);
+        }
+
+        function updateClientMeta() {
+            const email = document.getElementById('inputClientEmail').value.trim();
+            const phone = document.getElementById('inputClientPhone').value.trim();
+            const passport = document.getElementById('inputClientPassport').value.trim();
+
+            const parts = [];
+            if (email) parts.push(email);
+            if (phone) parts.push(phone);
+            if (passport) parts.push(`ID: ${passport}`);
+
+            const metaContainer = document.getElementById('dispClientMeta');
+            if (metaContainer) metaContainer.textContent = parts.length ? parts.join(' • ') : '';
+        }
+
+        function updateDates() {
+            const invDate = document.getElementById('inputInvoiceDate').value;
+            updateElement('dispInvoiceDate', formatHumanDate(invDate));
+
+            const start = document.getElementById('inputStartDate').value;
+            const end = document.getElementById('inputEndDate').value;
+            if (start && end) {
+                updateElement('dispDates', `${formatHumanDate(start)} - ${formatHumanDate(end)}`);
+            } else if (start) {
+                updateElement('dispDates', `${formatHumanDate(start)} - —`);
+            } else {
+                updateElement('dispDates', '—');
+            }
+
+            const paidDate = document.getElementById('inputPaidDate').value;
+            updateElement('dispPaidDate', formatHumanDate(paidDate));
+        }
+
+        function updateTourRef() {
+            const ref = document.getElementById('inputTourRef').value.trim();
+            if (ref) {
+                document.getElementById('tourRefRow').classList.remove('hidden');
+                updateElement('dispTourRef', ref);
+            } else {
+                document.getElementById('tourRefRow').classList.add('hidden');
+                updateElement('dispTourRef', '—');
+            }
+        }
+
+        // --- ITINERARY ---
+        function renderItinerary() {
+            const container = document.getElementById('dispItinerary');
+            const editorList = document.getElementById('itineraryList');
+            container.innerHTML = '';
+            editorList.innerHTML = '';
+
+            invoiceData.itinerary.forEach((item, index) => {
+                container.insertAdjacentHTML('beforeend', `
+                    <div class="relative pl-6 pb-6 last:pb-0 group itinerary-item" data-itinerary-index="${index}">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-500 border-4 border-white shadow-sm z-10 group-last:bg-charcoal itinerary-dot"></div>
+                        <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
+                            <span class="font-display font-bold text-xs text-brand-700 min-w-[70px] uppercase tracking-wide pt-0.5 itinerary-date">${item.date}</span>
+                            <div class="flex-grow">
+                                <span class="text-xs text-charcoal font-bold leading-relaxed block itinerary-activity">${item.activity}</span>
+                                <div class="mt-0.5 flex items-center gap-1 text-[10px] text-gray-500 itinerary-stay">
+                                    <i class="ri-hotel-bed-fill text-tealish-500"></i> <span class="font-medium">${item.stay}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                editorList.insertAdjacentHTML('beforeend', `
+                    <div class="bg-gray-50 p-2 rounded-md border border-gray-200 text-xs shadow-sm gap-2">
+                        <div class="flex justify-between mb-2">
+                            <input type="text" value="${item.date}" onchange="updateItinerary(${index}, 'date', this.value)" class="w-20 border border-gray-300 p-1 rounded font-bold" placeholder="Date">
+                            <button onclick="removeItinerary(${index})" class="text-red-500 hover:text-red-700"><i class="ri-delete-bin-line"></i></button>
+                        </div>
+                        <textarea onchange="updateItinerary(${index}, 'activity', this.value)" rows="2" class="w-full border border-gray-300 p-1 rounded mb-2" placeholder="Activity">${item.activity}</textarea>
+                        <input type="text" value="${item.stay}" onchange="updateItinerary(${index}, 'stay', this.value)" class="w-full border border-gray-300 p-1 rounded text-tealish-500 font-medium" placeholder="Overnight Stay">
+                    </div>
+                `);
+            });
+        }
+
+        function addItineraryItem() {
+            invoiceData.itinerary.push({ date: "Day", activity: "Activity...", stay: "Hotel" });
+            renderItinerary();
+        }
+
+        function removeItinerary(index) {
+            invoiceData.itinerary.splice(index, 1);
+            renderItinerary();
+        }
+
+        function updateItinerary(index, field, value) {
+            invoiceData.itinerary[index][field] = value;
+            renderItinerary();
+        }
+
+        function updateState() {
+            // Simple bindings
+            updateElement('dispInvoiceNo', document.getElementById('inputInvoiceNo').value);
+            updateElement('dispClientName', document.getElementById('inputClientName').value);
+            updateElement('dispTourName', document.getElementById('inputTourName').value);
+            updateElement('dispPax', document.getElementById('inputPax').value);
+
+            updateElement('dispVehicle', document.getElementById('inputVehicle').value);
+            updateElement('dispVehicleImg', document.getElementById('inputVehicleImg').value, true);
+            updateElement('dispDriver', document.getElementById('inputDriver').value);
+
+            updateElement('dispExclusions', document.getElementById('inputExclusions').value);
+
+            const payMethod = document.getElementById('inputPayMethod').value;
+            const payRef = document.getElementById('inputPayRef').value.trim();
+            const payNotes = document.getElementById('inputPayNotes').value.trim();
+
+            updateElement('dispPayMethod', payMethod || '—');
+            updateElement('dispPayRef', payRef || '—');
+            updateElement('dispPayNotes', payNotes || '—');
+
+            const terms = document.getElementById('inputTerms').value.trim();
+            updateElement('dispTerms', terms || '—');
+
+            updateClientMeta();
+            updateDates();
+            updateTourRef();
+            updatePaymentTypeUI();
+            calculateInvoice();
+        }
+
+        // --- MOBILE VIEW TOGGLING ---
+        function setMobileView(view) {
+            const isMobile = window.matchMedia('(max-width: 767px)').matches;
+            if (!isMobile) return;
+
+            const editor = document.getElementById('editorPanel');
+            const preview = document.getElementById('previewPanel');
+            const btnEditor = document.getElementById('btnShowEditor');
+            const btnPreview = document.getElementById('btnShowPreview');
+
+            const activeClasses = ['bg-charcoal', 'text-white', 'border-transparent'];
+            const inactiveClasses = ['bg-white', 'text-charcoal', 'border-gray-200'];
+
+            if (view === 'preview') {
+                editor.classList.add('hidden');
+                preview.classList.remove('hidden');
+
+                btnPreview.classList.add(...activeClasses);
+                btnPreview.classList.remove(...inactiveClasses);
+                btnEditor.classList.add(...inactiveClasses);
+                btnEditor.classList.remove(...activeClasses);
+            } else {
+                preview.classList.add('hidden');
+                editor.classList.remove('hidden');
+
+                btnEditor.classList.add(...activeClasses);
+                btnEditor.classList.remove(...inactiveClasses);
+                btnPreview.classList.add(...inactiveClasses);
+                btnPreview.classList.remove(...activeClasses);
+            }
+
+            try { localStorage.setItem('ridexhub_invoice_mobile_view', view); } catch (_) {}
+        }
+
+        function syncMobileView() {
+            const isMobile = window.matchMedia('(max-width: 767px)').matches;
+            const editor = document.getElementById('editorPanel');
+            const preview = document.getElementById('previewPanel');
+
+            if (!isMobile) {
+                editor.classList.remove('hidden');
+                preview.classList.remove('hidden');
+                return;
+            }
+
+            let view = 'editor';
+            try { view = localStorage.getItem('ridexhub_invoice_mobile_view') || 'editor'; } catch (_) {}
+            setMobileView(view);
+        }
+
+        // --- PRINT: KEEP ONE PAGE BY LIMITING ITINERARY ---
+        const MAX_PRINT_ITINERARY_ITEMS = 5;
+        let lastHiddenItineraryCount = 0;
+
+        function applyPrintItineraryLimit() {
+            const items = Array.from(document.querySelectorAll('#dispItinerary .itinerary-item'));
+            lastHiddenItineraryCount = 0;
+            items.forEach((el, idx) => {
+                if (idx >= MAX_PRINT_ITINERARY_ITEMS) {
+                    el.style.display = 'none';
+                    lastHiddenItineraryCount += 1;
+                } else {
+                    el.style.display = '';
+                }
+            });
+
+            const note = document.getElementById('printItineraryNote');
+            if (note) {
+                if (lastHiddenItineraryCount > 0) {
+                    note.textContent = `Itinerary shortened for 1-page invoice print (hidden ${lastHiddenItineraryCount} day(s)).`;
+                    note.classList.remove('hidden');
+                } else {
+                    note.classList.add('hidden');
+                }
+            }
+        }
+
+        function clearPrintItineraryLimit() {
+            const items = Array.from(document.querySelectorAll('#dispItinerary .itinerary-item'));
+            items.forEach((el) => {
+                el.style.display = '';
+            });
+            const note = document.getElementById('printItineraryNote');
+            if (note) note.classList.add('hidden');
+            lastHiddenItineraryCount = 0;
+        }
+
+        // --- INIT ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Defaults
+            const today = new Date();
+            document.getElementById('inputInvoiceDate').valueAsDate = today;
+            document.getElementById('inputPaidDate').valueAsDate = today;
+
+            // Tour date defaults (today + 6 days)
+            const start = new Date(today);
+            const end = new Date(today);
+            end.setDate(end.getDate() + 5);
+            document.getElementById('inputStartDate').valueAsDate = start;
+            document.getElementById('inputEndDate').valueAsDate = end;
+
+            generateInvoiceNo();
+            renderItinerary();
+
+            // Set initial preview values
+            document.getElementById('dispInvoiceNo').value = document.getElementById('inputInvoiceNo').value;
+            updateElement('dispVehicleImg', document.getElementById('inputVehicleImg').value, true);
+
+            // Listeners
+            document.querySelectorAll('input, textarea, select').forEach(el => {
+                el.addEventListener('input', updateState);
+                el.addEventListener('change', updateState);
+            });
+
+            // Discount interactions
+            document.getElementById('inputDiscountPercent').addEventListener('input', () => {
+                if (toNumber(document.getElementById('inputDiscountPercent').value) > 0) {
+                    document.getElementById('inputDiscountAmount').value = 0;
+                }
+            });
+            document.getElementById('inputDiscountAmount').addEventListener('input', () => {
+                if (toNumber(document.getElementById('inputDiscountAmount').value) > 0) {
+                    document.getElementById('inputDiscountPercent').value = 0;
+                }
+            });
+
+            updateState();
+
+            // Mobile: start in last-used view
+            syncMobileView();
+            window.addEventListener('resize', syncMobileView);
+
+            // Always-on: make right-side preview match PDF output
+            document.body.classList.add('print-preview');
+            applyPrintItineraryLimit();
+
+            // Print: constrain itinerary to help ensure single page
+            window.addEventListener('beforeprint', applyPrintItineraryLimit);
+            // Keep preview consistent after printing
+            window.addEventListener('afterprint', applyPrintItineraryLimit);
+        });
+    </script>
+</body>
+</html>
