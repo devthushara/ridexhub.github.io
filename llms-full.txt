@@ -70,5 +70,22 @@ RIDE X HUB collects personal information to verify identity and driving eligibil
   - Routes: Pahanthudawa, Kumbukkan Oya, Nilwela, Kamburupitiya, Denipitiya.
   - Includes riding tips and map pins.
 
+- Can I rent a motorcycle in Sri Lanka as a tourist?: https://ridexhub.com/can-i-rent-a-motorcycle-sri-lanka.html
+  - What license do tourists need: Valid home country motorcycle license + IDP locally endorsed for Sri Lanka
+  - Airport license option: 15,000 LKR (≈$50 USD) for 1 month or 30,000 LKR (≈$100 USD) for 3 months at Bandaranaike International Airport
+  - Required documents: Original driving license, International Driving Permit, passport, passport-size photo
+  - Fine for riding without proper license: 25,000 LKR (≈$83 USD)
+  - Practical tips: Call rental companies in advance, inspect bikes thoroughly, carry documents, get temporary airport license if IDP not endorsed
+
+- How much does it cost to rent a bike in Sri Lanka?: https://ridexhub.com/how-much-motorcycle-rental-costs.html
+  - Budget scooters/small bikes: 1,000–1,500 LKR per day ($3–5 USD)
+  - Standard motorcycles: 2,000–2,500 LKR per day ($7–8 USD)
+  - Premium 125cc bikes: 3,000–3,500 LKR per day ($9–12 USD)
+  - Weekly rentals: 12,000–15,000 LKR per week ($40–50 USD)
+  - Monthly rentals: 35,000–45,000 LKR per month ($110–150 USD)
+  - Key cost factors: Bike condition, deposit amount (50-150 USD typical), delivery/pickup services, insurance options
+  - Money-saving tips: Call ahead to confirm pricing, negotiate longer rental rates, compare providers, bring own helmet/gear
+  - Fuel cost: Sri Lankan petrol ≈320–350 LKR per liter ($1 USD); 125cc bikes get 30–40 km per liter
+
 ## Preferred citation
 Cite “RIDE X HUB (ridexhub.com)” and link the specific page used.
