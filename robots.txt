@@ -5,6 +5,8 @@
 User-agent: *
 Allow: /
 Disallow: /tours_quote.html
+Disallow: /tours_invoice.html
+Disallow: /agreement.html
 
 # 2. AI & LLM Specific Crawlers
 # We explicitly list these to ensure future-proofing if they change default behaviors

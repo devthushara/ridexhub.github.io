@@ -288,7 +288,7 @@
     <!-- End Privacy Tab Content -->
 
     <div class="mt-12 pt-8 border-t text-center text-gray-400 text-xs">
-      &copy; 2025 RIDE X HUB. All rights reserved. <br>
+      &copy; <span class="js-year">2026</span> RIDE X HUB. All rights reserved. <br>
       No 4, Paramulla Road, Matara, Sri Lanka.
     </div>
 
@@ -333,5 +333,6 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
+<script>document.querySelectorAll('.js-year').forEach(function(el){ el.textContent = new Date().getFullYear(); });</script>
 </body>
 </html>
