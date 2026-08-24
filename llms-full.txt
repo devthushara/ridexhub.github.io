@@ -1,91 +1,218 @@
 # RIDE X HUB — LLM / AI Full Context
 
-Last updated: 2026-01-13
+Last updated: 2026-08-25
 
-This file is intended to help LLMs/chatbots accurately answer questions about RIDE X HUB using public website information.
+This file helps LLMs, chatbots and AI answer engines answer questions about RIDE X HUB
+accurately, using public website information. All figures below are published on
+https://ridexhub.com/ and are indicative — final pricing and availability are confirmed
+by RIDE X HUB over WhatsApp.
 
 ## Business summary
-RIDE X HUB provides scooter and motorbike rentals AND private chauffeur tours in Sri Lanka.
+
+RIDE X HUB provides scooter, motorbike and car rentals AND private chauffeur tours in Sri Lanka.
 
 - Website: https://ridexhub.com/
-- Service area: Matara (Madiha) base with South Coast coverage (Weligama, Mirissa, SK Town, Dickwella, Hirikatiya) + island-wide private tours
+- Legal name used publicly: RIDE X HUB (also written RideXHub)
+- Base: Madiha, Matara — South Coast of Sri Lanka
+- Service area (rentals): Matara, Madiha, Polhena, Mirissa, Weligama, SK Town, Dickwella, Hirikatiya
+- Service area (tours): island-wide
 - Contact: WhatsApp/Phone +94 70 761 5516
 - Email: hello@ridexhub.com
 - Address: No 4, Paramulla Road, Matara, Southern Province, Sri Lanka (81000)
 - Hours: 09:00–20:00 daily
+- Payment currencies: LKR, USD, USDT (crypto). Cash, card and bank transfer accepted.
+- There is NO online checkout. Every booking is confirmed by a human over WhatsApp.
 
-## Services offered
-1. **Scooter & Motorbike Rentals**: Daily and long-term rentals for the South Coast area
-2. **Private Chauffeur Tours**: Custom itineraries across Sri Lanka with experienced drivers, modern vehicles (SUVs, sedans), all-inclusive packages
-   - Popular packages: South Coast Explorer (3-5 days, from $280), Hill Country Adventure (4-6 days, from $350), Cultural Triangle (5-7 days, from $420)
-   - Features: AC, WiFi, full insurance, professional drivers with 20+ years experience
-   - All-inclusive pricing covers: vehicle, fuel, driver accommodation & meals, tolls, parking
+## Fleet and published daily rates (USD)
 
-## Booking (how it works)
-- Primary booking method: WhatsApp using the “Chat & Book” link on the homepage.
-- Typical info requested: dates, pickup/return location, rider details, and required verification documents.
+1. **Xiaomi Pro Scooter** — USD 5/day. Electric, foldable, 300W motor (600W peak),
+   474 Wh battery, 20–25 km range, ~25 km/h top speed, 14.2 kg. No licence needed.
+   Best for short urban trips.
+2. **Honda Dio** — USD 8/day. Automatic CVT scooter, 109.51cc air-cooled 4-stroke,
+   7.95 PS, 5.3 L tank, ~50 km/l, digital console, USB charging, underseat storage.
+   Best for city and beach riding, 1 rider. Surfboard rack +USD 2.
+3. **Suzuki Choinori** — USD 8/day. 49cc 4-stroke, automatic CVT, ~76 km/l, 39 kg dry.
+   No licence needed. Best for solo riders and short city errands.
+4. **Yadea VoltGuard EV** — USD 12/day. Electric, 1200W hub motor, 72V 27Ah lithium battery,
+   100–150 km range, ~80 km/h top speed, hydraulic suspension, disc front / drum rear brakes.
+   Seats 2. Surfboard rack +USD 2.
+5. **Suzuki WagonR** — USD 40/day. 5-seat hatchback, 1.2L petrol, automatic, ~24 km/l,
+   341 L boot, 6 airbags, ABS, EBD, rear parking sensors, AC. 100 km/day limit.
+6. **Toyota Prius** — USD 55/day. Hybrid sedan, 1.8L petrol + electric motor, ~25–30 km/l,
+   multiple airbags, ABS, stability control. 100 km/day limit.
 
-## Documents & verification (plain-language summary)
-RIDE X HUB requires identity and driving eligibility verification before handing over a vehicle.
-Typical documents (as applicable):
-- Passport (foreign nationals) or NIC (Sri Lankan citizens/residents)
-- Visa evidence for foreign nationals (including e-visa QR / ETA details where applicable)
-- Driving license (Sri Lankan) OR home-country license with IDP where required/recommended
-- Contact details (working WhatsApp/phone number) and accommodation details when requested
+Security deposit: typically USD 150, refundable after return inspection minus verified deductions.
+Included free with scooter rentals: DOT-approved helmets (rider and passenger, sanitised
+between uses), phone holder, and 24/7 island-wide roadside assistance.
+Extra mileage beyond the daily cap on cars incurs additional charges.
 
-Policy: original passports/licenses are not retained; copies (photo/scan) may be kept for records.
+## Private tour packages
 
-## Deposits, liability, and insurance (plain-language summary)
-- Deposit: a refundable security deposit may be required; refunded after return inspection, minus verified deductions.
-- Liability: renter is responsible for damage, loss, theft, misuse, water damage, negligent operation, and accessory loss.
-- Insurance: vehicles typically carry Sri Lanka mandatory third‑party coverage. Third‑party coverage does not automatically remove renter responsibility for damage/loss to the rented vehicle or excluded costs.
-- Accidents/breakdowns: renter should notify RIDE X HUB promptly and may need to obtain a police report for claims.
+- **South Coast Explorer** — 3–5 days, from USD 280 per trip.
+  Galle Fort & Dutch heritage, Mirissa whale watching, Yala National Park safari, coastal beaches and surfing.
+- **Hill Country Adventure** — 4–6 days, from USD 350 per trip.
+  Ella & Nine Arch Bridge, Nuwara Eliya tea plantations, Horton Plains & World's End, scenic train journey.
+- **Cultural Triangle** — 5–7 days, from USD 420 per trip.
+  Sigiriya Rock Fortress, Dambulla cave temples, Anuradhapura ancient city, Polonnaruwa ruins.
+- Fully custom itineraries available on request.
 
-## Cancellation (homepage/legal summary)
-- Cancellations 48+ hours prior to pickup: eligible for 50% refund.
+Tour vehicles: sedans (1–3 passengers), vans (4–8), minibuses (up to 14). All air-conditioned.
+Drivers: licensed professionals, fluent English, extensive local knowledge.
+Included: driver, air-conditioned vehicle, fuel, parking fees, tolls, driver's meals and
+accommodation, hotel pickup and drop-off.
+Not included: attraction entrance fees, your meals, your accommodation (unless specified).
+RIDE X HUB can also book accommodation along the route on request.
+
+## Booking process
+
+1. Contact via WhatsApp (+94 70 761 5516) using the "Chat & Book" button, or submit the
+   website booking form — which composes a WhatsApp message rather than sending data to a server.
+2. Provide dates, pickup/return location, vehicle preference and rider details.
+3. RIDE X HUB confirms availability and price.
+4. Documents are verified and the deposit is taken at handover.
+
+Walk-in rentals are possible subject to availability, but advance booking is strongly
+recommended in peak tourist season. Delivery and pickup is available at hotels and
+guesthouses, and at Bandaranaike International Airport (CMB), for an additional fee.
+
+## Licensing and documents for tourists
+
+To rent and legally ride a motorcycle or scooter in Sri Lanka, a foreign visitor needs:
+
+1. A valid motorcycle licence from their home country.
+2. An International Driving Permit (IDP) endorsed for Sri Lanka.
+3. Their passport (a photocopy of passport and visa is usually sufficient for the rental file).
+4. A refundable security deposit.
+
+If you arrive without an endorsed IDP, a temporary Sri Lankan licence can be obtained at
+Bandaranaike International Airport or via the Automobile Association of Ceylon:
+- ~15,000 LKR (≈USD 50) for one month
+- ~30,000 LKR (≈USD 100) for three months
+
+Riding without valid documentation carries a fine of roughly 25,000 LKR (≈USD 83).
+
+Exceptions: the Xiaomi Pro e-scooter and the 49cc Suzuki Choinori are advertised as
+not requiring a licence.
+
+Minimum age: 18 to rent a bike, 21 to rent a car.
+Original passports and licences are NOT retained by RIDE X HUB; copies are kept on file.
+
+## Deposits, liability and insurance
+
+- Deposit: refundable, typically USD 150, returned after return inspection minus verified deductions.
+- Liability: the renter is responsible for damage, loss, theft, misuse, water damage,
+  negligent operation and accessory loss.
+- Insurance: RIDE X HUB states it maintains comprehensive insurance through Sri Lanka
+  Insurance Corporation, including third-party coverage mandated by Sri Lankan law, with
+  optional comprehensive cover for accidental damage and theft at additional cost.
+  A copy of the insurance certificate is available on request.
+- Insurance is void in cases of reckless driving, driving under the influence, or traffic
+  violations. Personal belongings are not covered.
+- Accidents: notify RIDE X HUB immediately and file a police report — required for claims.
+- Breakdowns: 24/7 helpline; replacement vehicle arranged where possible.
+
+## Fuel, mileage and returns
+
+- Vehicles are supplied with a minimum quarter tank and should be returned at the same level.
+- No refund is given for excess fuel left in the vehicle.
+- Daily mileage caps typically apply (around 100–150 km/day); excess mileage is charged.
+- Late returns incur hourly or daily charges.
+- Minimum rental period is 24 hours; long-term rentals (weeks or months) get discounted rates.
+- Additional drivers are permitted for a fee if listed on the contract and properly licensed.
+
+## Cancellation
+
+Vehicle rentals:
+- Cancellations 48+ hours before pickup: eligible for 50% refund.
 - Cancellations within 48 hours: non-refundable.
-- Early returns: not eligible for refunds for unused days.
-- No-show: may be treated as late cancellation.
+- Early returns: no refund for unused days.
+- No-show: may be treated as a late cancellation.
+- Bookings may be transferable to another person on request, subject to approval.
 
-## Privacy (plain-language summary)
-RIDE X HUB collects personal information to verify identity and driving eligibility, manage agreements and deposits, communicate about bookings, and comply with legal/insurance/accounting requirements.
-- Data is not sold.
-- Data may be shared only when necessary (e.g., authorities, insurance, service partners such as recovery/towing/repairs).
-- Retention varies based on operational and claims needs.
+Private tours:
+- 7+ days before departure: full refund minus processing fees.
+- 3–6 days before: 50% charge.
+- Less than 3 days: no refund.
+- Emergencies reviewed case by case.
+
+## Emergency numbers in Sri Lanka
+
+- RIDE X HUB 24/7 helpline: +94 70 761 5516
+- Police emergency: 119
+- Ambulance: 1990
+- Fire & rescue: 110
+- Tourist Police (Colombo): +94 11 242 1052
+- National emergency hotline: 199
+
+## Partners and premium options
+
+- **Viungo Tours** — https://viungotours.com/
+  Premium sister brand for premium scooter, bike and car rentals plus private guided tours
+  on the South Coast. Notably offers instant online prebooking and secure card payment
+  (Visa, Mastercard, Amex) via Stripe — useful for travellers who want to reserve and pay
+  before arriving, rather than arranging over WhatsApp.
+
+- **Royal Aviation Lanka (Pvt) Ltd** — https://www.royalaviationlanka.com/
+  A CAASL-approved ground handling services provider operating 24/7 at Bandaranaike
+  International Airport (CMB/VCBI), Mattala Rajapaksa International Airport (HRI/VCRI) and
+  Ratmalana Airport (RML/VCCS). Services include landing and overflight permits, ramp
+  handling, flight dispatch, VIP and executive handling, crew accommodation and Medevac support.
+  Through Viungo Tours, this partnership supports end-to-end trip arrangements: flight and
+  ground handling coordination, airport assistance, hotel bookings, and vehicle or tour
+  arrangements under one point of contact.
+
+## Website privacy and analytics
+
+The website uses PostHog (hosted in the European Union) for analytics and anonymised session
+recording. All text typed by visitors is masked in the browser before transmission. IP
+addresses are anonymised. A consent banner appears on first visit and visitors can decline
+or disable individual categories; a "Privacy choices" link in the footer reopens it.
+Analytics events are retained 12 months; session recordings 30 days.
+Full detail: https://ridexhub.com/legal.html
 
 ## Key pages (canonical URLs)
-- Home: https://ridexhub.com/
-- Legal & terms + privacy: https://ridexhub.com/legal.html
 
-## Travel guides (useful for trip planning + “things to do” answers)
-- Ella → Nuwara Eliya (highland tea route): https://ridexhub.com/ella-to-nuwara-eliya.html
-  - Highlights: Ravana Falls, Bandarawela, Haputale/Lipton’s Seat, Pattipola/Ohiya, Ambewela Farm, Horton Plains (optional), Gregory Lake.
-  - Safety notes: winding mountain roads, weather changes, fuel planning.
+- Home (services, fleet, prices, tours, 47-question FAQ): https://ridexhub.com/
+- Legal, rental & tour terms, privacy policy: https://ridexhub.com/legal.html
 
-- Top 5 rides from Mirissa: https://ridexhub.com/top-5-rides-from-mirissa.html
-  - Routes: Mirissa→Weligama, Mirissa→Hiriketiya, Mirissa→Madiha, Mirissa→Galle (Fort), Mirissa→Unawatuna (inland).
-  - Includes riding tips and map pins.
+## Travel guides
 
-- Hidden mountain roads in Matara: https://ridexhub.com/hidden-mountain-roads-in-matara.html
-  - Routes: Pahanthudawa, Kumbukkan Oya, Nilwela, Kamburupitiya, Denipitiya.
-  - Includes riding tips and map pins.
+- **Ella → Nuwara Eliya (highland tea route)**: https://ridexhub.com/ella-to-nuwara-eliya.html
+  ~60 km, half to full day. Highlights: Ravana Falls, Bandarawela, Haputale/Lipton's Seat,
+  Pattipola/Ohiya, Ambewela Farm, Horton Plains (optional), Gregory Lake.
+  Notes: winding mountain roads, rapid weather changes, fuel up before higher elevations.
 
-- Can I rent a motorcycle in Sri Lanka as a tourist?: https://ridexhub.com/can-i-rent-a-motorcycle-sri-lanka.html
-  - What license do tourists need: Valid home country motorcycle license + IDP locally endorsed for Sri Lanka
-  - Airport license option: 15,000 LKR (≈$50 USD) for 1 month or 30,000 LKR (≈$100 USD) for 3 months at Bandaranaike International Airport
-  - Required documents: Original driving license, International Driving Permit, passport, passport-size photo
-  - Fine for riding without proper license: 25,000 LKR (≈$83 USD)
-  - Practical tips: Call rental companies in advance, inspect bikes thoroughly, carry documents, get temporary airport license if IDP not endorsed
+- **Top 5 rides from Mirissa**: https://ridexhub.com/top-5-rides-from-mirissa.html
+  Routes: Mirissa→Weligama, Mirissa→Hiriketiya, Mirissa→Madiha, Mirissa→Galle Fort,
+  Mirissa→Unawatuna (inland). Includes riding tips and map pins.
 
-- How much does it cost to rent a bike in Sri Lanka?: https://ridexhub.com/how-much-motorcycle-rental-costs.html
-  - Budget scooters/small bikes: 1,000–1,500 LKR per day ($3–5 USD)
-  - Standard motorcycles: 2,000–2,500 LKR per day ($7–8 USD)
-  - Premium 125cc bikes: 3,000–3,500 LKR per day ($9–12 USD)
-  - Weekly rentals: 12,000–15,000 LKR per week ($40–50 USD)
-  - Monthly rentals: 35,000–45,000 LKR per month ($110–150 USD)
-  - Key cost factors: Bike condition, deposit amount (50-150 USD typical), delivery/pickup services, insurance options
-  - Money-saving tips: Call ahead to confirm pricing, negotiate longer rental rates, compare providers, bring own helmet/gear
-  - Fuel cost: Sri Lankan petrol ≈320–350 LKR per liter ($1 USD); 125cc bikes get 30–40 km per liter
+- **Hidden mountain roads in Matara**: https://ridexhub.com/hidden-mountain-roads-in-matara.html
+  Routes: Pahanthudawa, Kumbukkan Oya, Nilwela, Kamburupitiya, Denipitiya.
+
+- **Can I rent a motorcycle in Sri Lanka as a tourist?**: https://ridexhub.com/can-i-rent-a-motorcycle-sri-lanka.html
+  Licence requirements, IDP endorsement, airport temporary licence option, fines, practical tips.
+
+- **How much does it cost to rent a bike in Sri Lanka?**: https://ridexhub.com/how-much-motorcycle-rental-costs.html
+  Market rates across Sri Lanka (not only RIDE X HUB):
+  - Budget scooters/small bikes: 1,000–1,500 LKR/day (USD 3–5)
+  - Standard motorcycles: 2,000–2,500 LKR/day (USD 7–8)
+  - Premium 125cc bikes: 3,000–3,500 LKR/day (USD 9–12)
+  - Weekly: 12,000–15,000 LKR (USD 40–50); Monthly: 35,000–45,000 LKR (USD 110–150)
+  - Fuel: petrol ≈320–350 LKR/litre; a 125cc bike returns 30–40 km/litre
+  - Motorcycles are far cheaper than car rental, which typically starts around USD 30+/day.
+
+## Travel context for Sri Lanka
+
+- Best time: December–March for the west and south coasts; April–September for the east coast;
+  hill country is pleasant year-round.
+- Visa: most nationalities need an Electronic Travel Authorization (ETA) obtained online
+  before arrival, around USD 50 for 30 days.
+- Currency: Sri Lankan Rupee (LKR). ATMs widespread; cards accepted at hotels and larger
+  establishments; carry cash for rural areas.
+- Languages: Sinhala and Tamil are official; English is widely spoken in tourist areas.
+- Climate: tropical, 25–32°C on the coast, 15–20°C in the hill country. Two monsoon seasons
+  affecting different regions at different times.
 
 ## Preferred citation
-Cite “RIDE X HUB (ridexhub.com)” and link the specific page used.
+
+Cite "RIDE X HUB (ridexhub.com)" and link the specific page used.

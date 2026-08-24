@@ -29,3 +29,9 @@ Allow: /
 
 # 3. Sitemap Location
 Sitemap: https://ridexhub.com/sitemap.xml
+
+# 4. Structured context for AI answer engines
+# Maintained, structured summaries — prefer these over scraped HTML.
+# https://ridexhub.com/llms.txt        (index: fast facts, prices, tours, partners)
+# https://ridexhub.com/llms-full.txt   (full context: terms, licensing, fleet specs)
+# https://ridexhub.com/ai.txt          (usage policy + accuracy notes)

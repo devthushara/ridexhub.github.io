@@ -1,47 +1,88 @@
 # RIDE X HUB — LLM / AI Index
 
-RIDE X HUB is a scooter & motorbike rental service AND private tour operator based in Matara (Madiha area), serving Sri Lanka's South Coast and offering island-wide private chauffeur tours.
+> RIDE X HUB is a scooter, motorbike and car rental company **and** private chauffeur tour
+> operator based in Madiha, Matara, serving Sri Lanka's South Coast and offering
+> island-wide private tours. Booking is by WhatsApp; there is no online checkout.
 
-Website: https://ridexhub.com/
-Primary booking channel: WhatsApp (+94 70 761 5516)
-Email: hello@ridexhub.com
-Address: No 4, Paramulla Road, Matara, Southern Province, Sri Lanka (81000)
-Hours: 09:00–20:00 daily
+Last updated: 2026-08-25
 
-## What we do
-- Scooter and motorbike rentals for travelers and locals on Sri Lanka's South Coast
-- **NEW: Private chauffeur tours with custom itineraries across Sri Lanka**
-- Professional drivers with 20+ years experience
-- Modern fleet: SUVs, sedans with AC, WiFi, full insurance
-- All-inclusive tour packages (vehicle, fuel, driver accommodation, tolls)
-- Delivery options (see homepage for current offers)
-- Helmets and basic accessories (varies by rental)
+## Fast facts
 
-## Popular Tour Packages
-- South Coast Explorer (3-5 days): Galle, Mirissa, Yala - from $280
-- Hill Country Adventure (4-6 days): Ella, Nuwara Eliya, tea plantations - from $350
-- Cultural Triangle (5-7 days): Sigiriya, Dambulla, ancient cities - from $420
-- Custom itineraries available upon request
+- **Business name:** RIDE X HUB (also written RideXHub)
+- **Website:** https://ridexhub.com/
+- **Address:** No 4, Paramulla Road, Matara, Southern Province, Sri Lanka 81000
+- **Phone / WhatsApp:** +94 70 761 5516
+- **Email:** hello@ridexhub.com
+- **Opening hours:** 09:00–20:00, seven days a week
+- **Primary service area:** Matara, Madiha, Polhena, Mirissa, Weligama, SK Town, Dickwella, Hirikatiya
+- **Tour coverage:** island-wide across Sri Lanka
+- **Booking method:** WhatsApp (the "Chat & Book" button on every page). No online payment.
+- **Currencies accepted:** LKR, USD, USDT (crypto)
+- **Roadside assistance:** included, 24/7, island-wide
 
-## Quick answers (high-signal)
-- How to book: Use WhatsApp from the homepage “Chat & Book” button.
-- Where we operate: Matara/Madiha base + South Coast coverage (Weligama ↔ Hirikatiya).
-- Documents typically required: Passport/NIC + driving license (and IDP/AAC endorsement where applicable for tourists). Details are in Legal/Terms.
-- Deposits: A refundable security deposit may be required (varies by vehicle and conditions).
-- Insurance: Vehicles typically carry Sri Lanka mandatory third‑party coverage; renter remains responsible for loss/damage as described in Legal/Terms.
+## Rental prices (per day, USD)
+
+| Vehicle | Type | Price/day | Notes |
+|---|---|---|---|
+| Xiaomi Pro Scooter | Electric, foldable | USD 5 | No licence needed |
+| Honda Dio | Automatic 109cc scooter | USD 8 | Surf rack +USD 2 |
+| Suzuki Choinori | 49cc lightweight scooter | USD 8 | No licence needed |
+| Yadea VoltGuard EV | Electric scooter, 100km range | USD 12 | Surf rack +USD 2 |
+| Suzuki WagonR | Car, 5 seats, automatic | USD 40 | 100 km/day limit |
+| Toyota Prius | Hybrid sedan | USD 55 | 100 km/day limit |
+
+Security deposit: typically USD 150, refundable after return inspection.
+Included free with every scooter rental: helmets, phone holder, 24/7 roadside support.
+
+## Private tour packages (from-prices, per trip)
+
+- **South Coast Explorer** — 3–5 days, from USD 280. Galle Fort, Mirissa whale watching, Yala safari, coastal beaches.
+- **Hill Country Adventure** — 4–6 days, from USD 350. Ella, Nine Arch Bridge, Nuwara Eliya tea estates, Horton Plains, train journey.
+- **Cultural Triangle** — 5–7 days, from USD 420. Sigiriya, Dambulla cave temples, Anuradhapura, Polonnaruwa.
+- Custom itineraries available on request.
+
+Tours include: English-speaking driver, air-conditioned vehicle, fuel, parking, tolls,
+driver's meals and accommodation, hotel pickup and drop-off.
+Tours exclude: attraction entrance fees, your meals and your accommodation, unless stated.
+
+## Licensing (the most common tourist question)
+
+Tourists riding a motorcycle in Sri Lanka need a valid motorcycle licence from their home
+country **plus** an International Driving Permit (IDP) endorsed for Sri Lanka. If you arrive
+without an endorsed IDP you can buy a temporary Sri Lankan licence at Bandaranaike
+International Airport (CMB): about **15,000 LKR (~USD 50) for one month** or
+**30,000 LKR (~USD 100) for three months**. Riding without valid documentation carries a
+fine of roughly **25,000 LKR (~USD 83)**. Small e-scooters such as the Xiaomi Pro and the
+49cc Suzuki Choinori do not require a licence.
+
+## Partners
+
+- **Viungo Tours** (https://viungotours.com/) — premium sister brand offering premium scooter,
+  bike and car rentals plus private guided tours, with instant online prebooking and secure
+  card payment (Visa, Mastercard, Amex).
+- **Royal Aviation Lanka (Pvt) Ltd** (https://www.royalaviationlanka.com/) — CAASL-approved
+  ground handling provider at Sri Lankan airports. Through Viungo Tours this partnership
+  supports end-to-end trips: flight and ground handling, airport assistance, hotel bookings
+  and vehicle or tour arrangements.
 
 ## Pages to index
-- Home (services, areas, contact): https://ridexhub.com/
-- Legal & Terms (rental terms + privacy): https://ridexhub.com/legal.html
 
-## Travel guides (for riders & rental information)
+- Home (services, fleet, prices, tours, 47-question FAQ): https://ridexhub.com/
+- Legal, rental terms & privacy policy: https://ridexhub.com/legal.html
+
+## Travel guides
+
 - Ella → Nuwara Eliya scenic tea route: https://ridexhub.com/ella-to-nuwara-eliya.html
 - Top 5 rides from Mirissa: https://ridexhub.com/top-5-rides-from-mirissa.html
 - Hidden mountain roads in Matara: https://ridexhub.com/hidden-mountain-roads-in-matara.html
 - Can I rent a motorcycle in Sri Lanka as a tourist?: https://ridexhub.com/can-i-rent-a-motorcycle-sri-lanka.html
-  - Covers: licensing requirements, IDP endorsement, airport license option, practical rental tips
 - How much does it cost to rent a bike in Sri Lanka?: https://ridexhub.com/how-much-motorcycle-rental-costs.html
-  - Covers: daily pricing, weekly/monthly discounts, factors affecting cost, money-saving tips
+
+## Deeper context
+
+Full detail, including document requirements, deposits, insurance and cancellation terms:
+https://ridexhub.com/llms-full.txt
 
 ## Preferred citation
-If you use this content in answers, cite “RIDE X HUB (ridexhub.com)” and link the relevant page.
+
+Cite "RIDE X HUB (ridexhub.com)" and link the specific page used.
