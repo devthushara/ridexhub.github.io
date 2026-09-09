@@ -23,17 +23,39 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://eu-assets.i.posthog.com" crossorigin>
   <link rel="dns-prefetch" href="https://eu.i.posthog.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              500: '#FF9000',
+              600: '#E07E00'
+            },
+            charcoal: { DEFAULT: '#111111' }
+          },
+          fontFamily: {
+            display: ['"Arial Black"', 'Montserrat', 'sans-serif'],
+            body: ['"Plus Jakarta Sans"', 'Montserrat', 'system-ui', 'sans-serif'],
+            hub: ['"Arial Black"', 'Montserrat', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; }
-    h1, h2 { font-family: 'Poppins', system-ui, sans-serif; }
-  </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
+    ::selection { background-color: #FF9000; color: #000000; }
+    body { font-family: "Plus Jakarta Sans", Montserrat, system-ui, sans-serif; background: #FFFFFF; color: #111111; }
+    h1, h2, h3, .font-display { font-family: "Arial Black", Montserrat, Arial, sans-serif !important; letter-spacing: -0.025em !important; color: #111111 !important; }
+    .font-hub { font-family: "Arial Black", Montserrat, Arial, sans-serif !important; font-weight: 900 !important; letter-spacing: -0.04em !important; }
+    .brand-text-prefix { color: #000000 !important; font-weight: 900 !important; }
+    .brand-text-badge { background-color: #FF9000 !important; color: #000000 !important; font-weight: 900 !important; border-radius: 6px !important; }
     .tab-btn.active {
-      border-bottom: 3px solid #f97316;
-      color: #f97316;
-      font-weight: 600;
+      border-bottom: 3px solid #FF9000;
+      color: #000000;
+      font-weight: 900;
     }
     .tab-content {
       display: none;
@@ -41,41 +63,48 @@
     .tab-content.active {
       display: block;
     }
+    a { color: #FF9000; }
+    a:hover { color: #E07E00; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased p-6 md:p-12">
+<body class="bg-[#FAFAFA] text-gray-900 antialiased p-4 sm:p-6 md:p-12">
 
-  <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm">
-    <a href="index.html" class="inline-block mb-8 text-orange-600 font-semibold hover:underline">← Back to Home</a>
+  <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 md:p-12 rounded-2xl shadow-xs border border-gray-200">
+    <a href="index.html" class="inline-flex items-center gap-1.5 mb-8 text-black font-hub font-bold text-xs uppercase tracking-wider hover:text-[#FF9000] transition">
+      <span>← Back to Home</span>
+    </a>
 
     <div class="flex items-center justify-center gap-4 mb-6">
-      <img src="logo.webp" alt="RIDE X HUB" class="h-12 w-auto object-contain" loading="lazy">
-      <div class="text-left">
-        <div class="text-sm font-semibold text-gray-500">RIDE X HUB</div>
-        <div class="text-xs text-gray-400">Legal & Terms</div>
+      <div class="site-brand-logo flex items-center font-hub text-2xl font-black select-none tracking-tight">
+        <span class="brand-text-prefix tracking-tighter text-black">RIDE X</span>
+        <span class="brand-text-badge ml-1.5 px-2.5 py-0.5 rounded font-black text-sm tracking-normal uppercase inline-block shadow-xs bg-[#FF9000] text-black">HUB</span>
+      </div>
+      <div class="text-left border-l border-gray-300 pl-3">
+        <div class="text-xs font-hub font-bold text-gray-800 uppercase tracking-wider">Official Terms</div>
+        <div class="text-xs text-gray-500">Sri Lanka Operations</div>
       </div>
     </div>
     
-    <h1 class="text-3xl font-bold mb-2">Legal Information</h1>
-    <p class="text-gray-500 mb-8">Last Updated: August 2026</p>
+    <h1 class="text-2xl sm:text-3xl font-hub font-black mb-2 text-center text-black">Legal &amp; Policy Terms</h1>
+    <p class="text-gray-500 mb-8 text-center text-xs font-medium">Last Updated: August 2026 • Registered in Sri Lanka</p>
 
     <!-- Tab Navigation -->
-    <div class="flex border-b mb-8 gap-1">
-      <button class="tab-btn active px-6 py-3 text-sm font-medium text-gray-600 transition-all hover:text-orange-500" data-tab="terms">
+    <div class="flex border-b border-gray-200 mb-8 gap-2">
+      <button class="tab-btn active px-6 py-3 text-xs sm:text-sm font-hub font-bold uppercase tracking-wider text-gray-600 transition-all hover:text-[#FF9000]" data-tab="terms">
         Terms of Service
       </button>
-      <button class="tab-btn px-6 py-3 text-sm font-medium text-gray-600 transition-all hover:text-orange-500" data-tab="privacy">
+      <button class="tab-btn px-6 py-3 text-xs sm:text-sm font-hub font-bold uppercase tracking-wider text-gray-600 transition-all hover:text-[#FF9000]" data-tab="privacy">
         Privacy Policy
       </button>
     </div>
 
     <!-- Terms of Service Tab Content -->
     <div id="termsTab" class="tab-content active">
-      <div class="border-b mb-8">
-        <h2 class="text-xl font-bold border-b-2 border-orange-500 inline-block py-2">Terms of Service</h2>
+      <div class="border-b border-gray-200 mb-8">
+        <h2 class="text-xl font-hub font-bold border-b-2 border-[#FF9000] inline-block py-2 text-black uppercase tracking-tight">Terms of Service</h2>
       </div>
 
-    <div class="prose prose-orange max-w-none text-sm text-gray-600 space-y-4">
+    <div class="prose max-w-none text-sm text-gray-700 space-y-4">
       <p class="text-gray-500">
         This page provides a plain-language summary of our rental and tour service terms and privacy practices. It is intended for transparency and customer clarity, and applies to all vehicle rentals and private tour services arranged with RIDE X HUB ("we", "us").
       </p>
@@ -238,11 +267,11 @@
 
     <!-- Privacy Policy Tab Content -->
     <div id="privacyTab" class="tab-content">
-    <div class="border-b mb-8">
-      <h2 class="text-xl font-bold border-b-2 border-orange-500 inline-block py-2">Privacy Policy</h2>
+    <div class="border-b border-gray-200 mb-8">
+      <h2 class="text-xl font-hub font-bold border-b-2 border-[#FF9000] inline-block py-2 text-black uppercase tracking-tight">Privacy Policy</h2>
     </div>
 
-    <div class="prose prose-orange max-w-none text-sm text-gray-600 space-y-4">
+    <div class="prose max-w-none text-sm text-gray-700 space-y-4">
       <h3 class="text-lg font-semibold text-gray-900">1. What We Collect</h3>
       <p>We collect personal information to verify identity, confirm driving eligibility (for rentals), facilitate tour bookings, issue agreements, communicate about your booking, ensure passenger safety, and comply with applicable requirements for vehicle rentals and tour services in Sri Lanka.</p>
       <p>Depending on the service type and customer profile, this may include:</p>

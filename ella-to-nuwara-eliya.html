@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://eu-assets.i.posthog.com" crossorigin>
   <link rel="dns-prefetch" href="https://eu.i.posthog.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <!-- favicons (use exported files from favicon/ folder) -->
@@ -44,36 +44,46 @@
         extend: {
           colors: {
             brand: {
-              50: '#fff9f6',
-              100: '#fff0e6',
-              300: '#f7c9a1',
-              500: '#f97316',
-              700: '#dc6b12'
+              50: '#FFF8EE',
+              100: '#FFECCF',
+              200: '#FFD799',
+              300: '#FFBF5C',
+              400: '#FFA726',
+              500: '#FF9000',
+              600: '#E07E00',
+              700: '#B86500'
             },
-            tealish: { 500: '#0f766e' },
-            charcoal: { DEFAULT: '#111827' }
+            tealish: { 500: '#FF9000' },
+            charcoal: { DEFAULT: '#111111' }
           },
           fontFamily: {
-            display: ['Poppins','system-ui','-apple-system','Segoe UI','Roboto'],
-            body: ['Inter','system-ui','-apple-system','Segoe UI','Roboto']
+            display: ['"Arial Black"', 'Montserrat', 'sans-serif'],
+            body: ['"Plus Jakarta Sans"', 'Montserrat', 'system-ui', 'sans-serif'],
+            hub: ['"Arial Black"', 'Montserrat', 'Arial', 'sans-serif']
           },
-          boxShadow: { soft: '0 8px 30px rgba(15, 23, 42, 0.06)' },
+          boxShadow: { soft: '0 8px 30px rgba(0, 0, 0, 0.06)' },
           borderRadius: { xl: '14px' }
         }
       }
     }
   </script>
   <style>
+  ::selection { background-color: #FF9000; color: #000000; }
   /* prevent accidental horizontal page overflow */
   html, body { overflow-x: hidden; }
-  body { background: #f8fafc }
-  .prose img { border-radius: 12px; }
+  body { background: #FFFFFF; color: #141716; }
+  .font-hub { font-family: "Arial Black", Montserrat, Arial, sans-serif !important; font-weight: 900 !important; letter-spacing: -0.04em !important; }
+  .brand-text-prefix { color: #000000 !important; font-weight: 900 !important; }
+  .brand-text-badge { background-color: #FF9000 !important; color: #000000 !important; font-weight: 900 !important; border-radius: 6px !important; }
+  h1, h2, h3, .font-display { font-family: "Arial Black", Montserrat, Arial, sans-serif !important; letter-spacing: -0.025em !important; color: #111111 !important; }
+  .prose img { border-radius: 14px; }
   /* make inline links more visible in articles */
-  .prose a { font-weight: 700; font-style: italic; }
+  .prose a { font-weight: 700; color: #FF9000; text-decoration: underline; }
   /* improved typography & spacing for readability */
   .prose { line-height: 1.8; font-size: 1rem; max-width: 65ch; }
   .prose p { margin-top: 1rem; margin-bottom: 1rem; }
-  .prose h2, .prose h3 { margin-top: 1.25rem; margin-bottom: 0.6rem; }
+  .prose h2, .prose h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
+  .prose h3 { font-weight: 800; font-size: 1.15rem; }
   .prose ul, .prose ol { margin-top: 0.75rem; margin-bottom: 0.75rem; }
   .prose table td, .prose table th { padding: 0.6rem 0.75rem; }
   @media (min-width: 768px) { .prose { font-size: 1.02rem; } }
@@ -135,32 +145,30 @@
   </script>
 
 </head>
-<body class="font-body text-gray-800">
+<body class="font-body text-gray-900 bg-white">
 
-  <!-- Sticky translucent header -->
-  <header id="siteHeader" class="fixed inset-x-0 top-0 z-50 bg-white/60 backdrop-blur-md border-b border-white/30 shadow-md">
+  <!-- Sticky header -->
+  <header id="siteHeader" class="fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs transition-all duration-200">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-  <a href="index.html#hero" class="flex items-center gap-3" aria-label="RIDE X HUB home">
-  <!-- logo image: use PNG exported in favicon/ folder -->
-  <img src="favicon/favicon-32x32.png" alt="RIDE X HUB logo" class="w-9 h-9 p-1 rounded-full border bg-white" />
-        <div>
-  <div class="font-display font-bold text-sm leading-none">RIDE X HUB</div>
-          <div class="text-xs text-gray-500 -mt-0.5">Ride Sri Lanka</div>
+      <a href="index.html#hero" class="flex items-center gap-2" aria-label="RIDE X HUB home">
+        <div class="site-brand-logo flex items-center font-hub text-xl sm:text-2xl font-black select-none tracking-tight">
+          <span class="brand-text-prefix tracking-tighter text-black">RIDE X</span>
+          <span class="brand-text-badge ml-1.5 px-2 py-0.5 rounded-md font-black text-xs tracking-normal uppercase inline-block shadow-xs bg-[#FF9000] text-black">HUB</span>
         </div>
       </a>
 
       <!-- nav desktop -->
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a class="hover:text-tealish-500 transition" href="index.html#about">About</a>
-        <a class="hover:text-tealish-500 transition" href="index.html#fleet">Fleet</a>
-        <a class="hover:text-tealish-500 transition" href="index.html#explore">Explore</a>
-        <a class="hover:text-tealish-500 transition" href="index.html#faq">FAQ</a>
-        <a class="hover:text-tealish-500 transition" href="index.html#contact">Contact</a>
-  <a href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20to%20book%20a%20ride" target="_blank" rel="noopener noreferrer" class="ml-6 py-2 px-4 rounded-md bg-teal-600 text-white inline-flex items-center gap-2"><i class="ri-whatsapp-fill w-4 h-4 flex-shrink-0 align-middle" style="color:#25D366" aria-hidden="true"></i><span>Book a Ride</span></a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-hub uppercase text-xs tracking-wider">
+        <a class="text-gray-900 hover:text-[#FF9000] transition font-bold" href="index.html#fleet">Fleet</a>
+        <a class="text-gray-900 hover:text-[#FF9000] transition font-bold" href="index.html#tours">Private Tours</a>
+        <a class="text-gray-900 hover:text-[#FF9000] transition font-bold" href="index.html#about">About</a>
+        <a class="text-gray-900 hover:text-[#FF9000] transition font-bold" href="index.html#explore">Guides</a>
+        <a class="text-gray-900 hover:text-[#FF9000] transition font-bold" href="index.html#faq">FAQ</a>
+        <a href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB!%20I%20want%20to%20reserve%20a%20ride" target="_blank" rel="noopener noreferrer" class="ml-4 py-2 px-4 rounded-xl bg-[#FF9000] hover:bg-[#FFA31A] text-black font-black uppercase text-xs tracking-wider inline-flex items-center gap-2 shadow-xs transition"><i class="ri-whatsapp-fill w-4 h-4 flex-shrink-0 text-black"></i><span>Book WhatsApp</span></a>
       </nav>
 
       <!-- mobile menu button -->
-      <button id="mobileBtn" class="md:hidden p-2 rounded-md" aria-label="Open menu">☰</button>
+      <button id="mobileBtn" class="md:hidden p-2 rounded-lg border border-gray-300 bg-gray-100 text-black" aria-label="Open menu">☰</button>
     </div>
   </header>
 
@@ -340,104 +348,87 @@
     </div>
   </section>
 
-    <!-- unified footer (from index) -->
-    <footer class="bg-charcoal text-gray-200 mt-12">
-      <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-        <!-- About -->
-        <div>
-          <div class="font-display font-bold text-white">RIDE X HUB</div>
-          <p class="mt-3 text-sm text-gray-300">Discover Sri Lanka from Madiha with RIDE X HUB — modern scooters, motorcycles and electric bikes. Affordable rates, free safety gear, and flexible booking options.</p>
-          <div class="mt-4 text-sm text-gray-400">Hours: Daily 9:00 — 20:00</div>
-          <div class="mt-4 text-sm">
-            <a href="mailto:hello@ridexhub.com" class="text-tealish-500 hover:underline">hello@ridexhub.com</a>
-            <div class="mt-2">+94 70 761 5516</div>
-          </div>
+  <!-- Footer with Pornhub Signature Black Anchor Aesthetic -->
+  <footer class="bg-[#111111] text-gray-300 border-t-2 border-[#FF9000] mt-16">
+    <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- About -->
+      <div class="lg:col-span-2">
+        <div class="site-brand-logo flex items-center font-hub text-2xl font-black select-none tracking-tight">
+          <span class="brand-text-prefix tracking-tighter text-white">RIDE X</span>
+          <span class="brand-text-badge ml-1.5 px-2.5 py-0.5 rounded-md font-black text-sm tracking-normal uppercase inline-block shadow-xs bg-[#FF9000] text-black">HUB</span>
         </div>
-
-        <!-- Quick links -->
-        <div>
-          <h4 class="font-semibold text-white">Quick links</h4>
-          <ul class="mt-3 space-y-2 text-sm text-gray-300">
-            <li><a href="#fleet" class="hover:text-white">Fleet</a></li>
-            <li><a href="#explore" class="hover:text-white">Explore</a></li>
-            <li><a href="#faq" class="hover:text-white">FAQ</a></li>
-            <li><a href="#about" class="hover:text-white">About</a></li>
-            <li><a href="#contact" class="hover:text-white">Contact</a></li>
-          </ul>
-        </div>
-
-        <!-- Emergency contacts (Sri Lanka) -->
-        <div>
-          <h4 class="font-semibold text-white">Emergency contacts (Sri Lanka)</h4>
-          <ul class="mt-3 space-y-2 text-sm text-gray-300">
-            <li><strong>Police (Emergency)</strong>: <a href="tel:119" class="text-tealish-500">119</a></li>
-            <li><strong>Ambulance</strong>: <a href="tel:1990" class="text-tealish-500">1990</a></li>
-            <li><strong>Fire & Rescue</strong>: <a href="tel:110" class="text-tealish-500">110</a></li>
-            <li><strong>Tourist Police (Colombo)</strong>: <a href="tel:+94112421052" class="text-tealish-500">+94 11 242 1052</a></li>
-            <li><strong>National Emergency Hotline</strong>: <a href="tel:199" class="text-tealish-500">199</a></li>
-            <li><strong>RIDE X HUB 24/7 Helpline</strong>: <a href="tel:+94707615516" class="text-tealish-500">+94 70 761 5516</a></li>
-          </ul>
-          <p class="mt-3 text-xs text-gray-400">In all emergencies call the local authorities first. RIDE X HUB can assist with transport and local support.</p>
-        </div>
-
-        <!-- Contact & Social -->
-        <div>
-          <h4 class="font-semibold text-white">Contact & Social</h4>
-          <div class="mt-3 text-sm text-gray-300">
-            <div>Office: No 4, Paramulla Road, Matara</div>
-            <div class="mt-2">Email: <a href="mailto:hello@ridexhub.com" class="text-tealish-500 hover:underline">hello@ridexhub.com</a></div>
-            <div class="mt-2">Phone: <a href="tel:+94707615516" class="text-tealish-500">+94 70 761 5516</a></div>
-          </div>
-
-
-          <div class="mt-6 text-xs text-gray-400">
-            <div>© <span class="js-year">2026</span> RIDE X HUB</div>
-            <div class="mt-1"><a href="legal.html" class="hover:text-white underline decoration-gray-500">Terms &amp; Privacy</a> · <button type="button" onclick="window.rxhAnalytics &amp;&amp; window.rxhAnalytics.openConsent()" class="hover:text-white underline decoration-gray-500">Privacy choices</button></div>
-            <div>International Driving Permit may be required</div>
-          </div>
-        </div>
+        <p class="mt-3 text-sm text-gray-400 leading-relaxed pr-0 lg:pr-6">Discover Sri Lanka with RIDE X HUB — premium private chauffeur tours, modern scooter rentals, and reliable travel support across the South Coast.</p>
+        <div class="mt-4 text-xs text-gray-400">Hours: Daily 08:00 — 20:00 • Fully Insured</div>
       </div>
 
-        <div class="border-t border-white/10 mt-6">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between text-xs text-gray-400">
-          <div>Built for travellers • Terms &amp; Privacy apply</div>
-          <div class="mt-2 md:mt-0">Designed &amp; maintained by RIDE X HUB • Local support available</div>
+      <!-- Quick links -->
+      <div>
+        <h4 class="font-hub font-bold text-white text-xs tracking-wider uppercase text-[#FF9000]">Experience &amp; Fleet</h4>
+        <ul class="mt-3 space-y-2 text-sm text-gray-400">
+          <li><a href="index.html#fleet" class="hover:text-[#FF9000] transition">Vehicle Fleet</a></li>
+          <li><a href="index.html#tours" class="hover:text-[#FF9000] transition">Private Chauffeur Tours</a></li>
+          <li><a href="index.html#explore" class="hover:text-[#FF9000] transition">Travel Guides</a></li>
+          <li><a href="index.html#faq" class="hover:text-[#FF9000] transition">FAQ &amp; Licensing</a></li>
+          <li><a href="agreement.html" class="hover:text-[#FF9000] transition">Rental Agreement Terms</a></li>
+        </ul>
+      </div>
+
+      <!-- 24/7 Helpline -->
+      <div>
+        <h4 class="font-hub font-bold text-white text-xs tracking-wider uppercase text-[#FF9000]">24/7 Helpline</h4>
+        <div class="mt-3 text-sm text-gray-400 space-y-1">
+          <div class="text-white font-bold text-base">+94 70 761 5516</div>
+          <div><a href="mailto:hello@ridexhub.com" class="text-gray-300 hover:text-[#FF9000] transition">hello@ridexhub.com</a></div>
+          <div class="pt-2 text-xs text-gray-400">No 4, Paramulla Road, Matara 81000</div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-gray-800 text-xs text-gray-400">
+          <div>© <span class="js-year">2026</span> RIDE X HUB. Registered in Sri Lanka.</div>
+          <div class="mt-1"><a href="legal.html" class="hover:text-[#FF9000] transition">Terms &amp; Privacy</a></div>
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
 
   <script>
-    // small enhancements: sticky "Back to Explore" on scroll (desktop)
     const header = document.querySelector('header');
     window.addEventListener('scroll', ()=> {
       if (window.scrollY > 20) header.classList.add('shadow-md');
       else header.classList.remove('shadow-md');
     });
   </script>
-  <!-- mobile menu & backdrop (copied from index.html for parity) -->
-  <div id="mobileBackdrop" style="z-index:99999;" class="fixed inset-0 bg-black/30 opacity-0 pointer-events-none transition-opacity md:hidden"></div>
 
-  <aside id="mobileMenu" style="z-index:100000;" class="fixed top-0 right-0 h-full w-0 max-w-xs bg-white/60 backdrop-blur-sm shadow-lg transform translate-x-full transition-all md:hidden" aria-hidden="true">
-    <div class="p-6 h-full flex flex-col">
-      <div class="flex items-center justify-between">
-        <div class="font-display font-bold">RIDE X HUB</div>
-        <button id="mobileClose" aria-label="Close menu" class="text-xl">✕</button>
+  <div id="mobileBackdrop" style="z-index:99999;" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity md:hidden"></div>
+
+  <aside id="mobileMenu" style="z-index:100000;" class="fixed top-0 right-0 h-full w-0 max-w-xs bg-white shadow-2xl border-l border-gray-200 transform translate-x-full transition-all md:hidden" aria-hidden="true">
+    <div class="p-6 h-full flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-gray-200">
+          <div class="site-brand-logo flex items-center font-hub text-xl font-black select-none tracking-tight">
+            <span class="brand-text-prefix tracking-tighter text-black">RIDE X</span>
+            <span class="brand-text-badge ml-1.5 px-2 py-0.5 rounded font-black text-xs tracking-normal uppercase inline-block shadow-xs bg-[#FF9000] text-black">HUB</span>
+          </div>
+          <button id="mobileClose" aria-label="Close menu" class="w-8 h-8 rounded-lg bg-gray-100 text-gray-800 flex items-center justify-center hover:bg-gray-200 text-sm font-bold">✕</button>
+        </div>
+        <nav id="mobileNav" class="mt-6 flex flex-col gap-2 font-hub font-bold text-sm uppercase tracking-wider">
+          <a href="index.html#fleet" class="mobile-link px-3 py-2 rounded-lg hover:bg-gray-100 text-gray-900 hover:text-[#FF9000] transition">Fleet</a>
+          <a href="index.html#tours" class="mobile-link px-3 py-2 rounded-lg hover:bg-gray-100 text-gray-900 hover:text-[#FF9000] transition">Private Tours</a>
+          <a href="index.html#about" class="mobile-link px-3 py-2 rounded-lg hover:bg-gray-100 text-gray-900 hover:text-[#FF9000] transition">About</a>
+          <a href="index.html#explore" class="mobile-link px-3 py-2 rounded-lg hover:bg-gray-100 text-gray-900 hover:text-[#FF9000] transition">Guides</a>
+          <a href="index.html#faq" class="mobile-link px-3 py-2 rounded-lg hover:bg-gray-100 text-gray-900 hover:text-[#FF9000] transition">FAQ</a>
+        </nav>
       </div>
-      <nav id="mobileNav" class="mt-8 flex flex-col gap-4 text-lg">
-         <a href="index.html#about" class="block mobile-link">About</a>
-        <a href="index.html#fleet" class="block mobile-link">Fleet</a>
-        <a href="index.html#explore" class="block mobile-link">Explore</a>
-        <a href="index.html#faq" class="block mobile-link">FAQ</a>
-        <a href="index.html#contact" class="block mobile-link">Contact</a>
-  <a href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB%20I%20want%20to%20book%20a%20ride" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block px-4 py-2 rounded-xl bg-brand-500 text-white mobile-link inline-flex items-center gap-2"><i class="ri-whatsapp-fill w-4 h-4 flex-shrink-0 align-middle" style="color:#25D366" aria-hidden="true"></i><span>Book a Ride</span></a>
-      </nav>
-  <div class="mt-auto text-sm text-gray-500">© <span class="js-year">2026</span> RIDE X HUB</div>
+
+      <div class="pt-4 border-t border-gray-200">
+        <a href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB!%20I%20want%20to%20reserve%20a%20ride" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#FF9000] hover:bg-[#FFA31A] text-black font-hub font-black text-xs uppercase tracking-wider shadow-md mobile-link">
+          <i class="ri-whatsapp-fill text-base"></i> Book via WhatsApp
+        </a>
+      </div>
     </div>
   </aside>
 
-  <a id="whatsBtn" aria-label="WhatsApp chat" href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB" target="_blank" rel="noopener noreferrer" class="fixed left-4 bottom-4 z-50 inline-flex items-center gap-3 px-4 py-3 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#1ebe5d] hover:scale-105 transition">
-    <i class="ri-whatsapp-fill w-6 h-6 flex-shrink-0 align-middle" aria-hidden="true"></i>
-    <span class="hidden sm:inline">Chat</span>
+  <a id="whatsBtn" aria-label="WhatsApp chat" href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB" target="_blank" rel="noopener noreferrer" class="fixed left-4 bottom-4 z-50 inline-flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#25D366] text-white shadow-elevated hover:bg-[#1EBE5D] hover:scale-105 transition">
+    <i class="ri-whatsapp-fill text-xl"></i>
+    <span class="hidden sm:inline font-semibold text-sm">WhatsApp</span>
   </a>
 
   <!-- Minimal JS for interactions (mobile menu wiring copied from index) -->

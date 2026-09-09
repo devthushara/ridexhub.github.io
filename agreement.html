@@ -3,23 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>RIDE X HUB - Rental Agreement</title>
+    <title>RIDE X HUB — Vehicle Rental Agreement</title>
     <meta name="robots" content="noindex, nofollow" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: { 500: '#f97316', 700: '#c2410c' },
-                        tealish: { 500: '#0f766e' },
-                        charcoal: '#111827'
+                        brand: {
+                            50: '#FFF8EE',
+                            100: '#FFECCF',
+                            200: '#FFD799',
+                            300: '#FFBF5C',
+                            400: '#FFA726',
+                            500: '#FF9000',
+                            600: '#E07E00',
+                            700: '#B86500',
+                            800: '#945200',
+                            900: '#703E00'
+                        },
+                        forest: {
+                            50: '#F5F5F5',
+                            100: '#E5E5E5',
+                            200: '#D4D4D4',
+                            300: '#A3A3A3',
+                            400: '#525252',
+                            500: '#111111',
+                            600: '#111111',
+                            700: '#000000',
+                            800: '#000000',
+                            900: '#000000'
+                        },
+                        sand: {
+                            50: '#FAFAFA',
+                            100: '#F5F5F5',
+                            200: '#E5E5E5',
+                            300: '#D4D4D4',
+                            400: '#A3A3A3',
+                            500: '#737373',
+                            600: '#525252',
+                            700: '#404040',
+                            800: '#262626',
+                            900: '#171717'
+                        },
+                        charcoal: '#111111'
                     },
                     fontFamily: {
-                        display: ['Poppins', 'sans-serif'],
-                        body: ['Inter', 'sans-serif']
+                        display: ['"Arial Black"', 'Montserrat', 'sans-serif'],
+                        hub: ['"Arial Black"', 'Montserrat', 'Arial', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        body: ['"Plus Jakarta Sans"', 'Montserrat', 'system-ui', 'sans-serif']
                     },
                     screens: {
                         'print': {'raw': 'print'},
@@ -31,33 +70,32 @@
     </script>
 
     <style>
-        body { font-family: 'Inter', sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+        body { font-family: 'Plus Jakarta Sans', Montserrat, system-ui, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        ::selection { background-color: #FF9000; color: #000000; }
+        .font-hub { font-family: "Arial Black", Montserrat, Arial, sans-serif !important; font-weight: 900 !important; letter-spacing: -0.04em !important; }
+        .brand-text-prefix { color: #000000 !important; font-weight: 900 !important; }
+        .brand-text-badge { background-color: #FF9000 !important; color: #000000 !important; font-weight: 900 !important; border-radius: 6px !important; }
         
         /* Base Input Styling */
         input, select, textarea {
             background: transparent;
-            border-bottom: 1px dashed #9ca3af;
+            border-bottom: 1px dashed #D4D4D4;
             width: 100%;
             padding: 4px 0;
             outline: none;
-            color: #1f2937;
+            color: #111111;
             font-weight: 500;
             transition: border-color 0.2s;
-            border-radius: 0; /* Mobile Safari fix */
+            border-radius: 0;
         }
-        input:focus, select:focus, textarea:focus { border-bottom: 2px solid #f97316; }
+        input:focus, select:focus, textarea:focus { border-bottom: 2px solid #FF9000; }
         
         /* Remove arrows from number inputs */
         input[type=number]::-webkit-inner-spin-button, 
         input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 
-        /* Mobile specific enhancements */
         @media screen and (max-width: 768px) {
-            input, select, textarea { font-size: 16px; /* Prevents zoom on focus */ padding: 8px 0; }
-            .mobile-stack { flex-direction: column; }
-            .mobile-full { width: 100% !important; }
-            .mobile-mt { margin-top: 1rem; }
+            input, select, textarea { font-size: 15px; padding: 6px 0; }
         }
 
         /* Print Specifics - FORCES A4 LAYOUT REGARDLESS OF SCREEN */
@@ -66,17 +104,15 @@
             body { margin: 0; padding: 0; background: white; -webkit-print-color-adjust: exact; }
             .no-print { display: none !important; }
             
-            /* Restore A4 container dimensions */
             .print-container { 
                 box-shadow: none !important; 
                 padding: 0 !important; 
                 margin: 0 !important; 
                 max-width: 100% !important; 
-                width: 100% !important;
+                width: 100% !important; 
                 border: none !important; 
             }
 
-            /* Force Grid/Flex layouts back to desktop style */
             .md\:grid-cols-2 { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
             .md\:grid-cols-3 { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
             .md\:grid-cols-12 { display: grid !important; grid-template-columns: repeat(12, minmax(0, 1fr)) !important; }
@@ -85,43 +121,45 @@
             .md\:flex-row { flex-direction: row !important; }
             .md\:w-1\/3 { width: 33.333333% !important; }
             .md\:w-2\/3 { width: 66.666667% !important; }
-            .md\:p-12 { padding: 3rem !important; }
-            .md\:gap-8 { gap: 2rem !important; }
+            .md\:p-12 { padding: 2.5rem !important; }
+            .md\:gap-8 { gap: 1.5rem !important; }
             
-            /* Typography reset for print */
             input, select, textarea { 
                 border-bottom: none !important; 
                 font-weight: 600; 
                 resize: none; 
-                font-size: 10pt !important;
+                font-size: 9pt !important;
                 padding: 0 !important;
                 height: auto !important;
             }
-            label { font-size: 8pt !important; }
-            p, li { font-size: 9pt !important; }
+            label { font-size: 7.5pt !important; }
+            p, li { font-size: 8.5pt !important; }
             
-            /* Hide placeholders on print, show values */
             input::placeholder, textarea::placeholder { color: transparent; }
             
-            /* Colors */
-            .bg-brand-500 { background-color: #f97316 !important; }
-            .bg-brand-50 { background-color: #fff7ed !important; } 
-            .text-tealish-500 { color: #0f766e !important; }
-            .text-brand-500 { color: #f97316 !important; }
+            .bg-brand-500 { background-color: #FF9000 !important; }
+            .bg-sand-50 { background-color: #FAFAFA !important; } 
+            .text-forest-500 { color: #111111 !important; }
+            .text-brand-500 { color: #FF9000 !important; }
         }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen pb-10 text-gray-800 text-sm leading-tight">
+<body class="bg-gray-100/70 min-h-screen pb-10 text-charcoal text-sm leading-tight">
 
-    <div class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm no-print mb-6">
+    <!-- Top Action Bar -->
+    <div class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs no-print mb-6">
         <div class="max-w-[210mm] mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
-            <h2 class="text-lg font-bold text-charcoal flex items-center gap-2">
-                <span class="hidden sm:inline">Rental Agreement</span>
-                <span class="sm:hidden">RIDE X HUB</span>
-            </h2>
+            <div class="flex items-center gap-2">
+                <a href="index.html" class="mr-2 text-xs font-hub font-bold text-gray-700 hover:text-[#FF9000] uppercase tracking-wider transition">← Back</a>
+                <div class="site-brand-logo flex items-center font-hub text-lg font-black select-none tracking-tight">
+                    <span class="brand-text-prefix tracking-tighter text-black">RIDE X</span>
+                    <span class="brand-text-badge ml-1 px-2 py-0.5 rounded font-black text-xs tracking-normal uppercase inline-block shadow-xs bg-[#FF9000] text-black">HUB</span>
+                </div>
+                <span class="hidden sm:inline font-hub font-bold text-xs uppercase tracking-wider text-gray-500 ml-2">Agreement Generator</span>
+            </div>
             
             <div class="flex items-center gap-2 ml-auto">
-                <select id="currencySelector" onchange="updateCurrency()" class="bg-gray-100 border-none rounded-lg px-2 py-2 text-sm font-bold text-charcoal w-20 focus:ring-2 focus:ring-brand-500 !border-0 cursor-pointer">
+                <select id="currencySelector" onchange="updateCurrency()" class="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs font-mono font-bold text-charcoal w-20 focus:ring-2 focus:ring-brand-500 cursor-pointer">
                     <option value="USD" selected>USD</option>
                     <option value="LKR">LKR</option>
                     <option value="EUR">EUR</option>
@@ -129,247 +167,240 @@
                     <option value="AUD">AUD</option>
                 </select>
 
-                <button onclick="window.location.reload()" class="p-2 bg-gray-100 rounded-lg hover:bg-gray-200 text-gray-600 transition" aria-label="Reset">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                <button onclick="window.location.reload()" class="p-2 bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-lg text-charcoal transition" aria-label="Reset">
+                    <i class="ri-refresh-line"></i>
                 </button>
                 
-                <button onclick="window.print()" class="px-4 py-2 bg-brand-500 text-white rounded-lg shadow hover:bg-brand-700 font-bold flex items-center gap-2 transition text-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
-                    <span class="hidden sm:inline">Print</span>
+                <button onclick="window.print()" class="px-3.5 py-1.5 bg-[#FF9000] hover:bg-[#FFA31A] text-black rounded-lg shadow-xs font-hub font-bold uppercase text-xs tracking-wider flex items-center gap-1.5 transition">
+                    <i class="ri-printer-line"></i>
+                    <span class="hidden sm:inline">Print PDF</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="max-w-[210mm] mx-auto bg-white shadow-xl p-4 md:p-12 print-container relative flex flex-col justify-between rounded-xl md:rounded-none">
+    <!-- Printable Paper Area -->
+    <div class="max-w-[210mm] mx-auto bg-white shadow-xl p-4 md:p-12 print-container relative flex flex-col justify-between rounded-xl md:rounded-sm border border-gray-200">
         
         <div>
-            <header class="flex flex-col md:flex-row md:justify-between md:items-center border-b-2 border-brand-500 pb-4 mb-6 gap-4">
-                <div class="w-full md:w-2/3 flex items-center gap-4">
-                    <img src="logo.webp" alt="RIDE X HUB" class="h-12 md:h-16 w-auto object-contain" onerror="this.style.display='none'; document.getElementById('text-logo').style.display='block';">
-                    <div id="text-logo" class="hidden">
-                        <h2 class="text-2xl font-display font-black text-brand-500 tracking-tighter leading-none">RIDE X<br><span class="text-charcoal">HUB</span></h2>
+            <header class="flex flex-col md:flex-row md:justify-between md:items-center border-b-2 border-[#FF9000] pb-4 mb-6 gap-4">
+                <div class="w-full md:w-2/3 flex items-center gap-3">
+                    <div class="site-brand-logo flex items-center font-hub text-2xl font-black select-none tracking-tight">
+                        <span class="brand-text-prefix tracking-tighter text-black">RIDE X</span>
+                        <span class="brand-text-badge ml-1.5 px-2.5 py-0.5 rounded font-black text-sm tracking-normal uppercase inline-block shadow-xs bg-[#FF9000] text-black">HUB</span>
                     </div>
                     
-                    <div class="border-l pl-4 border-gray-300">
-                        <h1 class="text-xl md:text-2xl font-display font-bold text-charcoal tracking-tight">VEHICLE RENTAL AGREEMENT</h1>
-                        <div class="flex items-center mt-1 text-sm text-gray-500">
-                            <span class="mr-1">Ref No:</span>
-                            <span class="font-bold text-charcoal mr-1">RXH-</span>
-                            <input type="number" class="font-bold text-charcoal" style="width: 70px;" placeholder="001">
+                    <div class="border-l pl-3.5 border-gray-300">
+                        <h1 class="text-lg md:text-xl font-hub font-bold text-black tracking-tight leading-none">VEHICLE RENTAL AGREEMENT</h1>
+                        <div class="flex items-center mt-1.5 text-xs text-gray-500">
+                            <span class="mr-1">Contract Ref:</span>
+                            <span class="font-mono font-bold text-brand-600 mr-1">RXH-</span>
+                            <input type="number" class="font-mono font-bold text-charcoal" style="width: 70px;" placeholder="001">
                         </div>
                     </div>
                 </div>
                 <div class="w-full md:w-1/3 text-left md:text-right text-xs text-gray-600 border-t md:border-t-0 pt-2 md:pt-0">
-                    <p class="font-bold text-brand-500 text-sm">RIDE X HUB</p>
-                    <p>No 4, Paramulla Road, Matara</p>
-                    <p>Southern Province, Sri Lanka</p>
-                    <p class="mt-1 font-bold"><a href="tel:+94707615516">+94 70 761 5516</a></p>
-                    <p>hello@ridexhub.com</p>
+                    <p class="font-hub font-bold text-black text-sm">RIDE X HUB &bull; VIUNGO TOURS</p>
+                    <p class="text-[11px] text-gray-500">No 4, Paramulla Road, Matara 81000</p>
+                    <p class="text-[11px] text-gray-500">Southern Province, Sri Lanka</p>
+                    <p class="mt-0.5 font-bold font-mono text-[11px] text-brand-600">+94 70 761 5516 &bull; hello@ridexhub.com</p>
                 </div>
             </header>
 
-            <section class="mb-6">
-                <p class="mb-4 text-sm">
-                    This Agreement is made on <input type="date" id="contractDate" class="w-full md:w-32 inline-block font-bold text-brand-500 bg-gray-50 md:bg-transparent rounded px-2 md:px-0">, between <strong>RIDE X HUB</strong> (The Owner) and:
+            <section class="mb-5">
+                <p class="mb-3.5 text-xs text-gray-700">
+                    This Agreement is entered on <input type="date" id="contractDate" class="w-full md:w-36 inline-block font-mono font-bold text-brand-600 bg-sand-50 md:bg-transparent rounded px-2 md:px-0">, between <strong>RIDE X HUB</strong> (The Owner) and the Renter:
                 </p>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
-                        <h3 class="text-tealish-500 font-bold uppercase text-xs mb-3 border-b border-gray-200 pb-1 flex items-center gap-2">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                            Renter Information
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <div class="bg-sand-50 p-3.5 rounded-xl border border-sand-300">
+                        <h3 class="text-forest-700 font-bold uppercase text-[10px] tracking-wider mb-2.5 border-b border-sand-200 pb-1 flex items-center gap-1.5">
+                            <i class="ri-user-3-line text-brand-500"></i> Renter Information
                         </h3>
-                        <div class="grid grid-cols-1 gap-3">
+                        <div class="grid grid-cols-1 gap-2.5">
                             <div>
-                                <label class="text-[10px] text-gray-500 uppercase font-bold">Full Name <span class="text-red-500">*</span></label>
-                                <input type="text" placeholder="[ENTER RENTER NAME]" required>
+                                <label class="text-[9px] text-gray-500 uppercase font-bold">Full Legal Name <span class="text-red-500">*</span></label>
+                                <input type="text" placeholder="[ENTER RENTER NAME]" required class="text-xs font-semibold">
                             </div>
-                            <div class="flex flex-col md:flex-row gap-3 md:gap-2">
+                            <div class="flex flex-col md:flex-row gap-2.5">
                                 <div class="w-full md:w-1/2">
-                                    <label class="text-[10px] text-gray-500 uppercase font-bold">Passport / NIC <span class="text-red-500">*</span></label>
-                                    <input type="text" placeholder="[ID NUMBER]" required>
+                                    <label class="text-[9px] text-gray-500 uppercase font-bold">Passport / NIC <span class="text-red-500">*</span></label>
+                                    <input type="text" placeholder="[ID NUMBER]" required class="text-xs font-mono">
                                 </div>
                                 <div class="w-full md:w-1/2">
-                                    <label class="text-[10px] text-gray-500 uppercase font-bold">License No. <span class="text-red-500">*</span></label>
-                                    <input type="text" placeholder="[LICENSE NUMBER]" required>
+                                    <label class="text-[9px] text-gray-500 uppercase font-bold">Driving License / IDP <span class="text-red-500">*</span></label>
+                                    <input type="text" placeholder="[LICENSE NUMBER]" required class="text-xs font-mono">
                                 </div>
                             </div>
                             <div>
-                                <label class="text-[10px] text-gray-500 uppercase font-bold">Country of Origin</label>
-                                <input type="text" placeholder="[COUNTRY]">
+                                <label class="text-[9px] text-gray-500 uppercase font-bold">Country of Origin</label>
+                                <input type="text" placeholder="[COUNTRY]" class="text-xs">
                             </div>
                             <div>
-                                <label class="text-[10px] text-gray-500 uppercase font-bold">WhatsApp / Phone <span class="text-red-500">*</span></label>
-                                <input type="tel" placeholder="+94 ...">
+                                <label class="text-[9px] text-gray-500 uppercase font-bold">WhatsApp / Contact Phone <span class="text-red-500">*</span></label>
+                                <input type="tel" placeholder="+94 ..." class="text-xs font-mono">
                             </div>
                             <div>
-                                <label class="text-[10px] text-gray-500 uppercase font-bold">Accommodation</label>
-                                <input type="text" placeholder="[HOTEL NAME / ADDRESS]">
+                                <label class="text-[9px] text-gray-500 uppercase font-bold">Local Accommodation / Hotel</label>
+                                <input type="text" placeholder="[HOTEL NAME / VILLA ADDRESS]" class="text-xs">
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
-                        <h3 class="text-tealish-500 font-bold uppercase text-xs mb-3 border-b border-gray-200 pb-1 flex items-center gap-2">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
-                            Vehicle Information
+                    <div class="bg-sand-50 p-3.5 rounded-xl border border-sand-300">
+                        <h3 class="text-forest-700 font-bold uppercase text-[10px] tracking-wider mb-2.5 border-b border-sand-200 pb-1 flex items-center gap-1.5">
+                            <i class="ri-motorbike-line text-brand-500"></i> Vehicle Information
                         </h3>
-                        <div class="grid grid-cols-1 gap-3">
-                            <div class="flex flex-col md:flex-row gap-3 md:gap-2">
+                        <div class="grid grid-cols-1 gap-2.5">
+                            <div class="flex flex-col md:flex-row gap-2.5">
                                 <div class="w-full md:w-2/3">
-                                    <label class="text-[10px] text-gray-500 uppercase font-bold">Registration No. <span class="text-red-500">*</span></label>
-                                    <input type="text" placeholder="WP BEO-XXXX" class="font-bold text-lg text-charcoal">
+                                    <label class="text-[9px] text-gray-500 uppercase font-bold">Registration Plate No. <span class="text-red-500">*</span></label>
+                                    <input type="text" placeholder="SP BEO-XXXX" class="font-mono font-bold text-sm text-charcoal">
                                 </div>
                                 <div class="w-full md:w-1/3">
-                                    <label class="text-[10px] text-gray-500 uppercase font-bold">Type</label>
-                                    <select class="w-full h-10 md:h-auto bg-transparent">
-                                        <option>Scooter</option>
-                                        <option>Motorcycle</option>
-                                        <option>Car</option>
-                                        <option>EV Scooter</option>
+                                    <label class="text-[9px] text-gray-500 uppercase font-bold">Vehicle Class</label>
+                                    <select class="w-full h-8 md:h-auto bg-transparent text-xs font-medium">
+                                        <option>Scooter (110cc-125cc)</option>
+                                        <option>Motorcycle (150cc+)</option>
+                                        <option>Car / AWD SUV</option>
+                                        <option>Electric Scooter</option>
                                     </select>
                                 </div>
                             </div>
                             <div>
-                                <label class="text-[10px] text-gray-500 uppercase font-bold">Make & Model</label>
-                                <input type="text" placeholder="e.g. Honda Dio">
+                                <label class="text-[9px] text-gray-500 uppercase font-bold">Make &amp; Model</label>
+                                <input type="text" placeholder="e.g. Honda Dio 110 / Yamaha FZ" class="text-xs">
                             </div>
-                            <div class="flex flex-col md:flex-row gap-3 md:gap-2">
+                            <div class="flex flex-col md:flex-row gap-2.5">
                                 <div class="w-full md:w-1/2">
-                                    <label class="text-[10px] text-gray-500 uppercase font-bold">Start Mileage <span class="text-red-500">*</span></label>
+                                    <label class="text-[9px] text-gray-500 uppercase font-bold">Start Odometer <span class="text-red-500">*</span></label>
                                     <div class="flex items-center">
-                                        <input type="number" placeholder="00000">
+                                        <input type="number" placeholder="00000" class="font-mono text-xs">
                                         <span class="text-xs text-gray-400 ml-1">km</span>
                                     </div>
                                 </div>
                                 <div class="w-full md:w-1/2">
-                                    <label class="text-[10px] text-gray-500 uppercase font-bold">Fuel Level</label>
-                                    <input type="text" value="Full" placeholder="e.g. Full / Half">
+                                    <label class="text-[9px] text-gray-500 uppercase font-bold">Fuel Level Out</label>
+                                    <input type="text" value="Full Tank" placeholder="e.g. Full / Half" class="text-xs">
                                 </div>
                             </div>
                             <div>
-                                <label class="text-[10px] text-gray-500 uppercase font-bold">Existing Damages</label>
-                                <input type="text" placeholder="[NONE / LIST SCRATCHES]" class="text-red-600">
+                                <label class="text-[9px] text-gray-500 uppercase font-bold">Pre-existing Marks / Scratches</label>
+                                <input type="text" placeholder="[NONE / LIST NOTABLE SCRATCHES]" class="text-xs text-brand-600">
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="mb-6">
-                <h3 class="text-charcoal font-bold uppercase text-sm mb-2 border-b-2 border-gray-200 inline-block">Rental Term & Costs</h3>
+            <section class="mb-5">
+                <h3 class="text-forest-700 font-display font-bold uppercase text-xs mb-2 border-b-2 border-sand-300 inline-block">Rental Terms &amp; Financials</h3>
                 
-                <div class="bg-brand-50 p-4 rounded-xl border border-brand-100">
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end mb-4">
+                <div class="bg-sand-50 p-3.5 rounded-xl border border-sand-300">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-end mb-3">
                         <div class="md:col-span-3">
-                            <label class="text-[10px] font-bold text-gray-500 uppercase">Pickup Date/Time <span class="text-red-500">*</span></label>
-                            <input type="datetime-local" id="pickupDate" onchange="calculate()" class="bg-white/50 md:bg-transparent rounded px-2 md:px-0 h-10 md:h-auto">
+                            <label class="text-[9px] font-bold text-gray-500 uppercase">Pickup Date/Time <span class="text-red-500">*</span></label>
+                            <input type="datetime-local" id="pickupDate" onchange="calculate()" class="bg-white/60 md:bg-transparent rounded px-2 md:px-0 text-xs font-mono">
                         </div>
                         <div class="md:col-span-3">
-                            <label class="text-[10px] font-bold text-gray-500 uppercase">Return Date/Time <span class="text-red-500">*</span></label>
-                            <input type="datetime-local" id="returnDate" onchange="calculate()" class="bg-white/50 md:bg-transparent rounded px-2 md:px-0 h-10 md:h-auto">
+                            <label class="text-[9px] font-bold text-gray-500 uppercase">Return Date/Time <span class="text-red-500">*</span></label>
+                            <input type="datetime-local" id="returnDate" onchange="calculate()" class="bg-white/60 md:bg-transparent rounded px-2 md:px-0 text-xs font-mono">
                         </div>
                         <div class="md:col-span-2">
-                            <label class="text-[10px] font-bold text-gray-500 uppercase">Duration</label>
-                            <input type="text" id="totalDays" readonly class="font-bold text-brand-700 bg-transparent border-none" placeholder="-">
+                            <label class="text-[9px] font-bold text-gray-500 uppercase">Duration</label>
+                            <input type="text" id="totalDays" readonly class="font-bold text-brand-600 bg-transparent border-none text-xs" placeholder="-">
                         </div>
                         
-                        <div class="md:col-span-2 bg-white md:bg-transparent p-2 md:p-0 rounded-lg shadow-sm md:shadow-none border md:border-none border-brand-200">
-                            <label class="text-[10px] font-bold text-gray-500 uppercase">Rate (Daily) <span class="text-red-500">*</span></label>
-                            <div class="flex items-center border-b border-dashed border-gray-400 focus-within:border-brand-500">
-                                <span class="currency-label text-gray-500 mr-1 text-xs font-bold">USD</span>
-                                <input type="number" id="dailyRate" oninput="calculate()" class="font-bold text-right !border-none text-lg md:text-base py-1" placeholder="0">
+                        <div class="md:col-span-2 bg-white md:bg-transparent p-2 md:p-0 rounded-lg border md:border-none border-sand-300">
+                            <label class="text-[9px] font-bold text-gray-500 uppercase">Daily Rate <span class="text-red-500">*</span></label>
+                            <div class="flex items-center border-b border-dashed border-sand-300 focus-within:border-brand-500">
+                                <span class="currency-label text-gray-500 mr-1 text-[11px] font-mono font-bold">USD</span>
+                                <input type="number" id="dailyRate" oninput="calculate()" class="font-mono font-bold text-right !border-none text-xs py-0.5" placeholder="0">
                             </div>
                         </div>
                         
-                        <div class="md:col-span-2 bg-white rounded-lg p-2 border border-brand-200 shadow-sm mt-2 md:mt-0">
-                            <label class="text-[10px] font-bold text-brand-500 uppercase block text-center">Total Rent</label>
+                        <div class="md:col-span-2 bg-forest-700 text-white rounded-lg p-2 border border-forest-600 shadow-sm mt-2 md:mt-0 text-center">
+                            <label class="text-[8px] font-bold text-sand-300 uppercase block">Total Rent</label>
                             <div class="flex justify-center items-center gap-1">
-                                <span class="currency-label text-[10px] text-brand-500 font-bold">USD</span>
-                                <input type="text" id="totalRent" readonly class="font-black text-xl text-center w-full !border-none bg-transparent p-0" placeholder="0.00">
+                                <span class="currency-label text-[9px] text-brand-300 font-mono font-bold">USD</span>
+                                <input type="text" id="totalRent" readonly class="font-mono font-black text-sm text-center w-full !border-none bg-transparent p-0 text-white" placeholder="0.00">
                             </div>
                         </div>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 md:pt-2 border-t border-brand-200/50">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-3 border-t border-sand-200">
                         <div>
-                            <label class="text-[10px] font-bold text-gray-500 uppercase">Refundable Security Deposit <span class="text-red-500">*</span></label>
+                            <label class="text-[9px] font-bold text-gray-500 uppercase">Refundable Security Deposit <span class="text-red-500">*</span></label>
                             <div class="flex items-center">
-                                <span class="currency-label text-[10px] text-gray-400 mr-1">USD</span>
-                                <input type="text" placeholder="[ENTER AMOUNT]" class="font-bold">
+                                <span class="currency-label text-[10px] text-gray-400 mr-1 font-mono">USD</span>
+                                <input type="text" placeholder="[ENTER AMOUNT]" class="font-mono font-bold text-xs">
                             </div>
                         </div>
                         <div>
-                            <label class="text-[10px] font-bold text-gray-500 uppercase">Payment Method</label>
-                            <input type="text" value="Cash" placeholder="Cash / Card / Transfer">
+                            <label class="text-[9px] font-bold text-gray-500 uppercase">Payment Method</label>
+                            <input type="text" value="Cash / Bank Wire" placeholder="Cash / Card / Wise" class="text-xs">
                         </div>
-                        <div class="md:row-span-2">
-                             <label class="text-[10px] font-bold text-gray-500 uppercase">Accessories Included</label>
-                             <textarea class="w-full text-xs mt-1 leading-relaxed" rows="3">Helmets (2), Phone Holder</textarea>
+                        <div>
+                            <label class="text-[9px] font-bold text-gray-500 uppercase">Accessories Provided</label>
+                            <textarea class="w-full text-xs mt-0.5 leading-tight" rows="2">Helmets (2), Phone Mount, Rain Poncho</textarea>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="mb-6">
-                <h3 class="text-charcoal font-bold uppercase text-xs mb-2">Terms & Conditions of Usage</h3>
-                <div class="text-[9px] text-gray-600 grid grid-cols-1 md:grid-cols-2 md:gap-x-8 gap-y-2 text-justify leading-snug">
-                    <p>1. <strong>License:</strong> The Renter must possess a valid Sri Lankan driving license or a valid International Driving Permit (IDP). Copy of ID provided.</p>
-                    <p>2. <strong>Fuel Policy:</strong> Vehicle provided with logged fuel level. Return with same level. Shortage charged at market rate + service fee.</p>
-                    <p>3. <strong>Mileage Limit:</strong> 100km free per day (accumulative). Excess mileage charged at LKR <input type="number" value="50" class="w-8 inline text-center border-b border-gray-300 text-[9px] font-bold"> per km.</p>
-                    <p>4. <strong>Insurance:</strong> Third-party insurance included. VOID if driving under influence, reckless driving, or violation of traffic laws.</p>
-                    <p>5. <strong>Fines:</strong> Renter is liable for all traffic fines/parking tickets during the rental period.</p>
-                    <p>6. <strong>Usage:</strong> No off-road driving (unless specified), no beach driving, no subleasing. Use within Sri Lanka only.</p>
-                    <p>7. <strong>Accidents:</strong> Report immediately to +94 70 761 5516. Police report mandatory for insurance claims.</p>
-                    <p>8. <strong>Return:</strong> Late returns >1 hour charged as full day unless agreed prior.</p>
+            <section class="mb-4">
+                <h3 class="text-forest-700 font-display font-bold uppercase text-[10px] tracking-wider mb-1.5">Rental Terms &amp; Driving Guidelines</h3>
+                <div class="text-[8.5px] text-gray-600 grid grid-cols-1 md:grid-cols-2 md:gap-x-6 gap-y-1.5 text-justify leading-relaxed">
+                    <p>1. <strong>License:</strong> Renter must hold a valid Sri Lankan endorsement or recognized International Driving Permit (IDP).</p>
+                    <p>2. <strong>Fuel:</strong> Outlined fuel level must be matched on return. Shortages charged at market rate plus service fee.</p>
+                    <p>3. <strong>Mileage Allowance:</strong> 100km free allowance per rental day. Excess distance charged at standard tariff per kilometer.</p>
+                    <p>4. <strong>Insurance:</strong> Third-party liability included. Null &amp; void if driving under alcoholic influence or reckless operation.</p>
+                    <p>5. <strong>Fines:</strong> Renter assumes complete financial liability for local traffic or parking violations incurred.</p>
+                    <p>6. <strong>Restricted Zones:</strong> Off-road coastal beach driving and unauthorized subleasing are strictly prohibited.</p>
+                    <p>7. <strong>Incident Protocol:</strong> Accidents must be immediately alerted to +94 70 761 5516. Police reports are mandatory.</p>
+                    <p>8. <strong>Late Returns:</strong> Delays exceeding 60 minutes are assessed as an additional day unless formally pre-approved.</p>
                 </div>
             </section>
         </div>
 
-        <footer class="mt-auto pt-4 border-t-2 border-gray-200">
-            <p class="text-[10px] text-gray-500 mb-8 italic text-center">I have read and accepted the terms and conditions stated above.</p>
+        <footer class="mt-auto pt-3 border-t border-sand-300">
+            <p class="text-[9px] text-gray-500 mb-5 italic text-center">I hereby acknowledge receipt of the vehicle in good order and accept all rental conditions above.</p>
             
             <div class="flex justify-between items-end px-2 md:px-8">
                 <div class="text-center w-5/12">
-                    <div class="h-12 border-b border-gray-400 mb-2"></div>
-                    <p class="font-bold text-charcoal text-xs uppercase">Renter Signature</p>
+                    <div class="h-10 border-b border-sand-300 mb-1.5"></div>
+                    <p class="font-bold text-forest-700 text-[10px] uppercase">Renter Signature</p>
                 </div>
                 
                 <div class="text-center w-5/12">
-                    <div class="h-12 border-b border-gray-400 mb-2 relative flex items-end justify-center">
-                        <div class="absolute bottom-2 opacity-20 text-brand-500 font-display font-black text-xs border-2 border-brand-500 rounded-full p-2 rotate-[-12deg] pointer-events-none whitespace-nowrap">
-                            RIDE X HUB
-                            <br>AUTHORIZED
+                    <div class="h-10 border-b border-sand-300 mb-1.5 relative flex items-end justify-center">
+                        <div class="absolute bottom-1 opacity-25 text-brand-600 font-display font-black text-[10px] border border-brand-500 rounded px-2 py-0.5 rotate-[-8deg] pointer-events-none">
+                            RIDE X HUB &bull; VERIFIED
                         </div>
                     </div>
-                    <p class="font-bold text-charcoal text-xs uppercase">Authorized Signature</p>
+                    <p class="font-bold text-forest-700 text-[10px] uppercase">Authorized Officer</p>
                 </div>
             </div>
             
-            <div class="text-center mt-6 text-[9px] text-gray-400 font-mono">
-                GENERATED BY RIDE X HUB SYSTEM | www.ridexhub.com
+            <div class="text-center mt-4 text-[8px] text-gray-400 font-mono">
+                VIUNGO TOURS &amp; RIDE X HUB &bull; www.ridexhub.com &bull; Matara, Sri Lanka
             </div>
         </footer>
 
     </div>
 
     <script>
-        // Initialize date to today
         document.getElementById('contractDate').valueAsDate = new Date();
         
-        // Currency Handling
         function updateCurrency() {
             const selector = document.getElementById('currencySelector');
             const selectedCurrency = selector.value;
             
-            // Update all labels with class 'currency-label'
             const labels = document.querySelectorAll('.currency-label');
             labels.forEach(label => {
                 label.textContent = selectedCurrency;
             });
             
-            // Recalculate totals (incase formatting needs update)
             calculate();
         }
 
@@ -390,7 +421,6 @@
                     document.getElementById('totalDays').value = diffDays + (diffDays === 1 ? " Day" : " Days");
                     
                     const total = diffDays * rate;
-                    // Format number with commas
                     document.getElementById('totalRent').value = total.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 2});
                 } else {
                     document.getElementById('totalDays').value = "Check Dates";
@@ -399,7 +429,6 @@
             }
         }
         
-        // Initialize currency labels on load
         updateCurrency();
     </script>
 </body>
