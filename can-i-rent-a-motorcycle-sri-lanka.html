@@ -82,6 +82,16 @@
   .prose ul, .prose ol { margin-top: 0.75rem; margin-bottom: 0.75rem; }
   .prose table td, .prose table th { padding: 0.6rem 0.75rem; }
   @media (min-width: 768px) { .prose { font-size: 1.02rem; } }
+  .char-border-black, .text-border-black {
+    -webkit-text-stroke: 1.2px #000000;
+    paint-order: stroke fill;
+    text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000, 0 2px 4px rgba(0, 0, 0, 0.9);
+  }
+  .char-border-white, .text-border-white {
+    -webkit-text-stroke: 1.2px #FFFFFF;
+    paint-order: stroke fill;
+    text-shadow: -1px -1px 0 #FFFFFF, 1px -1px 0 #FFFFFF, -1px 1px 0 #FFFFFF, 1px 1px 0 #FFFFFF, 0 2px 4px rgba(255, 255, 255, 0.9);
+  }
   </style>
   <script type="application/ld+json">
   {

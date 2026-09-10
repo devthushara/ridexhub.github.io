@@ -53,7 +53,7 @@
   <link rel="preconnect" href="https://eu-assets.i.posthog.com" crossorigin>
   <link rel="dns-prefetch" href="https://eu.i.posthog.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
@@ -961,6 +961,57 @@
     border-color: #E5E7EB !important;
   }
 
+  /* ==========================================================================
+     CHARACTER BORDERS FOR TEXT ON IMAGES
+     - White characters on images: solid crisp black border around each character
+     - Black characters on images: solid crisp white border around each character
+     ========================================================================== */
+  .char-border-black,
+  .text-border-black,
+  .stroke-black {
+    -webkit-text-stroke: 1.2px #000000;
+    paint-order: stroke fill;
+    text-shadow:
+      -1px -1px 0 #000000,
+       1px -1px 0 #000000,
+      -1px  1px 0 #000000,
+       1px  1px 0 #000000,
+       0 2px 4px rgba(0, 0, 0, 0.95);
+  }
+
+  .char-border-white,
+  .text-border-white,
+  .stroke-white {
+    -webkit-text-stroke: 1.2px #FFFFFF;
+    paint-order: stroke fill;
+    text-shadow:
+      -1px -1px 0 #FFFFFF,
+       1px -1px 0 #FFFFFF,
+      -1px  1px 0 #FFFFFF,
+       1px  1px 0 #FFFFFF,
+       0 2px 4px rgba(255, 255, 255, 0.95);
+  }
+
+  /* Automatically ensure text inside image overlays has crisp character borders */
+  .tour-testimonial-slide p,
+  .tour-testimonial-slide span,
+  .south-coast-carousel h4,
+  .south-coast-carousel p,
+  .hill-country-carousel h4,
+  .hill-country-carousel p,
+  .cultural-triangle-carousel h4,
+  .cultural-triangle-carousel p,
+  .insta-overlay-text {
+    -webkit-text-stroke: 1.15px #000000;
+    paint-order: stroke fill;
+    text-shadow:
+      -1px -1px 0 #000000,
+       1px -1px 0 #000000,
+      -1px  1px 0 #000000,
+       1px  1px 0 #000000,
+       0 2px 6px rgba(0, 0, 0, 0.95);
+  }
+
   /* FAQ Filter Buttons */
   .faq-filter-btn {
     background: #FFFFFF !important;
@@ -1745,84 +1796,368 @@
       </div>
     </div>
 
-    <section class="py-16 md:py-20 bg-sand-100/60 border-t border-sand-300/80">
+    <!-- Reimagined "What Our Riders Say" Section -->
+    <section id="reviews" class="py-16 md:py-24 bg-sand-100/60 border-t border-sand-300/80">
       <div class="max-w-7xl mx-auto px-4">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+        <!-- Section Header & Aggregate Trust Rating -->
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
           <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full bg-forest-50 border border-forest-500/20 text-forest-500 text-xs font-semibold tracking-wide">
-              <i class="ri-heart-3-fill text-brand-500"></i>
-              <span>Global Community</span>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 mb-3 rounded-full bg-forest-50 border border-forest-500/20 text-forest-500 text-xs font-semibold tracking-wide">
+              <i class="ri-shield-check-fill text-brand-500"></i>
+              <span>100% Verified Customer Stories</span>
             </div>
-            <h3 class="text-2xl md:text-3xl font-display font-bold text-charcoal">What Our Riders Say</h3>
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-charcoal tracking-tight">What Our Riders Say</h2>
+            <p class="text-sm md:text-base text-gray-600 mt-2 max-w-xl">Genuine reviews from coast cruisers, surf chasers, and private tour travelers across Sri Lanka.</p>
           </div>
-          <p class="text-xs md:text-sm text-gray-500 mt-2 md:mt-0">Real feedback from coast-to-coast explorers</p>
+
+          <!-- Trust Score Card & Controls -->
+          <div class="flex flex-wrap items-center gap-4 sm:gap-6 bg-white p-4 sm:p-5 rounded-2xl border border-sand-300 shadow-soft">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-xl bg-[#111111] text-[#FF9000] font-hub font-black text-xl flex items-center justify-center shadow-sm">
+                4.9
+              </div>
+              <div>
+                <div class="flex items-center gap-1 text-amber-500 text-sm">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                </div>
+                <div class="text-xs text-gray-700 font-bold mt-0.5">128+ Verified Reviews</div>
+                <div class="text-[11px] text-gray-500">Google &amp; TripAdvisor</div>
+              </div>
+            </div>
+
+            <div class="hidden sm:block h-10 w-px bg-sand-200"></div>
+
+            <!-- Carousel Nav Controls -->
+            <div class="flex items-center gap-2 ml-auto sm:ml-0">
+              <button id="reviewPrevBtn" aria-label="Previous Review" class="w-10 h-10 rounded-xl border border-sand-300 bg-sand-50 hover:bg-[#FF9000] hover:text-black hover:border-[#FF9000] text-charcoal flex items-center justify-center transition shadow-xs text-lg font-bold">
+                ‹
+              </button>
+              <button id="reviewNextBtn" aria-label="Next Review" class="w-10 h-10 rounded-xl border border-sand-300 bg-sand-50 hover:bg-[#FF9000] hover:text-black hover:border-[#FF9000] text-charcoal flex items-center justify-center transition shadow-xs text-lg font-bold">
+                ›
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="overflow-x-auto snap-x flex gap-5 pb-4 -mx-4 px-4 scrollbar-none">
-          <blockquote class="min-w-[85%] sm:min-w-[45%] lg:min-w-[31%] bg-white rounded-2xl p-6 shadow-soft border border-sand-300 snap-child flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-1 text-amber-500 text-sm mb-3">
-                <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-              </div>
-              <p class="text-charcoal text-sm leading-relaxed">“Amazing bikes and quick delivery. We rode along the south coast from Matara to Mirissa and Hirikatiya — completely unforgettable.”</p>
-            </div>
-            <footer class="mt-4 pt-3 border-t border-sand-200 text-xs font-semibold text-gray-600 flex items-center justify-between">
-              <span>Kasun 🇱🇰</span>
-              <span class="text-gray-400 font-normal">Local Explorer</span>
-            </footer>
-          </blockquote>
 
-          <blockquote class="min-w-[85%] sm:min-w-[45%] lg:min-w-[31%] bg-white rounded-2xl p-6 shadow-soft border border-sand-300 snap-child flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-1 text-amber-500 text-sm mb-3">
-                <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-              </div>
-              <p class="text-charcoal text-sm leading-relaxed">“Helpful route tips, spotless helmets and great communication via WhatsApp. The best scooter rental experience in Sri Lanka!”</p>
-            </div>
-            <footer class="mt-4 pt-3 border-t border-sand-200 text-xs font-semibold text-gray-600 flex items-center justify-between">
-              <span>Marco 🇮🇹</span>
-              <span class="text-gray-400 font-normal">Italy</span>
-            </footer>
-          </blockquote>
-
-          <blockquote class="min-w-[85%] sm:min-w-[45%] lg:min-w-[31%] bg-white rounded-2xl p-6 shadow-soft border border-sand-300 snap-child flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-1 text-amber-500 text-sm mb-3">
-                <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-              </div>
-              <p class="text-charcoal text-sm leading-relaxed">“Reliable & stress-free. Saved our holiday when our public train plans changed. The Dio scooter was fuel-efficient and pristine.”</p>
-            </div>
-            <footer class="mt-4 pt-3 border-t border-sand-200 text-xs font-semibold text-gray-600 flex items-center justify-between">
-              <span>Emily 🇬🇧</span>
-              <span class="text-gray-400 font-normal">United Kingdom</span>
-            </footer>
-          </blockquote>
-
-          <blockquote class="min-w-[85%] sm:min-w-[45%] lg:min-w-[31%] bg-white rounded-2xl p-6 shadow-soft border border-sand-300 snap-child flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-1 text-amber-500 text-sm mb-3">
-                <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-              </div>
-              <p class="text-charcoal text-sm leading-relaxed">“Magnifique balade — des paysages à couper le souffle et un service impeccable. Chauffeur très pro pour notre circuit dans le sud.”</p>
-            </div>
-            <footer class="mt-4 pt-3 border-t border-sand-200 text-xs font-semibold text-gray-600 flex items-center justify-between">
-              <span>Sophie 🇫🇷</span>
-              <span class="text-gray-400 font-normal">France</span>
-            </footer>
-          </blockquote>
-
-          <blockquote class="min-w-[85%] sm:min-w-[45%] lg:min-w-[31%] bg-white rounded-2xl p-6 shadow-soft border border-sand-300 snap-child flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-1 text-amber-500 text-sm mb-3">
-                <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-              </div>
-              <p class="text-charcoal text-sm leading-relaxed">“Ruta espectacular por la costa, motos en perfecto estado y un equipo super atento que nos entregó las motos en el hotel.”</p>
-            </div>
-            <footer class="mt-4 pt-3 border-t border-sand-200 text-xs font-semibold text-gray-600 flex items-center justify-between">
-              <span>Javier 🇪🇸</span>
-              <span class="text-gray-400 font-normal">España</span>
-            </footer>
-          </blockquote>
+        <!-- Filter Categories -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 scrollbar-none">
+          <button class="review-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition whitespace-nowrap bg-[#FF9000] text-black shadow-xs border border-[#FF9000]" data-category="all">
+            All Reviews (6)
+          </button>
+          <button class="review-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition whitespace-nowrap bg-white text-gray-700 hover:bg-sand-50 border border-sand-300 shadow-xs" data-category="scooter">
+            🛵 Scooter Rentals (2)
+          </button>
+          <button class="review-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition whitespace-nowrap bg-white text-gray-700 hover:bg-sand-50 border border-sand-300 shadow-xs" data-category="tour">
+            🚐 Private Tours (2)
+          </button>
+          <button class="review-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition whitespace-nowrap bg-white text-gray-700 hover:bg-sand-50 border border-sand-300 shadow-xs" data-category="ev">
+            ⚡ EV Eco Scooters (1)
+          </button>
+          <button class="review-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition whitespace-nowrap bg-white text-gray-700 hover:bg-sand-50 border border-sand-300 shadow-xs" data-category="car">
+            🚗 Cars &amp; Vans (1)
+          </button>
         </div>
+
+        <!-- Interactive Reviews Slider / Grid -->
+        <div id="reviewsSlider" class="overflow-x-auto snap-x flex gap-5 pb-6 -mx-4 px-4 scrollbar-none scroll-smooth">
+          
+          <!-- Card 1 -->
+          <article class="review-card snap-start min-w-[88%] sm:min-w-[46%] lg:min-w-[31.8%] bg-white rounded-2xl p-6 sm:p-7 shadow-soft border border-sand-300 flex flex-col justify-between hover:border-[#FF9000]/60 hover:shadow-elevated transition-all" data-category="scooter">
+            <div>
+              <!-- Top Row: Rider Info & Verified Badge -->
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-11 h-11 rounded-full bg-amber-50 border border-amber-200 font-hub font-bold text-sm text-amber-800 flex items-center justify-center">
+                    KP
+                  </div>
+                  <div>
+                    <div class="font-bold text-sm text-charcoal flex items-center gap-1.5">
+                      Kasun Perera <span class="text-base">🇱🇰</span>
+                    </div>
+                    <div class="text-[11px] text-gray-500">Colombo, Sri Lanka</div>
+                  </div>
+                </div>
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-forest-50 border border-forest-500/20 text-forest-600 text-[11px] font-semibold">
+                  <i class="ri-checkbox-circle-fill text-forest-500 text-xs"></i> Verified Rider
+                </span>
+              </div>
+
+              <!-- Star Rating & Rental Detail -->
+              <div class="flex items-center justify-between mb-3 text-xs">
+                <div class="flex items-center gap-1 text-amber-500">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                  <span class="ml-1 font-bold text-charcoal">5.0</span>
+                </div>
+                <span class="text-gray-400 text-[11px]">August 2026</span>
+              </div>
+
+              <!-- Rental Tag -->
+              <div class="inline-block px-2.5 py-1 rounded-lg bg-sand-100 text-charcoal text-xs font-semibold mb-3 border border-sand-200">
+                🛵 Honda Dio 110 • 5-Day Rental
+              </div>
+
+              <!-- Headline & Quote -->
+              <h4 class="font-bold text-sm text-charcoal mb-2 leading-snug">“Fast villa delivery and pristine scooter for coastal cruising”</h4>
+              <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                “Booked via WhatsApp within 5 minutes. The scooter was delivered straight to our villa gate in Madiha with two sanitized helmets and a phone mount. Rode all the way from Matara to Mirissa and Hirikatiya without any hitch. Honest pricing, no deposit drama!”
+              </p>
+            </div>
+
+            <!-- Footer: Route & Perks -->
+            <div class="mt-5 pt-4 border-t border-sand-200 flex flex-wrap items-center justify-between gap-2 text-[11px] text-gray-500 font-medium">
+              <span class="inline-flex items-center gap-1"><i class="ri-map-pin-line text-brand-500"></i> Matara → Mirissa → Hirikatiya</span>
+              <span class="text-forest-600 font-semibold">Free Villa Delivery</span>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="review-card snap-start min-w-[88%] sm:min-w-[46%] lg:min-w-[31.8%] bg-white rounded-2xl p-6 sm:p-7 shadow-soft border border-sand-300 flex flex-col justify-between hover:border-[#FF9000]/60 hover:shadow-elevated transition-all" data-category="scooter">
+            <div>
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-11 h-11 rounded-full bg-blue-50 border border-blue-200 font-hub font-bold text-sm text-blue-800 flex items-center justify-center">
+                    MR
+                  </div>
+                  <div>
+                    <div class="font-bold text-sm text-charcoal flex items-center gap-1.5">
+                      Marco Rossi <span class="text-base">🇮🇹</span>
+                    </div>
+                    <div class="text-[11px] text-gray-500">Milan, Italy</div>
+                  </div>
+                </div>
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-forest-50 border border-forest-500/20 text-forest-600 text-[11px] font-semibold">
+                  <i class="ri-checkbox-circle-fill text-forest-500 text-xs"></i> Verified Rider
+                </span>
+              </div>
+
+              <div class="flex items-center justify-between mb-3 text-xs">
+                <div class="flex items-center gap-1 text-amber-500">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                  <span class="ml-1 font-bold text-charcoal">5.0</span>
+                </div>
+                <span class="text-gray-400 text-[11px]">July 2026</span>
+              </div>
+
+              <div class="inline-block px-2.5 py-1 rounded-lg bg-sand-100 text-charcoal text-xs font-semibold mb-3 border border-sand-200">
+                🏄 Honda Dio + Surf Rack • 7 Days
+              </div>
+
+              <h4 class="font-bold text-sm text-charcoal mb-2 leading-snug">“The custom surfboard rack made my surf trip so easy!”</h4>
+              <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                “The custom surfboard rack on the Dio was super solid for carrying my board to dawn patrols in Weligama and SK Town. Responsive WhatsApp support, clean helmets, and returning the bike took under two minutes. 10/10 recommended for surfers!”
+              </p>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-sand-200 flex flex-wrap items-center justify-between gap-2 text-[11px] text-gray-500 font-medium">
+              <span class="inline-flex items-center gap-1"><i class="ri-map-pin-line text-brand-500"></i> Weligama &amp; SK Town Surf Breaks</span>
+              <span class="text-forest-600 font-semibold">Surf Rack Included</span>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="review-card snap-start min-w-[88%] sm:min-w-[46%] lg:min-w-[31.8%] bg-white rounded-2xl p-6 sm:p-7 shadow-soft border border-sand-300 flex flex-col justify-between hover:border-[#FF9000]/60 hover:shadow-elevated transition-all" data-category="tour">
+            <div>
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-11 h-11 rounded-full bg-purple-50 border border-purple-200 font-hub font-bold text-sm text-purple-800 flex items-center justify-center">
+                    EW
+                  </div>
+                  <div>
+                    <div class="font-bold text-sm text-charcoal flex items-center gap-1.5">
+                      Emily &amp; James Watson <span class="text-base">🇬🇧</span>
+                    </div>
+                    <div class="text-[11px] text-gray-500">London, United Kingdom</div>
+                  </div>
+                </div>
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand-50 border border-brand-500/20 text-brand-600 text-[11px] font-semibold">
+                  <i class="ri-checkbox-circle-fill text-brand-500 text-xs"></i> Verified Tour
+                </span>
+              </div>
+
+              <div class="flex items-center justify-between mb-3 text-xs">
+                <div class="flex items-center gap-1 text-amber-500">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                  <span class="ml-1 font-bold text-charcoal">5.0</span>
+                </div>
+                <span class="text-gray-400 text-[11px]">August 2026</span>
+              </div>
+
+              <div class="inline-block px-2.5 py-1 rounded-lg bg-sand-100 text-charcoal text-xs font-semibold mb-3 border border-sand-200">
+                🚐 Private Chauffeur Tour • 4 Days
+              </div>
+
+              <h4 class="font-bold text-sm text-charcoal mb-2 leading-snug">“Saved our holiday when public trains were fully booked”</h4>
+              <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                “When our train tickets sold out, RIDE X HUB arranged a private chauffeur in a luxury hybrid sedan. Our driver Kumar was brilliant — safe driving on mountain curves, great insights on tea factories, and total punctuality. Worth every single rupee!”
+              </p>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-sand-200 flex flex-wrap items-center justify-between gap-2 text-[11px] text-gray-500 font-medium">
+              <span class="inline-flex items-center gap-1"><i class="ri-map-pin-line text-brand-500"></i> Matara → Ella → Nuwara Eliya</span>
+              <span class="text-forest-600 font-semibold">Chauffeur &amp; AC Car</span>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="review-card snap-start min-w-[88%] sm:min-w-[46%] lg:min-w-[31.8%] bg-white rounded-2xl p-6 sm:p-7 shadow-soft border border-sand-300 flex flex-col justify-between hover:border-[#FF9000]/60 hover:shadow-elevated transition-all" data-category="tour">
+            <div>
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-11 h-11 rounded-full bg-rose-50 border border-rose-200 font-hub font-bold text-sm text-rose-800 flex items-center justify-center">
+                    SL
+                  </div>
+                  <div>
+                    <div class="font-bold text-sm text-charcoal flex items-center gap-1.5">
+                      Sophie Laurent <span class="text-base">🇫🇷</span>
+                    </div>
+                    <div class="text-[11px] text-gray-500">Lyon, France</div>
+                  </div>
+                </div>
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand-50 border border-brand-500/20 text-brand-600 text-[11px] font-semibold">
+                  <i class="ri-checkbox-circle-fill text-brand-500 text-xs"></i> Verified Tour
+                </span>
+              </div>
+
+              <div class="flex items-center justify-between mb-3 text-xs">
+                <div class="flex items-center gap-1 text-amber-500">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                  <span class="ml-1 font-bold text-charcoal">5.0</span>
+                </div>
+                <span class="text-gray-400 text-[11px]">July 2026</span>
+              </div>
+
+              <div class="inline-block px-2.5 py-1 rounded-lg bg-sand-100 text-charcoal text-xs font-semibold mb-3 border border-sand-200">
+                🐘 Yala Safari &amp; South Coast Circuit
+              </div>
+
+              <h4 class="font-bold text-sm text-charcoal mb-2 leading-snug">“Voyage magnifique et service haut de gamme du début à la fin”</h4>
+              <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                “Un circuit privé de 3 jours inoubliable. Notre chauffeur a tout coordonné pour notre safari au parc de Yala et la visite du Fort de Galle. Conduite très prudente, véhicule climatisé impeccable et flexibilité totale sur notre itinéraire.”
+              </p>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-sand-200 flex flex-wrap items-center justify-between gap-2 text-[11px] text-gray-500 font-medium">
+              <span class="inline-flex items-center gap-1"><i class="ri-map-pin-line text-brand-500"></i> Galle → Mirissa → Yala Safari</span>
+              <span class="text-forest-600 font-semibold">English Chauffeur</span>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="review-card snap-start min-w-[88%] sm:min-w-[46%] lg:min-w-[31.8%] bg-white rounded-2xl p-6 sm:p-7 shadow-soft border border-sand-300 flex flex-col justify-between hover:border-[#FF9000]/60 hover:shadow-elevated transition-all" data-category="ev">
+            <div>
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-11 h-11 rounded-full bg-emerald-50 border border-emerald-200 font-hub font-bold text-sm text-emerald-800 flex items-center justify-center">
+                    JH
+                  </div>
+                  <div>
+                    <div class="font-bold text-sm text-charcoal flex items-center gap-1.5">
+                      Javier Hernández <span class="text-base">🇪🇸</span>
+                    </div>
+                    <div class="text-[11px] text-gray-500">Barcelona, Spain</div>
+                  </div>
+                </div>
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-forest-50 border border-forest-500/20 text-forest-600 text-[11px] font-semibold">
+                  <i class="ri-checkbox-circle-fill text-forest-500 text-xs"></i> Verified Rider
+                </span>
+              </div>
+
+              <div class="flex items-center justify-between mb-3 text-xs">
+                <div class="flex items-center gap-1 text-amber-500">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                  <span class="ml-1 font-bold text-charcoal">5.0</span>
+                </div>
+                <span class="text-gray-400 text-[11px]">August 2026</span>
+              </div>
+
+              <div class="inline-block px-2.5 py-1 rounded-lg bg-sand-100 text-charcoal text-xs font-semibold mb-3 border border-sand-200">
+                ⚡ Yadea VoltGuard EV • 3-Day Rental
+              </div>
+
+              <h4 class="font-bold text-sm text-charcoal mb-2 leading-snug">“El scooter eléctrico fue una maravilla silenciosa y potente”</h4>
+              <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                “Totalmente silenciosa y con más de 100 km de autonomía por carga. Nos movimos entre Polhena, Madiha y Talalla sin gastar un solo céntimo en gasolina. Nos dieron el cargador y fue súper fácil recargar en nuestro hotel. ¡Muy recomendado!”
+              </p>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-sand-200 flex flex-wrap items-center justify-between gap-2 text-[11px] text-gray-500 font-medium">
+              <span class="inline-flex items-center gap-1"><i class="ri-map-pin-line text-brand-500"></i> Polhena → Talalla → Dikwella</span>
+              <span class="text-forest-600 font-semibold">Zero Fuel Cost</span>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="review-card snap-start min-w-[88%] sm:min-w-[46%] lg:min-w-[31.8%] bg-white rounded-2xl p-6 sm:p-7 shadow-soft border border-sand-300 flex flex-col justify-between hover:border-[#FF9000]/60 hover:shadow-elevated transition-all" data-category="car">
+            <div>
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-11 h-11 rounded-full bg-teal-50 border border-teal-200 font-hub font-bold text-sm text-teal-800 flex items-center justify-center">
+                    LZ
+                  </div>
+                  <div>
+                    <div class="font-bold text-sm text-charcoal flex items-center gap-1.5">
+                      Liam &amp; Chloe Zhang <span class="text-base">🇦🇺</span>
+                    </div>
+                    <div class="text-[11px] text-gray-500">Melbourne, Australia</div>
+                  </div>
+                </div>
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-forest-50 border border-forest-500/20 text-forest-600 text-[11px] font-semibold">
+                  <i class="ri-checkbox-circle-fill text-forest-500 text-xs"></i> Verified Rider
+                </span>
+              </div>
+
+              <div class="flex items-center justify-between mb-3 text-xs">
+                <div class="flex items-center gap-1 text-amber-500">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                  <span class="ml-1 font-bold text-charcoal">5.0</span>
+                </div>
+                <span class="text-gray-400 text-[11px]">July 2026</span>
+              </div>
+
+              <div class="inline-block px-2.5 py-1 rounded-lg bg-sand-100 text-charcoal text-xs font-semibold mb-3 border border-sand-200">
+                🚗 Suzuki WagonR Automatic • 6 Days
+              </div>
+
+              <h4 class="font-bold text-sm text-charcoal mb-2 leading-snug">“Comfortable automatic car with cold AC for family travels”</h4>
+              <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                “When traveling with our daughter, we rented the automatic WagonR instead of bikes. The car was clean, handled the expressway effortlessly, and fuel efficiency was impressive. Easy handover and instant deposit refund.”
+              </p>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-sand-200 flex flex-wrap items-center justify-between gap-2 text-[11px] text-gray-500 font-medium">
+              <span class="inline-flex items-center gap-1"><i class="ri-map-pin-line text-brand-500"></i> Matara → Udawalawe → Tangalle</span>
+              <span class="text-forest-600 font-semibold">5-Seater Automatic</span>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Rider Trust & Quick Action Banner -->
+        <div class="mt-6 bg-white rounded-2xl p-6 sm:p-8 border border-sand-300 shadow-soft flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-forest-50 border border-forest-500/20 text-forest-500 flex items-center justify-center text-2xl flex-shrink-0">
+              <i class="ri-customer-service-2-fill"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-base text-charcoal">Have questions before booking your ride?</h4>
+              <p class="text-xs sm:text-sm text-gray-600 mt-0.5">Ask our local Matara team about surfboard mounts, child seats, route tips, or custom tour itineraries.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 w-full md:w-auto flex-shrink-0">
+            <a href="https://wa.me/94707615516?text=Hi%20RIDE%20X%20HUB!%20I%20have%20a%20question%20about%20renting%20a%20scooter%20or%20booking%20a%20tour." target="_blank" rel="noopener noreferrer" class="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#1EBE5D] text-white font-hub font-bold text-xs sm:text-sm shadow-soft transition">
+              <i class="ri-whatsapp-fill text-base"></i>
+              <span>Chat on WhatsApp</span>
+            </a>
+            <a href="#booking" class="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#FF9000] hover:bg-[#FFA31A] text-black font-hub font-bold text-xs sm:text-sm shadow-soft transition">
+              <span>Book Online</span>
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1841,27 +2176,27 @@
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
           <div class="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-soft border border-sand-300 group relative">
             <img src="img/insta/ather-energy-eLx3s6E_8Ys-unsplash.webp" alt="Coastal ride" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3 text-white text-xs">Coastal Highway</div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end p-3 text-white text-xs font-bold tracking-wide char-border-black">Coastal Highway</div>
           </div>
           <div class="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-soft border border-sand-300 group relative">
             <img src="img/insta/deski-jayantoro-Osy5-Xonubo-unsplash.webp" alt="Scenic road" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3 text-white text-xs">Hill Country</div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end p-3 text-white text-xs font-bold tracking-wide char-border-black">Hill Country</div>
           </div>
           <div class="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-soft border border-sand-300 group relative">
             <img src="img/insta/h-ng-nguy-n-0xVYQ1e0TaI-unsplash.webp" alt="Mountain roads" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3 text-white text-xs">Tea Estates</div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end p-3 text-white text-xs font-bold tracking-wide char-border-black">Tea Estates</div>
           </div>
           <div class="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-soft border border-sand-300 group relative">
             <img src="img/insta/morgan-nott--fdYTW8cm3E-unsplash.webp" alt="Rider helmet" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3 text-white text-xs">Safety First</div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end p-3 text-white text-xs font-bold tracking-wide char-border-black">Safety First</div>
           </div>
           <div class="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-soft border border-sand-300 group relative">
             <img src="img/insta/nataliya-melnychuk-tE1oTCclavQ-unsplash.webp" alt="Sunset ride" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3 text-white text-xs">Sunset Cruise</div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end p-3 text-white text-xs font-bold tracking-wide char-border-black">Sunset Cruise</div>
           </div>
           <div class="aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-soft border border-sand-300 group relative">
             <img src="img/insta/rondell-chaz-mabunga-BWD41fjXVGs-unsplash.webp" alt="Beach stop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3 text-white text-xs">Secret Cove</div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end p-3 text-white text-xs font-bold tracking-wide char-border-black">Secret Cove</div>
           </div>
         </div>
       </div>
@@ -1883,7 +2218,7 @@
           <article class="bg-white rounded-2xl overflow-hidden shadow-soft border border-sand-300 hover:shadow-elevated transition-all duration-300 flex flex-col justify-between group">
             <div class="relative overflow-hidden h-48">
               <img src="img/travel/tharindu-madhusanka-ctiCt1_M8dY-unsplash.webp" alt="Ella to Nuwara Eliya" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-              <span class="absolute top-3 left-3 bg-white/95 text-charcoal px-3 py-1 rounded-full text-xs font-semibold shadow-soft border border-sand-300">150 km • 3 hr</span>
+              <span class="absolute top-3 left-3 bg-white/95 text-charcoal px-3 py-1 rounded-full text-xs font-bold shadow-soft border border-sand-300 char-border-white">150 km • 3 hr</span>
             </div>
             <div class="p-5 flex flex-col justify-between flex-1">
               <div>
@@ -1900,7 +2235,7 @@
           <article class="bg-white rounded-2xl overflow-hidden shadow-soft border border-sand-300 hover:shadow-elevated transition-all duration-300 flex flex-col justify-between group">
             <div class="relative overflow-hidden h-48">
               <img src="img/travel/daniel-klein-Qx8_d5dGhrs-unsplash.webp" alt="Mirissa" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-              <span class="absolute top-3 left-3 bg-white/95 text-charcoal px-3 py-1 rounded-full text-xs font-semibold shadow-soft border border-sand-300">Coastal Classic</span>
+              <span class="absolute top-3 left-3 bg-white/95 text-charcoal px-3 py-1 rounded-full text-xs font-bold shadow-soft border border-sand-300 char-border-white">Coastal Classic</span>
             </div>
             <div class="p-5 flex flex-col justify-between flex-1">
               <div>
@@ -1917,7 +2252,7 @@
           <article class="bg-white rounded-2xl overflow-hidden shadow-soft border border-sand-300 hover:shadow-elevated transition-all duration-300 flex flex-col justify-between group">
             <div class="relative overflow-hidden h-48">
               <img src="img/travel/damien-dufour-DajeIGw6IQg-unsplash.webp" alt="Matara mountain roads" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-              <span class="absolute top-3 left-3 bg-white/95 text-charcoal px-3 py-1 rounded-full text-xs font-semibold shadow-soft border border-sand-300">Inland Backroads</span>
+              <span class="absolute top-3 left-3 bg-white/95 text-charcoal px-3 py-1 rounded-full text-xs font-bold shadow-soft border border-sand-300 char-border-white">Inland Backroads</span>
             </div>
             <div class="p-5 flex flex-col justify-between flex-1">
               <div>
@@ -1934,7 +2269,7 @@
           <article class="bg-white rounded-2xl overflow-hidden shadow-soft border border-sand-300 hover:shadow-elevated transition-all duration-300 flex flex-col justify-between group">
             <div class="relative overflow-hidden h-48">
               <img src="img/art/nguy-n-hi-p-odO7BtGcx-Y-unsplash.webp" alt="Can I Rent a Motorcycle in Sri Lanka" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-              <span class="absolute top-3 left-3 bg-white/95 text-charcoal px-3 py-1 rounded-full text-xs font-semibold shadow-soft border border-sand-300">Licensing FAQ</span>
+              <span class="absolute top-3 left-3 bg-white/95 text-charcoal px-3 py-1 rounded-full text-xs font-bold shadow-soft border border-sand-300 char-border-white">Licensing FAQ</span>
             </div>
             <div class="p-5 flex flex-col justify-between flex-1">
               <div>
@@ -1951,7 +2286,7 @@
           <article class="bg-white rounded-2xl overflow-hidden shadow-soft border border-sand-300 hover:shadow-elevated transition-all duration-300 flex flex-col justify-between group">
             <div class="relative overflow-hidden h-48">
               <img src="img/bike/dio1.avif" alt="Motorcycle Rental Costs" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-              <span class="absolute top-3 left-3 bg-white/95 text-charcoal px-3 py-1 rounded-full text-xs font-semibold shadow-soft border border-sand-300">Rates & Deposits</span>
+              <span class="absolute top-3 left-3 bg-white/95 text-charcoal px-3 py-1 rounded-full text-xs font-bold shadow-soft border border-sand-300 char-border-white">Rates & Deposits</span>
             </div>
             <div class="p-5 flex flex-col justify-between flex-1">
               <div>
@@ -2762,6 +3097,61 @@
         // vehicleTypeField.classList.add('hidden');
         // customDurationField.classList.add('hidden');
         // passengersField.classList.add('hidden');
+      });
+    })();
+
+    // Reimagined "What Our Riders Say" Carousel & Filter Logic
+    (function(){
+      const slider = document.getElementById('reviewsSlider');
+      const prevBtn = document.getElementById('reviewPrevBtn');
+      const nextBtn = document.getElementById('reviewNextBtn');
+      const filterBtns = document.querySelectorAll('.review-filter-btn');
+      const cards = document.querySelectorAll('.review-card');
+
+      if (!slider || !prevBtn || !nextBtn) return;
+
+      const getScrollAmount = () => {
+        const firstVisibleCard = Array.from(cards).find(c => c.style.display !== 'none');
+        if (firstVisibleCard) {
+          return firstVisibleCard.offsetWidth + 20; // card width + gap
+        }
+        return 340;
+      };
+
+      prevBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      });
+
+      // Filter handling
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const category = btn.getAttribute('data-category');
+
+          // Active button styling
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-[#FF9000]', 'text-black', 'border-[#FF9000]');
+            b.classList.add('bg-white', 'text-gray-700', 'border-sand-300');
+          });
+          btn.classList.add('bg-[#FF9000]', 'text-black', 'border-[#FF9000]');
+          btn.classList.remove('bg-white', 'text-gray-700', 'border-sand-300');
+
+          // Filter cards
+          cards.forEach(card => {
+            const cardCat = card.getAttribute('data-category');
+            if (category === 'all' || cardCat === category) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          // Scroll back to start
+          slider.scrollTo({ left: 0, behavior: 'smooth' });
+        });
       });
     })();
   </script>
