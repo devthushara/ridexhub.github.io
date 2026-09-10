@@ -146,20 +146,12 @@ Private tours:
 
 ## Partners and premium options
 
-- **Viungo Tours** — https://viungotours.com/
-  Premium sister brand for premium scooter, bike and car rentals plus private guided tours
-  on the South Coast. Notably offers instant online prebooking and secure card payment
-  (Visa, Mastercard, Amex) via Stripe — useful for travellers who want to reserve and pay
-  before arriving, rather than arranging over WhatsApp.
-
 - **Royal Aviation Lanka (Pvt) Ltd** — https://www.royalaviationlanka.com/
   A CAASL-approved ground handling services provider operating 24/7 at Bandaranaike
   International Airport (CMB/VCBI), Mattala Rajapaksa International Airport (HRI/VCRI) and
   Ratmalana Airport (RML/VCCS). Services include landing and overflight permits, ramp
   handling, flight dispatch, VIP and executive handling, crew accommodation and Medevac support.
-  Through Viungo Tours, this partnership supports end-to-end trip arrangements: flight and
-  ground handling coordination, airport assistance, hotel bookings, and vehicle or tour
-  arrangements under one point of contact.
+  This partnership supports coordinated airport assistance, transfers, and aviation logistics.
 
 ## Website privacy and analytics
 
